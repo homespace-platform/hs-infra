@@ -611,16 +611,16 @@ CROSS JOIN LATERAL unnest(ARRAY['MORNING','AFTERNOON','EVENING']) AS v(slot_name
 WHERE (get_byte(decode(md5(n::text || v.slot_name), 'hex'), 0) % 4) <> 0
 ON CONFLICT DO NOTHING;
 
--- Three existing S3 images shared across the seed listings.
+-- Demo: 3 shared S3 images (unique object_key) attached to every listing.
 WITH media_seed AS (
     SELECT s.*, m.media_order, m.file_name, m.sample_url,
            md5('homespace-seed-s3-object-' || m.media_order::text)::uuid::text AS storage_id,
            md5('homespace-hcm-200-v2-media-' || s.n::text || '-' || m.media_order::text)::uuid::text AS media_id
     FROM hs_seed_rows s
     CROSS JOIN (VALUES
-      (1, '1ffbe426-4e8b-419e-95b1-a2f6b2308387.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/c120f50c-d1bc-4e04-92c9-d602412f43bc.png'),
-      (2, 'ddc2b657-c112-48db-916e-f2fd754b77c2.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/c120f50c-d1bc-4e04-92c9-d602412f43bc.png'),
-      (3, '2d808406-f5ca-470e-9ed9-2b85c3ba4366.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/c120f50c-d1bc-4e04-92c9-d602412f43bc.png')
+      (1, '1.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/1.jpg'),
+      (2, '2.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/2.jpg'),
+      (3, '3.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/3.jpg')
     ) AS m(media_order, file_name, sample_url)
 )
 INSERT INTO storage_objects (
@@ -629,7 +629,7 @@ INSERT INTO storage_objects (
     active, created_at, updated_at, created_by, updated_by
 )
 SELECT storage_id, file_name,
-       'listing_image/8aeaf925-16d8-47d3-b377-c4fc83dafd56/' || file_name, 'homespace-dev-files-v3',
+       file_name, 'homespace-dev-files-v4',
        'image/jpeg', 1000000, md5(file_name), 'jpg', owner_id, NULL, NULL,
        'LISTING_IMAGE', 'PUBLIC', 'READY', true, now(), now(), owner_id, owner_id
 FROM (SELECT DISTINCT storage_id, file_name, sample_url, owner_id, media_order FROM media_seed) media_seed
@@ -646,9 +646,9 @@ WITH media_seed AS (
            md5('homespace-hcm-200-v2-media-' || s.n::text || '-' || m.media_order::text)::uuid::text AS media_id
     FROM hs_seed_rows s
     CROSS JOIN (VALUES
-      (1, '1ffbe426-4e8b-419e-95b1-a2f6b2308387.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/c120f50c-d1bc-4e04-92c9-d602412f43bc.png'),
-      (2, 'ddc2b657-c112-48db-916e-f2fd754b77c2.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/c120f50c-d1bc-4e04-92c9-d602412f43bc.png'),
-      (3, '2d808406-f5ca-470e-9ed9-2b85c3ba4366.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/c120f50c-d1bc-4e04-92c9-d602412f43bc.png')
+      (1, '1.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/1.jpg'),
+      (2, '2.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/2.jpg'),
+      (3, '3.jpg', 'https://homespace-dev-files-v4.s3.ap-southeast-1.amazonaws.com/3.jpg')
     ) AS m(media_order, file_name, sample_url)
 )
 INSERT INTO listing_media (
