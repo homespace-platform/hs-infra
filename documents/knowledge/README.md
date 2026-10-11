@@ -28,7 +28,15 @@ Kho tài liệu nguồn cho AI Agent trả lời câu hỏi về HomeSpace. Tron
 
 Mỗi file có YAML front matter gồm `document_id`, `title`, `audience`, `visibility`, `status`, `version`, `locale` và `last_reviewed`. Khi ingest, gắn metadata này vào từng chunk để lọc theo phiên bản và quyền truy cập. File có `visibility: admin` tuyệt đối không được truy xuất trong câu trả lời cho người dùng thông thường.
 
-Chỉ ingest tài liệu `status: approved` khi bật cho người dùng production. Trong giai đoạn xây dựng, tài liệu `draft` có thể được dùng ở môi trường development để kiểm tra pipeline; câu trả lời từ chúng không được xem là chính sách đã ban hành.
+Admin cần rà soát nội dung trước khi bật cho người dùng production. Trong luồng hiện tại, **Upload và áp dụng** hoặc **Cập nhật và áp dụng version mới** là thao tác chấp thuận ingest; hệ thống không lấy trường `status` trong file làm quyền tự phê duyệt. Nội dung nháp phục vụ development không được xem là chính sách đã ban hành.
+
+### Upload và chỉnh sửa trên Admin
+
+- Mở `/operations/knowledge`, kéo thả hoặc chọn toàn bộ các file `.md` cần dùng (tối đa 50 file/lần, 1 MB/file). `README.md` được bỏ qua.
+- Cùng tên file (không phân biệt hoa/thường) cập nhật cùng tài liệu. Mỗi lần upload/lưu tăng version 1 → 2 → 3, kể cả nội dung không đổi; không cần tăng `version` trong YAML.
+- Chọn tài liệu rồi mở trình chỉnh sửa Markdown để sửa trực tiếp và cập nhật. Giữ YAML metadata, đặc biệt `visibility: public/admin`, chính xác.
+- Worker tự chia chunks/embedding local và áp dụng bản mới. Bản cũ vẫn hoạt động khi đang xử lý; vector cũ chỉ xóa sau khi bản mới thành công. Lịch sử version được giữ để kiểm tra.
+- Restart API/worker bình thường không cần upload lại: tài liệu/vectors lưu trong PostgreSQL. Không xóa Docker volume của PostgreSQL AI nếu muốn giữ knowledge.
 
 ## Ranh giới dữ liệu
 
