@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
 const sourcePath = resolve(root, 'postman/location/hochiminh.txt');
-const sqlPath = resolve(root, 'postgres/listings_seed_hcm_200.sql');
+const sqlPath = resolve(root, 'postgres/listings_seed_hcm.sql');
 const source = readFileSync(sourcePath, 'utf8');
 const match = source.match(/^\s*(\{[\s\S]*?\})\s*,\s*(\[[\s\S]*\])\s*$/);
 if (!match) throw new Error('hochiminh.txt must contain a province object and a ward array');

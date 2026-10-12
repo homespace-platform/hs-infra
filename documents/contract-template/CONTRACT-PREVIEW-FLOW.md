@@ -30,9 +30,9 @@ vẫn hoàn tất và commit file. Refresh trang vì thế thấy PDF đã tạo
 ## Triển khai
 
 - Restart Core API và Gateway; cập nhật/restart frontend để nhận endpoint và timeout mới.
-- Có cột nullable `contract_documents.render_fingerprint` mới. Với `ddl-auto=update`,
-  Hibernate bổ sung cột khi Core khởi động. Nếu môi trường dùng `validate`/`none`, chạy
-  `postgres/contract_preview_render_fingerprint.sql` trước khi triển khai Core.
+- Cột nullable `contract_documents.render_fingerprint` được khai báo trong entity.
+  Khi tạo lại database local/dev, start Core với `ddl-auto=update` để Hibernate tạo schema hiện tại;
+  không cần SQL vá riêng. `validate`/`none` chỉ dùng khi schema đã được chuẩn bị sẵn.
 - Bản nháp đã kết xuất trước thay đổi chưa có fingerprint: kết xuất lại một lần trước khi ký.
   Không sửa/xóa PDF đã ký hoặc cuộc ký đang chờ xác nhận.
 - Không thay mẫu Word đã phát hành hàng loạt; mẫu dùng `{{contract.specialTerms}}` sẽ nhận
