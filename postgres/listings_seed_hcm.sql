@@ -303,7 +303,7 @@ WITH numbered AS (
            CASE WHEN n % 5 = 0 THEN NULL ELSE 1 + (n % 3) END AS deposit_months,
            CASE WHEN category='ROOM' AND n % 11 = 0 THEN 'PERSON_MONTH'
                 WHEN category='ROOM' THEN 'ROOM_MONTH' ELSE 'MONTH' END AS price_unit,
-           (ARRAY[1,3,6,12])[(extra_var % 4)+1] AS min_lease_months,
+           3 AS min_lease_months,
            CASE WHEN n % 7 = 0 THEN 'NONE'
                 WHEN n % 3 = 0 THEN 'PAID' ELSE 'FREE' END AS room_parking_policy,
            CASE WHEN n % 7 = 0 THEN 0 ELSE 1 + (n % 3) END AS room_max_vehicles,
