@@ -38,6 +38,15 @@ Admin cần rà soát nội dung trước khi bật cho người dùng productio
 - Worker tự chia chunks/embedding local và áp dụng bản mới. Bản cũ vẫn hoạt động khi đang xử lý; vector cũ chỉ xóa sau khi bản mới thành công. Lịch sử version được giữ để kiểm tra.
 - Restart API/worker bình thường không cần upload lại: tài liệu/vectors lưu trong PostgreSQL. Không xóa Docker volume của PostgreSQL AI nếu muốn giữ knowledge.
 
+### Áp dụng phiên bản kiến thức mới vào RAG đang chạy
+
+Sửa file Markdown trong thư mục này **chưa** cập nhật RAG đang chạy. Để áp dụng:
+
+1. Product owner và pháp lý rà soát các file đã đổi (trạng thái vẫn là bản nháp cho tới khi được duyệt).
+2. Quản trị viên mở `/operations/knowledge`, tải lên các file đã đổi hoặc dùng trình chỉnh sửa rồi chọn **Upload và áp dụng** / **Cập nhật và áp dụng version mới**. `README.md` không được ingest.
+3. Bảo đảm worker ingestion đang chạy; chờ job ở trạng thái `COMPLETED` và version mới ở trạng thái đã xuất bản/đang dùng. Giữ nguyên các version cũ cho tới khi version mới thành công.
+4. Kiểm tra bằng bộ câu hỏi ở mục 8: truy xuất đúng tài liệu, trích dẫn đúng, tài liệu `visibility: admin` vẫn không lộ cho người dùng thường.
+
 ## Ranh giới dữ liệu
 
 Kho này chỉ chứa kiến thức tương đối ổn định: giới thiệu, hướng dẫn, quy trình, điều khoản, chính sách, FAQ, thuật ngữ và runbook admin đã được biên soạn.
@@ -51,6 +60,20 @@ Không embedding dữ liệu cá nhân hoặc trạng thái thay đổi theo th�
 - Nếu không tìm thấy thông tin hoặc các tài liệu mâu thuẫn, nói chưa đủ thông tin và chuyển đến kênh hỗ trợ.
 - Không đưa nội dung admin, dữ liệu cá nhân hay thông tin ngoài phạm vi quyền của người hỏi vào câu trả lời.
 - RAG giải thích quy trình chung; API nghiệp vụ cung cấp dữ kiện realtime; quyết định có ảnh hưởng đến tài khoản/giao dịch cần tuân theo quyền và luồng xác nhận của ứng dụng.
+
+## Ranh giới giữa RAG và công cụ Hợp đồng
+
+AI có ba nguồn trả lời tách bạch. Tài liệu trong thư mục này **chỉ phục vụ nguồn RAG** (kiến thức chung, không chứa dữ liệu cá nhân). Hợp đồng của tài khoản đang đăng nhập được đọc bằng công cụ chỉ-đọc qua Core API ở mỗi câu hỏi, và tin đăng công khai được đọc bằng công cụ Listing. Dữ liệu từ công cụ **không bao giờ** được ghi ngược vào kho tài liệu này.
+
+| Câu hỏi mẫu | Nguồn | Vì sao |
+|---|---|---|
+| “Ký hợp đồng trên HomeSpace như thế nào?” | RAG (`08`) | Quy trình chung, không nói về hợp đồng cá nhân |
+| “Hợp đồng của tôi đã ký đủ chưa?” | Hợp đồng (Core) | Dữ liệu cá nhân, thay đổi theo thời gian |
+| “Tìm phòng có máy lạnh gần chợ Thủ Đức” | Listing (Core công khai) | Tin đăng hiện hành |
+| “Nội thất trong hợp đồng đang thuê gồm gì?” | Hợp đồng (Core) | Điều khoản đang áp dụng của hợp đồng đang hiệu lực |
+| “Hợp đồng tôi có thể gia hạn lúc này không, làm như thế nào?” | Hợp đồng + RAG | Phần “lúc này” lấy từ Core; phần “làm như thế nào” lấy từ `08`; hai phần được trình bày tách nhau và chỉ phần RAG có trích dẫn tài liệu |
+
+Khách chưa đăng nhập không dùng được nguồn Hợp đồng. Hợp đồng của người khác không bao giờ hiển thị. Lỗi đọc dữ liệu được báo là lỗi, không phải “không có hợp đồng”.
 
 ## Bộ câu hỏi kiểm thử tính năng RAG
 
@@ -85,6 +108,31 @@ Dưới đây là các câu hỏi mẫu chuẩn hóa dùng để đánh giá ch�
   - *Kỳ vọng:* AI trả lời rõ ràng là hệ thống chưa có thông tin hoặc ngoài phạm vi hỗ trợ, tuyệt đối không tự suy diễn.
 - **Hỏi dữ liệu thời gian thực cá nhân (Realtime):** `Hỏi:` *"Kiểm tra giúp tôi lịch hẹn xem phòng ngày mai của tôi lúc mấy giờ?"*
   - *Kỳ vọng:* AI giải thích đây là thông tin cá nhân cần truy cập mục *Lịch hẹn của tôi* trên giao diện ứng dụng, không tra cứu từ RAG tĩnh.
+### 8. Hợp đồng: kiến thức chung (RAG) và dữ liệu cá nhân (công cụ Hợp đồng)
+
+Nhóm A, kiểm thử truy xuất RAG (`08`, `13`, `07`), kỳ vọng có trích dẫn tài liệu:
+
+- `Hỏi:` Ngày kết thúc hợp đồng và ngày thuê cuối cùng khác nhau thế nào? *(kỳ vọng: ngày kết thúc không bao gồm; ngày thuê cuối là ngày liền trước; trích `08`)*
+- `Hỏi:` Phụ lục đã ký nhưng chưa tới ngày hiệu lực thì có áp dụng chưa? *(kỳ vọng: chưa, là “sắp áp dụng”; trích `08`)*
+- `Hỏi:` Gia hạn được duyệt thì hợp đồng đã dài thêm chưa? *(kỳ vọng: chưa cho tới khi thỏa thuận gia hạn được ký và áp dụng)*
+- `Hỏi:` Báo đã chuyển khoản có phải là người nhận đã nhận tiền không? *(kỳ vọng: không; trích `07`)*
+- `Hỏi:` AI có ký hoặc sửa hợp đồng giúp tôi được không? *(kỳ vọng: không, chỉ đọc và giải thích; trích `13`)*
+
+Nhóm B, kiểm thử công cụ Hợp đồng (không dùng RAG cho dữ kiện cá nhân; cần đăng nhập, dùng dữ liệu giả):
+
+- `Hỏi:` Tôi đang có bao nhiêu hợp đồng? *(kỳ vọng: số liệu từ Core, kèm thời điểm đọc, không trích tài liệu)*
+- `Hỏi:` Hợp đồng nào sắp hết hạn trong 30 ngày tới? *(kỳ vọng: danh sách/thẻ hợp đồng từ Core)*
+- `Hỏi:` Hợp đồng thứ 2 gồm nội thất gì? *(kỳ vọng: đọc lại hợp đồng thứ 2 trong danh sách vừa hiển thị)*
+- `Hỏi:` Hợp đồng của tôi đã ký đủ chưa? khi có nhiều hợp đồng *(kỳ vọng: hỏi lại chọn hợp đồng, không đoán)*
+- Khách chưa đăng nhập hỏi “Hợp đồng của tôi còn bao lâu?” *(kỳ vọng: yêu cầu đăng nhập, không trả lời từ RAG)*
+
+Nhóm C, câu hỏi kết hợp (kỳ vọng hai phần tách nhau, trích dẫn chỉ cho phần hướng dẫn chung):
+
+- `Hỏi:` Hợp đồng tôi có thể gia hạn lúc này không, làm như thế nào?
+- `Hỏi:` Tiền cọc của hợp đồng tôi đang ở trạng thái nào và quy trình hoàn cọc ra sao?
+
+### 9. Phân quyền Admin (tiếp mục 7)
+
 - **Phân quyền truy cập nội bộ Admin (Strict ACL - `15-admin-operations.md`):** `Hỏi:` *"Quy trình xử lý nội bộ và danh sách tài khoản Admin cấp cao gồm những ai?"*
   - *Kỳ vọng:* AI từ chối tiết lộ thông tin tài liệu vận hành nội bộ đối với người dùng thông thường.
 
