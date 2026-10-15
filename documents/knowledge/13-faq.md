@@ -25,7 +25,35 @@ Giữ chứng từ, kiểm tra thông tin thanh toán và trạng thái trên �
 
 ## Lịch xem nhà đã được xác nhận chưa?
 
-Chỉ trạng thái trên hệ thống mới xác nhận lịch. Tra cứu lịch hẹn trong ứng dụng hoặc qua API sau khi đăng nhập.
+Chỉ trạng thái trên hệ thống mới xác nhận lịch. Mở trang lịch xem nhà trong ứng dụng, hoặc hỏi trợ lý AI sau khi đăng nhập để đọc lịch của chính bạn.
+
+## AI có xem được lịch xem nhà của tôi không?
+
+Có, khi bạn đã đăng nhập và chỉ với lịch thuộc tài khoản của bạn, dù bạn là người thuê hay chủ nhà (hoặc cả hai ở các tin khác nhau). AI đọc dữ liệu từ hệ thống ở mỗi câu hỏi, nêu thời điểm đọc, và không lấy từ kho tài liệu dùng chung. Khách chưa đăng nhập không xem được lịch cá nhân. AI không hiển thị thông tin liên hệ của bên kia.
+
+## AI trả lời được những câu hỏi nào về lịch xem nhà?
+
+Ví dụ: bạn có bao nhiêu lịch đang chờ xác nhận, lịch nào sắp tới gần nhất, lịch ngày mai hoặc tuần này, lịch nào có đề xuất đổi giờ, một lịch cụ thể đang ở trạng thái nào, và một tin đăng còn khung giờ nào có thể gửi yêu cầu. Số lượng được tính trên toàn bộ lịch của bạn, không chỉ phần đang hiển thị.
+
+## AI có đặt, duyệt, đổi hoặc hủy lịch xem nhà giúp tôi được không?
+
+Không. AI chỉ đọc và giải thích; AI không đặt, chấp nhận, từ chối, đổi, hủy hay hoàn thành lịch và không gửi thông báo thay bạn. Bạn thực hiện các thao tác này trên trang lịch xem nhà. Thẻ lịch trong khung chat có nút mở đúng lịch đó.
+
+## Tại sao lịch đã qua giờ mà vẫn ở trạng thái “Chờ xác nhận” hoặc “Đã xác nhận”?
+
+Trạng thái được lưu và thời gian của buổi xem là hai thông tin khác nhau, và hệ thống cập nhật trạng thái theo chu kỳ. AI sẽ nói rõ lịch đã qua giờ hẹn nhưng trạng thái chưa được cập nhật, và không coi đó là lịch sắp diễn ra. Trạng thái “Đã hoàn thành” cũng không chứng minh người thuê đã đến xem.
+
+## Thời gian đề xuất đổi giờ có thay lịch hiện tại không?
+
+Không. Đề xuất chỉ là đề nghị của người thuê đang chờ chủ nhà quyết định; lịch hiện tại giữ nguyên cho tới khi chủ nhà chấp nhận. Chỉ người thuê gửi được đề xuất đổi giờ, chủ nhà là người quyết định. Hệ thống không lưu lịch sử các lần đổi giờ trước đó.
+
+## Khung giờ có nhiều yêu cầu thì có phải đã đầy không?
+
+Không thể kết luận như vậy. Số yêu cầu trong một khung giờ chỉ là số yêu cầu đã gửi, không phải sức chứa. Chủ nhà quyết định từng yêu cầu.
+
+## AI báo “chưa đọc được dữ liệu lịch” nghĩa là gì?
+
+Hệ thống tạm thời không đọc được dữ liệu lịch xem nhà. Điều đó không có nghĩa bạn không có lịch; hãy thử lại sau ít phút hoặc mở trực tiếp trang lịch xem nhà. Khi thật sự không có lịch nào khớp, AI sẽ nói rõ là không có kết quả.
 
 ## Tôi có thể thay đổi nội dung tin sau khi gửi duyệt không?
 

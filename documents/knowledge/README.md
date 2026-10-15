@@ -61,19 +61,23 @@ Không embedding dữ liệu cá nhân hoặc trạng thái thay đổi theo th�
 - Không đưa nội dung admin, dữ liệu cá nhân hay thông tin ngoài phạm vi quyền của người hỏi vào câu trả lời.
 - RAG giải thích quy trình chung; API nghiệp vụ cung cấp dữ kiện realtime; quyết định có ảnh hưởng đến tài khoản/giao dịch cần tuân theo quyền và luồng xác nhận của ứng dụng.
 
-## Ranh giới giữa RAG và công cụ Hợp đồng
+## Ranh giới giữa RAG và các công cụ dữ liệu (Hợp đồng, Lịch xem nhà, Listing)
 
-AI có ba nguồn trả lời tách bạch. Tài liệu trong thư mục này **chỉ phục vụ nguồn RAG** (kiến thức chung, không chứa dữ liệu cá nhân). Hợp đồng của tài khoản đang đăng nhập được đọc bằng công cụ chỉ-đọc qua Core API ở mỗi câu hỏi, và tin đăng công khai được đọc bằng công cụ Listing. Dữ liệu từ công cụ **không bao giờ** được ghi ngược vào kho tài liệu này.
+AI có bốn nguồn trả lời tách bạch. Tài liệu trong thư mục này **chỉ phục vụ nguồn RAG** (kiến thức chung, không chứa dữ liệu cá nhân). Hợp đồng và lịch xem nhà của tài khoản đang đăng nhập được đọc bằng công cụ chỉ-đọc qua Core API ở mỗi câu hỏi, và tin đăng công khai được đọc bằng công cụ Listing. Dữ liệu từ công cụ **không bao giờ** được ghi ngược vào kho tài liệu này.
 
 | Câu hỏi mẫu | Nguồn | Vì sao |
 |---|---|---|
 | “Ký hợp đồng trên HomeSpace như thế nào?” | RAG (`08`) | Quy trình chung, không nói về hợp đồng cá nhân |
 | “Hợp đồng của tôi đã ký đủ chưa?” | Hợp đồng (Core) | Dữ liệu cá nhân, thay đổi theo thời gian |
 | “Tìm phòng có máy lạnh gần chợ Thủ Đức” | Listing (Core công khai) | Tin đăng hiện hành |
+| “Đặt lịch xem nhà trên HomeSpace như thế nào?” | RAG (`05`) | Quy trình chung |
+| “Ngày mai tôi có lịch xem nhà nào?” | Lịch xem nhà (Core) | Dữ liệu cá nhân, thay đổi theo thời gian |
+| “Lịch xem nhà thứ hai đã được duyệt chưa?” | Lịch xem nhà (Core) | Trạng thái hiện tại của một lịch cụ thể |
+| “Tôi muốn đổi giờ lịch xem nhà thì làm sao, và lịch nào của tôi đang chờ đổi?” | Lịch xem nhà + RAG | Phần “lịch nào” lấy từ Core; phần “làm sao” lấy từ `05`; hai phần tách nhau, chỉ phần RAG có trích dẫn |
 | “Nội thất trong hợp đồng đang thuê gồm gì?” | Hợp đồng (Core) | Điều khoản đang áp dụng của hợp đồng đang hiệu lực |
 | “Hợp đồng tôi có thể gia hạn lúc này không, làm như thế nào?” | Hợp đồng + RAG | Phần “lúc này” lấy từ Core; phần “làm như thế nào” lấy từ `08`; hai phần được trình bày tách nhau và chỉ phần RAG có trích dẫn tài liệu |
 
-Khách chưa đăng nhập không dùng được nguồn Hợp đồng. Hợp đồng của người khác không bao giờ hiển thị. Lỗi đọc dữ liệu được báo là lỗi, không phải “không có hợp đồng”.
+Khách chưa đăng nhập không dùng được nguồn Hợp đồng và Lịch xem nhà. Hợp đồng và lịch của người khác không bao giờ hiển thị. Lỗi đọc dữ liệu được báo là lỗi, không phải “không có hợp đồng” hay “không có lịch”. AI chỉ đọc lịch xem nhà, không đặt, duyệt, đổi hay hủy lịch.
 
 ## Bộ câu hỏi kiểm thử tính năng RAG
 
@@ -107,7 +111,7 @@ Dưới đây là các câu hỏi mẫu chuẩn hóa dùng để đánh giá ch�
 - **Ngoài phạm vi tài liệu (No Evidence):** `Hỏi:` *"HomeSpace có hỗ trợ dịch vụ mua bán chuyển nhượng bất động sản triệu đô không?"*
   - *Kỳ vọng:* AI trả lời rõ ràng là hệ thống chưa có thông tin hoặc ngoài phạm vi hỗ trợ, tuyệt đối không tự suy diễn.
 - **Hỏi dữ liệu thời gian thực cá nhân (Realtime):** `Hỏi:` *"Kiểm tra giúp tôi lịch hẹn xem phòng ngày mai của tôi lúc mấy giờ?"*
-  - *Kỳ vọng:* AI giải thích đây là thông tin cá nhân cần truy cập mục *Lịch hẹn của tôi* trên giao diện ứng dụng, không tra cứu từ RAG tĩnh.
+  - *Kỳ vọng:* khi đã đăng nhập, AI đọc lịch của tài khoản từ hệ thống (nguồn Lịch xem nhà, kèm thời điểm đọc), không lấy từ RAG tĩnh. Khách chưa đăng nhập được yêu cầu đăng nhập.
 ### 8. Hợp đồng: kiến thức chung (RAG) và dữ liệu cá nhân (công cụ Hợp đồng)
 
 Nhóm A, kiểm thử truy xuất RAG (`08`, `13`, `07`), kỳ vọng có trích dẫn tài liệu:
