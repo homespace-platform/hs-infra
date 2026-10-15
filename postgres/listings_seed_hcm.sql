@@ -1,8 +1,10 @@
 -- HomeSpace: 2.520 tin đăng mẫu tại Thành phố Hồ Chí Minh cho thử nghiệm tìm kiếm AI.
+-- Bổ sung 60 tin cho 10 địa điểm nổi bật (6 tin/địa điểm): tổng cộng 2.580 tin.
+-- Giữ nguyên 2.520 tin gốc và 50 tin đã bổ sung (2521–2570); thêm 10 phòng trọ (2571–2580).
 -- Chạy trên homespace_core bằng pgAdmin (Query Tool).
 -- Chỉ dành cho local/dev. 168 phường/xã/đặc khu trong postman/location/hochiminh.txt
 -- mỗi địa bàn có đúng 15 tin: 5 nhà nguyên căn, 5 căn hộ, 5 phòng trọ.
--- Nguồn không chứa quận/huyện. Để có đúng 2.520 tin, hãy chạy trên database sạch;
+-- Nguồn không chứa quận/huyện. Để có đúng 2.580 tin, hãy chạy trên database sạch;
 -- file này không xóa các tin seed cũ đã được tạo bằng ID khác.
 -- Sau khi tạo lại CSDL: khởi động Core để tạo bảng, bootstrap ADMIN và catalog,
 -- rồi chỉ chạy file này. Phần schema phụ lục/loại thanh toán đã gộp ngay bên dưới.
@@ -224,22 +226,53 @@ FROM (VALUES
 ) AS p(place_id, ward_code, ward_name, place_type);
 -- END HCM LOCATION DATA
 
+-- Địa điểm tìm kiếm, không phải cấp hành chính mới. Gắn vào mã phường có trong nguồn.
+-- Địa chỉ các tin này vẫn là dữ liệu giả lập, không xác nhận khoảng cách tới địa điểm.
+CREATE TEMP TABLE hs_seed_featured_places ON COMMIT DROP AS
+SELECT 168 + f.featured_no AS place_id, p.province_code, p.province_name,
+       p.ward_code, p.ward_name, p.place_type, f.location_label
+FROM (VALUES
+    (1, 'ĐH Quốc gia TP.HCM Thủ Đức', '25951'),
+    (2, 'ĐH Công nghiệp TP.HCM (IUH) · Gò Vấp', '26884'),
+    (3, 'ĐH Bách khoa TP.HCM', '27169'),
+    (4, 'Chợ Bến Thành', '26743'),
+    (5, 'Landmark 81', '26956'),
+    (6, 'Thủ Đức', '26824'),
+    (7, 'Thủ Dầu Một', '25747'),
+    (8, 'VSIP Bình Dương', '25987'),
+    (9, 'Vũng Tàu', '26506'),
+    (10, 'Phú Mỹ', '26704')
+) AS f(featured_no, location_label, ward_code)
+JOIN hs_seed_places p ON p.ward_code=f.ward_code;
+
 CREATE TEMP TABLE hs_seed_rows ON COMMIT DROP AS
-WITH numbered AS (
+WITH inputs AS (
     SELECT ((p.place_id - 1) * 15 + slot.slot_no)::int AS n,
-           slot.slot_no AS local_slot, p.*,
-           CASE WHEN slot.slot_no <= 5 THEN 'HOUSE'
-                WHEN slot.slot_no <= 10 THEN 'APARTMENT'
+           slot.slot_no AS local_slot, p.*
+    FROM hs_seed_places p
+    CROSS JOIN generate_series(1,15) AS slot(slot_no)
+    UNION ALL
+    SELECT (2520 + (p.place_id - 169) * 5 + slot.slot_no)::int AS n,
+           (ARRAY[1,2,6,7,11])[slot.slot_no] AS local_slot, p.*
+    FROM hs_seed_featured_places p
+    CROSS JOIN generate_series(1,5) AS slot(slot_no)
+    UNION ALL
+    -- Giữ nguyên công thức/ID của 50 tin trước; mỗi địa điểm thêm một phòng trọ riêng.
+    SELECT (2571 + p.place_id - 169)::int AS n, 12 AS local_slot, p.*
+    FROM hs_seed_featured_places p
+), numbered AS (
+    SELECT p.*,
+           CASE WHEN local_slot <= 5 THEN 'HOUSE'
+                WHEN local_slot <= 10 THEN 'APARTMENT'
                 ELSE 'ROOM' END AS category,
-           get_byte(decode(md5('hs-seed-price-' || ((p.place_id - 1) * 15 + slot.slot_no)::text), 'hex'), 0) AS price_var,
-           get_byte(decode(md5('hs-seed-area-' || ((p.place_id - 1) * 15 + slot.slot_no)::text), 'hex'), 0) AS area_var,
-           get_byte(decode(md5('hs-seed-extra-' || ((p.place_id - 1) * 15 + slot.slot_no)::text), 'hex'), 0) AS extra_var,
+           get_byte(decode(md5('hs-seed-price-' || n::text), 'hex'), 0) AS price_var,
+           get_byte(decode(md5('hs-seed-area-' || n::text), 'hex'), 0) AS area_var,
+           get_byte(decode(md5('hs-seed-extra-' || n::text), 'hex'), 0) AS extra_var,
            (ARRAY['Không gian được bố trí gọn gàng','Thông tin giá và phí được tách riêng',
                   'Có thể trao đổi ngày nhận nhà','Có nhiều khung giờ hẹn xem',
                   'Điều kiện thuê được ghi rõ trong tin',
-                  'Có thể xem chi tiết trang thiết bị bàn giao'])[((p.place_id - 1) * 15 + slot.slot_no) % 6 + 1] AS selling_point
-    FROM hs_seed_places p
-    CROSS JOIN generate_series(1,15) AS slot(slot_no)
+                  'Có thể xem chi tiết trang thiết bị bàn giao'])[n % 6 + 1] AS selling_point
+    FROM inputs p
 ), props AS (
     SELECT *,
            CASE (local_slot - 1) % 5
@@ -337,6 +370,14 @@ SELECT p.*, c.owner_id,
               'Khu để xe có mái che','Ban công đón gió','Sảnh sinh hoạt chung',
               'Khu vực cây xanh','Tủ nhận hàng'])[(extra_var % 8)+1] AS extra_amenity
 FROM props p CROSS JOIN hs_seed_config c;
+
+-- Chỉ bổ sung nhãn tìm kiếm cho 60 tin mới; không đổi tiêu đề/mô tả của tin gốc.
+-- Tên địa điểm nằm trực tiếp trong tiêu đề Listing, KHÔNG dùng thay tên phường/địa chỉ.
+UPDATE hs_seed_rows
+SET title=replace(title, ward_name, 'khu vực ' || location_label),
+    description=description || ' Địa điểm tìm kiếm: ' || location_label ||
+        '. Tin mẫu thử nghiệm, không phải địa chỉ hoặc khoảng cách đã xác minh.'
+WHERE n BETWEEN 2521 AND 2580;
 
 -- Chỉ dọn chi tiết lỗi thời gắn với chính những ID seed này; không đụng tin thật.
 DELETE FROM listing_house_details d USING hs_seed_rows s
@@ -743,8 +784,26 @@ BEGIN
        OR EXISTS (SELECT 1 FROM hs_seed_places WHERE province_code <> '79') THEN
         RAISE EXCEPTION 'Nguồn TP.HCM phải có 168 mã phường/xã/đặc khu duy nhất';
     END IF;
-    IF (SELECT count(*) FROM hs_seed_rows) <> 2520 THEN
-        RAISE EXCEPTION 'Seed phải tạo đúng 2.520 tin đăng';
+    IF (SELECT count(*) FROM hs_seed_rows WHERE n BETWEEN 1 AND 2520) <> 2520
+       OR (SELECT count(*) FROM hs_seed_rows) <> 2580
+       OR (SELECT count(DISTINCT listing_id) FROM hs_seed_rows) <> 2580 THEN
+        RAISE EXCEPTION 'Seed phải giữ 2.520 tin gốc và thêm 60 tin mới, không trùng ID';
+    END IF;
+    IF (SELECT count(*) FROM hs_seed_featured_places) <> 10
+       OR (SELECT count(DISTINCT location_label) FROM hs_seed_featured_places) <> 10
+       OR EXISTS (
+           SELECT 1 FROM hs_seed_featured_places p
+           LEFT JOIN hs_seed_rows s ON s.place_id=p.place_id
+           GROUP BY p.place_id
+           HAVING count(s.n) <> 6 OR count(DISTINCT s.title) <> 6
+               OR count(*) FILTER (WHERE s.category='HOUSE') <> 2
+               OR count(*) FILTER (WHERE s.category='APARTMENT') <> 2
+               OR count(*) FILTER (WHERE s.category='ROOM') <> 2
+       ) OR EXISTS (
+           SELECT 1 FROM hs_seed_rows WHERE n > 2520
+           AND (strpos(title, location_label)=0 OR strpos(description, location_label)=0)
+       ) THEN
+        RAISE EXCEPTION 'Phải bổ sung đúng 6 tin cho mỗi địa điểm nổi bật (2 nhà, 2 căn hộ, 2 phòng trọ)';
     END IF;
     IF EXISTS (
         SELECT 1 FROM hs_seed_places p
@@ -766,12 +825,12 @@ BEGIN
         SELECT count(*) FROM listings l
         JOIN hs_seed_rows s ON s.listing_id::text=l.id
         WHERE l.active IS TRUE AND l.status='PUBLISHED'
-    ) <> 2520 OR (
+    ) <> 2580 OR (
         SELECT count(*) FROM addresses a
         JOIN hs_seed_rows s ON s.listing_id::text=a.listing_id
         WHERE a.active IS TRUE
-    ) <> 2520 THEN
-        RAISE EXCEPTION 'Seed chưa tạo đủ 2.520 tin và địa chỉ đang hoạt động';
+    ) <> 2580 THEN
+        RAISE EXCEPTION 'Seed chưa tạo đủ 2.580 tin và địa chỉ đang hoạt động';
     END IF;
     IF EXISTS (
         SELECT 1 FROM hs_seed_rows s
@@ -779,7 +838,9 @@ BEGIN
         WHERE a.province_code<>s.province_code OR a.province_name<>s.province_name
            OR a.ward_code<>s.ward_code OR a.ward_name<>s.ward_name
            OR a.full_address NOT LIKE '%' || s.ward_name || ', ' || s.province_name
-           OR s.title NOT LIKE '%' || s.ward_name || '%'
+           OR (s.n <= 2520 AND s.title NOT LIKE '%' || s.ward_name || '%')
+           OR (s.n > 2520 AND (strpos(s.title, 'khu vực ' || s.location_label)=0
+               OR strpos(s.title, s.ward_name)>0))
     ) THEN
         RAISE EXCEPTION 'Tiêu đề/địa chỉ seed không khớp mã và tên địa bàn TP.HCM';
     END IF;
@@ -931,5 +992,9 @@ SELECT count(DISTINCT province_code) AS province_count,
        count(DISTINCT ward_code) AS ward_count,
        count(*) AS seeded_listing_count
 FROM hs_seed_rows;
+
+SELECT location_label, count(*) AS added_listing_count
+FROM hs_seed_rows WHERE n > 2520
+GROUP BY location_label ORDER BY location_label;
 
 COMMIT;

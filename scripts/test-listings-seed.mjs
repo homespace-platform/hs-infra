@@ -40,7 +40,8 @@ try {
   started = true;
   let ready = false;
   for (let attempt = 0; attempt < 50; attempt++) {
-    try { docker('exec', target, 'pg_isready', '-U', 'postgres'); ready = true; break; }
+    // The image starts a temporary socket-only server during init; wait for the final TCP server.
+    try { docker('exec', target, 'pg_isready', '-h', '127.0.0.1', '-U', 'postgres'); ready = true; break; }
     catch { await new Promise(r => setTimeout(r, 200)); }
   }
   assert.ok(ready, 'Isolated PostgreSQL did not start');
@@ -61,15 +62,42 @@ try {
   assert.equal(psql("SELECT count(*) FROM information_schema.columns WHERE table_schema='public' AND (table_name='monthly_invoices' AND column_name IN ('rent_period_start','rent_period_end_exclusive') OR table_name='deposit_records' AND column_name='retained_amount');").trim(), '3');
   assert.match(psql("SELECT pg_get_constraintdef(oid) FROM pg_constraint WHERE conname='payment_requests_type_check' AND conrelid='public.payment_requests'::regclass;"), /DEPOSIT_ADJUSTMENT/);
   console.log('PASS: main seed file includes amendment schema and payment enum; no separate SQL required.');
-  assert.match(output, /HOUSE\|PUBLISHED\|840/);
-  assert.match(output, /APARTMENT\|PUBLISHED\|840/);
-  assert.match(output, /ROOM\|PUBLISHED\|840/);
+  assert.match(output, /HOUSE\|PUBLISHED\|860/);
+  assert.match(output, /APARTMENT\|PUBLISHED\|860/);
+  assert.match(output, /ROOM\|PUBLISHED\|860/);
+  const featured = ['ĐH Quốc gia TP.HCM Thủ Đức', 'ĐH Công nghiệp TP.HCM (IUH) · Gò Vấp',
+    'ĐH Bách khoa TP.HCM', 'Chợ Bến Thành', 'Landmark 81', 'Thủ Đức', 'Thủ Dầu Một',
+    'VSIP Bình Dương', 'Vũng Tàu', 'Phú Mỹ'];
+  assert.equal(featured.length, 10);
+  const quotedLabels = featured.map(label => `'${label.replaceAll("'", "''")}'`).join(',');
+  const legacyIds = "SELECT md5('homespace-hcm-200-listing-v2-' || n::text)::uuid::text FROM generate_series(1,2520) n";
+  const addedIds = "SELECT md5('homespace-hcm-200-listing-v2-' || n::text)::uuid::text FROM generate_series(2521,2580) n";
+  assert.equal(psql(`SELECT count(*) FROM listings WHERE id IN (${legacyIds});`).trim(), '2520');
+  assert.equal(psql(`SELECT count(*) FROM listings WHERE id IN (${addedIds});`).trim(), '60');
+  assert.equal(psql(`SELECT count(*) FROM listings WHERE id IN
+    (SELECT md5('homespace-hcm-200-listing-v2-' || n::text)::uuid::text FROM generate_series(2571,2580) n)
+    AND category='ROOM';`).trim(), '10');
+  assert.equal(psql(`WITH labels AS (SELECT unnest(ARRAY[${quotedLabels}]) label)
+    SELECT count(*) FROM labels WHERE
+      (SELECT count(*) FROM listings l WHERE l.id IN (${addedIds})
+        AND l.title LIKE '%khu vực ' || labels.label
+        AND strpos(l.description, 'Địa điểm tìm kiếm: ' || labels.label || '.') > 0) = 6
+      AND NOT EXISTS (SELECT 1 FROM (VALUES ('HOUSE'),('APARTMENT'),('ROOM')) c(category)
+        WHERE (SELECT count(*) FROM listings l WHERE l.id IN (${addedIds})
+          AND l.title LIKE '%khu vực ' || labels.label AND l.category=c.category) <> 2);`).trim(), '10');
+  assert.equal(psql(`SELECT count(*) FROM listings l JOIN addresses a ON a.listing_id=l.id
+    WHERE l.id IN (${addedIds}) AND (
+      strpos(l.title, a.ward_name)>0
+      OR a.full_address NOT LIKE '%, ' || a.ward_name || ', ' || a.province_name
+      OR a.full_address ~ '(ĐH |Chợ Bến Thành|Landmark 81|VSIP Bình Dương|khu vực )'
+      OR a.street_line ~ '(ĐH |Chợ Bến Thành|Landmark 81|VSIP Bình Dương|khu vực )'
+    );`).trim(), '0', 'Featured labels belong in Listing titles, not address fields');
   console.log(output.slice(output.indexOf('APARTMENT|PUBLISHED')));
   const initial = counts();
   psql(sql);
   assert.match(psql("SELECT pg_get_constraintdef(oid) FROM pg_constraint WHERE conname='payment_requests_type_check' AND conrelid='public.payment_requests'::regclass;"), /DEPOSIT_ADJUSTMENT/);
   assert.equal(counts(), initial, 'Seed rerun changed relation counts / duplicated inventory');
-  console.log('PASS: 2,520 complete listings; 3 categories; all SQL integrity checks; rerun idempotency.');
+  console.log('PASS: 2,520 original IDs + 60 complete listings; 10 featured locations x 6 (2 HOUSE, 2 APARTMENT, 2 ROOM); all SQL integrity checks; rerun idempotency.');
 
   // Simulate catalog additions: the SQL must discover a new item without editing a code array.
   psql(`INSERT INTO furnishing_items(id,active,code,name,sort_order)
