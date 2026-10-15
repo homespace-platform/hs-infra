@@ -4,14 +4,27 @@
 -- mỗi địa bàn có đúng 15 tin: 5 nhà nguyên căn, 5 căn hộ, 5 phòng trọ.
 -- Nguồn không chứa quận/huyện. Để có đúng 2.520 tin, hãy chạy trên database sạch;
 -- file này không xóa các tin seed cũ đã được tạo bằng ID khác.
--- Chỉ cần chạy file này sau khi migration, bootstrap ADMIN và catalog của listing service đã sẵn sàng.
+-- Sau khi tạo lại CSDL: khởi động Core để tạo bảng, bootstrap ADMIN và catalog,
+-- rồi chỉ chạy file này. Phần schema phụ lục/loại thanh toán đã gộp ngay bên dưới.
 -- Không cần chạy file sửa bổ sung. ID được tạo xác định, các bản ghi được upsert.
+-- Chạy lại sẽ đồng bộ lại tiện ích/nội thất của đúng các ID seed, không đụng tin thật.
+-- Mỗi loại hình/địa bàn có đủ mẫu đầy đủ, cơ bản, một phần và không nội thất.
 -- Tin thuộc tài khoản bootstrap username=homespace (role ADMIN trong DB local hiện tại).
 -- Ảnh: dùng đúng 3 object S3 do người dùng cung cấp; cả 3 ảnh được gắn vào mỗi tin.
 -- Mã/tên tỉnh và phường/xã/đặc khu lấy nguyên nguồn; số nhà/tên đường là dữ liệu giả lập,
 -- KHÔNG phải địa chỉ đã xác minh hoặc tọa độ thật.
 
 BEGIN;
+
+-- Đồng bộ schema phụ lục trong cùng file và cùng transaction với seed.
+-- Không ghi đè hợp đồng, hóa đơn hoặc giao dịch thanh toán hiện có.
+ALTER TABLE public.monthly_invoices ADD COLUMN IF NOT EXISTS rent_period_start date;
+ALTER TABLE public.monthly_invoices ADD COLUMN IF NOT EXISTS rent_period_end_exclusive date;
+ALTER TABLE public.deposit_records ADD COLUMN IF NOT EXISTS retained_amount numeric(15,2);
+-- ddl-auto=update không luôn cập nhật CHECK của enum đã tồn tại.
+ALTER TABLE public.payment_requests DROP CONSTRAINT IF EXISTS payment_requests_type_check;
+ALTER TABLE public.payment_requests ADD CONSTRAINT payment_requests_type_check CHECK
+  (type IN ('INITIAL','MONTHLY_RENT','UTILITY','OTHER_CHARGE','DEPOSIT_REFUND','INITIAL_PAYMENT_REFUND','DEPOSIT_ADJUSTMENT'));
 
 CREATE TEMP TABLE hs_seed_config ON COMMIT DROP AS
 SELECT u.id AS owner_id
@@ -229,6 +242,13 @@ WITH numbered AS (
     CROSS JOIN generate_series(1,15) AS slot(slot_no)
 ), props AS (
     SELECT *,
+           CASE (local_slot - 1) % 5
+             WHEN 0 THEN 'FULLY_FURNISHED'
+             WHEN 1 THEN 'BASIC'
+             WHEN 2 THEN 'PARTIALLY_FURNISHED'
+             WHEN 3 THEN 'UNFURNISHED'
+             ELSE CASE WHEN category='APARTMENT' THEN 'LUXURY' ELSE 'FULLY_FURNISHED' END
+           END AS furnishing_status,
            CASE category
              WHEN 'HOUSE' THEN CASE local_slot
                WHEN 1 THEN format('Cho thuê nhà nguyên căn %s phòng ngủ tại %s', 2 + n % 4, ward_name)
@@ -236,7 +256,7 @@ WITH numbered AS (
                WHEN 3 THEN format('Cho thuê nhà %s phòng ngủ%s tại %s', 2 + n % 4,
                    CASE WHEN n % 4 = 0 THEN ', có gara'
                         ELSE format(', %s tầng', 2 + n % 4) END, ward_name)
-               WHEN 4 THEN format('Cho thuê nhà nguyên căn %s m², %s phòng ngủ tại %s',
+               WHEN 4 THEN format('Cho thuê nhà nguyên căn %s mét vuông, %s phòng ngủ tại %s',
                    65 + area_var % 150 + (n % 4) * 0.5, 2 + n % 4, ward_name)
                ELSE format('Cho thuê nhà nguyên căn %s phòng ngủ, %s tầng ở %s',
                    2 + n % 4, 2 + n % 4, ward_name)
@@ -246,13 +266,13 @@ WITH numbered AS (
                WHEN 7 THEN format('Căn hộ tầng %s, %s phòng ngủ ở %s', 2 + n % 20, 1 + n % 3, ward_name)
                WHEN 8 THEN format('Cho thuê căn hộ %s phòng ngủ, ban công hướng %s tại %s',
                    1 + n % 3, (ARRAY['Đông Nam','Đông Bắc','Tây Nam','Tây Bắc'])[(n % 4)+1], ward_name)
-               WHEN 9 THEN format('Căn hộ %s phòng ngủ, diện tích %s m² tại %s',
+               WHEN 9 THEN format('Căn hộ %s phòng ngủ, diện tích %s mét vuông tại %s',
                    1 + n % 3, 30 + area_var % 95 + (n % 4) * 0.5, ward_name)
                ELSE format('Cho thuê căn hộ %s phòng ngủ, đầy đủ nội thất tại %s',
                    1 + n % 3, ward_name)
              END
              ELSE CASE local_slot
-               WHEN 11 THEN format('Cho thuê phòng trọ %s m² tại %s',
+               WHEN 11 THEN format('Cho thuê phòng trọ %s mét vuông tại %s',
                    15 + area_var % 30 + (n % 4) * 0.5, ward_name)
                WHEN 12 THEN format('Phòng trọ %s tại %s',
                    CASE WHEN n % 4 <> 1 THEN 'có ban công'
@@ -265,7 +285,7 @@ WITH numbered AS (
                WHEN 14 THEN format('Phòng trọ %s, tối đa %s người tại %s',
                    CASE WHEN n % 7 = 0 THEN format('tầng %s', n % 5)
                         ELSE 'có chỗ gửi xe máy' END, 1 + n % 3, ward_name)
-               ELSE format('Cho thuê phòng trọ %s m², %s tại %s',
+               ELSE format('Cho thuê phòng trọ %s mét vuông, %s tại %s',
                    15 + area_var % 30 + (n % 4) * 0.5,
                    CASE WHEN n % 4 <> 1 THEN 'có ban công'
                         WHEN n % 3 = 0 THEN 'có gác lửng'
@@ -402,7 +422,7 @@ SELECT listing_id::text, area_m2 + 8 + (n % 4) * 3, 4 + (n % 4) * 0.5, 14 + (n %
        1 + (n % 2), 1, n % 3 = 0, house_has_garage,
        CASE WHEN n % 3 = 0 THEN 'HẺM XE HƠI' ELSE 'ĐƯỜNG NỘI BỘ' END,
        2 * (2 + (n % 4)), 1 + (n % 4),
-       CASE n % 4 WHEN 0 THEN 'FULLY_FURNISHED' WHEN 1 THEN 'BASIC' WHEN 2 THEN 'PARTIALLY_FURNISHED' ELSE 'UNFURNISHED' END,
+       furnishing_status,
        CASE n % 3 WHEN 0 THEN 'Sổ hồng riêng' WHEN 1 THEN 'Giấy tờ hợp lệ, trao đổi khi xem nhà' ELSE 'Hợp đồng sở hữu được cung cấp khi xem nhà' END,
        'Cho thuê toàn bộ nhà', 1, 2 + (n % 4)
 FROM hs_seed_rows WHERE category='HOUSE'
@@ -429,7 +449,7 @@ SELECT listing_id::text,
        (ARRAY['Block A','Block B','Tháp 1','Tháp 2','Block C','Tòa Đông','Tòa Tây'])[(n % 7)+1],
        'A' || (100 + n)::text, 2 + (n % 20), 25 + (n % 20),
        1 + (n % 3), 1 + (n % 2), 1, 1,
-       CASE n % 5 WHEN 0 THEN 'FULLY_FURNISHED' WHEN 1 THEN 'BASIC' WHEN 2 THEN 'PARTIALLY_FURNISHED' WHEN 3 THEN 'LUXURY' ELSE 'UNFURNISHED' END,
+       furnishing_status,
        (ARRAY['Đông','Tây','Nam','Bắc'])[(n % 4)+1],
        (ARRAY['Đông Nam','Đông Bắc','Tây Nam','Tây Bắc'])[(n % 4)+1],
        (ARRAY['View thành phố','View cây xanh','View sân nội khu','View quảng trường',
@@ -457,7 +477,7 @@ SELECT listing_id::text, room_code, n % 5,
        CASE n % 3 WHEN 0 THEN 'PRIVATE' WHEN 1 THEN 'SHARED' ELSE 'NONE' END,
        n % 5 <> 0, CASE WHEN n % 4 = 0 THEN 'SHARED' WHEN n % 4 = 1 THEN 'NONE' ELSE 'PRIVATE' END,
        n % 4 <> 1, n % 3 = 0,
-       CASE n % 4 WHEN 0 THEN 'FULLY_FURNISHED' WHEN 1 THEN 'BASIC' WHEN 2 THEN 'PARTIALLY_FURNISHED' ELSE 'UNFURNISHED' END,
+       furnishing_status,
        CASE WHEN n % 5 = 0 THEN 'SHARED' ELSE 'PRIVATE' END,
        CASE WHEN n % 6 = 0 THEN 'CURFEW' ELSE 'FLEXIBLE' END,
        CASE WHEN n % 3 = 0 THEN 'SHARED' ELSE 'PRIVATE' END,
@@ -523,27 +543,24 @@ ON CONFLICT (id) DO UPDATE SET charge_type=excluded.charge_type,
     sort_order=excluded.sort_order, active=true, updated_at=now(), updated_by=excluded.updated_by;
 
 -- Amenities chosen from the live catalog, constrained to categories supported by each amenity.
+-- Reconcile associations on rerun; otherwise removed catalog items/changed scenarios linger.
+DELETE FROM listing_amenities a USING hs_seed_rows s WHERE a.listing_id=s.listing_id::text;
 WITH amenity_seed AS (
     SELECT s.*, a.code
     FROM hs_seed_rows s
     CROSS JOIN LATERAL unnest(ARRAY[
-       'WIFI','AIR_CONDITIONER','WATER_HEATER','REFRIGERATOR','WASHING_MACHINE',
-       'ELEVATOR','PARKING','SECURITY_24_7','CAMERA','PETS_ALLOWED',
+       'WIFI',
+       'ELEVATOR','PARKING','SECURITY_24_7','CAMERA',
        'SWIMMING_POOL','GYM'
     ]) AS chosen(code)
     JOIN amenities a ON a.code=chosen.code AND a.active IS TRUE
     JOIN amenity_categories ac ON ac.amenity_id=a.id AND ac.category=s.category
     WHERE CASE chosen.code
       WHEN 'WIFI' THEN s.n % 11 <> 0
-      WHEN 'AIR_CONDITIONER' THEN s.n % 3 <> 0
-      WHEN 'WATER_HEATER' THEN s.n % 4 <> 0
-      WHEN 'REFRIGERATOR' THEN s.n % 5 <> 0
-      WHEN 'WASHING_MACHINE' THEN s.n % 6 = 0
       WHEN 'ELEVATOR' THEN s.category='APARTMENT' OR s.n % 5 = 0
       WHEN 'PARKING' THEN s.category <> 'ROOM' OR s.room_parking_policy <> 'NONE'
       WHEN 'SECURITY_24_7' THEN s.n % 3 = 0
       WHEN 'CAMERA' THEN s.n % 4 = 0
-      WHEN 'PETS_ALLOWED' THEN s.n % 4 = 1
       WHEN 'SWIMMING_POOL' THEN s.n % 13 = 0
       WHEN 'GYM' THEN s.n % 7 = 0
       ELSE false END
@@ -553,27 +570,71 @@ SELECT DISTINCT listing_id::text, a.id
 FROM amenity_seed x JOIN amenities a ON a.code=x.code
 ON CONFLICT DO NOTHING;
 
+-- Policies are independent from amenities and selected from the active backend catalog.
+-- Supports additions to the category catalog without maintaining a policy list in this seed.
+DO $$ BEGIN
+    IF NOT EXISTS (SELECT 1 FROM listing_policy_definitions WHERE active=true) THEN
+        RAISE EXCEPTION 'Thiếu danh mục chính sách. Khởi động Core để ListingPolicyInitializer tạo catalog trước khi seed.';
+    END IF;
+END $$;
+WITH policy_seed AS (
+    SELECT s.listing_id, s.n, d.*,
+           CASE d.value_type
+             WHEN 'PERMISSION' THEN (ARRAY['ALLOWED','NOT_ALLOWED','APPROVAL_REQUIRED'])[1 + (get_byte(decode(md5(s.n::text || d.code),'hex'),0) % 3)]
+             WHEN 'INTEGER' THEN greatest(coalesce(d.minimum_value,0),least(coalesce(d.maximum_value,180),
+                 CASE d.code WHEN 'propertyInspectionNotice' THEN CASE WHEN s.n % 3=0 THEN 48 ELSE 24 END
+                     WHEN 'noticeDaysBeforeTermination' THEN CASE WHEN s.n % 4=0 THEN 45 ELSE 30 END
+                     WHEN 'depositRefundDays' THEN CASE WHEN s.n % 3=0 THEN 7 ELSE 15 END
+                     ELSE coalesce(d.minimum_value,0) END))::text
+             WHEN 'TEXT' THEN CASE d.code
+                 WHEN 'buildingRulesPolicy' THEN 'Đăng ký cư trú, giữ vệ sinh hành lang và tuân thủ hướng dẫn an toàn tòa nhà. Không để đồ chắn lối thoát hiểm.'
+                 WHEN 'sharedAmenitiesPolicy' THEN 'Giữ vệ sinh không gian chung; sử dụng theo khung giờ và tình trạng vận hành thực tế. Nội quy áp dụng cho tài sản thuê này.'
+                 WHEN 'quietHoursPolicy' THEN CASE WHEN s.n % 2=0 THEN 'Giữ yên tĩnh từ 22:00 đến 06:00; không tổ chức tụ tập gây ồn trong khu trọ.' ELSE 'Giữ yên tĩnh từ 23:00 đến 06:00; khách qua đêm theo chính sách lưu trú đã công bố.' END
+                 ELSE 'Quy định do chủ nhà công bố cho tài sản thuê: phối hợp thông báo và giữ gìn khu vực sử dụng.' END
+             ELSE NULL END AS policy_value,
+           CASE WHEN d.value_type='PERMISSION' THEN CASE d.code
+               WHEN 'petPolicy' THEN 'Xác nhận với chủ nhà khu vực nuôi, vệ sinh và trách nhiệm thiệt hại trước khi nhận phòng.'
+               WHEN 'smokingPolicy' THEN 'Không hút thuốc tại khu vực có nguy cơ cháy nổ hoặc ảnh hưởng người xung quanh.'
+               WHEN 'subleasePolicy' THEN 'Đăng ký người ở thực tế; mọi chấp thuận phải được hai bên ghi nhận bằng văn bản.'
+               WHEN 'overnightGuestPolicy' THEN 'Đăng ký lưu trú theo quy định; không vượt giới hạn người ở của tài sản.'
+               WHEN 'alterationsPolicy' THEN 'Không tự tác động kết cấu; ghi nhận phương án cải tạo và hoàn trả hiện trạng.'
+               ELSE 'Ghi nhận điều kiện cụ thể với chủ nhà trước khi thực hiện.' END ELSE '' END AS note
+    FROM hs_seed_rows s JOIN listing_policy_definition_categories dc ON dc.category=s.category
+    JOIN listing_policy_definitions d ON d.code=dc.policy_code AND d.active=true
+    WHERE d.code NOT LIKE 'latePayment%' AND d.code NOT IN ('listingPolicies','paymentDueDay','paymentCycle','depositAmount','bankAccountNumber','bankAccountHolder','overdueLandlordTerminationAfterFiveDays')
+)
+INSERT INTO listing_policy_values(id,listing_id,policy_code,policy_value,note)
+SELECT md5(listing_id::text || ':policy:' || code),listing_id::text,code,policy_value,
+       CASE WHEN value_type='PERMISSION' AND policy_value='NOT_ALLOWED'
+            THEN 'Không áp dụng quyền này. Nếu cần thay đổi, hai bên phải ghi nhận thỏa thuận phù hợp.'
+            WHEN value_type='PERMISSION' AND policy_value='APPROVAL_REQUIRED'
+            THEN 'Cần chủ nhà chấp thuận bằng văn bản trước khi thực hiện. ' || note
+            ELSE note END
+FROM policy_seed WHERE policy_value IS NOT NULL
+ON CONFLICT(listing_id,policy_code) DO UPDATE SET policy_value=excluded.policy_value,note=excluded.note;
+
 -- Furnishing inventory snapshots for all furnished listings.
+-- Use the category's live catalog, not a hardcoded subset (previously missed 4 items).
+-- FULL/LUXURY include the whole supported catalog; BASIC/PARTIAL take ordered subsets.
+-- Do not manufacture an inventory for a listing explicitly advertised as UNFURNISHED.
+DELETE FROM listing_furnishing_assets f USING hs_seed_rows s WHERE f.listing_id=s.listing_id::text;
 WITH furnishing_seed AS (
-    SELECT s.*, fi.code, fi.id AS furnishing_item_id,
-           row_number() OVER (PARTITION BY s.n ORDER BY fi.code)::int AS sort_order,
+    SELECT s.*, fi.code, fi.id AS furnishing_item_id, fi.catalog_order AS sort_order,
            CASE WHEN get_byte(decode(md5(s.n::text || fi.code), 'hex'), 0) % 9=0 THEN 'BRAND_NEW'
                 WHEN get_byte(decode(md5(s.n::text || fi.code), 'hex'), 0) % 4=0 THEN 'NORMAL'
                 ELSE 'GOOD' END AS handover_condition
     FROM hs_seed_rows s
-    JOIN LATERAL unnest(ARRAY[
-      'BED','WARDROBE','WORK_DESK','KITCHEN_SHELF','REFRIGERATOR',
-      'WASHING_MACHINE','WATER_HEATER','CURTAIN','FAN','SOFA_SET',
-      'DINING_SET','TV','KITCHEN_CABINET','COOKTOP','AIR_CONDITIONER','LIGHTING'
-    ]) chosen(code) ON true
-    JOIN furnishing_items fi ON fi.code=chosen.code AND fi.active IS TRUE
-    JOIN furnishing_item_categories fic ON fic.furnishing_item_id=fi.id AND fic.category=s.category
-    WHERE CASE s.category
-       WHEN 'HOUSE' THEN (CASE s.n % 4 WHEN 0 THEN 'FULLY_FURNISHED' WHEN 1 THEN 'BASIC' WHEN 2 THEN 'PARTIALLY_FURNISHED' ELSE 'UNFURNISHED' END) <> 'UNFURNISHED'
-       WHEN 'APARTMENT' THEN (CASE s.n % 5 WHEN 0 THEN 'FULLY_FURNISHED' WHEN 1 THEN 'BASIC' WHEN 2 THEN 'PARTIALLY_FURNISHED' WHEN 3 THEN 'LUXURY' ELSE 'UNFURNISHED' END) <> 'UNFURNISHED'
-       ELSE (CASE s.n % 4 WHEN 0 THEN 'FULLY_FURNISHED' WHEN 1 THEN 'BASIC' WHEN 2 THEN 'PARTIALLY_FURNISHED' ELSE 'UNFURNISHED' END) <> 'UNFURNISHED'
-    END
-      AND (fi.code='BED' OR get_byte(decode(md5(s.n::text || fi.code), 'hex'), 0) % 3 = 0)
+    CROSS JOIN LATERAL (
+        SELECT f.id,f.code,row_number() OVER (ORDER BY f.sort_order,f.code)::int AS catalog_order,
+               count(*) OVER () AS catalog_count
+        FROM furnishing_items f
+        JOIN furnishing_item_categories fc ON fc.furnishing_item_id=f.id AND fc.category=s.category
+        WHERE f.active IS TRUE
+    ) fi
+    WHERE s.furnishing_status<>'UNFURNISHED'
+      AND (s.furnishing_status IN ('FULLY_FURNISHED','LUXURY')
+        OR fi.catalog_order<=CASE WHEN s.furnishing_status='BASIC' THEN 3
+                                 ELSE greatest(4,(fi.catalog_count+1)/2) END)
 )
 INSERT INTO listing_furnishing_assets (
     id, listing_id, furnishing_item_id, item_code, asset_name, quantity,
@@ -589,6 +650,15 @@ ON CONFLICT (id) DO UPDATE SET furnishing_item_id=excluded.furnishing_item_id,
     handover_condition=excluded.handover_condition, condition_note=excluded.condition_note,
     sort_order=excluded.sort_order;
 
+-- Equipment-like amenity tags must reflect actual handover assets, never a separate random draw.
+INSERT INTO listing_amenities (listing_id,amenity_id)
+SELECT f.listing_id,a.id FROM listing_furnishing_assets f
+JOIN hs_seed_rows s ON s.listing_id::text=f.listing_id
+JOIN amenities a ON a.code=f.item_code AND a.active IS TRUE
+JOIN amenity_categories ac ON ac.amenity_id=a.id AND ac.category=s.category
+WHERE f.item_code IN ('AIR_CONDITIONER','WATER_HEATER','REFRIGERATOR','WASHING_MACHINE')
+ON CONFLICT DO NOTHING;
+
 -- Custom amenity / free-text utility field from the form.
 INSERT INTO listing_custom_amenities (id, listing_id, name)
 SELECT md5('homespace-hcm-200-v2-custom-' || n::text)::uuid::text,
@@ -597,18 +667,20 @@ FROM hs_seed_rows
 ON CONFLICT (id) DO UPDATE SET name=excluded.name;
 
 -- Viewing availability: mix weekdays and morning/afternoon/evening slots.
+DELETE FROM listing_viewing_days d USING hs_seed_rows s WHERE d.listing_id=s.listing_id::text;
+DELETE FROM listing_viewing_slots v USING hs_seed_rows s WHERE v.listing_id=s.listing_id::text;
 INSERT INTO listing_viewing_days (listing_id, day_of_week)
 SELECT listing_id::text, day_name
 FROM hs_seed_rows s
 CROSS JOIN LATERAL unnest(ARRAY['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY']) AS d(day_name)
-WHERE (get_byte(decode(md5(n::text || d.day_name), 'hex'), 0) % 3) <> 0
+WHERE d.day_name='SATURDAY' OR (get_byte(decode(md5(n::text || d.day_name), 'hex'), 0) % 3) <> 0
 ON CONFLICT DO NOTHING;
 
 INSERT INTO listing_viewing_slots (listing_id, viewing_slot)
 SELECT listing_id::text, slot_name
 FROM hs_seed_rows s
 CROSS JOIN LATERAL unnest(ARRAY['MORNING','AFTERNOON','EVENING']) AS v(slot_name)
-WHERE (get_byte(decode(md5(n::text || v.slot_name), 'hex'), 0) % 4) <> 0
+WHERE v.slot_name='AFTERNOON' OR (get_byte(decode(md5(n::text || v.slot_name), 'hex'), 0) % 4) <> 0
 ON CONFLICT DO NOTHING;
 
 -- Demo: 3 shared S3 images (unique object_key) attached to every listing.
@@ -760,11 +832,100 @@ BEGIN
     ) THEN
         RAISE EXCEPTION 'Phí gửi xe phòng trọ không khớp chính sách';
     END IF;
+    IF EXISTS (
+        SELECT 1 FROM hs_seed_rows s
+        LEFT JOIN listing_house_details h ON h.listing_id=s.listing_id::text
+        LEFT JOIN listing_apartment_details a ON a.listing_id=s.listing_id::text
+        LEFT JOIN listing_room_details r ON r.listing_id=s.listing_id::text
+        WHERE coalesce(h.furnishing_status,a.furnishing_status,r.furnishing_status,'')<>s.furnishing_status
+           OR (s.furnishing_status='UNFURNISHED' AND EXISTS (
+               SELECT 1 FROM listing_furnishing_assets f WHERE f.listing_id=s.listing_id::text))
+           OR (s.furnishing_status<>'UNFURNISHED' AND NOT EXISTS (
+               SELECT 1 FROM listing_furnishing_assets f WHERE f.listing_id=s.listing_id::text))
+           OR (s.furnishing_status IN ('FULLY_FURNISHED','LUXURY') AND EXISTS (
+               SELECT 1 FROM furnishing_items fi
+               JOIN furnishing_item_categories fc ON fc.furnishing_item_id=fi.id AND fc.category=s.category
+               WHERE fi.active IS TRUE AND NOT EXISTS (
+                   SELECT 1 FROM listing_furnishing_assets f
+                   WHERE f.listing_id=s.listing_id::text AND f.furnishing_item_id=fi.id)))
+    ) THEN
+        RAISE EXCEPTION 'Trạng thái nội thất không khớp danh mục bàn giao hoặc thiếu catalog nội thất của loại hình';
+    END IF;
+    IF EXISTS (
+        SELECT 1 FROM hs_seed_rows s
+        JOIN listing_furnishing_assets f ON f.listing_id=s.listing_id::text
+        LEFT JOIN furnishing_items fi ON fi.id=f.furnishing_item_id AND fi.active IS TRUE
+        LEFT JOIN furnishing_item_categories fc ON fc.furnishing_item_id=fi.id AND fc.category=s.category
+        WHERE fi.id IS NULL OR fc.furnishing_item_id IS NULL OR f.item_code<>fi.code
+           OR f.asset_name IS DISTINCT FROM fi.name OR f.quantity<1 OR f.sort_order<1
+           OR f.handover_condition NOT IN ('BRAND_NEW','GOOD','NORMAL') OR nullif(btrim(f.condition_note),'') IS NULL
+    ) THEN
+        RAISE EXCEPTION 'Nội thất thiếu tên/số lượng/tình trạng hoặc không thuộc catalog của loại hình';
+    END IF;
+    IF EXISTS (
+        SELECT 1 FROM hs_seed_rows s
+        JOIN listing_amenities la ON la.listing_id=s.listing_id::text
+        JOIN amenities a ON a.id=la.amenity_id
+        WHERE NOT a.active OR a.code='PETS_ALLOWED' OR NOT EXISTS (
+            SELECT 1 FROM amenity_categories ac WHERE ac.amenity_id=a.id AND ac.category=s.category)
+          OR (a.code IN ('AIR_CONDITIONER','WATER_HEATER','REFRIGERATOR','WASHING_MACHINE') AND NOT EXISTS (
+            SELECT 1 FROM listing_furnishing_assets f WHERE f.listing_id=s.listing_id::text AND f.item_code=a.code))
+    ) THEN
+        RAISE EXCEPTION 'Tiện ích sai loại hình, chứa thú cưng hoặc thiết bị không có trong nội thất bàn giao';
+    END IF;
+    IF EXISTS (
+        SELECT 1 FROM hs_seed_rows s CROSS JOIN (VALUES
+            ('ELECTRICITY'),('WATER'),('MANAGEMENT'),('INTERNET'),('SERVICE_OR_GARBAGE')) required(code)
+        WHERE NOT EXISTS (SELECT 1 FROM listing_charges c WHERE c.listing_id=s.listing_id::text
+            AND c.charge_type=required.code AND c.active IS TRUE)
+    ) OR EXISTS (
+        SELECT 1 FROM hs_seed_rows s JOIN listing_charges c ON c.listing_id=s.listing_id::text
+        WHERE c.amount<0 OR c.currency<>'VND' OR (c.included_in_rent AND c.amount<>0)
+           OR nullif(btrim(c.unit),'') IS NULL OR c.billing_method IS NULL
+    ) THEN
+        RAISE EXCEPTION 'Thiếu phí sinh hoạt hoặc đơn giá/đơn vị phí không hợp lệ';
+    END IF;
+    IF EXISTS (
+        SELECT 1 FROM (VALUES ('HOUSE'),('APARTMENT'),('ROOM')) expected(category)
+        WHERE NOT EXISTS (SELECT 1 FROM listing_policy_definition_categories dc
+            JOIN listing_policy_definitions d ON d.code=dc.policy_code AND d.active IS TRUE
+            WHERE dc.category=expected.category)
+    ) OR EXISTS (
+        SELECT 1 FROM hs_seed_rows s
+        JOIN listing_policy_definition_categories dc ON dc.category=s.category
+        JOIN listing_policy_definitions d ON d.code=dc.policy_code AND d.active IS TRUE
+        LEFT JOIN listing_policy_values v ON v.listing_id=s.listing_id::text AND v.policy_code=d.code
+        WHERE nullif(btrim(v.policy_value),'') IS NULL
+           OR (d.value_type='PERMISSION' AND v.policy_value NOT IN ('ALLOWED','NOT_ALLOWED','APPROVAL_REQUIRED'))
+           OR (d.value_type='INTEGER' AND (CASE WHEN v.policy_value ~ '^\d+$' THEN
+               v.policy_value::numeric<coalesce(d.minimum_value,0)
+               OR v.policy_value::numeric>coalesce(d.maximum_value,2147483647) ELSE true END))
+    ) THEN
+        RAISE EXCEPTION 'Thiếu chính sách trong catalog của loại hình hoặc giá trị chính sách không hợp lệ';
+    END IF;
+    IF EXISTS (
+        SELECT 1 FROM hs_seed_rows s JOIN listings l ON l.id=s.listing_id::text
+        WHERE l.available_from IS NULL OR l.payment_cycle IS NULL OR l.minimum_lease_months<1
+           OR (l.deposit_type='MONTH_COUNT' AND (l.deposit_months IS NULL OR l.deposit_months<1))
+           OR (l.deposit_type='FIXED_AMOUNT' AND (l.deposit_amount IS NULL OR l.deposit_amount<=0))
+           OR NOT EXISTS (SELECT 1 FROM listing_viewing_days d WHERE d.listing_id=l.id)
+           OR NOT EXISTS (SELECT 1 FROM listing_viewing_slots v WHERE v.listing_id=l.id)
+           OR (SELECT count(*) FROM listing_media m WHERE m.listing_id=l.id AND m.active IS TRUE)<>3
+           OR (SELECT count(*) FROM listing_media m WHERE m.listing_id=l.id AND m.active IS TRUE AND m.is_cover)<>1
+           OR NOT EXISTS (SELECT 1 FROM listing_custom_amenities a WHERE a.listing_id=l.id AND nullif(btrim(a.name),'') IS NOT NULL)
+    ) THEN
+        RAISE EXCEPTION 'Thiếu điều kiện thuê, lịch xem nhà, 3 ảnh/ảnh bìa hoặc tiện ích tùy chỉnh';
+    END IF;
 END $$;
 
 SELECT category, status, count(*) AS listing_count
 FROM listings WHERE id IN (SELECT listing_id::text FROM hs_seed_rows)
 GROUP BY category, status ORDER BY category;
+
+SELECT s.category,s.furnishing_status,count(DISTINCT s.listing_id) AS listings,
+       count(f.id) AS handover_assets
+FROM hs_seed_rows s LEFT JOIN listing_furnishing_assets f ON f.listing_id=s.listing_id::text
+GROUP BY s.category,s.furnishing_status ORDER BY s.category,s.furnishing_status;
 
 SELECT count(DISTINCT province_code) AS province_count,
        count(DISTINCT ward_code) AS ward_count,

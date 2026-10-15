@@ -55,26 +55,25 @@ const suffixStart = endMarker === 'CREATE TEMP TABLE hs_seed_rows'
 const suffix = sql.slice(suffixStart).replace(/^(?:\r?\n)*/, '');
 const updated = sql.slice(0, start) + block + suffix;
 if (process.argv.includes('--check')) {
-  if (updated !== sql) throw new Error('SQL ward data is out of sync with hochiminh.txt');
+  if (updated.replaceAll('\r\n', '\n') !== sql.replaceAll('\r\n', '\n')) throw new Error('SQL ward data is out of sync with hochiminh.txt');
   const distribution = new Map(wards.map((ward) => [ward.code, 0]));
   const categories = { HOUSE: 0, APARTMENT: 0, ROOM: 0 };
-  for (let number = 1; number <= 200; number += 1) {
-    const ward = wards[(number - 1) % wards.length];
+  for (let number = 1; number <= 2520; number += 1) {
+    const ward = wards[Math.floor((number - 1) / 15)];
     distribution.set(ward.code, distribution.get(ward.code) + 1);
-    const placeId = ((number - 1) % wards.length) + 1;
-    const round = Math.floor((number - 1) / wards.length);
-    categories[['HOUSE', 'APARTMENT', 'ROOM'][(placeId + round) % 3]] += 1;
+    const slot = (number - 1) % 15;
+    categories[slot < 5 ? 'HOUSE' : slot < 10 ? 'APARTMENT' : 'ROOM'] += 1;
   }
-  if ([...distribution.values()].some((count) => count < 1 || count > 2)) {
-    throw new Error('200 posts do not cover all 168 locations evenly');
+  if ([...distribution.values()].some((count) => count !== 15)) {
+    throw new Error('2,520 posts must cover all 168 locations with exactly 15 each');
   }
-  if (!sql.includes('generate_series(1,200)') || sql.includes("'-SEED-'")) {
+  if (!sql.includes('generate_series(1,15)') || sql.includes("'-SEED-'")) {
     throw new Error('Unexpected listing count or synthetic ward codes in SQL');
   }
-  if (Object.values(categories).some((count) => count < 60)) {
+  if (Object.values(categories).some((count) => count !== 840)) {
     throw new Error('One of the three listing categories is underrepresented');
   }
-  console.log(`Validated: 200 posts cover all 168 location codes (1–2 each); ${JSON.stringify(categories)}.`);
+  console.log(`Validated: 2,520 posts cover all 168 location codes (15 each); ${JSON.stringify(categories)}.`);
 } else {
   writeFileSync(sqlPath, updated, 'utf8');
   console.log(`Embedded ${wards.length} unique Ho Chi Minh locations into ${sqlPath}`);

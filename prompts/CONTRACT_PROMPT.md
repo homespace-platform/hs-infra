@@ -2,6 +2,8 @@
 
 Tài liệu này là đặc tả chuẩn hóa (Contract Schema V3) để tạo ba mẫu hợp đồng Word (.docx) cho nền tảng HomeSpace. Mỗi mẫu gắn liền với một loại bất động sản cụ thể và sử dụng công nghệ tạo tài liệu [poi-tl](https://github.com/Sayi/poi-tl).
 
+**Cách sử dụng:** Gửi toàn bộ tài liệu này cho AI và yêu cầu tạo mới hoàn toàn cả ba file DOCX ở mục I.1. Đây là nguồn hướng dẫn duy nhất, không cần file prompt phụ hoặc ba mẫu Word cũ. Không chép lại điều khoản mặc định từ bản cũ; dựng nội dung và bố cục mới theo đặc tả dưới đây. Ba prompt tại mục IV cũng có thể dùng riêng cho từng loại hình. Đầu ra phải là file DOCX có thể tải về, không chỉ là nội dung Markdown hoặc bản mô tả cách làm.
+
 > **LƯU Ý PHÁP LÝ QUAN TRỌNG:**
 > Các mẫu hợp đồng và prompt trong tài liệu này được thiết kế để chuẩn hóa luồng nghiệp vụ giao dịch bất động sản trực tuyến. Tài liệu **không** tuyên bố là "được chứng nhận bởi luật sư" hoặc thay thế tư vấn pháp lý chính thức. Đặc biệt, điều khoản chấm dứt do quá hạn 5 ngày và ghi nhận toàn bộ cọc cho chủ nhà phải được luật sư rà soát với [Điều 172 Luật Nhà ở 2023](https://vbpl.moj.gov.vn/hanam/Pages/vbpq-toanvan.aspx?ItemID=169032&Keyword=) và tình huống thực tế trước khi đưa vào Production; prompt không được khẳng định điều khoản này mặc nhiên đủ căn cứ cưỡng chế thu hồi nhà.
 
@@ -45,27 +47,29 @@ Tên file xuất ra bắt buộc:
   6. **Thay đổi tài khoản:** "Mọi thay đổi tài khoản nhận thanh toán hoặc tài khoản nhận hoàn trả chỉ có hiệu lực đối với nghĩa vụ phát sinh sau khi bên còn lại đã nhận được và xác nhận thông báo thay đổi. Việc thay đổi tài khoản trên hồ sơ HomeSpace không tự động sửa đổi phiên bản hợp đồng đang có hiệu lực."
   7. **Hoàn cọc:** "Khi chấm dứt hoặc hết hạn hợp đồng, sau khi hai bên hoàn tất bàn giao và quyết toán, Bên A chuyển khoản số tiền cọc còn phải hoàn trực tiếp vào tài khoản nhận hoàn trả của Bên B ghi trong Hợp đồng hoặc tài khoản khác được hai bên xác nhận. Việc hoàn cọc được ghi nhận hoàn tất sau khi Bên A khai báo đã chuyển và Bên B xác nhận đã nhận đủ tiền."
 
-### 4. Quy tắc về Tiện ích dùng chung và Thú cưng
-- **Tiện ích dùng chung**: Không được diễn đạt thành cam kết vận hành liên tục tuyệt đối. Phải ghi rõ nguyên tắc:
-  > *"Đối với tiện ích dùng chung (nếu có), Bên B được quyền sử dụng các tiện ích chung theo nội quy, khung giờ và tình trạng vận hành của đơn vị quản lý."*
-- **Nuôi thú cưng (`PETS_ALLOWED`)**: Thể hiện quyền nuôi, điều kiện tuân thủ nội quy, Bên B chịu hoàn toàn trách nhiệm về vệ sinh, tiếng ồn và bồi thường thiệt hại. Không tự bịa thêm phụ phí, giống loài hay tiền cọc thú cưng khi hệ thống chưa có dữ liệu.
+### 4. Tiện ích chỉ lấy đúng dữ liệu đã lưu
+- `{{#amenitiesTable}}` chỉ có hai cột `STT | Tên tiện ích`. Tên lấy nguyên từ các tiện ích bài đăng đã chọn và tiện ích nhập thêm đã lưu trong CSDL.
+- Không thêm các cột `Phạm vi`, `Chi phí`, `Điều kiện / Ghi chú`; CSDL tiện ích không có các trường này. Không tự suy riêng/chung từ tên hoặc loại hình nhà, không thêm chỗ để xe theo số xe đăng ký, không kế thừa tiện ích chi nhánh chưa được chọn trên bài đăng.
+- Không tự viết đoạn “nguyên tắc tiện ích dùng chung”, khung giờ, phí, quyền sử dụng hay trách nhiệm cho từng tiện ích. Chính sách chỉ theo `{{#policiesTable}}`, phí chỉ theo `{{#chargesTable}}`.
+- **Nuôi thú cưng** là chính sách do chủ nhà nhập trên Listing, không còn là tiện ích `PETS_ALLOWED`. Lấy quyền nuôi và điều kiện đúng từ `{{#policiesTable}}`; không suy từ Bảng tiện ích, không tự cho phép hoặc cấm, không tự bịa phụ phí hay cọc thú cưng.
+- Chính sách có ba lựa chọn: cho phép / không cho phép / cần chủ nhà chấp thuận trước. Không đổi “cần chấp thuận” thành “cho phép” hay “không cho phép”. Bảng chính sách đã bao gồm ghi chú của chủ nhà, số ngày/giờ và nội quy đúng loại hình.
 
 ### 5. Quy tắc phân biệt Tiện ích (Amenities) và Thiết bị/Nội thất (Equipments)
-- Máy lạnh, máy giặt, tủ lạnh, máy nước nóng, giường, tủ, bàn ghế... được xếp vào Bảng tài sản bàn giao (`#equipmentTable`).
-- Bảng tiện ích (`#amenitiesTable`) chỉ phản ánh quyền sử dụng không gian và dịch vụ đi kèm (Wifi, thang máy, bảo vệ, hồ bơi, giờ giấc tự do...).
+- `#equipmentTable` lấy đúng danh mục tài sản bàn giao đã lưu, gồm tên/số lượng/tình trạng/ghi chú có dữ liệu.
+- `#amenitiesTable` lấy đúng danh sách tiện ích đã lưu. Nếu máy lạnh, tủ lạnh, máy giặt... được chọn làm tiện ích và đồng thời có trong danh mục nội thất thì giữ ở cả hai bảng; không tự loại tiện ích để chống trùng với nội thất.
 
 ### 6. Quy tắc kỹ thuật tạo file Word (Tránh lỗi poi-tl)
 - Tất cả placeholder phải nằm trọn vẹn trong **một Word run**. Nếu gõ trong Word bị ngắt định dạng, hãy xóa và gõ lại liền mạch hoặc dán dạng Plain Text.
 - Không dùng dấu chấm thủ công (ví dụ: `Họ tên: ....................`).
-- Không tạo placeholder ngoài danh mục 63 trường được hỗ trợ.
+- Không tạo placeholder ngoài danh mục 64 trường được hỗ trợ.
 
 ### 7. Quy tắc hóa đơn hàng tháng, quá hạn và chấm dứt — áp dụng cho cả ba mẫu
 - `{{contract.signingDate}}` là **ngày ký**; `{{lease.startDateText}}` là **ngày bắt đầu kỳ thuê/chu kỳ hóa đơn**. Không tự coi hai ngày này là một; nếu nghiệp vụ muốn trùng ngày thì phải nhập cùng ngày ở dữ liệu nguồn. Kỳ thuê chạy từ ngày bắt đầu đến trước cùng ngày tháng kế tiếp; ngày cuối in tại `{{lease.endDateText}}` là ngày cuối cùng của toàn thời hạn thuê.
 - Khoản thanh toán ban đầu gồm tiền thuê kỳ đầu và tiền cọc (nếu có). Không ghi rằng phí điện, nước và dịch vụ cuối kỳ đã được thanh toán nếu bảng xác nhận ban đầu không thể hiện. Từ hóa đơn cuối kỳ đầu tiên trở đi: quyết toán phí cố định/điện/nước/phát sinh của kỳ vừa kết thúc **và tiền thuê của kỳ kế tiếp**, nếu kỳ kế tiếp còn nằm trong thời hạn hợp đồng. Kỳ cuối chỉ quyết toán chi phí, không thu tiền thuê vượt thời hạn. Không thu lại tiền thuê kỳ đầu đã trả ban đầu.
-- Hạn thanh toán phải dùng nguyên văn `{{rent.paymentDueDay}}` (backend hiện tính chậm nhất 23:59 ngày thứ 4 sau khi kết thúc từng kỳ thuê, theo giờ Việt Nam). **Không** hard-code “ngày 01”, “ngày 05 hằng tháng” hoặc suy từ ngày ký. Chủ nhà có thể chốt chỉ số và phát hành hóa đơn ngay khi dữ liệu kỳ đã đầy đủ; người thuê được xem và thanh toán ngay. Không viết rằng người thuê bắt buộc đợi job tự phát hành lúc 10:00.
+- Hạn thanh toán phải dùng nguyên văn `{{rent.paymentDueDay}}` (backend cấp 5 ngày lịch thanh toán tính cả ngày chốt kỳ, hạn 23:59:59 ngày chốt + 4 ngày, theo giờ Việt Nam). **Không** hard-code “ngày 01”, “ngày 05 hằng tháng” hoặc suy từ ngày ký. Chủ nhà có thể chốt chỉ số và phát hành hóa đơn ngay khi dữ liệu kỳ đã đầy đủ; người thuê được xem và thanh toán ngay. Không viết rằng người thuê bắt buộc đợi job tự phát hành lúc 10:00.
 - Chỉ số điện/nước cuối kỳ và khoản phát sinh theo sử dụng thực tế được quyết toán trên hóa đơn; đơn giá và cách tính lấy từ `{{#chargesTable}}`. Không cộng số ước tính vào khoản thanh toán ban đầu. Phí gửi xe phụ thuộc số xe đăng ký và biểu phí trong bảng; không tự bịa mức phí.
-- Phí chậm thanh toán có thể **không áp dụng**, **một lần** hoặc **mỗi ngày trễ** theo cấu hình chủ nhà đã chốt trước khi ký. Số tiền/cách tính và ngày bắt đầu tính thực tế do backend nối vào `{{contract.specialTerms}}`; không viết cứng “100.000 đ/ngày”, tiền thuê một ngày, số ngày ân hạn hoặc một trần phạt tự nghĩ ra. Phí được ghi riêng trên hóa đơn quá hạn; khi người thuê báo chuyển khoản thì tạm dừng cập nhật để đối soát.
-- Từ 00:00 **ngày quá hạn thứ 5** theo giờ Việt Nam, HomeSpace mở lựa chọn cho chủ nhà, **không tự động** chấm dứt: (1) cho chuyển công nợ và phí phạt đã chốt sang hóa đơn kỳ tiếp theo nếu còn kỳ; phí phạt của khoản chuyển dừng tăng và khoản cũ chỉ được cộng **một lần**; hoặc (2) đề nghị hai bên chấm dứt sớm. Nếu người thuê đồng ý, chủ nhà xác nhận đã nhận lại phòng và tài sản rồi mới hoàn tất. Nếu người thuê từ chối, hợp đồng vẫn hiệu lực, tin đăng chưa mở lại, cọc chưa chuyển chủ; chủ nhà có thể rút đề nghị hoặc thực hiện nhánh chấm dứt theo điều khoản **đã nằm trong bản ký**, sau khi thông báo và thực tế nhận lại phòng/chìa khóa/tài sản. Chỉ khi hoàn tất bàn giao hệ thống mới đổi trạng thái hợp đồng, cọc và tin đăng. Công nợ chưa thanh toán vẫn được theo dõi riêng; HomeSpace không tự thu tiền hoặc cưỡng chế thu hồi.
+- Phí chậm thanh toán có thể **không áp dụng**, **một lần** hoặc **mỗi ngày trễ** theo cấu hình chủ nhà đã chốt trước khi ký. Chủ nhà chỉ chọn cách tính và mức phí; deadline, ân hạn 0 ngày, tối đa 10 ngày tính phạt và tổng phí tối đa (mức phí/ngày × 10; phạt một lần = đúng mức phí/lần; không phạt = 0) do backend tính và nối đầy đủ vào `{{contract.specialTerms}}`. Đây là quy tắc hệ thống, không để chỗ trống yêu cầu chủ nhà điền ngày ân hạn hay trần tiền; không viết cứng “100.000 đ/ngày”, tiền thuê một ngày, số ngày ân hạn hoặc một trần phạt tự nghĩ ra. Phí được ghi riêng trên hóa đơn quá hạn; khi người thuê báo chuyển khoản thì tạm dừng cập nhật để đối soát.
+- Sau khi kết thúc đủ **5 ngày quá hạn** (từ 00:00 ngày quá hạn thứ 6) theo giờ Việt Nam, HomeSpace mở lựa chọn cho chủ nhà, **không tự động** chấm dứt: (1) cho chuyển công nợ và phí phạt đã chốt sang hóa đơn kỳ tiếp theo nếu còn kỳ; phí phạt của khoản chuyển dừng tăng và khoản cũ chỉ được cộng **một lần**; hoặc (2) đề nghị hai bên chấm dứt sớm. Nếu người thuê đồng ý, chủ nhà xác nhận đã nhận lại phòng và tài sản rồi mới hoàn tất. Nếu người thuê từ chối, hợp đồng vẫn hiệu lực, tin đăng chưa mở lại, cọc chưa chuyển chủ; chủ nhà có thể rút đề nghị hoặc thực hiện nhánh chấm dứt theo điều khoản **đã nằm trong bản ký**, sau khi thông báo và thực tế nhận lại phòng/chìa khóa/tài sản. Chỉ khi hoàn tất bàn giao hệ thống mới đổi trạng thái hợp đồng, cọc và tin đăng. Công nợ chưa thanh toán vẫn được theo dõi riêng; HomeSpace không tự thu tiền hoặc cưỡng chế thu hồi.
 - `{{contract.specialTerms}}` là **một khối duy nhất** gồm điều khoản quá hạn/chấm dứt lưu trong revision và điều khoản phí chậm trả do backend sinh từ cấu hình. Đặt placeholder này **đúng một lần** trong Điều xử lý vi phạm/chấm dứt của mỗi DOCX; không đặt thêm ở Điều thú cưng/nội quy, không sao chép nguyên văn điều khoản này lần hai, không tách hoặc tự thay thế bằng `{{...}}` khác. Nếu người soạn sửa/xóa câu điều khoản 5 ngày ở bản nháp, backend sẽ không cho dùng nhánh chấm dứt theo điều khoản đó.
 - `{{rent.amountNumber}}` đã có đơn vị `/tháng`; `{{deposit.amountNumber}}` và các tổng tiền đã có `VNĐ`. Không nối thêm `VNĐ/tháng` hoặc `VNĐ` phía sau placeholder khiến hợp đồng bị lặp đơn vị.
 - Các nội dung chấm dứt sau 5 ngày và ghi nhận toàn bộ cọc cho chủ nhà là điều khoản sản phẩm cần rà soát pháp lý trước khi dùng thực tế; **không khẳng định** chỉ cần hai bên ký là có thể tự cưỡng chế lấy lại nhà. Luật Nhà ở 2023 có quy định riêng về căn cứ đơn phương chấm dứt do không trả tiền thuê. Chuyên gia pháp lý cần đối chiếu Điều 172, nghĩa vụ thông báo và chứng cứ bàn giao trước khi phát hành bản chính thức.
@@ -81,9 +85,60 @@ Tên file xuất ra bắt buộc:
 - **Quy tắc ký SMARTCA:** Backend HomeSpace hiện tự nối một trang ký A4 vào cuối PDF khi dùng chế độ `SMARTCA`; backend tự đặt vùng ký tại tọa độ cố định trên trang cuối, không tìm theo placeholder/văn bản trong DOCX. Vì vậy **không tạo mục “Chữ ký các bên”, không tạo trang ký, khung ký, dòng chấm ký hoặc placeholder chữ ký trong DOCX**. Kết thúc mẫu sau điều khoản hiệu lực. Không tự thêm trang ký vì sẽ tạo trang ký trùng trong PDF.
 - Không thay đổi tên, cú pháp hoặc cách viết placeholder; mỗi placeholder vẫn phải nằm trọn trong một Word run để poi-tl thay thế chính xác.
 
+### 9. Chính sách từ Listing — nguồn duy nhất của điều khoản vận hành
+- Chủ nhà nhập chính sách lúc tạo/sửa bài đăng; người thuê được xem trước khi gửi yêu cầu thuê. Backend đóng băng chính sách vào snapshot hợp đồng. Word chỉ hiển thị dữ liệu đã chốt, không đọc lại Listing đang thay đổi và không tự đặt lựa chọn.
+- Mỗi mẫu mới phải đặt `{{#policiesTable}}` **đúng một lần**, thành một đoạn riêng trong Điều “Chính sách vận hành và điều khoản thỏa thuận bổ sung”. Backend thay marker bằng bảng hai cột **Chính sách | Quy định áp dụng**, tự mở rộng theo dữ liệu. Không dựng sẵn bảng chính sách trống, không viết cứng các hàng, không tạo thêm placeholder `{{policies.*}}`.
+- Nhóm chung cho cả ba loại hình: nuôi thú cưng, hút thuốc, cho thuê lại, khách qua đêm, thông báo trước khi kiểm tra tài sản, thời hạn báo trước chấm dứt, thời hạn hoàn cọc.
+- Nhóm riêng: **HOUSE** có sửa chữa/cải tạo/lắp đặt; **APARTMENT** có nội quy tòa nhà và sử dụng tiện ích chung; **ROOM** có sử dụng không gian chung và giờ yên tĩnh/sinh hoạt. Chỉ in dòng backend cung cấp; không tự thêm nhóm của loại hình khác.
+- Quyền có ba trạng thái **cho phép / không cho phép / cần chủ nhà chấp thuận trước**. Giữ đúng trạng thái và ghi chú, không suy “cần chấp thuận” thành đã cho phép hoặc cấm hoàn toàn. Số ngày/giờ và nội quy lấy từ dữ liệu, không viết mặc định 30 ngày báo trước, 15 ngày hoàn cọc hoặc yên tĩnh sau 22:00.
+- Mọi câu về thú cưng, hút thuốc, cho thuê lại, khách qua đêm, kiểm tra tài sản và cải tạo phải tham chiếu **Bảng chính sách**. Không dẫn quyền nuôi thú cưng về Bảng tiện ích. Không tự yêu cầu báo trước/chấp thuận cho một quyền nếu dữ liệu chính sách không quy định như vậy. Trách nhiệm tuân thủ pháp luật, an toàn, vệ sinh và bồi thường thiệt hại thực tế có thể nêu, nhưng không được tạo thêm quyền, nghĩa vụ hoặc khoản phí trái dữ liệu đã chốt.
+- Phí phạt đóng trễ **không thuộc Listing hoặc Bảng chính sách**. Chủ nhà cấu hình khi soạn hợp đồng cùng chỉ số công tơ ban đầu; backend đưa vào `{{contract.specialTerms}}`. Giữ marker này đúng một lần trong Điều xử lý vi phạm/chấm dứt, không tự đặt mức phạt, số ngày ân hạn, phụ phí hoặc cọc thú cưng.
+- Hạn báo trước và hạn hoàn cọc ở Điều chấm dứt phải tham chiếu Bảng chính sách; điều kiện khấu trừ/hoàn cọc đọc cùng `{{deposit.description}}` và điều khoản vi phạm đã ký. Không viết câu mặc định phủ định bảng.
+- Những quy tắc kỹ thuật, câu hướng dẫn “đặt marker”, mã nội bộ và kịch bản kiểm thử trong prompt **không phải nội dung pháp lý để in vào DOCX**. Trong Word chỉ giữ văn bản hợp đồng và marker thực tế, không chép lời chỉ dẫn cho AI.
+
+### 10. Checklist trường bắt buộc phải có trong FILE DOCX thực tế
+Danh mục 64 mã là tập mã được backend hỗ trợ, **không phải yêu cầu chèn đủ 64 mã vào mỗi Word**. Tuy nhiên, không được thiếu bất kỳ mã bắt buộc nào dưới đây. Chỉ liệt kê mã trong prompt, ghi tên loại hình bằng chữ, hoặc đặt trong bản báo cáo kiểm tra không thay cho marker trong DOCX.
+
+Backend hiện yêu cầu **27 mã chung** cho HOUSE/APARTMENT/ROOM:
+- Bên A: `{{landlord.fullName}}`, `{{landlord.phone}}`, `{{landlord.bankName}}`, `{{landlord.bankAccountNumber}}`, `{{landlord.bankAccountHolder}}`.
+- Bên B: `{{tenant.fullName}}`, `{{tenant.phone}}`, `{{tenant.occupantCount}}`, `{{tenant.bankName}}`, `{{tenant.bankAccountNumber}}`, `{{tenant.bankAccountHolder}}`.
+- Tài sản thuê: `{{property.fullAddress}}`, `{{property.areaText}}`, `{{property.propertyType}}`.
+- Thời hạn: `{{lease.startDateText}}`, `{{lease.endDateText}}`, `{{lease.durationMonths}}`, `{{lease.durationText}}`.
+- Giá thuê: `{{rent.amountNumber}}`, `{{rent.amountWords}}`, `{{rent.paymentCycle}}`, `{{rent.paymentDueDay}}`.
+- Cọc: `{{deposit.amountNumber}}`, `{{deposit.amountWords}}`.
+- Hợp đồng: `{{contract.number}}`, `{{contract.signingDate}}`.
+- Biểu phí: `{{#chargesTable}}`.
+
+**APARTMENT và ROOM bắt buộc thêm `{{property.unitNumber}}`**, tổng 28 mã theo backend; HOUSE không bắt buộc mã này. Đặt rõ `Loại hình bất động sản: {{property.propertyType}}.` trong Điều 1 của cả ba mẫu, dù tiêu đề đã ghi tên loại hình. Không bỏ marker vì coi là thông tin trùng.
+
+Ngoài bộ bắt buộc backend, đặc tả mẫu mới còn yêu cầu cả ba DOCX giữ các marker nghiệp vụ: `{{#propertyFeaturesTable}}`, `{{#equipmentTable}}`, `{{#amenitiesTable}}`, `{{#initialPaymentTable}}`, `{{#policiesTable}}`, `{{contract.specialTerms}}`, `{{meters.electricityInitial}}`, `{{meters.waterInitial}}`. Bảng có thể không có dữ liệu khi render nhưng marker phải có trong mẫu. Mỗi bảng động và `{{contract.specialTerms}}` xuất hiện đúng một lần; không lặp marker ở checklist/phụ lục hướng dẫn trong DOCX.
+
+Trường tùy chọn khác chỉ dùng nếu phù hợp nội dung. Không tạo thêm mã và không chèn các mã tương thích legacy chỉ để tăng số lượng trường.
+
 ---
 
-## II. DANH MỤC 63 MÃ TRƯỜNG VÀ BẢNG ĐỘNG ĐƯỢC HỖ TRỢ (SCHEMA V3)
+### 11. Đối chiếu số mã và giao diện hợp đồng (rà soát 15/10/2026)
+
+Đếm **mã duy nhất trong phần III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT của từng prompt**, không đếm lặp lại trong hướng dẫn/checklist. Cấu trúc hiện tại có **HOUSE: 56; APARTMENT: 57; ROOM: 57**. Đây không phải 56/57 ô nhập: một marker bảng động đại diện cho nhiều dòng/cột, còn nhiều trường do hệ thống sinh hoặc là lịch sử chỉ đọc. Danh mục backend gồm **64 mã** dùng chung cho cả ba loại hình; bộ bắt buộc kỹ thuật là **27 / 28 / 28**. Không dùng tổng số để thay kiểm tra tập mã.
+
+| Nhóm | Số mã hỗ trợ | Nơi hiển thị trên giao diện / phụ lục |
+|---|---:|---|
+| Hợp đồng | 6 | Mã hồ sơ, thông tin văn bản và ngày ký; thông tin kỹ thuật nằm trong mục mở rộng. Ngày lập in trên Word/PDF do hệ thống cấp lúc kết xuất; không suy từ ngày bắt đầu thuê. Chỉ thỏa thuận bổ sung được sửa qua phụ lục. |
+| Bên A | 8 | Hiển thị và cho sửa thông tin trên văn bản, gồm đủ ngân hàng, số tài khoản, chủ tài khoản. |
+| Bên B | 11 | Như Bên A, thêm số người, xe máy và ô tô. |
+| Tài sản | 9 | Hiển thị và chỉnh nội dung, không chuyển Listing ID hoặc quyền sở hữu. |
+| Thời hạn | 5 | Nhập ngày/số tháng/diễn giải; kiểm tra kỳ thuê và nghĩa vụ đã phát hành. |
+| Giá thuê | 5 | Giá, chu kỳ, phương thức được sửa; bằng chữ tự tính; hạn thanh toán là quy tắc chỉ đọc. |
+| Cọc | 3 | Sửa mức cọc yêu cầu và điều kiện; bằng chữ tự tính. Không sửa khoản cọc lịch sử đã nhận. |
+| Thanh toán ban đầu | 9 | Hiển thị snapshot và bảng chi tiết; tất cả chỉ đọc, không tính lại từ giá/cọc đang đề xuất. |
+| Công tơ ban đầu | 2 | Hiển thị chỉ số gốc; chỉ nhập trước ký trong bản nháp. Không sửa hồi tố bằng phụ lục. |
+| Bảng động | 6 | Phí, nội thất, tiện ích, chính sách được thêm/xóa hàng; đặc điểm tài sản chỉ sửa giá trị. Bảng thanh toán ban đầu chỉ đọc. |
+
+HOUSE chưa dùng `property.unitNumber`, `property.maxOccupants`, `property.maxVehicles` và 5 mã thanh toán `payment.initial.confirmedAt`, `payment.initial.bankTransactionReference`, `payment.initial.totalAmount`, `payment.initial.paidAt`, `payment.initial.transactionCode` trong dàn ý thân mẫu hiện tại. APARTMENT/ROOM có `property.unitNumber`, còn thiếu 7 mã tùy chọn nói trên. Đây là khác biệt dàn ý với danh mục hỗ trợ, không phải dữ liệu bị xóa; giao diện vẫn phải hiển thị khi snapshot có dữ liệu. Hai mã paidAt/transactionCode là tương thích cũ, không tự thêm vào mẫu chỉ để tăng số đếm.
+
+Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải lấy cùng snapshot điều khoản đang áp dụng / bản phụ lục đang soạn; giữ nguyên số 0 đầu số tài khoản. Không lấy lại ngân hàng từ hồ sơ tài khoản đang thay đổi để ghi đè văn bản đã ký. Sửa ngân hàng trên văn bản không tự sửa tài khoản đăng nhập hoặc chuyển hướng QR thanh toán của giao dịch cũ.
+
+## II. DANH MỤC 64 MÃ TRƯỜNG VÀ BẢNG ĐỘNG ĐƯỢC HỖ TRỢ (SCHEMA V3 MỞ RỘNG CHÍNH SÁCH)
 
 ### 1. Nhóm Pháp lý & Hợp đồng
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
@@ -103,9 +158,9 @@ Tên file xuất ra bắt buộc:
 | `{{landlord.permanentAddress}}` | Không | Nơi thường trú của chủ nhà |
 | `{{landlord.phone}}` | Có | Số điện thoại liên hệ của chủ nhà |
 | `{{landlord.email}}` | Không | Email của chủ nhà |
-| `{{landlord.bankAccountHolder}}` | Không | Tên chủ tài khoản nhận thanh toán của Bên A |
-| `{{landlord.bankAccountNumber}}` | Không | Số tài khoản nhận thanh toán của Bên A |
-| `{{landlord.bankName}}` | Không | Tên ngân hàng nhận thanh toán của Bên A |
+| `{{landlord.bankAccountHolder}}` | Có | Tên chủ tài khoản nhận thanh toán của Bên A |
+| `{{landlord.bankAccountNumber}}` | Có | Số tài khoản nhận thanh toán của Bên A |
+| `{{landlord.bankName}}` | Có | Tên ngân hàng nhận thanh toán của Bên A |
 
 ### 3. Nhóm Bên B (Người thuê / Tenant)
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
@@ -118,9 +173,9 @@ Tên file xuất ra bắt buộc:
 | `{{tenant.occupantCount}}` | Có | Số lượng người cư trú đăng ký chính thức |
 | `{{tenant.motorbikeCount}}` | Không | Số lượng xe máy đăng ký gửi |
 | `{{tenant.carCount}}` | Không | Số lượng ô tô đăng ký gửi |
-| `{{tenant.bankAccountHolder}}` | Không | Tên chủ tài khoản nhận hoàn cọc của Bên B |
-| `{{tenant.bankAccountNumber}}` | Không | Số tài khoản nhận hoàn cọc của Bên B |
-| `{{tenant.bankName}}` | Không | Tên ngân hàng nhận hoàn cọc của Bên B |
+| `{{tenant.bankAccountHolder}}` | Có | Tên chủ tài khoản nhận hoàn cọc của Bên B |
+| `{{tenant.bankAccountNumber}}` | Có | Số tài khoản nhận hoàn cọc của Bên B |
+| `{{tenant.bankName}}` | Có | Tên ngân hàng nhận hoàn cọc của Bên B |
 
 ### 4. Nhóm Bất động sản (Property)
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
@@ -128,7 +183,7 @@ Tên file xuất ra bắt buộc:
 | `{{property.fullAddress}}` | Có | Địa chỉ đầy đủ của bất động sản |
 | `{{property.areaText}}` | Có | Diện tích sử dụng (ví dụ: `45 m²`) |
 | `{{property.propertyType}}` | Có | Loại hình bất động sản bằng tiếng Việt |
-| `{{property.unitNumber}}` | Căn hộ & Phòng | Số căn hộ hoặc số phòng (ví dụ: `Căn hộ A-12.04` hoặc `Phòng 302`) |
+| `{{property.unitNumber}}` | Có với APARTMENT/ROOM | Số căn hộ hoặc số phòng; HOUSE tùy chọn (ví dụ: `Căn hộ A-12.04` hoặc `Phòng 302`) |
 | `{{property.floor}}` | Không | Tầng của căn hộ/phòng hoặc số tầng nhà nguyên căn |
 | `{{property.listingCode}}` | Không | Mã định danh tin đăng đối chiếu nội bộ |
 | `{{property.rentalScope}}` | Không | Phạm vi cho thuê (Toàn bộ / Tầng thuê / Phòng riêng) |
@@ -150,7 +205,7 @@ Tên file xuất ra bắt buộc:
 | `{{rent.amountNumber}}` | Có | Giá thuê hàng tháng bằng số định dạng vi-VN (ví dụ: `8.500.000 VNĐ`) |
 | `{{rent.amountWords}}` | Có | Giá thuê hàng tháng bằng chữ |
 | `{{rent.paymentCycle}}` | Có | Chu kỳ thanh toán (Hàng tháng / 3 tháng / ...) |
-| `{{rent.paymentDueDay}}` | Có | Hạn thanh toán theo từng kỳ thuê; backend hiện trả mô tả “chậm nhất 23:59 ngày thứ 4 sau khi kết thúc mỗi kỳ thuê; hạn cụ thể ghi trên hóa đơn” |
+| `{{rent.paymentDueDay}}` | Có | Hạn thanh toán theo từng kỳ thuê; backend hiện trả mô tả “chậm nhất 23:59 ngày thứ 5 tính từ ngày chốt kỳ (ngày chốt là ngày thứ 1); hạn cụ thể ghi trên hóa đơn” |
 | `{{rent.paymentMethod}}` | Không | Phương thức thanh toán: Chuyển khoản trực tiếp ngân hàng |
 
 ### 7. Nhóm Tiền đặt cọc (Deposit)
@@ -185,19 +240,37 @@ Tên file xuất ra bắt buộc:
 | `{{#chargesTable}}` | Có | `STT` \| `Khoản phí` \| `Mức phí / Đơn giá` \| `Đơn vị tính` \| `Ghi chú / Điều kiện` |
 | `{{#equipmentTable}}` | Không | `STT` \| `Tên tài sản / Thiết bị` \| `Số lượng` \| `Hiện trạng` \| `Ghi chú` |
 | `{{#propertyFeaturesTable}}` | Không | `Đặc điểm` \| `Giá trị` |
-| `{{#amenitiesTable}}` | Không | `STT` \| `Tiện ích / Quyền sử dụng` \| `Phạm vi` \| `Chi phí` \| `Điều kiện / Ghi chú` |
+| `{{#amenitiesTable}}` | Không | `STT` \| `Tên tiện ích` — chỉ các mục có dữ liệu, không thêm cột hoặc mô tả suy diễn |
 | `{{#initialPaymentTable}}` | Không | `Khoản thanh toán` \| `Số tiền` \| `Trạng thái / Chi tiết xác nhận` |
+| `{{#policiesTable}}` | Có với Listing có chính sách | `Chính sách` \| `Quy định áp dụng` — quyền cho phép, ghi chú, số ngày/giờ và nội quy theo HOUSE/APARTMENT/ROOM |
 
 ---
 
 ## III. HƯỚNG DẪN KIỂM TRA FILE WORD SAU KHI TẠO
-1. Mở file Word, bật hiển thị Field Codes (`Alt + F9`) để đảm bảo không có mã trường bị lỗi tách ký tự (word run splitting).
-2. Không để sót placeholder rác không có trong danh mục 63 trường trên.
-3. Các bảng động `{{#chargesTable}}`, `{{#equipmentTable}}`, `{{#propertyFeaturesTable}}`, `{{#amenitiesTable}}`, `{{#initialPaymentTable}}` phải giữ nguyên ký tự `#` ở đầu tên bảng.
+1. Kiểm tra XML của DOCX (`word/document.xml`) để đảm bảo từng placeholder nằm trọn trong một Word run, không bị tách ký tự/định dạng. `Alt + F9` chỉ hiển thị Word Field Codes, không chứng minh marker văn bản của poi-tl nằm trong một run.
+2. Không để sót placeholder rác không có trong danh mục 64 trường trên.
+3. Các bảng động `{{#chargesTable}}`, `{{#equipmentTable}}`, `{{#propertyFeaturesTable}}`, `{{#amenitiesTable}}`, `{{#initialPaymentTable}}`, `{{#policiesTable}}` phải giữ nguyên ký tự `#` ở đầu tên bảng. Mỗi bảng đặt thành đoạn marker riêng, backend tạo bảng; không bọc marker trong bảng dựng sẵn hoặc bảng lồng.
 4. Đảm bảo file được lưu đúng định dạng Word 2007+ (.docx).
 5. Mở/xuất xem toàn bộ trang để kiểm tra khoảng cách giữa Header với Quốc hiệu, khoảng cách tiêu đề, lề, bảng và lỗi tiêu đề/đoạn bị tách không đẹp.
 6. DOCX mẫu không có trang ký. Khi hợp đồng chạy ở chế độ SMARTCA, backend sẽ tự nối đúng một trang ký riêng vào PDF; không thêm trang ký thứ hai vào mẫu.
 7. Kiểm tra `{{contract.specialTerms}}` xuất hiện đúng một lần trong Điều xử lý vi phạm/chấm dứt; không lặp đơn vị sau `{{rent.amountNumber}}` hoặc `{{deposit.amountNumber}}`, không ghi cố định ngày 05 hằng tháng.
+8. Mỗi DOCX có đúng một `{{#policiesTable}}`. Kiểm tra không có chính sách cứng mâu thuẫn dữ liệu: thú cưng được phép nhưng hút thuốc cấm; thú cưng cần chấp thuận; khách qua đêm được phép; giờ yên tĩnh 23:00 thay 22:00; hoàn cọc 7 ngày thay 15 ngày; báo trước 45 ngày thay 30 ngày. Các giá trị này chỉ là dữ liệu kiểm thử, không điền cố định vào mẫu.
+9. Kiểm tra cả ba loại hình với dữ liệu ít/nhiều dòng và ghi chú dài; giữ nguyên thứ tự các dòng backend cung cấp. Render/xuất PDF xem toàn bộ trang, bảo đảm bảng tự mở rộng, không tràn lề hoặc đè Header/Footer. Bản kiểm thử đã điền không được thay cho DOCX mẫu chứa placeholder.
+10. Bàn giao đúng ba DOCX mới theo tên mục I.1 và tóm tắt kiểm tra ngay trong câu trả lời. Không tạo thêm file prompt, không sửa PDF/hợp đồng đã ký. Nếu công cụ không render hoặc không tạo được DOCX, nêu rõ giới hạn, không tuyên bố đã kiểm chứng bố cục.
+
+### Cổng kiểm tra trước khi bàn giao — không được chỉ tự nhận xét “đã đủ”
+Sau khi lưu file, mở lại chính **DOCX cuối cùng** như ZIP và đọc `word/document.xml` cùng các `word/header*.xml`, `word/footer*.xml`. Đọc nội dung từng paragraph, kể cả paragraph trong ô bảng; giữ ranh giới đoạn, không nối hai đoạn khác nhau để tạo marker giả. Trích xuất các mã giữa `{{` và `}}`, giữ dấu `#`, đếm cả số lần xuất hiện và tập mã duy nhất.
+
+Với từng file, dùng phép so sánh tập hợp:
+1. `missingRequired = requiredForCategory - detected`: phải rỗng, dùng checklist 27/28 mã ở mục I.10.
+2. `missingBusiness = requiredBusinessMarkers - detected`: phải rỗng, dùng 8 marker nghiệp vụ ở mục I.10.
+3. `unknown = detected - supportedCatalog`: phải rỗng, dùng đúng danh mục 64 mã ở mục II.
+4. Đếm mỗi marker bảng động và `contract.specialTerms`: phải bằng 1; kiểm tra marker nằm trọn trong một run, không bị tách theo định dạng.
+5. Xác nhận `property.propertyType` nằm trong nội dung Điều 1; không dùng tên loại hình viết cứng thay cho placeholder. `property.unitNumber` có trong Điều 1 của APARTMENT/ROOM.
+
+Nếu thiếu, lặp hoặc sai mã: sửa **file Word**, lưu lại rồi chạy kiểm tra lại; không sửa checklist để hợp thức hóa file thiếu. Không đánh giá đạt chỉ bằng tổng số trường 55/56/62/64 hoặc tên hợp đồng. Kiểm tra cấu trúc không thay cho render kiểm tra bố cục.
+
+Trong câu trả lời bàn giao, báo cáo riêng từng file: loại hình, số mã duy nhất thực tế, mã bắt buộc còn thiếu, marker nghiệp vụ còn thiếu, mã không hỗ trợ, bảng/khối bị lặp, kiểm tra một-run và tình trạng render. Liệt kê cụ thể mã lỗi nếu có. Không đưa bảng kiểm tra hay mã XML vào văn bản hợp đồng và không tạo file báo cáo/prompt phụ. Nếu chưa chạy kiểm tra cấu trúc hoặc render thì ghi rõ “chưa kiểm chứng”, không báo đạt.
 
 ---
 
@@ -212,7 +285,15 @@ BỐI CẢNH VÀ VAI TRÒ:
 Bạn là chuyên gia soạn thảo hợp đồng bất động sản tại Việt Nam cho nền tảng HomeSpace. HomeSpace sử dụng thư viện poi-tl để tự động điền các placeholder dạng {{variable}} và bảng động dạng {{#table}} vào file Word (.docx).
 
 NHIỆM VỤ:
-Soạn toàn văn file Word mẫu "HỢP ĐỒNG THUÊ NHÀ NGUYÊN CĂN" (dành cho nhà phố, nhà riêng lẻ, biệt thự) theo chuẩn Schema V3. Văn bản phải chặt chẽ, trang trọng, minh bạch về tài khoản ngân hàng hai bên, cơ chế chuyển khoản trực tiếp, bảo vệ toàn vẹn kiến trúc nhà, an toàn PCCC, an ninh trật tự và quy định cư trú.
+Tạo mới hoàn toàn file Word mẫu "HỢP ĐỒNG THUÊ NHÀ NGUYÊN CĂN" (dành cho nhà phố, nhà riêng lẻ, biệt thự) theo chuẩn Schema V3. Văn bản phải chặt chẽ, trang trọng, minh bạch về tài khoản ngân hàng hai bên, cơ chế chuyển khoản trực tiếp, bảo vệ toàn vẹn kiến trúc nhà, an toàn PCCC, an ninh trật tự và quy định cư trú.
+
+CHÍNH SÁCH LISTING VÀ BÀN GIAO (BẮT BUỘC, KHÔNG CẦN MẪU WORD CŨ):
+Chỉ dùng dữ liệu backend đã đóng băng. Đặt {{#policiesTable}} đúng một lần thành đoạn riêng trong Điều 8; backend sinh bảng “Chính sách | Quy định áp dụng”, không dựng sẵn hàng/bảng rỗng. Nhóm chung gồm thú cưng, hút thuốc, cho thuê lại, khách qua đêm, thông báo kiểm tra, hạn báo trước chấm dứt và hạn hoàn cọc. Nhà nguyên căn: nhóm chung và quyền sửa chữa/cải tạo/lắp đặt. Giữ đúng ba trạng thái cho phép / không cho phép / cần chủ nhà chấp thuận trước cùng ghi chú. Không suy quyền từ tiện ích, không viết cứng 30 ngày/15 ngày/22:00, không tự bịa phí hoặc hạn chế. Mọi câu liên quan phải tham chiếu Bảng chính sách. Phạt đóng trễ chỉ cấu hình lúc soạn hợp đồng cùng công tơ ban đầu, không thuộc Listing; chỉ xuất qua {{contract.specialTerms}} đúng một lần ở Điều 9. Câu chỉ dẫn tạo mẫu/mã nội bộ không in vào Word. Tạo DOCX chứa marker trong một run; kiểm tra XML, render mọi trang với ít/nhiều dòng và dữ liệu chính sách đối lập. Không sửa PDF đã ký. Trả file DOCX tải về và tóm tắt kiểm tra, không chỉ trả Markdown; không tạo file prompt phụ. Nếu thiếu công cụ render, nói rõ phần chưa kiểm chứng.
+
+KIỂM TRA KHÔNG BỎ SÓT (PHẢI THỰC HIỆN TRÊN DOCX ĐÃ LƯU):
+Bộ 27 mã bắt buộc của mẫu này: {{landlord.fullName}}, {{landlord.phone}}, {{landlord.bankName}}, {{landlord.bankAccountNumber}}, {{landlord.bankAccountHolder}}, {{tenant.fullName}}, {{tenant.phone}}, {{tenant.occupantCount}}, {{tenant.bankName}}, {{tenant.bankAccountNumber}}, {{tenant.bankAccountHolder}}, {{property.fullAddress}}, {{property.areaText}}, {{property.propertyType}}, {{lease.startDateText}}, {{lease.endDateText}}, {{lease.durationMonths}}, {{lease.durationText}}, {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{contract.number}}, {{contract.signingDate}}, {{#chargesTable}}.
+Marker nghiệp vụ bổ sung phải giữ: {{#propertyFeaturesTable}}, {{#equipmentTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}, {{#policiesTable}}, {{contract.specialTerms}}, {{meters.electricityInitial}}, {{meters.waterInitial}}.
+Đặt câu “Loại hình bất động sản: {{property.propertyType}}.” trong Điều 1, không thay bằng tên loại hình viết cứng. Sau khi lưu, mở lại DOCX như ZIP, trích marker theo từng paragraph trong body/bảng/header/footer; so sánh tập mã phát hiện với bộ bắt buộc và marker nghiệp vụ trên. Mọi tập mã còn thiếu phải rỗng; không có mã ngoài danh mục hỗ trợ. Các bảng động và contract.specialTerms phải xuất hiện đúng một lần, nằm trong một run; không in checklist/hướng dẫn vào Word. Thiếu thì sửa DOCX và kiểm tra lại, không bàn giao bản lỗi. Tổng số mã không phải tiêu chí đạt. Bàn giao kèm số mã thực tế, danh sách mã thiếu/sai/lặp, kết quả kiểm tra một-run và render trong câu trả lời; không tạo thêm file kiểm tra. Chưa kiểm tra bằng công cụ thì phải nói rõ, không tự tuyên bố đã đạt.
 
 TÊN FILE WORD ĐẦU RA BẮT BUỘC:
 HomeSpace_01_Hop_Dong_Thue_Nha_Nguyen_Can.docx
@@ -232,7 +313,7 @@ I. CĂN CỨ PHÁP LÝ
 - Luật Kinh doanh bất động sản số 29/2023/QH15 (trong phạm vi áp dụng).
 
 II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
-1. Chỉ sử dụng các placeholder trong danh mục 63 trường được hỗ trợ:
+1. Chỉ sử dụng các placeholder trong danh mục 64 trường được hỗ trợ:
    - Hợp đồng: {{contract.number}}, {{contract.signingDate}}, {{contract.signingCity}}, {{contract.schemaVersion}}, {{contract.revisionNumber}}, {{contract.specialTerms}}
    - Bên A: {{landlord.fullName}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
    - Bên B: {{tenant.fullName}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
@@ -241,7 +322,7 @@ II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
    - Giá thuê & Cọc: {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{rent.paymentMethod}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{deposit.description}}
    - Thanh toán ban đầu: {{payment.initial.status}}, {{payment.initial.payerReportedAt}}, {{payment.initial.payeeConfirmedAt}}, {{payment.initial.confirmedAt}}, {{payment.initial.transferReference}}, {{payment.initial.bankTransactionReference}}, {{payment.initial.totalAmount}}
    - Chỉ số bàn giao: {{meters.electricityInitial}}, {{meters.waterInitial}}
-   - Bảng động: {{#chargesTable}}, {{#equipmentTable}}, {{#propertyFeaturesTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}
+   - Bảng động: {{#chargesTable}}, {{#equipmentTable}}, {{#propertyFeaturesTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}, {{#policiesTable}}
 2. TUYỆT ĐỐI KHÔNG đưa branchId, tên chi nhánh, mã chi nhánh vào văn bản.
 3. Không tự tạo thêm placeholder mới. Không dùng dấu chấm thủ công (....).
 4. Thanh toán chuyển khoản trực tiếp: Tiền thuê, tiền cọc và hoàn cọc được chuyển khoản trực tiếp giữa tài khoản ngân hàng của Bên A và Bên B.
@@ -254,7 +335,7 @@ II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
    - Thay đổi tài khoản ngân hàng phải thông báo và xác nhận trước.
    - Hoàn cọc trực tiếp vào tài khoản Bên B sau khi quyết toán và bàn giao.
 6. Luồng hóa đơn hàng tháng: phân biệt ngày ký `{{contract.signingDate}}` với ngày bắt đầu kỳ thuê `{{lease.startDateText}}`; tiền ban đầu là thuê kỳ đầu + cọc, hóa đơn cuối kỳ quyết toán phí của kỳ vừa qua và thu tiền phòng kỳ sau nếu còn thời hạn. Dùng đúng `{{rent.paymentDueDay}}`, không cố định ngày 05. Người thuê được trả ngay sau khi chủ nhà phát hành hóa đơn; phí điện/nước tính theo chỉ số thực tế và `{{#chargesTable}}`.
-7. Quá hạn: phí một lần/mỗi ngày/không áp dụng và mức tiền chỉ lấy từ `{{contract.specialTerms}}`, không tự bịa số. Từ 00:00 ngày quá hạn thứ 5, chủ nhà có thể chuyển nợ sang kỳ sau hoặc đề nghị chấm dứt; khi người thuê từ chối, hợp đồng vẫn hiệu lực và chủ nhà có thể rút đề nghị hoặc xử lý theo đúng điều khoản đã ký. Không tự chấm dứt, giữ cọc hay đăng lại nhà trước khi chủ nhà xác nhận đã thông báo và thực tế nhận lại nhà/chìa khóa/tài sản. Đặt `{{contract.specialTerms}}` đúng một lần ở Điều 9, không lặp ở Điều 8. Nội dung 5 ngày/giữ cọc cần rà soát pháp lý trước khi dùng thật.
+7. Quá hạn: phí một lần/mỗi ngày/không áp dụng và mức tiền chỉ lấy từ `{{contract.specialTerms}}`, không tự bịa số. Sau khi kết thúc đủ 5 ngày quá hạn (từ 00:00 ngày quá hạn thứ 6), chủ nhà có thể chuyển nợ sang kỳ sau hoặc đề nghị chấm dứt; khi người thuê từ chối, hợp đồng vẫn hiệu lực và chủ nhà có thể rút đề nghị hoặc xử lý theo đúng điều khoản đã ký. Không tự chấm dứt, giữ cọc hay đăng lại nhà trước khi chủ nhà xác nhận đã thông báo và thực tế nhận lại nhà/chìa khóa/tài sản. Đặt `{{contract.specialTerms}}` đúng một lần ở Điều 9, không lặp ở Điều 8. Nội dung 5 ngày/giữ cọc cần rà soát pháp lý trước khi dùng thật.
 
 III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 1. QUỐC HIỆU - TIÊU NGỮ - TÊN HỢP ĐỒNG: HỢP ĐỒNG THUÊ NHÀ NGUYÊN CĂN
@@ -266,6 +347,7 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    - BÊN THUÊ (BÊN B): {{tenant.fullName}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người ở: {{tenant.occupantCount}}, Xe máy: {{tenant.motorbikeCount}}, Ô tô: {{tenant.carCount}}.
      Tài khoản nhận hoàn trả: Chủ tài khoản: {{tenant.bankAccountHolder}} - Số tài khoản: {{tenant.bankAccountNumber}} - Ngân hàng: {{tenant.bankName}}.
 4. ĐIỀU 1: ĐỐI TƯỢNG VÀ PHẠM VI CHO THUÊ
+   - Loại hình bất động sản: {{property.propertyType}}.
    - Bên A đồng ý cho Bên B thuê toàn bộ căn nhà tại địa chỉ: {{property.fullAddress}}.
    - Diện tích: {{property.areaText}}; Kết cấu/Số tầng: {{property.floor}}; Phạm vi thuê: {{property.rentalScope}}; Mã tin: {{property.listingCode}}.
    - Bảng thông số đặc điểm căn nhà:
@@ -296,12 +378,12 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 7. ĐIỀU 4: CÁC KHOẢN CHI PHÍ KHÁC VÀ DỊCH VỤ
    - Bảng chi phí định kỳ và dịch vụ đi kèm:
      {{#chargesTable}}
-   - Bảng tiện ích và quyền sử dụng dịch vụ:
+   - Bảng tiện ích đã ghi nhận (chỉ STT và tên tiện ích; không thêm cột Phạm vi/Chi phí/Điều kiện, không tự loại máy lạnh/tủ lạnh vì đã có trong nội thất, không tự thêm chỗ để xe hoặc đoạn nguyên tắc sử dụng):
      {{#amenitiesTable}}
 8. ĐIỀU 5: TÀI SẢN VÀ THIẾT BỊ BÀN GIAO
    - Danh mục trang thiết bị, nội thất gắn liền căn nhà:
      {{#equipmentTable}}
-   - Bên B có trách nhiệm bảo quản nguyên vẹn, không tự ý thay đổi kết cấu chịu lực, không đục phá tường, cơi nới nếu chưa có sự đồng ý bằng văn bản của Bên A.
+   - Bên B có trách nhiệm bảo quản tài sản; việc sửa chữa/cải tạo/lắp đặt tuân theo Bảng chính sách và quy định pháp luật, bảo đảm an toàn kết cấu và PCCC. Không diễn đạt thành quyền cải tạo khác với dữ liệu đã chốt.
 9. ĐIỀU 6: QUYỀN VÀ NGHĨA VỤ CỦA BÊN A
    - Bàn giao nhà và thiết bị đúng hạn; bảo đảm quyền sử dụng độc lập, hợp pháp cho Bên B.
    - Cung cấp tài khoản ngân hàng chính xác để nhận thanh toán; kiểm tra và xác nhận kịp thời khi nhận được tiền.
@@ -310,12 +392,14 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
     - Sử dụng đúng số lượng người cư trú ({{tenant.occupantCount}} người), đúng số lượng phương tiện đăng ký ({{tenant.motorbikeCount}} xe máy, {{tenant.carCount}} ô tô).
     - Chấp hành tuyệt đối các quy định an toàn PCCC theo Luật PCCC 2024, an ninh trật tự địa phương.
     - Chuyển khoản tiền thuê và chi phí đầy đủ, đúng hạn vào tài khoản ngân hàng của Bên A.
-11. ĐIỀU 8: ĐIỀU KHOẢN ĐẶC THÙ VỀ THÚ CƯNG VÀ NỘI QUY
-    - Quy định về nuôi thú cưng (nếu được phép theo Bảng tiện ích): Bên B cam kết giữ vệ sinh, đảm bảo an toàn, không gây tiếng ồn ảnh hưởng xung quanh và bồi thường 100% nếu gây thiệt hại.
+11. ĐIỀU 8: CHÍNH SÁCH VẬN HÀNH VÀ ĐIỀU KHOẢN THỎA THUẬN BỔ SUNG
+    - Chính sách vận hành áp dụng cho tài sản thuê được ghi tại bảng sau:
+      {{#policiesTable}}
+    - Quyền nuôi thú cưng, hút thuốc, cho thuê lại, khách qua đêm, thời hạn báo trước/hoàn cọc, thông báo kiểm tra và sửa chữa/cải tạo/lắp đặt thực hiện đúng Bảng chính sách, đọc cùng trách nhiệm bảo vệ tài sản và tuân thủ pháp luật.
     - Không đặt điều khoản phí chậm trả/chấm dứt ở Điều này; nội dung đó nằm ở Điều 9.
 12. ĐIỀU 9: CHẤM DỨT HỢP ĐỒNG VÀ GIẢI QUYẾT TRANH CHẤP
-    - Quy định thông báo trước khi chấm dứt hợp đồng; hoàn trả nhà và quyết toán số cọc còn phải hoàn bằng chuyển khoản trực tiếp.
-    - Nếu hóa đơn quá hạn, phí chậm thanh toán (nếu có) chỉ tính theo mức và cách tính đã ghi trong điều khoản được điền; không ghi số cố định khác. Từ ngày quá hạn thứ 5, chủ nhà có thể cho chuyển nợ sang kỳ tiếp theo hoặc đề nghị hai bên chấm dứt. Nếu người thuê từ chối, đề nghị có thể được rút; trường hợp xử lý chấm dứt theo điều khoản đã ký cần thông báo và thực tế nhận lại nhà, chìa khóa, tài sản trước khi mở lại tin đăng. Tiền cọc/công nợ được ghi nhận theo điều khoản ký và đối chiếu bàn giao, không phải HomeSpace tự giữ tiền.
+    - Thời hạn thông báo trước khi chấm dứt và thời hạn hoàn cọc theo Bảng chính sách; hoàn trả nhà và quyết toán số cọc còn phải hoàn bằng chuyển khoản trực tiếp, đọc cùng điều kiện cọc đã chốt.
+    - Nếu hóa đơn quá hạn, phí chậm thanh toán (nếu có) chỉ tính theo mức và cách tính đã ghi trong điều khoản được điền; không ghi số cố định khác. Sau khi kết thúc đủ 5 ngày quá hạn (từ 00:00 ngày quá hạn thứ 6), chủ nhà có thể cho chuyển nợ sang kỳ tiếp theo hoặc đề nghị hai bên chấm dứt. Nếu người thuê từ chối, đề nghị có thể được rút; trường hợp xử lý chấm dứt theo điều khoản đã ký cần thông báo và thực tế nhận lại nhà, chìa khóa, tài sản trước khi mở lại tin đăng. Tiền cọc/công nợ được ghi nhận theo điều khoản ký và đối chiếu bàn giao, không phải HomeSpace tự giữ tiền.
     - Toàn văn điều khoản quá hạn, phí chậm trả và phương án chấm dứt đã được backend chốt: {{contract.specialTerms}}
     - Trường hợp bất khả kháng; giải quyết tranh chấp thông qua thương lượng hoặc Tòa án có thẩm quyền.
 13. ĐIỀU 10: GIAO KẾT ĐIỆN TỬ VÀ HIỆU LỰC
@@ -333,7 +417,15 @@ BỐI CẢNH VÀ VAI TRÒ:
 Bạn là chuyên gia soạn thảo hợp đồng bất động sản tại Việt Nam cho nền tảng HomeSpace. HomeSpace sử dụng thư viện poi-tl để tự động điền các placeholder dạng {{variable}} và bảng động dạng {{#table}} vào file Word (.docx).
 
 NHIỆM VỤ:
-Soạn toàn văn file Word mẫu "HỢP ĐỒNG THUÊ CĂN HỘ CHUNG CƯ" (dành cho căn hộ trong tòa nhà chung cư/khu phức hợp) theo chuẩn Schema V3. Văn bản phải chặt chẽ, chuyên nghiệp, thể hiện rõ tài khoản ngân hàng hai bên, thanh toán chuyển khoản trực tiếp, tuân thủ quy chế quản lý nhà chung cư, quy định PCCC nhà cao tầng, thẻ cư dân, phí quản lý tòa nhà và các dịch vụ dùng chung.
+Tạo mới hoàn toàn file Word mẫu "HỢP ĐỒNG THUÊ CĂN HỘ CHUNG CƯ" (dành cho căn hộ trong tòa nhà chung cư/khu phức hợp) theo chuẩn Schema V3. Văn bản phải chặt chẽ, chuyên nghiệp, thể hiện rõ tài khoản ngân hàng hai bên, thanh toán chuyển khoản trực tiếp, tuân thủ quy chế quản lý nhà chung cư, quy định PCCC nhà cao tầng, thẻ cư dân, phí quản lý tòa nhà và các dịch vụ dùng chung.
+
+CHÍNH SÁCH LISTING VÀ BÀN GIAO (BẮT BUỘC, KHÔNG CẦN MẪU WORD CŨ):
+Chỉ dùng dữ liệu backend đã đóng băng. Đặt {{#policiesTable}} đúng một lần thành đoạn riêng trong Điều 8; backend sinh bảng “Chính sách | Quy định áp dụng”, không dựng sẵn hàng/bảng rỗng. Nhóm chung gồm thú cưng, hút thuốc, cho thuê lại, khách qua đêm, thông báo kiểm tra, hạn báo trước chấm dứt và hạn hoàn cọc. Căn hộ: nhóm chung, nội quy tòa nhà và quyền sử dụng tiện ích chung. Giữ đúng ba trạng thái cho phép / không cho phép / cần chủ nhà chấp thuận trước cùng ghi chú. Không suy quyền từ tiện ích, không viết cứng 30 ngày/15 ngày/22:00, không tự bịa phí hoặc hạn chế. Mọi câu liên quan phải tham chiếu Bảng chính sách. Phạt đóng trễ chỉ cấu hình lúc soạn hợp đồng cùng công tơ ban đầu, không thuộc Listing; chỉ xuất qua {{contract.specialTerms}} đúng một lần ở Điều 9. Câu chỉ dẫn tạo mẫu/mã nội bộ không in vào Word. Tạo DOCX chứa marker trong một run; kiểm tra XML, render mọi trang với ít/nhiều dòng và dữ liệu chính sách đối lập. Không sửa PDF đã ký. Trả file DOCX tải về và tóm tắt kiểm tra, không chỉ trả Markdown; không tạo file prompt phụ. Nếu thiếu công cụ render, nói rõ phần chưa kiểm chứng.
+
+KIỂM TRA KHÔNG BỎ SÓT (PHẢI THỰC HIỆN TRÊN DOCX ĐÃ LƯU):
+Bộ 28 mã bắt buộc của mẫu này: {{landlord.fullName}}, {{landlord.phone}}, {{landlord.bankName}}, {{landlord.bankAccountNumber}}, {{landlord.bankAccountHolder}}, {{tenant.fullName}}, {{tenant.phone}}, {{tenant.occupantCount}}, {{tenant.bankName}}, {{tenant.bankAccountNumber}}, {{tenant.bankAccountHolder}}, {{property.fullAddress}}, {{property.areaText}}, {{property.propertyType}}, {{lease.startDateText}}, {{lease.endDateText}}, {{lease.durationMonths}}, {{lease.durationText}}, {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{contract.number}}, {{contract.signingDate}}, {{#chargesTable}}, {{property.unitNumber}}.
+Marker nghiệp vụ bổ sung phải giữ: {{#propertyFeaturesTable}}, {{#equipmentTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}, {{#policiesTable}}, {{contract.specialTerms}}, {{meters.electricityInitial}}, {{meters.waterInitial}}.
+Đặt câu “Loại hình bất động sản: {{property.propertyType}}.” trong Điều 1, không thay bằng tên loại hình viết cứng. Sau khi lưu, mở lại DOCX như ZIP, trích marker theo từng paragraph trong body/bảng/header/footer; so sánh tập mã phát hiện với bộ bắt buộc và marker nghiệp vụ trên. Mọi tập mã còn thiếu phải rỗng; không có mã ngoài danh mục hỗ trợ. Các bảng động và contract.specialTerms phải xuất hiện đúng một lần, nằm trong một run; không in checklist/hướng dẫn vào Word. Thiếu thì sửa DOCX và kiểm tra lại, không bàn giao bản lỗi. Tổng số mã không phải tiêu chí đạt. Bàn giao kèm số mã thực tế, danh sách mã thiếu/sai/lặp, kết quả kiểm tra một-run và render trong câu trả lời; không tạo thêm file kiểm tra. Chưa kiểm tra bằng công cụ thì phải nói rõ, không tự tuyên bố đã đạt.
 
 TÊN FILE WORD ĐẦU RA BẮT BUỘC:
 HomeSpace_02_Hop_Dong_Thue_Can_Ho_Chung_Cu.docx
@@ -353,7 +445,7 @@ I. CĂN CỨ PHÁP LÝ
 - Luật Kinh doanh bất động sản số 29/2023/QH15 (trong phạm vi áp dụng).
 
 II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
-1. Chỉ sử dụng các placeholder trong danh mục 63 trường được hỗ trợ:
+1. Chỉ sử dụng các placeholder trong danh mục 64 trường được hỗ trợ:
    - Hợp đồng: {{contract.number}}, {{contract.signingDate}}, {{contract.signingCity}}, {{contract.schemaVersion}}, {{contract.revisionNumber}}, {{contract.specialTerms}}
    - Bên A: {{landlord.fullName}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
    - Bên B: {{tenant.fullName}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
@@ -362,7 +454,7 @@ II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
    - Giá thuê & Cọc: {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{rent.paymentMethod}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{deposit.description}}
    - Thanh toán ban đầu: {{payment.initial.status}}, {{payment.initial.payerReportedAt}}, {{payment.initial.payeeConfirmedAt}}, {{payment.initial.confirmedAt}}, {{payment.initial.transferReference}}, {{payment.initial.bankTransactionReference}}, {{payment.initial.totalAmount}}
    - Chỉ số bàn giao: {{meters.electricityInitial}}, {{meters.waterInitial}}
-   - Bảng động: {{#chargesTable}}, {{#equipmentTable}}, {{#propertyFeaturesTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}
+   - Bảng động: {{#chargesTable}}, {{#equipmentTable}}, {{#propertyFeaturesTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}, {{#policiesTable}}
 2. TUYỆT ĐỐI KHÔNG đưa branchId, tên chi nhánh, mã chi nhánh vào văn bản.
 3. Không tự tạo thêm placeholder mới. Không dùng dấu chấm thủ công (....).
 4. Thanh toán chuyển khoản trực tiếp: Tiền thuê và tiền cọc chuyển khoản trực tiếp vào tài khoản ngân hàng Bên A.
@@ -374,8 +466,8 @@ II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
    - Xử lý sai lệch, tranh chấp và cung cấp chứng từ ngân hàng.
    - Thay đổi tài khoản ngân hàng phải thông báo và xác nhận trước.
    - Hoàn cọc chuyển khoản trực tiếp vào tài khoản Bên B sau bàn giao và quyết toán.
- 6. Nguyên tắc tiện ích chung: "Đối với tiện ích dùng chung (hồ bơi, phòng gym, thang máy nếu có), Bên B được quyền sử dụng theo nội quy, khung giờ và tình trạng vận hành của Ban Quản lý tòa nhà, không cấu thành cam kết vận hành liên tục tuyệt đối."
-7. Luồng hóa đơn và quá hạn: `{{contract.signingDate}}` khác `{{lease.startDateText}}`; tiền ban đầu là thuê kỳ đầu + cọc. Hóa đơn cuối kỳ quyết toán phí dịch vụ, gửi xe, điện/nước thực dùng của kỳ vừa qua và thu tiền thuê kỳ sau nếu còn kỳ; kỳ cuối không thu thêm tiền phòng ngoài hợp đồng. Dùng `{{rent.paymentDueDay}}`, không mặc định ngày 05; khi chủ nhà chốt số và phát hành, người thuê có thể xem/trả ngay. Phí chậm trả chỉ theo mức/cách tính nằm trong `{{contract.specialTerms}}`, không tự đặt con số. Từ 00:00 ngày quá hạn thứ 5, chủ nhà có thể chuyển nợ sang kỳ sau hoặc đề nghị chấm dứt. Nếu người thuê từ chối, hợp đồng vẫn hiệu lực, chủ nhà có thể rút đề nghị hoặc xử lý theo điều khoản ký sau khi thông báo và nhận lại căn hộ, thẻ cư dân, chìa khóa, tài sản. Không tự đổi cọc/trạng thái căn hộ khi chưa bàn giao; rà soát pháp lý điều khoản 5 ngày/giữ cọc trước khi dùng thật. Đặt `{{contract.specialTerms}}` đúng một lần ở Điều 9.
+ 6. Tiện ích: chỉ in bảng STT và tên từ dữ liệu đã lưu; không thêm đoạn nguyên tắc tiện ích chung, phạm vi, chi phí, khung giờ hoặc quyền sử dụng suy diễn. Phí và chính sách ở hai bảng nghiệp vụ riêng.
+7. Luồng hóa đơn và quá hạn: `{{contract.signingDate}}` khác `{{lease.startDateText}}`; tiền ban đầu là thuê kỳ đầu + cọc. Hóa đơn cuối kỳ quyết toán phí dịch vụ, gửi xe, điện/nước thực dùng của kỳ vừa qua và thu tiền thuê kỳ sau nếu còn kỳ; kỳ cuối không thu thêm tiền phòng ngoài hợp đồng. Dùng `{{rent.paymentDueDay}}`, không mặc định ngày 05; khi chủ nhà chốt số và phát hành, người thuê có thể xem/trả ngay. Phí chậm trả chỉ theo mức/cách tính nằm trong `{{contract.specialTerms}}`, không tự đặt con số. Sau khi kết thúc đủ 5 ngày quá hạn (từ 00:00 ngày quá hạn thứ 6), chủ nhà có thể chuyển nợ sang kỳ sau hoặc đề nghị chấm dứt. Nếu người thuê từ chối, hợp đồng vẫn hiệu lực, chủ nhà có thể rút đề nghị hoặc xử lý theo điều khoản ký sau khi thông báo và nhận lại căn hộ, thẻ cư dân, chìa khóa, tài sản. Không tự đổi cọc/trạng thái căn hộ khi chưa bàn giao; rà soát pháp lý điều khoản 5 ngày/giữ cọc trước khi dùng thật. Đặt `{{contract.specialTerms}}` đúng một lần ở Điều 9.
 
 III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 1. QUỐC HIỆU - TIÊU NGỮ - TÊN HỢP ĐỒNG: HỢP ĐỒNG THUÊ CĂN HỘ CHUNG CƯ
@@ -387,6 +479,7 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    - BÊN THUÊ (BÊN B): {{tenant.fullName}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người cư trú: {{tenant.occupantCount}}, Xe máy đăng ký: {{tenant.motorbikeCount}}, Ô tô đăng ký: {{tenant.carCount}}.
      Tài khoản nhận hoàn trả: Chủ tài khoản: {{tenant.bankAccountHolder}} - Số tài khoản: {{tenant.bankAccountNumber}} - Ngân hàng: {{tenant.bankName}}.
 4. ĐIỀU 1: ĐỐI TƯỢNG VÀ ĐẶC ĐIỂM CĂN HỘ CHO THUÊ
+   - Loại hình bất động sản: {{property.propertyType}}.
    - Bên A cho Bên B thuê căn hộ: {{property.unitNumber}}, tọa lạc tại tầng {{property.floor}}, thuộc địa chỉ: {{property.fullAddress}}.
    - Diện tích căn hộ: {{property.areaText}}; Phạm vi thuê: {{property.rentalScope}}; Mã tin đăng: {{property.listingCode}}.
    - Bảng thông số chi tiết của căn hộ:
@@ -417,7 +510,7 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 7. ĐIỀU 4: PHÍ QUẢN LÝ, GỬI XE, ĐIỆN NƯỚC VÀ DỊCH VỤ CHUNG CƯ
    - Bảng phí quản lý tòa nhà, gửi xe máy/ô tô và các chi phí sinh hoạt:
      {{#chargesTable}}
-   - Bảng tiện ích chung cư và quyền sử dụng dịch vụ:
+   - Bảng tiện ích đã ghi nhận (chỉ STT và tên tiện ích; không thêm cột Phạm vi/Chi phí/Điều kiện, không tự loại máy lạnh/tủ lạnh vì đã có trong nội thất, không tự thêm chỗ để xe hoặc đoạn nguyên tắc sử dụng):
      {{#amenitiesTable}}
 8. ĐIỀU 5: DANH MỤC TRANG THIẾT BỊ, NỘI THẤT BÀN GIAO
    - Chi tiết danh mục nội thất, máy móc gắn liền căn hộ:
@@ -431,12 +524,14 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
     - Chấp hành nghiêm chỉnh Nội quy tòa nhà chung cư, quy chế cư dân, quy định gửi xe.
     - Cư trú đúng số lượng: {{tenant.occupantCount}} người; gửi xe đúng số lượng: {{tenant.motorbikeCount}} xe máy, {{tenant.carCount}} ô tô.
     - Chuyển khoản tiền thuê và các chi phí đúng hạn vào tài khoản ngân hàng của Bên A.
-11. ĐIỀU 8: ĐIỀU KHOẢN VỀ VẬT NUÔI VÀ NỘI QUY
-    - Quy định vật nuôi: Chỉ được nuôi thú cưng nếu Nội quy chung cư và Bảng tiện ích cho phép; Bên B chịu hoàn toàn trách nhiệm vệ sinh, an toàn.
+11. ĐIỀU 8: CHÍNH SÁCH VẬN HÀNH VÀ ĐIỀU KHOẢN THỎA THUẬN BỔ SUNG
+    - Chính sách vận hành áp dụng cho căn hộ được ghi tại bảng sau:
+      {{#policiesTable}}
+    - Các quyền, điều kiện, thời hạn và nội quy tòa nhà/sử dụng tiện ích chung thực hiện đúng Bảng chính sách, đọc cùng trách nhiệm bảo vệ tài sản và tuân thủ pháp luật.
     - Không đặt điều khoản phí chậm trả/chấm dứt ở Điều này; nội dung đó nằm ở Điều 9.
 12. ĐIỀU 9: CHẤM DỨT HỢP ĐỒNG VÀ XỬ LÝ VI PHẠM
-    - Thông báo trước khi kết thúc hợp đồng; bàn giao lại thẻ cư dân, chìa khóa, hiện trạng căn hộ và chuyển khoản trực tiếp số cọc còn phải hoàn sau quyết toán.
-    - Phí chậm trả theo điều khoản đã ký và hiển thị riêng trên hóa đơn; không bịa mức tiền. Từ ngày quá hạn thứ 5, chủ nhà có thể cho chuyển nợ sang kỳ tiếp theo hoặc đề nghị chấm dứt. Nếu người thuê từ chối, đề nghị có thể được rút; nhánh chấm dứt theo điều khoản đã ký chỉ hoàn tất khi đã thông báo và thực tế nhận lại căn hộ, thẻ/chìa khóa, tài sản. Khi đó cọc và công nợ được ghi nhận theo điều khoản ký; HomeSpace không tự chiếm hữu hay cưỡng chế căn hộ.
+    - Thông báo trước khi kết thúc và hoàn cọc trong thời hạn theo Bảng chính sách; bàn giao lại thẻ cư dân, chìa khóa, hiện trạng căn hộ và chuyển khoản trực tiếp số cọc còn phải hoàn sau quyết toán, đọc cùng điều kiện cọc đã chốt.
+    - Phí chậm trả theo điều khoản đã ký và hiển thị riêng trên hóa đơn; không bịa mức tiền. Sau khi kết thúc đủ 5 ngày quá hạn (từ 00:00 ngày quá hạn thứ 6), chủ nhà có thể cho chuyển nợ sang kỳ tiếp theo hoặc đề nghị chấm dứt. Nếu người thuê từ chối, đề nghị có thể được rút; nhánh chấm dứt theo điều khoản đã ký chỉ hoàn tất khi đã thông báo và thực tế nhận lại căn hộ, thẻ/chìa khóa, tài sản. Khi đó cọc và công nợ được ghi nhận theo điều khoản ký; HomeSpace không tự chiếm hữu hay cưỡng chế căn hộ.
     - Toàn văn điều khoản quá hạn, phí chậm trả và phương án chấm dứt đã được backend chốt: {{contract.specialTerms}}
 13. ĐIỀU 10: GIAO KẾT ĐIỆN TỬ VÀ HIỆU LỰC
     - Hợp đồng được giao kết điện tử qua nền tảng HomeSpace theo Luật Giao dịch điện tử.
@@ -453,7 +548,15 @@ BỐI CẢNH VÀ VAI TRÒ:
 Bạn là chuyên gia soạn thảo hợp đồng bất động sản tại Việt Nam cho nền tảng HomeSpace. HomeSpace sử dụng thư viện poi-tl để tự động điền các placeholder dạng {{variable}} và bảng động dạng {{#table}} vào file Word (.docx).
 
 NHIỆM VỤ:
-Soạn toàn văn file Word mẫu "HỢP ĐỒNG THUÊ PHÒNG TRỌ" (dành cho phòng trọ trong dãy trọ, nhà nhiều phòng cho thuê hoặc căn hộ dịch vụ chia phòng) theo chuẩn Schema V3. Văn bản phải rõ ràng, thiết thực, ghi rõ tài khoản ngân hàng hai bên, chuyển khoản trực tiếp, tập trung vào an ninh trật tự, giờ giấc ra vào, PCCC (đặc biệt là sạc xe điện và thiết bị đun nấu), đăng ký tạm trú và chia sẻ không gian chung.
+Tạo mới hoàn toàn file Word mẫu "HỢP ĐỒNG THUÊ PHÒNG TRỌ" (dành cho phòng trọ trong dãy trọ, nhà nhiều phòng cho thuê hoặc căn hộ dịch vụ chia phòng) theo chuẩn Schema V3. Văn bản phải rõ ràng, thiết thực, ghi rõ tài khoản ngân hàng hai bên, chuyển khoản trực tiếp, tập trung vào an ninh trật tự, giờ giấc ra vào, PCCC (đặc biệt là sạc xe điện và thiết bị đun nấu), đăng ký tạm trú và chia sẻ không gian chung.
+
+CHÍNH SÁCH LISTING VÀ BÀN GIAO (BẮT BUỘC, KHÔNG CẦN MẪU WORD CŨ):
+Chỉ dùng dữ liệu backend đã đóng băng. Đặt {{#policiesTable}} đúng một lần thành đoạn riêng trong Điều 8; backend sinh bảng “Chính sách | Quy định áp dụng”, không dựng sẵn hàng/bảng rỗng. Nhóm chung gồm thú cưng, hút thuốc, cho thuê lại, khách qua đêm, thông báo kiểm tra, hạn báo trước chấm dứt và hạn hoàn cọc. Phòng trọ: nhóm chung, sử dụng không gian chung và giờ yên tĩnh/sinh hoạt. Giữ đúng ba trạng thái cho phép / không cho phép / cần chủ nhà chấp thuận trước cùng ghi chú. Không suy quyền từ tiện ích, không viết cứng 30 ngày/15 ngày/22:00, không tự bịa phí hoặc hạn chế. Mọi câu liên quan phải tham chiếu Bảng chính sách. Phạt đóng trễ chỉ cấu hình lúc soạn hợp đồng cùng công tơ ban đầu, không thuộc Listing; chỉ xuất qua {{contract.specialTerms}} đúng một lần ở Điều 9. Câu chỉ dẫn tạo mẫu/mã nội bộ không in vào Word. Tạo DOCX chứa marker trong một run; kiểm tra XML, render mọi trang với ít/nhiều dòng và dữ liệu chính sách đối lập. Không sửa PDF đã ký. Trả file DOCX tải về và tóm tắt kiểm tra, không chỉ trả Markdown; không tạo file prompt phụ. Nếu thiếu công cụ render, nói rõ phần chưa kiểm chứng.
+
+KIỂM TRA KHÔNG BỎ SÓT (PHẢI THỰC HIỆN TRÊN DOCX ĐÃ LƯU):
+Bộ 28 mã bắt buộc của mẫu này: {{landlord.fullName}}, {{landlord.phone}}, {{landlord.bankName}}, {{landlord.bankAccountNumber}}, {{landlord.bankAccountHolder}}, {{tenant.fullName}}, {{tenant.phone}}, {{tenant.occupantCount}}, {{tenant.bankName}}, {{tenant.bankAccountNumber}}, {{tenant.bankAccountHolder}}, {{property.fullAddress}}, {{property.areaText}}, {{property.propertyType}}, {{lease.startDateText}}, {{lease.endDateText}}, {{lease.durationMonths}}, {{lease.durationText}}, {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{contract.number}}, {{contract.signingDate}}, {{#chargesTable}}, {{property.unitNumber}}.
+Marker nghiệp vụ bổ sung phải giữ: {{#propertyFeaturesTable}}, {{#equipmentTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}, {{#policiesTable}}, {{contract.specialTerms}}, {{meters.electricityInitial}}, {{meters.waterInitial}}.
+Đặt câu “Loại hình bất động sản: {{property.propertyType}}.” trong Điều 1, không thay bằng tên loại hình viết cứng. Sau khi lưu, mở lại DOCX như ZIP, trích marker theo từng paragraph trong body/bảng/header/footer; so sánh tập mã phát hiện với bộ bắt buộc và marker nghiệp vụ trên. Mọi tập mã còn thiếu phải rỗng; không có mã ngoài danh mục hỗ trợ. Các bảng động và contract.specialTerms phải xuất hiện đúng một lần, nằm trong một run; không in checklist/hướng dẫn vào Word. Thiếu thì sửa DOCX và kiểm tra lại, không bàn giao bản lỗi. Tổng số mã không phải tiêu chí đạt. Bàn giao kèm số mã thực tế, danh sách mã thiếu/sai/lặp, kết quả kiểm tra một-run và render trong câu trả lời; không tạo thêm file kiểm tra. Chưa kiểm tra bằng công cụ thì phải nói rõ, không tự tuyên bố đã đạt.
 
 TÊN FILE WORD ĐẦU RA BẮT BUỘC:
 HomeSpace_03_Hop_Dong_Thue_Phong_Tro.docx
@@ -473,7 +576,7 @@ I. CĂN CỨ PHÁP LÝ
 - Luật Kinh doanh bất động sản số 29/2023/QH15 (trong phạm vi áp dụng).
 
 II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
-1. Chỉ sử dụng các placeholder trong danh mục 63 trường được hỗ trợ:
+1. Chỉ sử dụng các placeholder trong danh mục 64 trường được hỗ trợ:
    - Hợp đồng: {{contract.number}}, {{contract.signingDate}}, {{contract.signingCity}}, {{contract.schemaVersion}}, {{contract.revisionNumber}}, {{contract.specialTerms}}
    - Bên A: {{landlord.fullName}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
    - Bên B: {{tenant.fullName}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
@@ -482,7 +585,7 @@ II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
    - Giá thuê & Cọc: {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{rent.paymentMethod}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{deposit.description}}
    - Thanh toán ban đầu: {{payment.initial.status}}, {{payment.initial.payerReportedAt}}, {{payment.initial.payeeConfirmedAt}}, {{payment.initial.confirmedAt}}, {{payment.initial.transferReference}}, {{payment.initial.bankTransactionReference}}, {{payment.initial.totalAmount}}
    - Chỉ số bàn giao: {{meters.electricityInitial}}, {{meters.waterInitial}}
-   - Bảng động: {{#chargesTable}}, {{#equipmentTable}}, {{#propertyFeaturesTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}
+   - Bảng động: {{#chargesTable}}, {{#equipmentTable}}, {{#propertyFeaturesTable}}, {{#amenitiesTable}}, {{#initialPaymentTable}}, {{#policiesTable}}
 2. TUYỆT ĐỐI KHÔNG đưa branchId, tên chi nhánh, mã chi nhánh vào văn bản.
 3. Không tự tạo thêm placeholder mới. Không dùng dấu chấm thủ công (....).
 4. Thanh toán chuyển khoản trực tiếp: Tiền thuê phòng, tiền cọc và hoàn cọc chuyển khoản trực tiếp giữa tài khoản ngân hàng của Bên A và Bên B.
@@ -494,8 +597,8 @@ II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
    - Sai lệch thông tin thì phối hợp cung cấp chứng từ ngân hàng để đối soát.
    - Thay đổi tài khoản nhận tiền phải thông báo và xác nhận trước bằng văn bản/thông điệp dữ liệu.
    - Hoàn cọc chuyển khoản trực tiếp vào tài khoản Bên B sau bàn giao và quyết toán.
- 6. Nguyên tắc tiện ích chung: "Đối với tiện ích dùng chung (khu giặt phơi, nhà để xe, lối đi chung nếu có), Bên B được quyền sử dụng theo nội quy nhà trọ, khung giờ và tình trạng vận hành thực tế, không cấu thành cam kết vận hành liên tục tuyệt đối."
-7. Luồng hóa đơn và quá hạn: `{{contract.signingDate}}` là ngày ký, `{{lease.startDateText}}` là ngày đầu kỳ thuê. Khoản ban đầu chỉ gồm tiền phòng kỳ đầu và cọc nếu có. Hóa đơn cuối kỳ quyết toán dịch vụ, gửi xe, điện/nước thực dùng của kỳ vừa qua và thu tiền phòng kỳ sau nếu còn thời hạn; kỳ cuối chỉ quyết toán phí. Dùng đúng `{{rent.paymentDueDay}}`, không ghi “ngày 01” hoặc “ngày 05” cố định. Khi chủ nhà chốt chỉ số/phát hành, người thuê được xem và thanh toán ngay. Phí chậm trả một lần/mỗi ngày/không áp dụng chỉ theo `{{contract.specialTerms}}`, không tự suy bằng giá thuê một ngày. Từ 00:00 ngày quá hạn thứ 5, chủ nhà có thể chuyển nợ sang kỳ sau hoặc đề nghị hai bên chấm dứt; nếu người thuê từ chối, hợp đồng vẫn hiệu lực, chủ nhà có thể rút đề nghị hoặc xử lý theo điều khoản đã ký sau khi thông báo và thực tế nhận lại phòng, chìa khóa, tài sản. Cọc/tin đăng không tự đổi trước bàn giao. Nội dung 5 ngày/giữ cọc phải được rà soát pháp lý trước khi dùng thật. Đặt `{{contract.specialTerms}}` đúng một lần ở Điều 9.
+ 6. Tiện ích: chỉ in bảng STT và tên từ dữ liệu đã lưu; không thêm đoạn nguyên tắc tiện ích chung, phạm vi, chi phí, khung giờ hoặc quyền sử dụng suy diễn. Phí và chính sách ở hai bảng nghiệp vụ riêng.
+7. Luồng hóa đơn và quá hạn: `{{contract.signingDate}}` là ngày ký, `{{lease.startDateText}}` là ngày đầu kỳ thuê. Khoản ban đầu chỉ gồm tiền phòng kỳ đầu và cọc nếu có. Hóa đơn cuối kỳ quyết toán dịch vụ, gửi xe, điện/nước thực dùng của kỳ vừa qua và thu tiền phòng kỳ sau nếu còn thời hạn; kỳ cuối chỉ quyết toán phí. Dùng đúng `{{rent.paymentDueDay}}`, không ghi “ngày 01” hoặc “ngày 05” cố định. Khi chủ nhà chốt chỉ số/phát hành, người thuê được xem và thanh toán ngay. Phí chậm trả một lần/mỗi ngày/không áp dụng chỉ theo `{{contract.specialTerms}}`, không tự suy bằng giá thuê một ngày. Sau khi kết thúc đủ 5 ngày quá hạn (từ 00:00 ngày quá hạn thứ 6), chủ nhà có thể chuyển nợ sang kỳ sau hoặc đề nghị hai bên chấm dứt; nếu người thuê từ chối, hợp đồng vẫn hiệu lực, chủ nhà có thể rút đề nghị hoặc xử lý theo điều khoản đã ký sau khi thông báo và thực tế nhận lại phòng, chìa khóa, tài sản. Cọc/tin đăng không tự đổi trước bàn giao. Nội dung 5 ngày/giữ cọc phải được rà soát pháp lý trước khi dùng thật. Đặt `{{contract.specialTerms}}` đúng một lần ở Điều 9.
 
 III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 1. QUỐC HIỆU - TIÊU NGỮ - TÊN HỢP ĐỒNG: HỢP ĐỒNG THUÊ PHÒNG TRỌ
@@ -507,6 +610,7 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    - BÊN THUÊ (BÊN B): {{tenant.fullName}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người cư trú: {{tenant.occupantCount}}, Xe máy đăng ký: {{tenant.motorbikeCount}}, Ô tô: {{tenant.carCount}}.
      Tài khoản nhận hoàn trả: Chủ tài khoản: {{tenant.bankAccountHolder}} - Số tài khoản: {{tenant.bankAccountNumber}} - Ngân hàng: {{tenant.bankName}}.
 4. ĐIỀU 1: ĐỐI TƯỢNG VÀ ĐẶC ĐIỂM PHÒNG TRỌ
+   - Loại hình bất động sản: {{property.propertyType}}.
    - Bên A cho Bên B thuê phòng số: {{property.unitNumber}}, tại tầng {{property.floor}}, thuộc địa chỉ: {{property.fullAddress}}.
    - Diện tích phòng: {{property.areaText}}; Phạm vi thuê: {{property.rentalScope}}; Mã tin đăng: {{property.listingCode}}.
    - Bảng đặc điểm kỹ thuật và tiện nghi phòng:
@@ -537,7 +641,7 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 7. ĐIỀU 4: CÁC KHOẢN PHÍ DỊCH VỤ, ĐIỆN, NƯỚC VÀ GỬI XE
    - Bảng đơn giá điện, nước, internet, rác, vệ sinh và gửi xe:
      {{#chargesTable}}
-   - Bảng tiện ích và quyền sử dụng không gian chung:
+   - Bảng tiện ích đã ghi nhận (chỉ STT và tên tiện ích; không thêm cột Phạm vi/Chi phí/Điều kiện, không tự loại máy lạnh/tủ lạnh vì đã có trong nội thất, không tự thêm chỗ để xe hoặc đoạn nguyên tắc sử dụng):
      {{#amenitiesTable}}
 8. ĐIỀU 5: TRANG THIẾT BỊ VÀ NỘI THẤT TRONG PHÒNG
    - Danh mục thiết bị bàn giao trong phòng:
@@ -548,17 +652,19 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    - Cung cấp tài khoản ngân hàng chính xác; kiểm tra và xác nhận kịp thời khi nhận được tiền.
    - Đăng ký tạm trú cho Bên B theo đúng quy định Luật Cư trú; đảm bảo an ninh khu trọ và bảo trì hệ thống cấp thoát nước, điện tổng.
 10. ĐIỀU 7: QUYỀN VÀ NGHĨA VỤ CỦA BÊN B (NỘI QUY VÀ AN TOÀN PCCC)
-    - Cư trú đúng số người đăng ký: {{tenant.occupantCount}} người; giữ đúng số lượng xe: {{tenant.motorbikeCount}} xe máy. Khách ở qua đêm phải báo trước với Bên A và đăng ký theo quy định.
+    - Cư trú đúng số người đăng ký: {{tenant.occupantCount}} người; giữ đúng số lượng xe: {{tenant.motorbikeCount}} xe máy. Quyền và điều kiện khách qua đêm theo Bảng chính sách; thực hiện nghĩa vụ đăng ký cư trú theo pháp luật khi áp dụng, không tự thêm yêu cầu chấp thuận/báo trước trái bảng.
     - TUÂN THỦ NGHIÊM NGẶT PCCC: Không sạc pin/ắc quy xe điện qua đêm không có người trông coi; không đun nấu bằng bếp gas mini không bảo đảm an toàn; không che chắn hành lang, cầu thang thoát nạn.
     - Chuyển khoản tiền thuê và chi phí đầy đủ, đúng hạn vào tài khoản ngân hàng của Bên A.
-    - Giữ gìn an ninh trật tự, không mở nhạc lớn sau 22h00; giữ vệ sinh khu vực chung (sân phơi, nhà xe, hành lang).
-11. ĐIỀU 8: QUY ĐỊNH VỀ VẬT NUÔI VÀ NỘI QUY
-    - Quy định vật nuôi: Chỉ được nuôi nếu khu trọ cho phép (thể hiện tại Bảng tiện ích); Bên B chịu trách nhiệm giữ gìn vệ sinh và không gây ồn ào.
+    - Giữ gìn an ninh trật tự, tuân thủ giờ yên tĩnh đã công bố trong Bảng chính sách; giữ vệ sinh khu vực chung (sân phơi, nhà xe, hành lang).
+11. ĐIỀU 8: CHÍNH SÁCH VẬN HÀNH VÀ ĐIỀU KHOẢN THỎA THUẬN BỔ SUNG
+    - Chính sách vận hành áp dụng cho phòng trọ được ghi tại bảng sau:
+      {{#policiesTable}}
+    - Các quyền, điều kiện, thời hạn, giờ yên tĩnh và sử dụng không gian chung thực hiện đúng Bảng chính sách, đọc cùng trách nhiệm bảo vệ tài sản và tuân thủ pháp luật.
     - Không đặt điều khoản phí chậm trả/chấm dứt ở Điều này; nội dung đó nằm ở Điều 9.
 12. ĐIỀU 9: CHẤM DỨT HỢP ĐỒNG VÀ HOÀN TRẢ PHÒNG
-    - Bên B muốn trả phòng trước hạn phải báo trước tối thiểu theo thỏa thuận, dọn dẹp sạch sẽ và bàn giao lại chìa khóa, hiện trạng phòng.
-    - Quyết toán và chuyển khoản số cọc còn phải hoàn trực tiếp vào tài khoản ngân hàng của Bên B.
-    - Phí chậm trả chỉ theo điều khoản ký, hiển thị riêng trên hóa đơn. Từ ngày quá hạn thứ 5, chủ nhà có thể cho chuyển nợ sang kỳ tiếp theo hoặc đề nghị hai bên chấm dứt; nếu người thuê từ chối thì hợp đồng vẫn hiệu lực, chủ nhà có thể rút đề nghị hoặc xử lý theo điều khoản ký sau khi thông báo và thực tế nhận lại phòng/chìa khóa/tài sản. Cọc và công nợ theo điều khoản ký và bàn giao, không phải HomeSpace tự giữ hay cưỡng chế phòng.
+    - Bên B muốn trả phòng trước hạn phải thông báo trong thời hạn theo Bảng chính sách, dọn dẹp sạch sẽ và bàn giao lại chìa khóa, hiện trạng phòng.
+    - Quyết toán và chuyển khoản số cọc còn phải hoàn trực tiếp vào tài khoản ngân hàng của Bên B trong thời hạn theo Bảng chính sách, đọc cùng điều kiện cọc đã chốt.
+    - Phí chậm trả chỉ theo điều khoản ký, hiển thị riêng trên hóa đơn. Sau khi kết thúc đủ 5 ngày quá hạn (từ 00:00 ngày quá hạn thứ 6), chủ nhà có thể cho chuyển nợ sang kỳ tiếp theo hoặc đề nghị hai bên chấm dứt; nếu người thuê từ chối thì hợp đồng vẫn hiệu lực, chủ nhà có thể rút đề nghị hoặc xử lý theo điều khoản ký sau khi thông báo và thực tế nhận lại phòng/chìa khóa/tài sản. Cọc và công nợ theo điều khoản ký và bàn giao, không phải HomeSpace tự giữ hay cưỡng chế phòng.
     - Toàn văn điều khoản quá hạn, phí chậm trả và phương án chấm dứt đã được backend chốt: {{contract.specialTerms}}
 13. ĐIỀU 10: GIAO KẾT ĐIỆN TỬ VÀ HIỆU LỰC
     - Hợp đồng được giao kết điện tử qua nền tảng HomeSpace theo Luật Giao dịch điện tử.
