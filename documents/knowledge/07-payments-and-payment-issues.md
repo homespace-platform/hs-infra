@@ -21,7 +21,8 @@ Tài liệu này giải thích **quy trình chung**. Nó không cho biết hóa 
 
 ## Các loại khoản thanh toán trong một hợp đồng
 
-- **Khoản thanh toán ban đầu:** thanh toán khi bắt đầu thuê theo hợp đồng, có thể gồm tiền cọc và tiền thuê kỳ đầu tùy thỏa thuận.
+- **Tiền cọc giữ chỗ:** nếu ngày vào ở còn trong tương lai, được thu riêng sau khi chủ nhà chấp nhận. Chỉ được xem là đã nhận khi chủ nhà xác nhận; cọc bằng không không cần chuyển khoản 0 đồng.
+- **Tiền thuê tháng đầu:** mở vào ngày bắt đầu thuê, sau bước xác nhận cọc; không cộng lại khoản cọc đã trả. Trường hợp bắt đầu thuê ngay có thể gộp cọc và tháng đầu trong một khoản chuyển. Mỗi khoản giữ mã chuyển và chứng từ riêng; hóa đơn định kỳ không thu lại tháng đầu.
 - **Hóa đơn định kỳ:** hóa đơn theo từng kỳ thuê. Mỗi hóa đơn có tiền thuê của kỳ, chi phí phát sinh (ví dụ điện, nước, dịch vụ) và có thể có phí chậm thanh toán. Tiền thuê trả trước cho kỳ sau và chi phí đã phát sinh của kỳ trước là hai khoản khác nhau, dù có thể nằm trong cùng một hóa đơn.
 - **Quyết toán cuối hợp đồng:** khi kết thúc thuê, các chi phí cuối kỳ, khoản khấu trừ (nếu có) và tiền cọc được tính trong bước tất toán. Có thể phát sinh khoản hoàn cọc cho người thuê hoặc khoản người thuê còn phải trả.
 

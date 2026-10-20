@@ -19,6 +19,14 @@ Trạng thái hiện tại là thông tin realtime. Hãy kiểm tra trang quản
 
 Chưa thể kết luận chỉ từ việc gửi yêu cầu. Hãy theo dõi trạng thái trong ứng dụng và hoàn thành các bước được hiển thị. Hợp đồng và các thỏa thuận giữa các bên xác định điều kiện thuê.
 
+## Đặt cọc trước thì đã phải trả tháng đầu và ký ngay chưa?
+
+Nếu ngày vào ở còn trong tương lai, sau khi chủ nhà chấp nhận chỉ mở tiền cọc. Sau khi chủ nhà xác nhận cọc, hồ sơ chờ ngày bắt đầu thuê để mở tiền tháng đầu và ký. Thời hạn cho từng bước hiển thị riêng trong tiến trình nhận nhà.
+
+## Xin ký sớm có đổi ngày bắt đầu thuê không?
+
+Có. Đề nghị nhận nhà và bắt đầu hợp đồng sớm được chủ nhà đồng ý sẽ đổi ngày bắt đầu, ngày kết thúc và các kỳ hóa đơn theo ngày mới, giữ thời hạn và đơn giá đã chốt. Ngày mới chưa được duyệt thì ngày thuê cũ vẫn áp dụng.
+
 ## Tôi đã chuyển khoản nhưng yêu cầu vẫn chưa cập nhật?
 
 Giữ chứng từ, kiểm tra thông tin thanh toán và trạng thái trên ứng dụng. Việc bạn báo đã chuyển khoản chưa có nghĩa là người nhận đã xác nhận nhận được tiền. Nếu đã gửi chứng từ nhưng chưa có kết quả, dùng kênh hỗ trợ chính thức. Khi bạn đã đăng nhập, AI có thể đọc trạng thái khoản thanh toán thuộc hợp đồng của bạn để giải thích.

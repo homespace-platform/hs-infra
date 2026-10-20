@@ -17,6 +17,8 @@ Cách ký phụ thuộc cấu hình của hệ thống. Khi bật ký số VNPT 
 
 ## Thuật ngữ thường gặp
 
+Trong luồng nhận nhà mới, bản nháp có thể được chuẩn bị sau khi xác nhận cọc. Ký chính thức chỉ mở từ ngày bắt đầu thuê đã thống nhất và sau khi xác nhận tiền tháng đầu. Đề nghị “nhận nhà và bắt đầu hợp đồng sớm” được chủ nhà chấp nhận sẽ đổi ngày thuê và kỳ hóa đơn sang ngày mới; không giữ nguyên ngày thuê cũ. Ngày lập văn bản là ngày kết xuất, khác với thời điểm chữ ký thực tế của từng bên; không ghi lùi chữ ký khi xử lý muộn. Các hợp đồng/gia hạn/phụ lục đã ký trước hoặc có ngày áp dụng riêng vẫn cần đối chiếu đúng ngày hiệu lực.
+
 - **Bên cho thuê:** cá nhân/tổ chức cho thuê bất động sản theo hợp đồng.
 - **Bên thuê:** cá nhân/tổ chức thuê bất động sản theo hợp đồng.
 - **Tiền thuê:** khoản tiền thuê theo kỳ được ghi trong hợp đồng; thời điểm và phương thức trả phụ thuộc thỏa thuận.

@@ -26,7 +26,7 @@ ALTER TABLE public.deposit_records ADD COLUMN IF NOT EXISTS retained_amount nume
 -- ddl-auto=update không luôn cập nhật CHECK của enum đã tồn tại.
 ALTER TABLE public.payment_requests DROP CONSTRAINT IF EXISTS payment_requests_type_check;
 ALTER TABLE public.payment_requests ADD CONSTRAINT payment_requests_type_check CHECK
-  (type IN ('INITIAL','MONTHLY_RENT','UTILITY','OTHER_CHARGE','DEPOSIT_REFUND','INITIAL_PAYMENT_REFUND','DEPOSIT_ADJUSTMENT'));
+  (type IN ('RESERVATION_DEPOSIT','INITIAL','MONTHLY_RENT','UTILITY','OTHER_CHARGE','DEPOSIT_REFUND','INITIAL_PAYMENT_REFUND','DEPOSIT_ADJUSTMENT'));
 
 CREATE TEMP TABLE hs_seed_config ON COMMIT DROP AS
 SELECT u.id AS owner_id

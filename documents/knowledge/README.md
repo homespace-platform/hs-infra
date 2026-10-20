@@ -1,5 +1,7 @@
 # HomeSpace RAG Knowledge Base
 
+Cập nhật nguồn nhận nhà 21/10/2026: tài liệu `06`, `07`, `08`, `13` mô tả cọc trước/ngày bắt đầu thuê/tháng đầu và đề nghị bắt đầu sớm. Sau khi duyệt nội dung, Admin upload/apply các file thay đổi và chờ version được kích hoạt. Sửa nguồn trên đĩa chưa thay RAG runtime; không đưa dữ liệu giao dịch cá nhân vào knowledge.
+
 Kho tài liệu nguồn cho AI Agent trả lời câu hỏi về HomeSpace. Trong giai đoạn phát triển, toàn bộ tài liệu dùng Markdown. Mỗi chủ đề là một file riêng để dễ cập nhật, kiểm duyệt và embedding. Khi triển khai production, tài liệu chính sách có thể được thay bằng PDF đã ban hành; không cần đổi nội dung phân loại của knowledge base.
 
 > **Trạng thái chung: WORKING DRAFT.** Nội dung mô tả tính năng được tổng hợp từ hệ thống hiện tại và cần product owner rà soát trước khi phát hành. Điều khoản, chính sách và nội dung pháp lý trong thư mục này là đề xuất phục vụ phát triển, không phải cam kết hoặc tư vấn pháp lý chính thức.
