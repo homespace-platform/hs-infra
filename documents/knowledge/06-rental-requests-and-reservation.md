@@ -4,9 +4,9 @@ title: Yêu cầu thuê và quy trình giữ chỗ
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.1.0
+version: 0.2.0
 locale: vi-VN
-last_reviewed: null
+last_reviewed: 2026-10-21
 ---
 
 # Yêu cầu thuê và quy trình giữ chỗ
@@ -27,11 +27,23 @@ Sau khi cọc đã được xác nhận và chưa mở tiền tháng đầu/chư
 
 ## Đối soát và hủy trước khi ký
 
+Khi chưa báo chuyển hoặc nhận tiền, cả người thuê và chủ nhà có thể bấm **Hủy yêu cầu** ở danh sách hoặc chi tiết, kể cả sau khi chủ nhà đã chấp nhận. Không cần chờ hết hạn giữ chỗ. Hệ thống hủy nghĩa vụ chưa trả, giải phóng chỗ xe và trả tin đăng về trạng thái phù hợp điều kiện hiển thị. Yêu cầu còn chờ duyệt bị hủy không làm mất lượt giữ chỗ của người khác. Tiền cọc bằng 0 là miễn cọc, không phải đã chuyển tiền.
+
+Nếu đã chuyển/nhận tiền ngoài hệ thống, không dùng hủy nhanh dù chưa cập nhật chứng từ: cần báo chuyển hoặc yêu cầu đối soát. Đã báo chuyển, xác nhận tiền, chứng từ bị từ chối/tranh chấp hoặc kết quả ký chưa rõ đều chặn hủy nhanh. AI không suy ra tiền đã hoàn hay phòng đã mở chỉ từ việc người dùng nói muốn hủy; cần kiểm tra kết quả thao tác thực tế.
+
+Hủy có thỏa thuận cũng có thể thực hiện sau khi chủ nhà đã ký nhưng người thuê chưa ký: người thuê gửi đề nghị và chủ nhà đồng ý hoàn từng khoản thực nhận. Chữ ký một bên không bị xóa khỏi lịch sử. Nếu chữ ký người thuê đã có, hai bên đã ký đủ hoặc provider đang xử lý/chưa rõ kết quả, cần đối soát trước; không dùng hủy hồ sơ nhận nhà để bỏ qua kết quả ký.
+
 Đã báo chuyển tiền khác với đã được xác nhận nhận tiền. Quá hạn xác nhận hoặc có tranh chấp thì hồ sơ cần đối soát và phòng tiếp tục được giữ; không tự mở phòng cho giao dịch mới. Nếu chưa bắt đầu ký, người thuê có thể đề nghị hủy và hoàn tiền. Chủ nhà đồng ý sau khi đối soát sẽ tạo nghĩa vụ hoàn từng khoản thực nhận. Người trả thực hiện chuyển khoản, người nhận xác nhận nhận đủ; tạo nghĩa vụ hoàn không có nghĩa tiền đã được chuyển. Không tự tịch thu cọc do quá hạn ký. Quá hạn hoàn tất ký, chủ nhà có thể mở lại hạn sau khi kiểm tra hồ sơ; thời điểm chữ ký thực tế vẫn được giữ đúng.
 
 Người dùng cần xem kỹ số tiền, mục đích thanh toán và hướng dẫn trên màn hình trước khi chuyển khoản. Yêu cầu thuê chưa đồng nghĩa với hợp đồng đã có hiệu lực hoặc quyền sở hữu/thuê đã hoàn tất.
 
 ## Khi yêu cầu hết hạn hoặc bị hủy
+
+Trường hợp đã xác nhận cọc nhưng quá hạn trả tháng đầu hoặc quá hạn ký do người thuê có nhánh xử lý riêng. Chỉ áp dụng nếu người thuê đã chủ động đồng ý điều kiện `RESERVATION_DEFAULT_V1` trước thanh toán, chủ nhà có văn bản sẵn sàng và lỗi quá hạn thuộc người thuê. Hạn ký riêng của người thuê bắt đầu sau chữ ký SmartCA thành công của chủ nhà, không tính lúc chủ nhà còn đang chuẩn bị.
+
+Chủ nhà gửi thông báo cuối cùng và mở thêm ít nhất 24 giờ để người thuê thanh toán/ký hoặc phản hồi. Không tự giữ cọc khi vừa hết hạn. Sau thời hạn, chủ nhà phải xác nhận đã thông báo và chưa bàn giao mới có thể chốt hủy, giữ 100% cọc thực nhận. Tiền thuê đã nhận phải tạo nghĩa vụ hoàn riêng; không giữ cả tiền thuê cùng cọc. Đang báo chuyển, tranh chấp, có phản hồi hoặc chưa rõ kết quả ký đều chặn giữ cọc để đối soát. Hồ sơ không có thỏa thuận giữ cọc không được áp dụng hồi tố. Tin chỉ trở lại hiển thị nếu còn đủ điều kiện đăng; lịch sử tiền/chứng từ không bị xóa.
+
+Đây là mô tả nghiệp vụ phần mềm, không phải kết luận pháp lý hay xác nhận một người cụ thể mất cọc. AI không thực hiện chốt giữ cọc và không suy ra kết quả từ việc im lặng; phải xem trạng thái thực tế hoặc hướng dẫn mở tiến trình nhận nhà.
 
 Nếu thời hạn giữ chỗ kết thúc hoặc yêu cầu bị hủy, tình trạng bất động sản và khoản tiền liên quan phải được kiểm tra bằng dữ liệu giao dịch hiện hành. AI không được dựa vào tài liệu này để khẳng định một khoản tiền đã được hoàn hay một yêu cầu cụ thể còn hiệu lực.
 

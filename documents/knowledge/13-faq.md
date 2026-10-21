@@ -4,9 +4,9 @@ title: Câu hỏi thường gặp HomeSpace
 audience: [tenant, landlord, public]
 visibility: public
 status: draft
-version: 0.2.0
+version: 0.3.0
 locale: vi-VN
-last_reviewed: 2026-10-16
+last_reviewed: 2026-10-21
 ---
 
 # Câu hỏi thường gặp HomeSpace
@@ -22,6 +22,14 @@ Chưa thể kết luận chỉ từ việc gửi yêu cầu. Hãy theo dõi tr�
 ## Đặt cọc trước thì đã phải trả tháng đầu và ký ngay chưa?
 
 Nếu ngày vào ở còn trong tương lai, sau khi chủ nhà chấp nhận chỉ mở tiền cọc. Sau khi chủ nhà xác nhận cọc, hồ sơ chờ ngày bắt đầu thuê để mở tiền tháng đầu và ký. Thời hạn cho từng bước hiển thị riêng trong tiến trình nhận nhà.
+
+## Tiền thuê tháng đầu ở đâu trong màn hình hóa đơn?
+
+Trong **Hóa đơn theo kỳ**, dưới tên “Tiền thuê tháng 1”. Không còn block Thanh toán ban đầu riêng. **Cọc & hoàn cọc** theo dõi cọc, khoản hoàn và tiến trình nhận nhà. Không chuyển thêm tiền chỉ vì cùng khoản chuyển xuất hiện trong lịch sử nhận nhà và hóa đơn tháng 1; hãy kiểm tra cùng mã khoản thanh toán.
+
+## Đã cọc nhưng quá hạn trả tháng đầu hoặc không ký có tự mất cọc không?
+
+Không tự động. Phải có đồng ý điều kiện giữ cọc trước thanh toán, quá hạn thuộc người thuê, thông báo cuối ít nhất 24 giờ và chủ nhà chốt khi đã đủ điều kiện. Người thuê có thể phản hồi/yêu cầu đối soát; khoản đang báo chuyển, tranh chấp hoặc kết quả ký chưa rõ đều chặn giữ cọc. Tiền thuê đã nhận phải hoàn riêng. AI không tự kết luận hay chốt mất cọc.
 
 ## Xin ký sớm có đổi ngày bắt đầu thuê không?
 

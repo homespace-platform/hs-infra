@@ -11,6 +11,7 @@
 -- Không cần chạy file sửa bổ sung. ID được tạo xác định, các bản ghi được upsert.
 -- Chạy lại sẽ đồng bộ lại tiện ích/nội thất của đúng các ID seed, không đụng tin thật.
 -- Mỗi loại hình/địa bàn có đủ mẫu đầy đủ, cơ bản, một phần và không nội thất.
+-- Tất cả tin mẫu đều đặt cọc 1 tháng tiền thuê (MONTH_COUNT), không dùng cọc tiền cố định.
 -- Tin thuộc tài khoản bootstrap username=homespace (role ADMIN trong DB local hiện tại).
 -- Ảnh: dùng đúng 3 object S3 do người dùng cung cấp; cả 3 ảnh được gắn vào mỗi tin.
 -- Mã/tên tỉnh và phường/xã/đặc khu lấy nguyên nguồn; số nhà/tên đường là dữ liệu giả lập,
@@ -347,13 +348,9 @@ WITH inputs AS (
                    ELSE 1400000 + (price_var % 95) * 40000 END
            END::numeric(18,2) AS price_amount,
            current_date + (extra_var % 75) AS available_from,
-           CASE WHEN n % 5 = 0 THEN 'FIXED_AMOUNT' ELSE 'MONTH_COUNT' END AS deposit_type,
-           CASE WHEN n % 5 = 0 THEN
-             (CASE category WHEN 'HOUSE' THEN 6000000 + (n % 8)*1000000
-                            WHEN 'APARTMENT' THEN 4000000 + (n % 6)*750000
-                            ELSE 1500000 + (n % 7)*250000 END)::numeric(18,2)
-           END AS deposit_amount,
-           CASE WHEN n % 5 = 0 THEN NULL ELSE 1 + (n % 3) END AS deposit_months,
+           'MONTH_COUNT' AS deposit_type,
+           NULL::numeric(18,2) AS deposit_amount,
+           1 AS deposit_months,
            CASE WHEN category='ROOM' AND n % 11 = 0 THEN 'PERSON_MONTH'
                 WHEN category='ROOM' THEN 'ROOM_MONTH' ELSE 'MONTH' END AS price_unit,
            3 AS min_lease_months,
@@ -967,8 +964,9 @@ BEGIN
     IF EXISTS (
         SELECT 1 FROM hs_seed_rows s JOIN listings l ON l.id=s.listing_id::text
         WHERE l.available_from IS NULL OR l.payment_cycle IS NULL OR l.minimum_lease_months<1
-           OR (l.deposit_type='MONTH_COUNT' AND (l.deposit_months IS NULL OR l.deposit_months<1))
-           OR (l.deposit_type='FIXED_AMOUNT' AND (l.deposit_amount IS NULL OR l.deposit_amount<=0))
+           OR l.deposit_type IS DISTINCT FROM 'MONTH_COUNT'
+           OR l.deposit_months IS DISTINCT FROM 1
+           OR l.deposit_amount IS NOT NULL
            OR NOT EXISTS (SELECT 1 FROM listing_viewing_days d WHERE d.listing_id=l.id)
            OR NOT EXISTS (SELECT 1 FROM listing_viewing_slots v WHERE v.listing_id=l.id)
            OR (SELECT count(*) FROM listing_media m WHERE m.listing_id=l.id AND m.active IS TRUE)<>3

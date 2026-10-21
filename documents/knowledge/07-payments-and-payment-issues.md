@@ -4,9 +4,9 @@ title: Hướng dẫn thanh toán và xử lý sự cố
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.2.0
+version: 0.3.0
 locale: vi-VN
-last_reviewed: 2026-10-16
+last_reviewed: 2026-10-21
 ---
 
 # Hướng dẫn thanh toán và xử lý sự cố
@@ -27,6 +27,10 @@ Tài liệu này giải thích **quy trình chung**. Nó không cho biết hóa 
 - **Quyết toán cuối hợp đồng:** khi kết thúc thuê, các chi phí cuối kỳ, khoản khấu trừ (nếu có) và tiền cọc được tính trong bước tất toán. Có thể phát sinh khoản hoàn cọc cho người thuê hoặc khoản người thuê còn phải trả.
 
 ## Báo đã chuyển khoản không phải là đã nhận tiền
+
+Giao diện Hóa đơn chỉ có **Hóa đơn theo kỳ** và **Cọc & hoàn cọc**. Tiền thuê tháng 1 nằm trong danh sách hóa đơn theo kỳ, dùng lại khoản chuyển và chứng từ ban đầu, không sinh thêm QR/công nợ. Cọc không nằm trong tổng hóa đơn tiền thuê; nếu chuyển gộp thì màn hình giải thích số tiền chuyển gốc có cả cọc. Các kỳ sau không thu lại tiền thuê tháng 1.
+
+Nếu hồ sơ bị hủy trước khi hoàn tất ký do vi phạm đã thông báo và đủ điều kiện, chỉ cọc thực nhận được chốt giữ; tiền thuê đã xác nhận tạo nghĩa vụ hoàn riêng. “Đã tạo nghĩa vụ hoàn” không có nghĩa người thuê đã nhận tiền. Trạng thái giữ cọc, khoản hoàn và thời hạn cụ thể phải lấy từ dữ liệu giao dịch, không suy luận từ RAG.
 
 Trạng thái thanh toán có nhiều bước. **Người trả báo đã chuyển khoản** chỉ là bước người trả cung cấp thông tin; khoản tiền chỉ được xem là đã nhận khi **người nhận xác nhận**. Cùng nguyên tắc áp dụng cho hoàn cọc: “đã báo chuyển hoàn” khác với “người thuê đã xác nhận nhận được”. AI không tự xác nhận hộ ai và không kết luận đã nhận tiền chỉ vì có báo chuyển khoản.
 
