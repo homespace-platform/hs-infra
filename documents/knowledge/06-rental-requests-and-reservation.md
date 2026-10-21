@@ -15,6 +15,8 @@ last_reviewed: 2026-10-21
 
 Sau khi xem tin và trao đổi các điều kiện, người thuê có thể gửi yêu cầu thuê qua ứng dụng nếu tin và tài khoản đủ điều kiện. Chủ nhà xem yêu cầu rồi chấp nhận hoặc từ chối trong hệ thống. Người thuê có thể hủy yêu cầu khi trạng thái hiện tại cho phép.
 
+Yêu cầu thuê mới bắt buộc người thuê chủ động tích **Tôi đã đọc và đồng ý điều kiện giữ chỗ** trước khi gửi. Checkbox không tích sẵn; cả giao diện và API đều chặn nếu chưa đồng ý. Hệ thống lưu phiên bản điều kiện và thời điểm đồng ý. Đồng ý không có nghĩa chủ nhà tự động giữ cọc: vẫn phải đủ điều kiện vi phạm, thông báo cuối cùng, thời hạn phản hồi và đối soát. Hồ sơ cũ chưa có đồng ý không được tự gán đồng ý hoặc áp dụng hồi tố.
+
 ## Khi chủ nhà chấp nhận
 
 Khi chủ nhà chấp nhận, tin chuyển sang giữ chỗ và mở khoản thanh toán đầu tiên. Hạn thanh toán giữ chỗ bắt đầu từ lúc chấp nhận, khác với hạn chờ chủ nhà phản hồi yêu cầu. Các yêu cầu thuê khác vẫn chờ, không tự được chấp nhận. Lịch xem nhà chưa bị hủy chỉ vì một lượt giữ chỗ ngắn hạn; khi tài sản được cho thuê chính thức, hệ thống xử lý các lịch liên quan.
