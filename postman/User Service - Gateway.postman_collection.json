@@ -347,7 +347,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"provinceCode\": \"79\",\n  \"provinceName\": \"Thành phố Hồ Chí Minh\",\n  \"wardCode\": \"26734\",\n  \"wardName\": \"Phường 5\",\n  \"streetLine\": \"460/6 Nơ Trang Long\"\n}",
+              "raw": "{\n  \"refId\": \"{{vietmapRefId}}\",\n  \"addressNote\": \"Căn 401, tầng 4\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -365,7 +365,7 @@
                 "address"
               ]
             },
-            "description": "Creates or updates the current user's address. Frontend loads province/ward from hs-location-service, then sends codes + names + street line."
+            "description": "Creates or updates the current user's address from a selected Vietmap v4 refId. Core resolves and saves canonical components and coordinates. Set vietmapRefId from /locations/autocomplete or /locations/geocode; only refId and optional addressNote are accepted."
           },
           "response": []
         },

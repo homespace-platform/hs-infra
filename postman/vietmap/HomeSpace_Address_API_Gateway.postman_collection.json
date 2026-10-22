@@ -1,0 +1,268 @@
+{
+  "info": {
+    "name": "HomeSpace - Address API (Vietmap v4 via Gateway)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "4 API địa chỉ dùng lại trong HomeSpace. base_url đã gồm /api/v1. Điền access_token của user active; VIETMAP_API_KEY chỉ cấu hình backend, KHÔNG nhập key Vietmap ở đây. Chỉ Send thủ công theo nhu cầu, không chạy Runner lặp vì mỗi request có thể tốn quota. Tất cả GET chỉ tra cứu, không tự ghi CSDL. Luôn dùng địa chỉ mới sau sáp nhập. Không tự chọn kết quả đầu tiên: tự chọn và dán refId vào ref_id trước khi gọi Place."
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/api/v1"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "search_text",
+      "value": "Trần Phú"
+    },
+    {
+      "key": "full_address",
+      "value": "197 Trần Phú, Phường Chợ Quán, Thành phố Hồ Chí Minh"
+    },
+    {
+      "key": "ref_id",
+      "value": ""
+    },
+    {
+      "key": "latitude",
+      "value": "10.759222947000069"
+    },
+    {
+      "key": "longitude",
+      "value": "106.67590269100003"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Autocomplete v4 - gợi ý khi nhập",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "description": "Nhập tên đường/số nhà. Kết quả tối đa 10 gợi ý địa chỉ mới. Chọn một refId và dùng endpoint Place; không tự động lưu địa chỉ.",
+        "url": {
+          "raw": "{{base_url}}/locations/autocomplete?text={{search_text}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "locations",
+            "autocomplete"
+          ],
+          "query": [
+            {
+              "key": "text",
+              "value": "{{search_text}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) {",
+              "  const body = pm.response.json();",
+              "  pm.test(\"HomeSpace success envelope\", () => pm.expect(body.code).to.eql(1000));",
+              "  pm.test(\"Suggestions contract (an empty array is valid)\", () => {",
+              "    pm.expect(body.result).to.be.an(\"array\");",
+              "    pm.expect(body.result.length).to.be.at.most(10);",
+              "    body.result.forEach(item => {",
+              "      pm.expect(item.refId).to.be.a(\"string\").and.not.empty;",
+              "      pm.expect(item.display).to.be.a(\"string\").and.not.empty;",
+              "      pm.expect(item.address).to.be.a(\"string\");",
+              "    });",
+              "  });",
+              "}"
+            ]
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "02 Geocode v4 - tìm địa chỉ đầy đủ",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "description": "Tìm bằng chuỗi địa chỉ đầy đủ. Trả các ứng viên refId/display; gọi Place với refId được chọn để lấy tọa độ.",
+        "url": {
+          "raw": "{{base_url}}/locations/geocode?text={{full_address}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "locations",
+            "geocode"
+          ],
+          "query": [
+            {
+              "key": "text",
+              "value": "{{full_address}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) {",
+              "  const body = pm.response.json();",
+              "  pm.test(\"HomeSpace success envelope\", () => pm.expect(body.code).to.eql(1000));",
+              "  pm.test(\"Suggestions contract (an empty array is valid)\", () => {",
+              "    pm.expect(body.result).to.be.an(\"array\");",
+              "    pm.expect(body.result.length).to.be.at.most(10);",
+              "    body.result.forEach(item => {",
+              "      pm.expect(item.refId).to.be.a(\"string\").and.not.empty;",
+              "      pm.expect(item.display).to.be.a(\"string\").and.not.empty;",
+              "      pm.expect(item.address).to.be.a(\"string\");",
+              "    });",
+              "  });",
+              "}"
+            ]
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "03 Place v4 - ref_id -> tọa độ",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "description": "Dán nguyên vẹn refId đã chọn từ Autocomplete/Geocode/Reverse vào biến ref_id. API HomeSpace dùng refId; backend chuyển thành refid của Vietmap. GET không ghi CSDL.",
+        "url": {
+          "raw": "{{base_url}}/locations/place?refId={{ref_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "locations",
+            "place"
+          ],
+          "query": [
+            {
+              "key": "refId",
+              "value": "{{ref_id}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) {",
+              "  const body = pm.response.json();",
+              "  pm.test(\"HomeSpace success envelope\", () => pm.expect(body.code).to.eql(1000));",
+              "  pm.test(\"Resolved address and coordinates\", () => {",
+              "    pm.expect(body.result.refId).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(body.result.display).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(body.result.latitude).to.be.a(\"number\").and.within(-90, 90);",
+              "    pm.expect(body.result.longitude).to.be.a(\"number\").and.within(-180, 180);",
+              "    pm.expect(body.result.districtId).to.eql(null);",
+              "    pm.expect(body.result.district).to.eql(null);",
+              "  });",
+              "}"
+            ]
+          }
+        }
+      ],
+      "response": []
+    },
+    {
+      "name": "04 Reverse v4 - tọa độ -> địa chỉ",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "description": "Nhập latitude/longitude để lấy danh sách địa chỉ mới gần điểm đó. Chọn refId rồi gọi Place nếu cần đầy đủ thành phần địa chỉ và tọa độ chuẩn hóa.",
+        "url": {
+          "raw": "{{base_url}}/locations/reverse?latitude={{latitude}}&longitude={{longitude}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "locations",
+            "reverse"
+          ],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "{{latitude}}"
+            },
+            {
+              "key": "longitude",
+              "value": "{{longitude}}"
+            }
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) {",
+              "  const body = pm.response.json();",
+              "  pm.test(\"HomeSpace success envelope\", () => pm.expect(body.code).to.eql(1000));",
+              "  pm.test(\"Suggestions contract (an empty array is valid)\", () => {",
+              "    pm.expect(body.result).to.be.an(\"array\");",
+              "    pm.expect(body.result.length).to.be.at.most(10);",
+              "    body.result.forEach(item => {",
+              "      pm.expect(item.refId).to.be.a(\"string\").and.not.empty;",
+              "      pm.expect(item.display).to.be.a(\"string\").and.not.empty;",
+              "      pm.expect(item.address).to.be.a(\"string\");",
+              "    });",
+              "  });",
+              "}"
+            ]
+          }
+        }
+      ],
+      "response": []
+    }
+  ]
+}

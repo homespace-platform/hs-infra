@@ -1,0 +1,253 @@
+{
+  "purpose": "Integration audit fixture only; not business seed data and not imported into the database.",
+  "checkedOn": "2026-10-22",
+  "source": "Live calls to the first four requests in HomeSpace_VIETMAP_Postman_Collection.json",
+  "requests": {
+    "autocomplete": {
+      "httpStatus": 200,
+      "resultCount": 10,
+      "selectedResult": {
+        "ref_id": "vm:ADDRESS:MM03541B04565B050A19550B5B0B140D0C0C5A165351004C1B06055C0452015F095C010F5B0B5F040A54426140CCDC950C127D5CF68F586B030D4507",
+        "distance": 0,
+        "address": "Phường Chợ Quán, Thành phố Hồ Chí Minh",
+        "name": "197 Trần Phú",
+        "display": "197 Trần Phú, Phường Chợ Quán, Thành phố Hồ Chí Minh",
+        "boundaries": [
+          {
+            "type": 2,
+            "id": 18700,
+            "name": "Chợ Quán",
+            "prefix": "Phường",
+            "full_name": "Phường Chợ Quán"
+          },
+          {
+            "type": 0,
+            "id": 12,
+            "name": "Hồ Chí Minh",
+            "prefix": "Thành phố",
+            "full_name": "Thành phố Hồ Chí Minh"
+          }
+        ],
+        "categories": [],
+        "entry_points": [],
+        "data_old": {
+          "ref_id": "vm:ADDRESS:MM03541B04565B050A19550B5B0B140D0C0C5A165351004C1B06055C0452015F095C010F5B0B5F040A54426140CCDC950C127D5CF68F5879101453",
+          "distance": 0,
+          "address": "Phường 4, Quận 5, Thành phố Hồ Chí Minh",
+          "name": "197 Trần Phú",
+          "display": "197 Trần Phú Phường 4, Quận 5, Thành phố Hồ Chí Minh",
+          "boundaries": [
+            {
+              "type": 2,
+              "id": 656652,
+              "name": "4",
+              "prefix": "Phường",
+              "full_name": "Phường 4"
+            },
+            {
+              "type": 1,
+              "id": 1292,
+              "name": "5",
+              "prefix": "Quận",
+              "full_name": "Quận 5"
+            },
+            {
+              "type": 0,
+              "id": 12,
+              "name": "Hồ Chí Minh",
+              "prefix": "Thành phố",
+              "full_name": "Thành phố Hồ Chí Minh"
+            }
+          ],
+          "categories": [],
+          "entry_points": [],
+          "data_old": null,
+          "data_new": null,
+          "is_match_address": null,
+          "partner_code": null
+        },
+        "data_new": null,
+        "is_match_address": null,
+        "partner_code": null
+      }
+    },
+    "geocode": {
+      "httpStatus": 200,
+      "resultCount": 8,
+      "selectedResult": {
+        "ref_id": "geocode:RAkPcicmZ3d-NQhac2kADHYlbFAkBiEeAQAkCVcMURAxStfYlQoVYwuhjwkWVwJMBRgNBwdRFFZWBlIdAQZcCVcFUB5TDwNbAlYDClJSBQIdVQkkU0FHUA5SFFVaYhDMi5cLEjZdpYo",
+        "distance": 0,
+        "address": "Phường Chợ Quán, Thành phố Hồ Chí Minh",
+        "name": "197 Trần Phú",
+        "display": "197 Trần Phú, Phường Chợ Quán, Thành phố Hồ Chí Minh",
+        "boundaries": [
+          {
+            "type": 2,
+            "id": 18700,
+            "name": "Chợ Quán",
+            "prefix": "Phường",
+            "full_name": "Phường Chợ Quán"
+          },
+          {
+            "type": 0,
+            "id": 12,
+            "name": "Hồ Chí Minh",
+            "prefix": "Thành phố",
+            "full_name": "Thành phố Hồ Chí Minh"
+          }
+        ],
+        "categories": [],
+        "entry_points": [],
+        "data_old": {
+          "ref_id": "geocode:RAkPcicmZ3d-NQhac2kADHYlbFAkBiEeAQAkCVcMURAxStfYlQoVYwuhjwkWVwJMBRgNBwdRFFZWBlIdAQZcCVcFUB5TDwNbAlYDClJSBQIdVQk2QFhRDgRaGlk1RIOXll5FYg723A",
+          "distance": 0,
+          "address": "Phường 4, Quận 5, Thành phố Hồ Chí Minh",
+          "name": "197 Trần Phú",
+          "display": "197 Trần Phú Phường 4, Quận 5, Thành phố Hồ Chí Minh",
+          "boundaries": [
+            {
+              "type": 2,
+              "id": 656652,
+              "name": "4",
+              "prefix": "Phường",
+              "full_name": "Phường 4"
+            },
+            {
+              "type": 1,
+              "id": 1292,
+              "name": "5",
+              "prefix": "Quận",
+              "full_name": "Quận 5"
+            },
+            {
+              "type": 0,
+              "id": 12,
+              "name": "Hồ Chí Minh",
+              "prefix": "Thành phố",
+              "full_name": "Thành phố Hồ Chí Minh"
+            }
+          ],
+          "categories": [],
+          "entry_points": [],
+          "data_old": null,
+          "data_new": null,
+          "partner_code": null
+        },
+        "data_new": null,
+        "partner_code": null
+      }
+    },
+    "place": {
+      "httpStatus": 200,
+      "resultCount": 1,
+      "selectedResult": {
+        "display": "197 Trần Phú, Phường Chợ Quán, Thành phố Hồ Chí Minh",
+        "name": "197 Trần Phú",
+        "hs_num": "197",
+        "street": "Trần Phú",
+        "address": "Phường Chợ Quán, Thành phố Hồ Chí Minh",
+        "city_id": 12,
+        "city": "Thành phố Hồ Chí Minh",
+        "district_id": 0,
+        "district": "",
+        "ward_id": 18700,
+        "ward": "Phường Chợ Quán",
+        "lat": 10.759222947000069,
+        "lng": 106.67590269100003,
+        "partner_code": null,
+        "place_detail": null
+      }
+    },
+    "reverse": {
+      "httpStatus": 200,
+      "resultCount": 1,
+      "selectedResult": {
+        "lat": 10.7592229470001,
+        "lng": 106.675902691,
+        "data_old": {
+          "lat": 10.7592229470001,
+          "lng": 106.675902691,
+          "data_old": null,
+          "data_new": null,
+          "plus_code_name": null,
+          "matrix": null,
+          "ref_id": "vm:ADDRESS:MM03541B04565B07001F5F0655021D04040E521D544F005518080057045F045D015C0F163640858F940D42655AEEDC0936405851",
+          "distance": 4.76230720107352e-12,
+          "address": "Phường 4,Quận 5,Thành Phố Hồ Chí Minh",
+          "name": "197 Trần Phú",
+          "display": "197 Trần Phú Phường 4,Quận 5,Thành Phố Hồ Chí Minh",
+          "boundaries": [
+            {
+              "type": 2,
+              "id": 656652,
+              "name": "4",
+              "prefix": "Phường",
+              "full_name": "Phường 4"
+            },
+            {
+              "type": 1,
+              "id": 1292,
+              "name": "5",
+              "prefix": "Quận",
+              "full_name": "Quận 5"
+            },
+            {
+              "type": 0,
+              "id": 12,
+              "name": "Hồ Chí Minh",
+              "prefix": "Thành phố",
+              "full_name": "Thành phố Hồ Chí Minh"
+            }
+          ],
+          "categories": [],
+          "partner_code": null,
+          "entry_points": null
+        },
+        "data_new": null,
+        "plus_code_name": null,
+        "matrix": null,
+        "ref_id": "vm:ADDRESS:MM03541B04565B07001F5F0655021D04040E521D544F005518080057045F045D015C0F163640858F940D42655AEEDC092453414750",
+        "distance": 4.76230720107352e-12,
+        "address": "Phường Chợ Quán,Thành phố Hồ Chí Minh",
+        "name": "197 Trần Phú",
+        "display": "197 Trần Phú Phường Chợ Quán,Thành phố Hồ Chí Minh",
+        "boundaries": [
+          {
+            "type": 2,
+            "id": 18700,
+            "name": "Chợ Quán",
+            "prefix": "Phường",
+            "full_name": "Phường Chợ Quán"
+          },
+          {
+            "type": 0,
+            "id": 12,
+            "name": "Hồ Chí Minh",
+            "prefix": "Thành phố",
+            "full_name": "Thành phố Hồ Chí Minh"
+          }
+        ],
+        "categories": [],
+        "partner_code": null,
+        "entry_points": null
+      }
+    }
+  },
+  "proposedSavedAddress": {
+    "refId": "geocode:RAkPcicmZ3d-NQhac2kADHYlbFAkBiEeAQAkCVcMURAxStfYlQoVYwuhjwkWVwJMBRgNBwdRFFZWBlIdAQZcCVcFUB5TDwNbAlYDClJSBQIdVQkkU0FHUA5SFFVaYhDMi5cLEjZdpYo",
+    "display": "197 Trần Phú, Phường Chợ Quán, Thành phố Hồ Chí Minh",
+    "name": "197 Trần Phú",
+    "houseNumber": "197",
+    "street": "Trần Phú",
+    "address": "Phường Chợ Quán, Thành phố Hồ Chí Minh",
+    "cityId": "12",
+    "city": "Thành phố Hồ Chí Minh",
+    "districtId": null,
+    "district": null,
+    "wardId": "18700",
+    "ward": "Phường Chợ Quán",
+    "latitude": 10.759222947000069,
+    "longitude": 106.67590269100003,
+    "addressNote": null
+  }
+}
