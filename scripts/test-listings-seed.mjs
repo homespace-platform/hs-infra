@@ -26,7 +26,7 @@ try {
   assert.match(binding, /^127\.0\.0\.1:\d+$/);
   const env = { ...process.env, HS_SEED_TEST_PG_URL: `jdbc:postgresql://${binding}/hs_seed_test` };
   const args = ['-Pisolated-build', '-pl', 'hs-listing-service', '-am', 'test',
-    '-Dtest=ListingSeedPostgresTest', '-Dsurefire.failIfNoSpecifiedTests=false', `-Dhs.seed.sql=${SQL_PATH}`];
+    '-Dtest=ListingSeedPostgresTest,AiListingSearchServiceTest', '-Dsurefire.failIfNoSpecifiedTests=false', `-Dhs.seed.sql=${SQL_PATH}`];
   if (process.platform === 'win32') {
     const quote = value => "'" + value.replaceAll("'", "''") + "'";
     const command = '& mvn ' + args.map(quote).join(' ') + '; exit $LASTEXITCODE';
