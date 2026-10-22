@@ -4,9 +4,9 @@ title: Yêu cầu thuê và quy trình giữ chỗ
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.2.0
+version: 0.3.0
 locale: vi-VN
-last_reviewed: 2026-10-21
+last_reviewed: 2026-10-22
 ---
 
 # Yêu cầu thuê và quy trình giữ chỗ
@@ -21,7 +21,7 @@ Yêu cầu thuê mới bắt buộc người thuê chủ động tích **Tôi đ
 
 Khi chủ nhà chấp nhận, tin chuyển sang giữ chỗ và mở khoản thanh toán đầu tiên. Hạn thanh toán giữ chỗ bắt đầu từ lúc chấp nhận, khác với hạn chờ chủ nhà phản hồi yêu cầu. Các yêu cầu thuê khác vẫn chờ, không tự được chấp nhận. Lịch xem nhà chưa bị hủy chỉ vì một lượt giữ chỗ ngắn hạn; khi tài sản được cho thuê chính thức, hệ thống xử lý các lịch liên quan.
 
-Nếu ngày bắt đầu thuê là hôm nay, khoản chuyển đầu tiên gồm tiền cọc và tiền thuê tháng đầu. Nếu ngày bắt đầu còn ở tương lai, chỉ mở tiền cọc; khi cọc được chủ nhà xác nhận, phòng tiếp tục được giữ đến bước nhận nhà. Tiền tháng đầu được mở vào ngày bắt đầu thuê; không thu lại cọc. Chủ nhà có thể chuẩn bị bản nháp sau khi cọc đã được xác nhận, nhưng chỉ mở ký khi đã đến ngày thuê và tiền tháng đầu đã được xác nhận.
+Nếu ngày bắt đầu thuê là hôm nay, khoản chuyển đầu tiên gồm tiền cọc và tiền thuê tháng đầu. Nếu ngày bắt đầu còn ở tương lai, chỉ mở tiền cọc; khi cọc được chủ nhà xác nhận, phòng tiếp tục được giữ đến bước nhận nhà, chưa tạo hợp đồng. Tiền tháng đầu được mở vào ngày bắt đầu thuê; không thu lại cọc. Chỉ sau khi chủ nhà xác nhận đã nhận đủ cọc và tiền tháng đầu, hệ thống tự tạo bản nháp; không cần nút tạo thủ công. Báo chuyển không phải xác nhận nhận tiền. Hai bên vẫn phải kiểm tra, hoàn thiện văn bản và ký; bản nháp không có nghĩa hợp đồng đã có hiệu lực. Nếu tạo bản nháp gặp lỗi mẫu hoặc dữ liệu, hệ thống giữ kết quả xác nhận tiền và thử lại; không yêu cầu khách chuyển tiền lần nữa. Có thể liên hệ hỗ trợ nếu chờ lâu.
 
 ## Đề nghị nhận nhà và bắt đầu hợp đồng sớm
 
@@ -41,7 +41,7 @@ Người dùng cần xem kỹ số tiền, mục đích thanh toán và hướng
 
 ## Khi yêu cầu hết hạn hoặc bị hủy
 
-Trường hợp đã xác nhận cọc nhưng quá hạn trả tháng đầu hoặc quá hạn ký do người thuê có nhánh xử lý riêng. Chỉ áp dụng nếu người thuê đã chủ động đồng ý điều kiện `RESERVATION_DEFAULT_V1` trước thanh toán, chủ nhà có văn bản sẵn sàng và lỗi quá hạn thuộc người thuê. Hạn ký riêng của người thuê bắt đầu sau chữ ký SmartCA thành công của chủ nhà, không tính lúc chủ nhà còn đang chuẩn bị.
+Trường hợp đã xác nhận cọc nhưng quá hạn trả tháng đầu hoặc quá hạn ký do người thuê có nhánh xử lý riêng. Chỉ áp dụng nếu người thuê đã chủ động đồng ý điều kiện giữ chỗ trước thanh toán và lỗi quá hạn thuộc người thuê. Nhánh quá hạn tháng đầu của hồ sơ mới không cần hợp đồng, vì chưa đủ tiền thì hệ thống chưa tạo bản nháp. Nhánh quá hạn ký phải có văn bản đúng phiên bản và chữ ký chủ nhà; hạn ký riêng của người thuê bắt đầu sau chữ ký SmartCA thành công của chủ nhà, không tính lúc chủ nhà còn đang chuẩn bị.
 
 Chủ nhà gửi thông báo cuối cùng và mở thêm ít nhất 24 giờ để người thuê thanh toán/ký hoặc phản hồi. Không tự giữ cọc khi vừa hết hạn. Sau thời hạn, chủ nhà phải xác nhận đã thông báo và chưa bàn giao mới có thể chốt hủy, giữ 100% cọc thực nhận. Tiền thuê đã nhận phải tạo nghĩa vụ hoàn riêng; không giữ cả tiền thuê cùng cọc. Đang báo chuyển, tranh chấp, có phản hồi hoặc chưa rõ kết quả ký đều chặn giữ cọc để đối soát. Hồ sơ không có thỏa thuận giữ cọc không được áp dụng hồi tố. Tin chỉ trở lại hiển thị nếu còn đủ điều kiện đăng; lịch sử tiền/chứng từ không bị xóa.
 

@@ -7,8 +7,8 @@
 -- Nguồn không chứa quận/huyện. Để có đúng 2.580 tin, hãy chạy trên database sạch;
 -- file này không xóa các tin seed cũ đã được tạo bằng ID khác.
 -- Sau khi tạo lại CSDL: khởi động Core để tạo bảng, bootstrap ADMIN và catalog,
--- rồi chỉ chạy file này. Phần schema phụ lục/loại thanh toán đã gộp ngay bên dưới.
--- Không cần chạy file sửa bổ sung. ID được tạo xác định, các bản ghi được upsert.
+-- rồi chạy file này. Schema do backend/migration quản lý; file này chỉ seed dữ liệu.
+-- Không thêm cột hay sửa constraint của bảng nghiệp vụ. ID xác định, các bản ghi được upsert.
 -- Chạy lại sẽ đồng bộ lại tiện ích/nội thất của đúng các ID seed, không đụng tin thật.
 -- Mỗi loại hình/địa bàn có đủ mẫu đầy đủ, cơ bản, một phần và không nội thất.
 -- Tất cả tin mẫu đều đặt cọc 1 tháng tiền thuê (MONTH_COUNT), không dùng cọc tiền cố định.
@@ -18,16 +18,6 @@
 -- KHÔNG phải địa chỉ đã xác minh hoặc tọa độ thật.
 
 BEGIN;
-
--- Đồng bộ schema phụ lục trong cùng file và cùng transaction với seed.
--- Không ghi đè hợp đồng, hóa đơn hoặc giao dịch thanh toán hiện có.
-ALTER TABLE public.monthly_invoices ADD COLUMN IF NOT EXISTS rent_period_start date;
-ALTER TABLE public.monthly_invoices ADD COLUMN IF NOT EXISTS rent_period_end_exclusive date;
-ALTER TABLE public.deposit_records ADD COLUMN IF NOT EXISTS retained_amount numeric(15,2);
--- ddl-auto=update không luôn cập nhật CHECK của enum đã tồn tại.
-ALTER TABLE public.payment_requests DROP CONSTRAINT IF EXISTS payment_requests_type_check;
-ALTER TABLE public.payment_requests ADD CONSTRAINT payment_requests_type_check CHECK
-  (type IN ('RESERVATION_DEPOSIT','INITIAL','MONTHLY_RENT','UTILITY','OTHER_CHARGE','DEPOSIT_REFUND','INITIAL_PAYMENT_REFUND','DEPOSIT_ADJUSTMENT'));
 
 CREATE TEMP TABLE hs_seed_config ON COMMIT DROP AS
 SELECT u.id AS owner_id
