@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "9d537c3c-3af0-490d-b99d-ab7fdbd7652e",
     "name": "HomeSpace - VIETMAP Maps API (v4 + Logistics)",
-    "description": "Collection tự tạo từ tài liệu chính thức VIETMAP ngày 08/10/2026. 11 endpoint đã đối chiếu. KHÔNG phải tất cả API được cấp quyền trong Trial. Chỉ chạy thủ công theo thứ tự, tránh Runner gây tốn quota. Các API cũ/deprecated, Tilemap SDK, batch và Isochrone (chưa công khai endpoint) không nằm trong collection; xem Postman collection chính thức https://www.postman.com/orange-escape-494916/workspace/vietmap-api-collection .",
+    "description": "Collection tự tạo từ tài liệu chính thức VIETMAP ngày 08/10/2026. 11 endpoint đã đối chiếu. KHÔNG phải tất cả API được cấp quyền trong Trial. Chỉ chạy thủ công theo thứ tự, tránh Runner gây tốn quota. Các API cũ/deprecated, Tilemap SDK, batch và Isochrone (chưa công khai endpoint) không nằm trong collection; xem Postman collection chính thức https://www.postman.com/orange-escape-494916/workspace/vietmap-api-collection .\n\n23/10/2026: thêm folder 04 test POI quanh tọa độ listing bằng Autocomplete v4 + Place v4 (7 request biến thể, không phải 7 endpoint mới). Giữ nguyên 11 request gốc. Xem README_POI_TEST.md. Không dùng Runner; không có script tự gọi nối tiếp.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -785,6 +785,835 @@
           ]
         }
       ]
+    },
+    {
+      "name": "04. POI quanh listing - test thủ công",
+      "description": "Nhập tọa độ listing vào poi_center_lat/lng, bán kính mét vào poi_radius_m ở Variables của collection. Chọn Environment có apikey. Send một request 12–17, xem response, chọn poi_result_index rồi chạy 18. Không dùng Runner; mỗi Send có thể tính phí. Chỉ tìm gợi ý theo từ khóa, không thu thập toàn bộ POI.",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "function stop(message) {",
+              "  pm.execution.skipRequest();",
+              "  throw new Error(message);",
+              "}",
+              "function numericInput(key, min, max) {",
+              "  const raw = pm.variables.get(key);",
+              "  const value = Number(raw);",
+              "  if (raw === undefined || raw === null || String(raw).trim() === \"\" || !Number.isFinite(value) || value < min || value > max) {",
+              "    stop(\"Giá trị \" + key + \" không hợp lệ.\");",
+              "  }",
+              "  return value;",
+              "}",
+              "const centerLat = numericInput(\"poi_center_lat\", -90, 90);",
+              "const centerLng = numericInput(\"poi_center_lng\", -180, 180);",
+              "const radius = numericInput(\"poi_radius_m\", Number.MIN_VALUE, Number.MAX_VALUE);",
+              "if (!String(pm.variables.get(\"apikey\") || \"\").trim()) stop(\"Chọn Environment và nhập apikey trước khi Send.\");"
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "name": "12 POI - từ khóa tùy chọn",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autocomplete/v4?apikey={{apikey}}&text={{poi_text}}&focus={{poi_center_lat}},{{poi_center_lng}}&circle_center={{poi_center_lat}},{{poi_center_lng}}&circle_radius={{poi_radius_m}}&layers=POI&display_type=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autocomplete",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment; không điền trực tiếp vào collection.",
+                  "disabled": false
+                },
+                {
+                  "key": "text",
+                  "value": "{{poi_text}}",
+                  "description": "Bắt buộc >= 2 ký tự. Có thể thử tên thương hiệu để so sánh độ bao phủ.",
+                  "disabled": false
+                },
+                {
+                  "key": "focus",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "lat,lng của listing; ưu tiên kết quả gần tâm.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_center",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "Tâm tìm kiếm: latitude trước, longitude sau.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_radius",
+                  "value": "{{poi_radius_m}}",
+                  "description": "Mét; ví dụ 500, 1000 hoặc 2000.",
+                  "disabled": false
+                },
+                {
+                  "key": "layers",
+                  "value": "POI",
+                  "description": "Chỉ địa điểm/tiện ích, không lấy gợi ý đường/đơn vị hành chính.",
+                  "disabled": false
+                },
+                {
+                  "key": "display_type",
+                  "value": "1",
+                  "description": "Địa chỉ mới sau sáp nhập (2 cấp).",
+                  "disabled": false
+                },
+                {
+                  "key": "cats",
+                  "value": "{{poi_cats}}",
+                  "description": "Tùy chọn: điền mã chính thức rồi bật tham số. Không phải tên tiếng Việt; vẫn bắt buộc text.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Tìm gợi ý POI theo từ khóa trong bán kính quanh listing. Tối đa 10, không quét đầy đủ, không chứng minh đây là các POI gần nhất tuyệt đối. distance từ nhà cung cấp tính bằng km. Chưa có tọa độ: chạy 18 Place POI cho kết quả muốn kiểm tra. Chạy thủ công; không tự gọi API khác. Tài liệu: https://maps.vietmap.vn/docs/map-api/autocomplete-version/autocomplete-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_results\", \"poi_search_context\", \"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "const keyword = pm.variables.replaceIn(pm.request.url.query.get(\"text\") || \"\").trim();",
+                  "if (keyword.length < 2) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(\"Từ khóa POI phải có ít nhất 2 ký tự, không để trống text.\");",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let data;",
+                  "  try { data = pm.response.json(); } catch (_) {}",
+                  "  const valid = Array.isArray(data) && data.length <= 10 && data.every(p => p && typeof p.ref_id === \"string\" && p.ref_id.trim().length > 0);",
+                  "  pm.test(\"Mảng tối đa 10 POI có ref_id\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = {",
+                  "      lat: Number(pm.variables.get(\"poi_center_lat\")),",
+                  "      lng: Number(pm.variables.get(\"poi_center_lng\")),",
+                  "      radius_m: Number(pm.variables.get(\"poi_radius_m\")),",
+                  "      keyword: pm.variables.replaceIn(pm.request.url.query.get(\"text\"))",
+                  "    };",
+                  "    pm.collectionVariables.set(\"poi_results\", JSON.stringify(data));",
+                  "    pm.collectionVariables.set(\"poi_search_context\", JSON.stringify(context));",
+                  "    console.table(data.map((p, index) => ({",
+                  "      index, name: p.name, address: p.display || p.address,",
+                  "      provider_distance_km: p.distance, categories: JSON.stringify(p.categories || [])",
+                  "    })));",
+                  "    console.log(\"Tìm được \" + data.length + \" gợi ý. Chọn poi_result_index (0-based), rồi chạy 18 Place POI.\");",
+                  "    if (!data.length) console.warn(\"Không có gợi ý cho truy vấn này. Thử từ khóa/tên thương hiệu hoặc bán kính khác; không kết luận khu vực không có tiện ích.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13 POI - siêu thị",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autocomplete/v4?apikey={{apikey}}&text=siêu thị&focus={{poi_center_lat}},{{poi_center_lng}}&circle_center={{poi_center_lat}},{{poi_center_lng}}&circle_radius={{poi_radius_m}}&layers=POI&display_type=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autocomplete",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment; không điền trực tiếp vào collection.",
+                  "disabled": false
+                },
+                {
+                  "key": "text",
+                  "value": "siêu thị",
+                  "description": "Bắt buộc >= 2 ký tự. Có thể thử tên thương hiệu để so sánh độ bao phủ.",
+                  "disabled": false
+                },
+                {
+                  "key": "focus",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "lat,lng của listing; ưu tiên kết quả gần tâm.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_center",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "Tâm tìm kiếm: latitude trước, longitude sau.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_radius",
+                  "value": "{{poi_radius_m}}",
+                  "description": "Mét; ví dụ 500, 1000 hoặc 2000.",
+                  "disabled": false
+                },
+                {
+                  "key": "layers",
+                  "value": "POI",
+                  "description": "Chỉ địa điểm/tiện ích, không lấy gợi ý đường/đơn vị hành chính.",
+                  "disabled": false
+                },
+                {
+                  "key": "display_type",
+                  "value": "1",
+                  "description": "Địa chỉ mới sau sáp nhập (2 cấp).",
+                  "disabled": false
+                },
+                {
+                  "key": "cats",
+                  "value": "{{poi_cats}}",
+                  "description": "Tùy chọn: điền mã chính thức rồi bật tham số. Không phải tên tiếng Việt; vẫn bắt buộc text.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Tìm gợi ý POI theo từ khóa trong bán kính quanh listing. Tối đa 10, không quét đầy đủ, không chứng minh đây là các POI gần nhất tuyệt đối. distance từ nhà cung cấp tính bằng km. Chưa có tọa độ: chạy 18 Place POI cho kết quả muốn kiểm tra. Chạy thủ công; không tự gọi API khác. Tài liệu: https://maps.vietmap.vn/docs/map-api/autocomplete-version/autocomplete-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_results\", \"poi_search_context\", \"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "const keyword = pm.variables.replaceIn(pm.request.url.query.get(\"text\") || \"\").trim();",
+                  "if (keyword.length < 2) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(\"Từ khóa POI phải có ít nhất 2 ký tự, không để trống text.\");",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let data;",
+                  "  try { data = pm.response.json(); } catch (_) {}",
+                  "  const valid = Array.isArray(data) && data.length <= 10 && data.every(p => p && typeof p.ref_id === \"string\" && p.ref_id.trim().length > 0);",
+                  "  pm.test(\"Mảng tối đa 10 POI có ref_id\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = {",
+                  "      lat: Number(pm.variables.get(\"poi_center_lat\")),",
+                  "      lng: Number(pm.variables.get(\"poi_center_lng\")),",
+                  "      radius_m: Number(pm.variables.get(\"poi_radius_m\")),",
+                  "      keyword: pm.variables.replaceIn(pm.request.url.query.get(\"text\"))",
+                  "    };",
+                  "    pm.collectionVariables.set(\"poi_results\", JSON.stringify(data));",
+                  "    pm.collectionVariables.set(\"poi_search_context\", JSON.stringify(context));",
+                  "    console.table(data.map((p, index) => ({",
+                  "      index, name: p.name, address: p.display || p.address,",
+                  "      provider_distance_km: p.distance, categories: JSON.stringify(p.categories || [])",
+                  "    })));",
+                  "    console.log(\"Tìm được \" + data.length + \" gợi ý. Chọn poi_result_index (0-based), rồi chạy 18 Place POI.\");",
+                  "    if (!data.length) console.warn(\"Không có gợi ý cho truy vấn này. Thử từ khóa/tên thương hiệu hoặc bán kính khác; không kết luận khu vực không có tiện ích.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "14 POI - trường học",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autocomplete/v4?apikey={{apikey}}&text=trường&focus={{poi_center_lat}},{{poi_center_lng}}&circle_center={{poi_center_lat}},{{poi_center_lng}}&circle_radius={{poi_radius_m}}&layers=POI&display_type=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autocomplete",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment; không điền trực tiếp vào collection.",
+                  "disabled": false
+                },
+                {
+                  "key": "text",
+                  "value": "trường",
+                  "description": "Bắt buộc >= 2 ký tự. Có thể thử tên thương hiệu để so sánh độ bao phủ.",
+                  "disabled": false
+                },
+                {
+                  "key": "focus",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "lat,lng của listing; ưu tiên kết quả gần tâm.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_center",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "Tâm tìm kiếm: latitude trước, longitude sau.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_radius",
+                  "value": "{{poi_radius_m}}",
+                  "description": "Mét; ví dụ 500, 1000 hoặc 2000.",
+                  "disabled": false
+                },
+                {
+                  "key": "layers",
+                  "value": "POI",
+                  "description": "Chỉ địa điểm/tiện ích, không lấy gợi ý đường/đơn vị hành chính.",
+                  "disabled": false
+                },
+                {
+                  "key": "display_type",
+                  "value": "1",
+                  "description": "Địa chỉ mới sau sáp nhập (2 cấp).",
+                  "disabled": false
+                },
+                {
+                  "key": "cats",
+                  "value": "{{poi_cats}}",
+                  "description": "Tùy chọn: điền mã chính thức rồi bật tham số. Không phải tên tiếng Việt; vẫn bắt buộc text.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Tìm gợi ý POI theo từ khóa trong bán kính quanh listing. Tối đa 10, không quét đầy đủ, không chứng minh đây là các POI gần nhất tuyệt đối. distance từ nhà cung cấp tính bằng km. Chưa có tọa độ: chạy 18 Place POI cho kết quả muốn kiểm tra. Chạy thủ công; không tự gọi API khác. Tài liệu: https://maps.vietmap.vn/docs/map-api/autocomplete-version/autocomplete-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_results\", \"poi_search_context\", \"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "const keyword = pm.variables.replaceIn(pm.request.url.query.get(\"text\") || \"\").trim();",
+                  "if (keyword.length < 2) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(\"Từ khóa POI phải có ít nhất 2 ký tự, không để trống text.\");",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let data;",
+                  "  try { data = pm.response.json(); } catch (_) {}",
+                  "  const valid = Array.isArray(data) && data.length <= 10 && data.every(p => p && typeof p.ref_id === \"string\" && p.ref_id.trim().length > 0);",
+                  "  pm.test(\"Mảng tối đa 10 POI có ref_id\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = {",
+                  "      lat: Number(pm.variables.get(\"poi_center_lat\")),",
+                  "      lng: Number(pm.variables.get(\"poi_center_lng\")),",
+                  "      radius_m: Number(pm.variables.get(\"poi_radius_m\")),",
+                  "      keyword: pm.variables.replaceIn(pm.request.url.query.get(\"text\"))",
+                  "    };",
+                  "    pm.collectionVariables.set(\"poi_results\", JSON.stringify(data));",
+                  "    pm.collectionVariables.set(\"poi_search_context\", JSON.stringify(context));",
+                  "    console.table(data.map((p, index) => ({",
+                  "      index, name: p.name, address: p.display || p.address,",
+                  "      provider_distance_km: p.distance, categories: JSON.stringify(p.categories || [])",
+                  "    })));",
+                  "    console.log(\"Tìm được \" + data.length + \" gợi ý. Chọn poi_result_index (0-based), rồi chạy 18 Place POI.\");",
+                  "    if (!data.length) console.warn(\"Không có gợi ý cho truy vấn này. Thử từ khóa/tên thương hiệu hoặc bán kính khác; không kết luận khu vực không có tiện ích.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "15 POI - bệnh viện",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autocomplete/v4?apikey={{apikey}}&text=bệnh viện&focus={{poi_center_lat}},{{poi_center_lng}}&circle_center={{poi_center_lat}},{{poi_center_lng}}&circle_radius={{poi_radius_m}}&layers=POI&display_type=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autocomplete",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment; không điền trực tiếp vào collection.",
+                  "disabled": false
+                },
+                {
+                  "key": "text",
+                  "value": "bệnh viện",
+                  "description": "Bắt buộc >= 2 ký tự. Có thể thử tên thương hiệu để so sánh độ bao phủ.",
+                  "disabled": false
+                },
+                {
+                  "key": "focus",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "lat,lng của listing; ưu tiên kết quả gần tâm.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_center",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "Tâm tìm kiếm: latitude trước, longitude sau.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_radius",
+                  "value": "{{poi_radius_m}}",
+                  "description": "Mét; ví dụ 500, 1000 hoặc 2000.",
+                  "disabled": false
+                },
+                {
+                  "key": "layers",
+                  "value": "POI",
+                  "description": "Chỉ địa điểm/tiện ích, không lấy gợi ý đường/đơn vị hành chính.",
+                  "disabled": false
+                },
+                {
+                  "key": "display_type",
+                  "value": "1",
+                  "description": "Địa chỉ mới sau sáp nhập (2 cấp).",
+                  "disabled": false
+                },
+                {
+                  "key": "cats",
+                  "value": "{{poi_cats}}",
+                  "description": "Tùy chọn: điền mã chính thức rồi bật tham số. Không phải tên tiếng Việt; vẫn bắt buộc text.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Tìm gợi ý POI theo từ khóa trong bán kính quanh listing. Tối đa 10, không quét đầy đủ, không chứng minh đây là các POI gần nhất tuyệt đối. distance từ nhà cung cấp tính bằng km. Chưa có tọa độ: chạy 18 Place POI cho kết quả muốn kiểm tra. Chạy thủ công; không tự gọi API khác. Tài liệu: https://maps.vietmap.vn/docs/map-api/autocomplete-version/autocomplete-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_results\", \"poi_search_context\", \"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "const keyword = pm.variables.replaceIn(pm.request.url.query.get(\"text\") || \"\").trim();",
+                  "if (keyword.length < 2) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(\"Từ khóa POI phải có ít nhất 2 ký tự, không để trống text.\");",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let data;",
+                  "  try { data = pm.response.json(); } catch (_) {}",
+                  "  const valid = Array.isArray(data) && data.length <= 10 && data.every(p => p && typeof p.ref_id === \"string\" && p.ref_id.trim().length > 0);",
+                  "  pm.test(\"Mảng tối đa 10 POI có ref_id\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = {",
+                  "      lat: Number(pm.variables.get(\"poi_center_lat\")),",
+                  "      lng: Number(pm.variables.get(\"poi_center_lng\")),",
+                  "      radius_m: Number(pm.variables.get(\"poi_radius_m\")),",
+                  "      keyword: pm.variables.replaceIn(pm.request.url.query.get(\"text\"))",
+                  "    };",
+                  "    pm.collectionVariables.set(\"poi_results\", JSON.stringify(data));",
+                  "    pm.collectionVariables.set(\"poi_search_context\", JSON.stringify(context));",
+                  "    console.table(data.map((p, index) => ({",
+                  "      index, name: p.name, address: p.display || p.address,",
+                  "      provider_distance_km: p.distance, categories: JSON.stringify(p.categories || [])",
+                  "    })));",
+                  "    console.log(\"Tìm được \" + data.length + \" gợi ý. Chọn poi_result_index (0-based), rồi chạy 18 Place POI.\");",
+                  "    if (!data.length) console.warn(\"Không có gợi ý cho truy vấn này. Thử từ khóa/tên thương hiệu hoặc bán kính khác; không kết luận khu vực không có tiện ích.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "16 POI - phòng gym",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autocomplete/v4?apikey={{apikey}}&text=gym&focus={{poi_center_lat}},{{poi_center_lng}}&circle_center={{poi_center_lat}},{{poi_center_lng}}&circle_radius={{poi_radius_m}}&layers=POI&display_type=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autocomplete",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment; không điền trực tiếp vào collection.",
+                  "disabled": false
+                },
+                {
+                  "key": "text",
+                  "value": "gym",
+                  "description": "Bắt buộc >= 2 ký tự. Có thể thử tên thương hiệu để so sánh độ bao phủ.",
+                  "disabled": false
+                },
+                {
+                  "key": "focus",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "lat,lng của listing; ưu tiên kết quả gần tâm.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_center",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "Tâm tìm kiếm: latitude trước, longitude sau.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_radius",
+                  "value": "{{poi_radius_m}}",
+                  "description": "Mét; ví dụ 500, 1000 hoặc 2000.",
+                  "disabled": false
+                },
+                {
+                  "key": "layers",
+                  "value": "POI",
+                  "description": "Chỉ địa điểm/tiện ích, không lấy gợi ý đường/đơn vị hành chính.",
+                  "disabled": false
+                },
+                {
+                  "key": "display_type",
+                  "value": "1",
+                  "description": "Địa chỉ mới sau sáp nhập (2 cấp).",
+                  "disabled": false
+                },
+                {
+                  "key": "cats",
+                  "value": "{{poi_cats}}",
+                  "description": "Tùy chọn: điền mã chính thức rồi bật tham số. Không phải tên tiếng Việt; vẫn bắt buộc text.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Tìm gợi ý POI theo từ khóa trong bán kính quanh listing. Tối đa 10, không quét đầy đủ, không chứng minh đây là các POI gần nhất tuyệt đối. distance từ nhà cung cấp tính bằng km. Chưa có tọa độ: chạy 18 Place POI cho kết quả muốn kiểm tra. Chạy thủ công; không tự gọi API khác. Tài liệu: https://maps.vietmap.vn/docs/map-api/autocomplete-version/autocomplete-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_results\", \"poi_search_context\", \"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "const keyword = pm.variables.replaceIn(pm.request.url.query.get(\"text\") || \"\").trim();",
+                  "if (keyword.length < 2) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(\"Từ khóa POI phải có ít nhất 2 ký tự, không để trống text.\");",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let data;",
+                  "  try { data = pm.response.json(); } catch (_) {}",
+                  "  const valid = Array.isArray(data) && data.length <= 10 && data.every(p => p && typeof p.ref_id === \"string\" && p.ref_id.trim().length > 0);",
+                  "  pm.test(\"Mảng tối đa 10 POI có ref_id\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = {",
+                  "      lat: Number(pm.variables.get(\"poi_center_lat\")),",
+                  "      lng: Number(pm.variables.get(\"poi_center_lng\")),",
+                  "      radius_m: Number(pm.variables.get(\"poi_radius_m\")),",
+                  "      keyword: pm.variables.replaceIn(pm.request.url.query.get(\"text\"))",
+                  "    };",
+                  "    pm.collectionVariables.set(\"poi_results\", JSON.stringify(data));",
+                  "    pm.collectionVariables.set(\"poi_search_context\", JSON.stringify(context));",
+                  "    console.table(data.map((p, index) => ({",
+                  "      index, name: p.name, address: p.display || p.address,",
+                  "      provider_distance_km: p.distance, categories: JSON.stringify(p.categories || [])",
+                  "    })));",
+                  "    console.log(\"Tìm được \" + data.length + \" gợi ý. Chọn poi_result_index (0-based), rồi chạy 18 Place POI.\");",
+                  "    if (!data.length) console.warn(\"Không có gợi ý cho truy vấn này. Thử từ khóa/tên thương hiệu hoặc bán kính khác; không kết luận khu vực không có tiện ích.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "17 POI - cửa hàng tiện lợi",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autocomplete/v4?apikey={{apikey}}&text=cửa hàng tiện lợi&focus={{poi_center_lat}},{{poi_center_lng}}&circle_center={{poi_center_lat}},{{poi_center_lng}}&circle_radius={{poi_radius_m}}&layers=POI&display_type=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "autocomplete",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment; không điền trực tiếp vào collection.",
+                  "disabled": false
+                },
+                {
+                  "key": "text",
+                  "value": "cửa hàng tiện lợi",
+                  "description": "Bắt buộc >= 2 ký tự. Có thể thử tên thương hiệu để so sánh độ bao phủ.",
+                  "disabled": false
+                },
+                {
+                  "key": "focus",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "lat,lng của listing; ưu tiên kết quả gần tâm.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_center",
+                  "value": "{{poi_center_lat}},{{poi_center_lng}}",
+                  "description": "Tâm tìm kiếm: latitude trước, longitude sau.",
+                  "disabled": false
+                },
+                {
+                  "key": "circle_radius",
+                  "value": "{{poi_radius_m}}",
+                  "description": "Mét; ví dụ 500, 1000 hoặc 2000.",
+                  "disabled": false
+                },
+                {
+                  "key": "layers",
+                  "value": "POI",
+                  "description": "Chỉ địa điểm/tiện ích, không lấy gợi ý đường/đơn vị hành chính.",
+                  "disabled": false
+                },
+                {
+                  "key": "display_type",
+                  "value": "1",
+                  "description": "Địa chỉ mới sau sáp nhập (2 cấp).",
+                  "disabled": false
+                },
+                {
+                  "key": "cats",
+                  "value": "{{poi_cats}}",
+                  "description": "Tùy chọn: điền mã chính thức rồi bật tham số. Không phải tên tiếng Việt; vẫn bắt buộc text.",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Tìm gợi ý POI theo từ khóa trong bán kính quanh listing. Tối đa 10, không quét đầy đủ, không chứng minh đây là các POI gần nhất tuyệt đối. distance từ nhà cung cấp tính bằng km. Chưa có tọa độ: chạy 18 Place POI cho kết quả muốn kiểm tra. Chạy thủ công; không tự gọi API khác. Tài liệu: https://maps.vietmap.vn/docs/map-api/autocomplete-version/autocomplete-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_results\", \"poi_search_context\", \"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "const keyword = pm.variables.replaceIn(pm.request.url.query.get(\"text\") || \"\").trim();",
+                  "if (keyword.length < 2) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(\"Từ khóa POI phải có ít nhất 2 ký tự, không để trống text.\");",
+                  "}"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let data;",
+                  "  try { data = pm.response.json(); } catch (_) {}",
+                  "  const valid = Array.isArray(data) && data.length <= 10 && data.every(p => p && typeof p.ref_id === \"string\" && p.ref_id.trim().length > 0);",
+                  "  pm.test(\"Mảng tối đa 10 POI có ref_id\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = {",
+                  "      lat: Number(pm.variables.get(\"poi_center_lat\")),",
+                  "      lng: Number(pm.variables.get(\"poi_center_lng\")),",
+                  "      radius_m: Number(pm.variables.get(\"poi_radius_m\")),",
+                  "      keyword: pm.variables.replaceIn(pm.request.url.query.get(\"text\"))",
+                  "    };",
+                  "    pm.collectionVariables.set(\"poi_results\", JSON.stringify(data));",
+                  "    pm.collectionVariables.set(\"poi_search_context\", JSON.stringify(context));",
+                  "    console.table(data.map((p, index) => ({",
+                  "      index, name: p.name, address: p.display || p.address,",
+                  "      provider_distance_km: p.distance, categories: JSON.stringify(p.categories || [])",
+                  "    })));",
+                  "    console.log(\"Tìm được \" + data.length + \" gợi ý. Chọn poi_result_index (0-based), rồi chạy 18 Place POI.\");",
+                  "    if (!data.length) console.warn(\"Không có gợi ý cho truy vấn này. Thử từ khóa/tên thương hiệu hoặc bán kính khác; không kết luận khu vực không có tiện ích.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "18 Place POI - tọa độ và kiểm tra bán kính",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/place/v4?apikey={{apikey}}&refid={{poi_selected_ref_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "place",
+                "v4"
+              ],
+              "query": [
+                {
+                  "key": "apikey",
+                  "value": "{{apikey}}",
+                  "description": "Key từ Environment.",
+                  "disabled": false
+                },
+                {
+                  "key": "refid",
+                  "value": "{{poi_selected_ref_id}}",
+                  "description": "Tự chọn từ poi_results theo poi_result_index; giữ nguyên prefix/ref_id.",
+                  "disabled": false
+                }
+              ]
+            },
+            "description": "Chạy 12–17 trước, chọn poi_result_index (0-based), rồi Send. Mỗi lần chỉ lấy một POI, không tự gọi cả danh sách. Lưu poi_lat/lng và kiểm tra Haversine với tâm listing; không phải khoảng cách đường đi. Nếu tọa độ nằm ngoài bán kính, test báo fail và poi_within_radius=false. https://maps.vietmap.vn/docs/map-api/place-v4/"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "[\"poi_selected_ref_id\", \"poi_lat\", \"poi_lng\", \"poi_distance_m\", \"poi_within_radius\", \"poi_detail\"].forEach(key => pm.collectionVariables.unset(key));",
+                  "function stopPlace(message) {",
+                  "  pm.execution.skipRequest();",
+                  "  throw new Error(message);",
+                  "}",
+                  "let results, context;",
+                  "try {",
+                  "  results = JSON.parse(pm.collectionVariables.get(\"poi_results\") || \"null\");",
+                  "  context = JSON.parse(pm.collectionVariables.get(\"poi_search_context\") || \"null\");",
+                  "} catch (_) {}",
+                  "if (!Array.isArray(results) || !results.length || !context) stopPlace(\"Chạy một request tìm POI thành công, có kết quả trước.\");",
+                  "if (context.lat !== Number(pm.variables.get(\"poi_center_lat\")) || context.lng !== Number(pm.variables.get(\"poi_center_lng\")) || context.radius_m !== Number(pm.variables.get(\"poi_radius_m\"))) {",
+                  "  stopPlace(\"Tâm hoặc bán kính đã đổi. Chạy lại request tìm POI trước khi lấy Place.\");",
+                  "}",
+                  "const rawIndex = pm.variables.get(\"poi_result_index\");",
+                  "const index = Number(rawIndex);",
+                  "if (rawIndex === undefined || rawIndex === null || String(rawIndex).trim() === \"\" || !Number.isInteger(index) || index < 0 || index >= results.length) {",
+                  "  stopPlace(\"poi_result_index phải từ 0 đến \" + (results.length - 1) + \".\");",
+                  "}",
+                  "const ref = results[index].ref_id;",
+                  "if (typeof ref !== \"string\" || !ref.trim()) stopPlace(\"Kết quả được chọn không có ref_id.\");",
+                  "pm.variables.set(\"poi_selected_ref_id\", ref);",
+                  "pm.collectionVariables.set(\"poi_selected_ref_id\", ref);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200 (kiểm tra key/quota nếu thất bại)\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  let d;",
+                  "  try { d = pm.response.json(); } catch (_) {}",
+                  "  const valid = !!d && typeof d.lat === \"number\" && Number.isFinite(d.lat) && Math.abs(d.lat) <= 90 &&",
+                  "    typeof d.lng === \"number\" && Number.isFinite(d.lng) && Math.abs(d.lng) <= 180;",
+                  "  pm.test(\"Place trả lat/lng hợp lệ\", () => pm.expect(valid).to.eql(true));",
+                  "  if (valid) {",
+                  "    const context = JSON.parse(pm.collectionVariables.get(\"poi_search_context\"));",
+                  "    const rad = value => value * Math.PI / 180;",
+                  "    const a = Math.sin(rad(d.lat - context.lat) / 2) ** 2 +",
+                  "      Math.cos(rad(context.lat)) * Math.cos(rad(d.lat)) * Math.sin(rad(d.lng - context.lng) / 2) ** 2;",
+                  "    const distance = 6371000 * 2 * Math.asin(Math.sqrt(Math.min(1, Math.max(0, a))));",
+                  "    const within = distance <= context.radius_m;",
+                  "    pm.collectionVariables.set(\"poi_lat\", String(d.lat));",
+                  "    pm.collectionVariables.set(\"poi_lng\", String(d.lng));",
+                  "    pm.collectionVariables.set(\"poi_distance_m\", String(Math.round(distance)));",
+                  "    pm.collectionVariables.set(\"poi_within_radius\", String(within));",
+                  "    pm.collectionVariables.set(\"poi_detail\", JSON.stringify({",
+                  "      ...d, listing_lat: context.lat, listing_lng: context.lng, radius_m: context.radius_m,",
+                  "      straight_line_distance_m: Math.round(distance), within_radius: within",
+                  "    }));",
+                  "    pm.test(\"POI nằm trong bán kính yêu cầu (đường chim bay)\", () => pm.expect(within).to.eql(true));",
+                  "    console.log(\"POI:\", d.name || d.display, \"| Khoảng cách đường chim bay:\", Math.round(distance), \"m | Trong bán kính:\", within);",
+                  "    if (!within) console.warn(\"Loại POI này khi tổng hợp tiện ích trong bán kính. Khoảng cách này không phải quãng đường đi thực tế.\");",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "event": [
@@ -796,6 +1625,44 @@
           "if (!pm.environment.get(\"apikey\")) { console.warn(\"Chưa đặt apikey trong Environment\"); }"
         ]
       }
+    }
+  ],
+  "variable": [
+    {
+      "key": "poi_center_lat",
+      "value": "10.759222947",
+      "type": "string",
+      "description": "Tâm mẫu Trần Phú từ tài liệu; thay bằng latitude của listing trong CSDL."
+    },
+    {
+      "key": "poi_center_lng",
+      "value": "106.675902691",
+      "type": "string",
+      "description": "Thay bằng longitude của cùng listing."
+    },
+    {
+      "key": "poi_radius_m",
+      "value": "1000",
+      "type": "string",
+      "description": "Bán kính theo mét, phải lớn hơn 0."
+    },
+    {
+      "key": "poi_text",
+      "value": "siêu thị",
+      "type": "string",
+      "description": "Từ khóa request 12. Ví dụ bệnh viện, trường, gym, Co.opmart, Bách Hóa Xanh."
+    },
+    {
+      "key": "poi_cats",
+      "value": "",
+      "type": "string",
+      "description": "Mã danh mục chính thức, cats mặc định tắt; không đoán mã."
+    },
+    {
+      "key": "poi_result_index",
+      "value": "0",
+      "type": "string",
+      "description": "Chọn kết quả từ response tìm kiếm: 0 là đầu tiên, 1 là thứ hai. Chạy lại Place sau khi đổi."
     }
   ]
 }
