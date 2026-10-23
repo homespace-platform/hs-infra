@@ -1,0 +1,45 @@
+{
+  "info": {
+    "name": "HomeSpace Core - Nearby Surroundings Compare",
+    "description": "Internal route used by the AI assistant. Requires a signed-in user's JWT (Gateway). Geoapify key lives only in Core env GEOAPIFY_API_KEY - never in this collection.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "gatewayBaseUrl", "value": "http://localhost:8080" },
+    { "key": "accessToken", "value": "" },
+    { "key": "listingId1", "value": "" },
+    { "key": "listingId2", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Compare - student near a university (default radius 3000 m)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{gatewayBaseUrl}}/api/v1/listings/ai/surroundings/compare", "host": ["{{gatewayBaseUrl}}"], "path": ["api", "v1", "listings", "ai", "surroundings", "compare"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"listingIds\": [\"{{listingId1}}\", \"{{listingId2}}\"],\n  \"renterProfiles\": [\"STUDENT\"],\n  \"priorityCategories\": [\"SUPERMARKET\"],\n  \"radiusMeters\": null,\n  \"targetPlaceQuery\": null\n}"
+        }
+      }
+    },
+    {
+      "name": "Compare - family, 5 km, hospital priority",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": { "raw": "{{gatewayBaseUrl}}/api/v1/listings/ai/surroundings/compare", "host": ["{{gatewayBaseUrl}}"], "path": ["api", "v1", "listings", "ai", "surroundings", "compare"] },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"listingIds\": [\"{{listingId1}}\", \"{{listingId2}}\"],\n  \"renterProfiles\": [\"FAMILY_WITH_CHILDREN\"],\n  \"priorityCategories\": [\"HOSPITAL\"],\n  \"radiusMeters\": 5000\n}"
+        }
+      }
+    }
+  ]
+}
