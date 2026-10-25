@@ -28,14 +28,14 @@
    npm run dev
    ```
 
-4. Admin → **Hợp đồng & đặt cọc** → chọn **Hợp đồng đặt cọc** → **Mẫu Word & phiên bản** → **Nhập 3 mẫu cọc có sẵn**.
-5. Mở từng mẫu HOUSE, APARTMENT, ROOM, kiểm tra mã trường, **xem thử** rồi **phát hành phiên bản**. Import chỉ tạo DRAFT, không tự phát hành hoặc ghi đè mẫu đã có. Mẫu thuê cũ được giữ nguyên.
+4. Admin → **Hợp đồng & đặt cọc** → chọn **Hợp đồng đặt cọc** → **Mẫu Word & phiên bản** → **Tạo mẫu cho loại còn thiếu**. Nhập tên, chọn HOUSE / APARTMENT / ROOM và **upload file Word thủ công**, như mẫu hợp đồng thuê. Lặp lại cho các loại nhà cần sử dụng.
+5. Mở từng mẫu, kiểm tra mã trường, **xem thử** rồi **phát hành phiên bản**. Upload chỉ tạo DRAFT, không tự phát hành hoặc ghi đè mẫu đã có. Mẫu thuê cũ được giữ nguyên.
 
-Các bản Word đã đóng gói trong backend từ bộ gốc:
+Các file Word gốc để admin chọn upload nằm tại:
 
 `D:/Workspace/homespace/hs-infrastructure/documents/deposit-contract-template/`
 
-Sau khi sửa bộ gốc, hãy upload phiên bản Word mới ở admin. Import lại không thay file của mẫu đã tồn tại.
+Backend không đóng gói file Word và không đọc trực tiếp thư mục này khi chạy. Mẫu được upload lên storage, CSDL lưu thông tin mẫu/phiên bản; backend kết xuất từ phiên bản đã phát hành. Khi sửa Word, upload phiên bản mới vào mẫu hiện có ở admin, xem thử và phát hành; không cần build lại backend.
 
 ## 3. Dữ liệu và quản lý mẫu
 
@@ -50,7 +50,11 @@ Sau khi sửa bộ gốc, hãy upload phiên bản Word mới ở admin. Import 
 
 ## 4. Người dùng ký và tải tài liệu ở đâu?
 
-Trong chi tiết yêu cầu thuê / **Đặt cọc & nhận nhà**, có khối **Hợp đồng đặt cọc**:
+Ngay trên thẻ **Yêu cầu thuê** của chủ nhà hoặc khách thuê, bấm **Xem HĐ cọc** để mở modal PDF trong ứng dụng; bấm **Ký / theo dõi HĐ cọc** để vào hồ sơ ký. Khối **Hợp đồng đặt cọc** trong chi tiết yêu cầu thuê / **Đặt cọc & nhận nhà** vẫn dùng được.
+
+Trong mục **Hợp đồng cho thuê / đi thuê**, mỗi hồ sơ chỉ có một thẻ chính: chưa có HĐ thuê thì hiển thị HĐ cọc; khi có HĐ thuê thì ưu tiên HĐ thuê và giữ nút **Xem HĐ cọc** riêng. Trong chi tiết HĐ thuê cũng có nút này. Nếu bản nháp HĐ thuê chưa có PDF, nút xem mở HĐ cọc kèm thông báo rõ loại tài liệu; HĐ thuê đã ký luôn yêu cầu đúng PDF ký đủ hai bên, không lấy bản nháp thay thế.
+
+Các nút xem dùng chung modal PDF hiện có (phóng to, chuyển trang, tải xuống); không tự mở tab chứa URL storage. URL tải vẫn là URL có hạn do backend kiểm tra quyền và cấp khi người dùng bấm xem.
 
 1. Chủ nhà xác nhận nhận đủ khoản cọc hoặc khoản gộp.
 2. Backend thử tạo hồ sơ/PDF sau khi xác nhận tiền đã commit; job nhận nhà thử lại nếu có lỗi tạm thời.
@@ -83,14 +87,17 @@ Các đường dẫn dưới có prefix `/api/v1`; qua gateway dùng cơ chế �
 | --- | --- | --- |
 | GET | `/rental-requests/reservation-policy` | Toàn văn/version điều kiện giữ chỗ cho UI |
 | GET | `/rental-requests/{id}/deposit-agreement` | Hồ sơ cọc, tài liệu, khả năng ký và lý do bị chặn; chỉ hai bên hồ sơ |
+| GET | `/contracts?includeDepositFallback=true&role=LANDLORD` | Danh sách hồ sơ theo vai trò, ưu tiên HĐ thuê; dùng `TENANT` cho khách thuê, lọc và phân trang ở backend |
+| GET | `/contracts/by-rental-request/{id}?includeDepositFallback=true` | Tài liệu chính của yêu cầu thuê; HĐ cọc là phương án hiển thị khi chưa có HĐ thuê đọc được |
 | POST | `/rental-requests/{id}/deposit-agreement/prepare` | Tạo/thử lại snapshot hoặc PDF; không xác nhận tiền |
 | POST | `/rental-requests/{id}/deposit-agreement/reopen-signing` | Chủ nhà mở lại hạn khách ký |
-| POST | `/admin/contract-templates/import-deposit-defaults` | Admin nhập 3 bản Word DRAFT |
 | GET | `/admin/contract-template-fields?documentKind=DEPOSIT` | Catalog D2 |
 | GET | `/admin/contract-templates?documentKind=DEPOSIT` | Mẫu cọc |
 | GET | `/admin/contracts?documentKind=DEPOSIT` | Hồ sơ cọc |
 
 Ký sử dụng API `/contracts/{depositAgreementContractId}/signatures/...` có sẵn. **Không dùng ID hợp đồng thuê để ký thay tài liệu cọc.**
+
+`includeDepositFallback` mặc định `false`: API danh sách cũ và `billableOnly=true` vẫn chỉ trả HĐ thuê; HĐ cọc không xuất hiện trong luồng hóa đơn. Không có thay đổi schema hoặc yêu cầu seed/drop CSDL cho phần giao diện này. Cần restart backend đã build và tải lại frontend.
 
 ## 7. Checklist nghiệm thu live
 
