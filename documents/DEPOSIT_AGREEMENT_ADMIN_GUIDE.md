@@ -33,7 +33,7 @@
 
 Các file Word gốc để admin chọn upload nằm tại:
 
-`D:/Workspace/homespace/hs-infrastructure/documents/deposit-contract-template/`
+`D:/Workspace/homespace/hs-infra/documents/deposit-contract-template/`
 
 Backend không đóng gói file Word và không đọc trực tiếp thư mục này khi chạy. Mẫu được upload lên storage, CSDL lưu thông tin mẫu/phiên bản; backend kết xuất từ phiên bản đã phát hành. Khi sửa Word, upload phiên bản mới vào mẫu hiện có ở admin, xem thử và phát hành; không cần build lại backend.
 

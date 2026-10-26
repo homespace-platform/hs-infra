@@ -12,8 +12,8 @@ assert.ok(args.every(arg => arg === '--json') && args.length <= 1,
   'Usage: node scripts/validate-ai-listing-questions.mjs [--json]');
 
 const [markdown, renterCopy, seedSql, seedJson] = await Promise.all([
-  readFile(path.join(root, 'prompts/ask/AI_LISTING_TOOL_TEST_QUESTIONS.md'), 'utf8'),
-  readFile(path.join(root, 'prompts/ask/AI_RENTER_QUESTIONS.md'), 'utf8'),
+  readFile(path.join(root, 'documents/ask/AI_LISTING_TOOL_TEST_QUESTIONS.md'), 'utf8'),
+  readFile(path.join(root, 'documents/ask/AI_RENTER_QUESTIONS.md'), 'utf8'),
   readFile(path.join(root, 'postgres/seed/listings_seed_hcm.sql')),
   readFile(path.join(root, 'postgres/seed/homespace_seed_300_duong_govap.json')),
 ]);
@@ -97,7 +97,7 @@ if (args.includes('--json')) {
     mode: 'needs_based_room_consultation',
     total: cases.length,
     defaultMaxResults: 20,
-    source: 'prompts/ask/AI_LISTING_TOOL_TEST_QUESTIONS.md',
+    source: 'documents/ask/AI_LISTING_TOOL_TEST_QUESTIONS.md',
     instructions: 'New chat for each independent case. Keep all 40 Linh turns sequentially in one conversationId. Send only prompt, never expected/ledger/fake history. Record actual ordered listing IDs and recommendation aliases in an external ledger at captureStage. If a requiresStages dependency was not created, mark that dependent case BLOCKED rather than fabricate a selection. Clarification is correct when important needs are genuinely missing. No preselected listings, setup messages or paid calls are performed by this exporter.',
     cases,
   }, null, 2) + '\n');

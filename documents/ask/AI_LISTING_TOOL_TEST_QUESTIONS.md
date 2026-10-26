@@ -13,7 +13,7 @@ Bản chỉ có lời khách: `AI_RENTER_QUESTIONS.md`.
 
 Đã đọc bộ seed `postgres/seed/listings_seed_hcm.sql` cùng `homespace_seed_300_duong_govap.json`. Snapshot có 300 tin: 100 ROOM, 100 APARTMENT, 100 HOUSE; bộ này tập trung vào **100 ROOM**, không coi 300 tin đều là phòng trọ.
 
-<!-- seed-sql-sha256: 9ddf01ade35edde8fa02f7e7195c95183266d832e0204ad1d67b4bed1c01014e -->
+<!-- seed-sql-sha256: 594dc2ad987907eaf4e66b3b59a4fb8673c8b21a188aec50c3351acb86a5a5f9 -->
 <!-- seed-json-sha256: bc0e704f21e4a089109418836da9b38ec39d701094707633a1d669d57f72678d -->
 
 | Địa bàn mới tại TP.HCM (`city_id=12`) | ward_id | ROOM |

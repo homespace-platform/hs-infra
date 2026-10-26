@@ -29,7 +29,7 @@ Hỏi thêm là đúng khi khách chưa nói khu vực/ngân sách là tiền ph
 
 ## Kiểm tra file hoặc xuất cho runner
 
-Từ `D:\Workspace\homespace\hs-infrastructure`:
+Từ `D:\Workspace\homespace\hs-infra`:
 
 ```powershell
 node scripts/validate-ai-listing-questions.mjs

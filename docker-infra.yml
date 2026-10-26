@@ -231,10 +231,10 @@ networks:
 #  Usage
 #  =================================================================
 #  Start infrastructure (blocks until all healthchecks pass, incl. Keycloak :9000):
-#    docker compose -f docker-infrastructure.yml up -d --wait
+#    docker compose -f docker-infra.yml up -d --wait
 #
 #  Stop infrastructure:
-#    docker compose -f docker-infrastructure.yml down
+#    docker compose -f docker-infra.yml down
 #
 #  Check Keycloak health manually:
 #    curl -sf http://localhost:9001/health/ready

@@ -27,7 +27,7 @@ Tài liệu đối chiếu ngày 23/10/2026: [Autocomplete v4](https://maps.viet
 
 ## Kiểm tra file offline
 
-Từ thư mục `hs-infrastructure`:
+Từ thư mục `hs-infra`:
 
 ```powershell
 node scripts/validate-vietmap-poi-postman.mjs

@@ -22,7 +22,7 @@ Seed chạy trong transaction, kiểm tra dữ liệu trước COMMIT, upsert th
 
 ## Khi sửa JSON
 
-Tại `D:\Workspace\homespace\hs-infrastructure`:
+Tại `D:\Workspace\homespace\hs-infra`:
 
 ```powershell
 node scripts/build-listings-seed.mjs
@@ -30,7 +30,7 @@ node --test scripts/build-listings-seed.test.mjs
 node scripts/build-listings-seed.mjs --check
 ```
 
-Script cập nhật hai vùng snapshot (JSON nguồn và các mã hành chính đã đối chiếu), không sửa JSON gốc. Cần checkout `hs-web-app` bên cạnh `hs-infrastructure` để đọc catalog; khi đổi catalog frontend hãy chạy lại build và `--check`. SQL xuất ra vẫn tự chứa dữ liệu, chạy độc lập bằng pgAdmin. Giữ `id` và `pointIndex` ổn định khi cập nhật để không tạo listing khác. Không dùng `sync-hcm-seed-wards.mjs` cũ với seed mới.
+Script cập nhật hai vùng snapshot (JSON nguồn và các mã hành chính đã đối chiếu), không sửa JSON gốc. Cần checkout `hs-web-app` bên cạnh `hs-infra` để đọc catalog; khi đổi catalog frontend hãy chạy lại build và `--check`. SQL xuất ra vẫn tự chứa dữ liệu, chạy độc lập bằng pgAdmin. Giữ `id` và `pointIndex` ổn định khi cập nhật để không tạo listing khác. Không dùng `sync-hcm-seed-wards.mjs` cũ với seed mới.
 
 ## Kiểm thử database dùng một lần
 

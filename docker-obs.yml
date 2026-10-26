@@ -63,13 +63,13 @@ networks:
 #  Usage
 #  =================================================================
 #  Start infrastructure first:
-#    docker compose -f docker-infrastructure.yml up -d --wait
+#    docker compose -f docker-infra.yml up -d --wait
 #
 #  Start observability tools:
-#    docker compose -f docker-observability.yml up -d
+#    docker compose -f docker-obs.yml up -d
 #
 #  Stop observability tools:
-#    docker compose -f docker-observability.yml down
+#    docker compose -f docker-obs.yml down
 #
 #  pgAdmin:
 #    URL: http://localhost:5050

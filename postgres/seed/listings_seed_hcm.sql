@@ -4,7 +4,7 @@
 -- Trường chưa xác minh giữ NULL; mã phường được đối chiếu chính xác tỉnh + tên với JSON Vietmap admin_new của frontend.
 -- Dùng CSDL tạo lại từ đầu; khởi động Core đã cập nhật để tạo schema/catalog trước.
 -- Chỉ dùng local/dev. SQL tự chứa snapshot JSON nên chạy được bằng pgAdmin.
--- Sinh lại snapshot: node scripts/build-listings-seed.mjs (tại hs-infrastructure).
+-- Sinh lại snapshot: node scripts/build-listings-seed.mjs (tại hs-infra).
 -- Chạy lại upsert cùng ID, không xóa tin thật/seed cũ và không thay đổi schema.
 -- 100 HOUSE, 100 APARTMENT, 100 ROOM; giá/nội thất/chính sách/ảnh là dữ liệu mẫu.
 
