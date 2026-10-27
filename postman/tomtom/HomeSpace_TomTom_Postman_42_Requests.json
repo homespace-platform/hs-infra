@@ -1,0 +1,2444 @@
+{
+  "info": {
+    "_postman_id": "4f4f24fc-9e2e-4ea3-ac48-39e8a3f68a8f",
+    "name": "HomeSpace - TomTom API Collection (V2 Nearby + V3 Discover QUERY FIX 2026-10-27)",
+    "description": "Collection đã sửa lỗi Discover v3 query rỗng và geometry.center sai: v3 cần query cụ thể; Nearby v2 cho quét mọi POI. Có thêm Nearby v2 gộp 7 categorySet. Các request chưa được chạy với API Key thực. Tham khảo tài liệu TomTom hiện hành.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 - Nearby Search V2 (ƯU TIÊN HOME SPACE)",
+      "description": "Không yêu cầu query hay categorySet, quét POI quanh tọa độ và phân trang.",
+      "item": [
+        {
+          "name": "01 ★ Nearby - TẤT CẢ loại POI (2 km, không categoryset)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "QUAN TRỌNG NHẤT CHO HOMESPACE. Không truyền categoryset. V2 trả tối đa 100 kết quả/trang, không có nghĩa lấy hết tất cả POI.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 Nearby - Trang tiếp theo (ofs=100)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Thay ofs để phân trang. Có thể trả rỗng nếu không đủ kết quả.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 Nearby - Quán ăn (categorySet=7315)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&categorySet=7315",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7315"
+                }
+              ]
+            },
+            "description": "Category 7315=Restaurant theo ví dụ tài liệu TomTom. Dùng POI Categories để tìm mã khác.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 Nearby - POI + openingHours (nếu có)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&openingHours=nextSevenDays",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "openingHours",
+                  "value": "nextSevenDays"
+                }
+              ]
+            },
+            "description": "Một số POI có giờ mở cửa, nhưng không đảm bảo mọi địa điểm có.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 Nearby - Bán kính nhỏ 500 m",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius=500&limit={{limit}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "500"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                }
+              ]
+            },
+            "description": "So sánh với radius 2 km.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 Nearby - 5 km",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius=5000&limit={{limit}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "5000"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 ★ Nearby - GỘP trường học, bệnh viện, siêu thị, nhà thuốc",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN&categorySet=7372,7377,7321,7332005,9361009,7326,9663",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7372,7377,7321,7332005,9361009,7326,9663"
+                }
+              ]
+            },
+            "description": "Một request Nearby v2 với 7 nhóm categorySet theo OR. Tối đa 100 kết quả mỗi request. Trả về những POI phù hợp danh mục, không đảm bảo liệt kê hết tất cả trong bán kính. https://docs.tomtom.com/search-api/documentation/search-service/nearby-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 - Search V2 (POI, Category, Fuzzy, Autocomplete)",
+      "description": "Đầy đủ các nhóm tìm kiếm dạng văn bản và danh mục hỗ trợ HomeSpace.",
+      "item": [
+        {
+          "name": "POI Search - Trường học",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiSearch/school.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiSearch",
+                "school.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "Tìm từ khóa school trong bán kính.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POI Search - Bệnh viện",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiSearch/hospital.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiSearch",
+                "hospital.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "Tìm từ khóa hospital trong bán kính.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POI Search - Siêu thị",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiSearch/supermarket.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiSearch",
+                "supermarket.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "Tìm từ khóa supermarket trong bán kính.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POI Search - Cà phê",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiSearch/coffee.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiSearch",
+                "coffee.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "Tìm từ khóa coffee trong bán kính.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POI Search - Nhà thuốc",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiSearch/pharmacy.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiSearch",
+                "pharmacy.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "Tìm từ khóa pharmacy trong bán kính.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/points-of-interest-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Category Search - pizza",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/categorySearch/pizza.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "categorySearch",
+                "pizza.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/category-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Category Search - supermarket",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/categorySearch/supermarket.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "categorySearch",
+                "supermarket.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/category-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Fuzzy Search - địa điểm tự do",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/search/{{searchText}}.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "search",
+                "{{searchText}}.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/fuzzy-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Fuzzy Search - gợi ý khi nhập",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/search/{{searchText}}.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&typeahead=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "search",
+                "{{searchText}}.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "typeahead",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/fuzzy-search"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Autocomplete - category/brand",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/autocomplete/{{autocompleteText}}.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit=10&resultSet=category,brand",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "autocomplete",
+                "{{autocompleteText}}.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "resultSet",
+                  "value": "category,brand"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/autocomplete-service/autocomplete"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POI Categories - Danh sách toàn bộ nhóm",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiCategories.json?key={{TOMTOM_API_KEY}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiCategories.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                }
+              ]
+            },
+            "description": "Lấy code để sử dụng trong categorySet.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/poi-categories-service/poi-categories"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 - Search V2 (Geometry / Route / Details)",
+      "description": "Các dịch vụ chuyên sâu v2. Một số request phụ thuộc dữ liệu ID từ request trước.",
+      "item": [
+        {
+          "name": "Geometry Search - CIRCLE 2km (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/geometrySearch/supermarket.json?key={{TOMTOM_API_KEY}}&limit={{limit}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "geometrySearch",
+                "supermarket.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                }
+              ]
+            },
+            "description": "Lọc POI bằng hình tròn. Không phải quét toàn bộ POI như Nearby.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/geometry-search",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"geometryList\": [\n    {\n      \"type\": \"CIRCLE\",\n      \"position\": \"{{lat}},{{lon}}\",\n      \"radius\": 2000\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});",
+                  "try { const j=pm.response.json(); if(j.results && j.results.length){pm.collectionVariables.set('legacyPlaceId',j.results[0].id); console.log('Legacy POI',j.results[0].poi?.name,j.results[0].dist); } pm.test('Mảng results tồn tại',()=>pm.expect(j.results).to.be.an('array')); }catch(e){console.log(e.message)}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Geometry Filter - POI mẫu (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/geometryFilter.json?key={{TOMTOM_API_KEY}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "geometryFilter.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                }
+              ]
+            },
+            "description": "Lọc danh sách POI bạn đã có theo hình học; không tự tìm dữ liệu POI.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/filters-service/geometry-filter",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"geometryList\": [\n    {\n      \"type\": \"CIRCLE\",\n      \"position\": \"{{lat}},{{lon}}\",\n      \"radius\": 2000\n    }\n  ],\n  \"poiList\": [\n    {\n      \"poi\": {\n        \"name\": \"POI demo A\"\n      },\n      \"position\": {\n        \"lat\": 10.828,\n        \"lon\": 106.688\n      }\n    },\n    {\n      \"poi\": {\n        \"name\": \"POI demo B (ngoài vòng)\"\n      },\n      \"position\": {\n        \"lat\": 10.9,\n        \"lon\": 106.8\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Along Route Search - POI dọc lộ trình",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/searchAlongRoute/coffee.json?key={{TOMTOM_API_KEY}}&maxDetourTime=900&limit=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "searchAlongRoute",
+                "coffee.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "maxDetourTime",
+                  "value": "900"
+                },
+                {
+                  "key": "limit",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Tìm POI dọc theo tuyến điểm mẫu. maxDetourTime đơn vị giây.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/search-service/along-route-search",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"route\": {\n    \"points\": [\n      {\n        \"lat\": 10.8274681,\n        \"lon\": 106.6875169\n      },\n      {\n        \"lat\": 10.831,\n        \"lon\": 106.69\n      },\n      {\n        \"lat\": 10.836,\n        \"lon\": 106.694\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Place by ID - Chi tiết POI v2",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/place.json?key={{TOMTOM_API_KEY}}&entityId={{legacyPlaceId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "place.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "entityId",
+                  "value": "{{legacyPlaceId}}"
+                }
+              ]
+            },
+            "description": "Chạy Nearby/POI v2 trước để tự lưu legacyPlaceId.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/place-by-id-service/place-by-id\n\n⚠️ Chạy sau khi đã lưu ID từ các request trước."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Additional Data - hình học (cần geometryId)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/additionalData.json?key={{TOMTOM_API_KEY}}&geometries={{geometryId}}&geometriesZoom=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "additionalData.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "geometries",
+                  "value": "{{geometryId}}"
+                },
+                {
+                  "key": "geometriesZoom",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "geometryId không phải POI ID; lấy ID hình học từ những phản hồi có reference geometry phù hợp.\n\nTài liệu: https://docs.tomtom.com/search-api/documentation/additional-data-service/additional-data\n\n⚠️ Chạy sau khi đã lưu ID từ các request trước."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "04 - Places Search V3 [FIX QUERY - 27.10.2026]",
+      "description": "Tài liệu Discover nói query minLength 0, nhưng backend trả 400 khi query rỗng trong Postman của người dùng. Các request Discover dùng từ khóa thực và poiTypes hợp lệ. Không gọi đây là quét tất cả POI; Nearby v2 xử lý trường hợp đó.",
+      "item": [
+        {
+          "name": "01 Discover V3 - Trường học / Đại học (query=school)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "results"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "vi-VN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/discover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "discover"
+              ],
+              "query": []
+            },
+            "description": "TomTom Discover v3: query không rỗng (giá trị 'school'); lọc poiTypes ['school_or_kindergarten', 'college_or_university']. Không phải API liệt kê TẤT CẢ POI. Để tìm mọi loại POI theo tọa độ, chạy Nearby v2 ở nhóm 01. Đối chiếu https://docs.tomtom.com/places-search-api/documentation/places-search/discover",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"school\",\n  \"origin\": {\n    \"type\": \"point\",\n    \"coordinates\": [\n      {{lon}},\n      {{lat}}\n    ]\n  },\n  \"maxResults\": {{limit}},\n  \"filters\": {\n    \"types\": [\n      \"poi\"\n    ],\n    \"poiTypes\": [\n      \"school_or_kindergarten\",\n      \"college_or_university\"\n    ],\n    \"geometry\": {\n      \"type\": \"circle\",\n      \"center\": [\n        {{lon}},\n        {{lat}}\n      ],\n      \"radiusInMeters\": {{radius}}\n    }\n  },\n  \"preferences\": {\n    \"geometry\": {\n      \"type\": \"point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "let data = null; try { data = pm.response.json(); } catch (e) { console.error('Invalid JSON:', e.message); }",
+                  "if (pm.response.code !== 200) { console.error('TomTom V3 ERROR', data?.detailedError || data || pm.response.text()); }",
+                  "if (pm.response.code === 200) {",
+                  "  pm.test('Response results là mảng', () => pm.expect(data.results).to.be.an('array'));",
+                  "  const pois = (data.results || []).filter(x => x?.type === 'poi' && x.id);",
+                  "  if (pois.length) {",
+                  "    const p = pois[0]; pm.collectionVariables.set('orbisPlaceId', p.id); pm.collectionVariables.set('orbisPlaceType', 'pois');",
+                  "    console.log('Saved v3 POI for Details:', p.title || p.id, 'id:', p.id);",
+                  "  } else { console.warn('Không có POI để lưu ID. Chạy Discover v3 khác có POI trước khi chạy Details.'); }",
+                  "  console.log('Discover v3: total returned', (data.results || []).length);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 Discover V3 - Siêu thị (query=supermarket)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "results"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "vi-VN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/discover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "discover"
+              ],
+              "query": []
+            },
+            "description": "TomTom Discover v3: query không rỗng (giá trị 'supermarket'); lọc poiTypes ['supermarket']. Không phải API liệt kê TẤT CẢ POI. Để tìm mọi loại POI theo tọa độ, chạy Nearby v2 ở nhóm 01. Đối chiếu https://docs.tomtom.com/places-search-api/documentation/places-search/discover",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"supermarket\",\n  \"origin\": {\n    \"type\": \"point\",\n    \"coordinates\": [\n      {{lon}},\n      {{lat}}\n    ]\n  },\n  \"maxResults\": {{limit}},\n  \"filters\": {\n    \"types\": [\n      \"poi\"\n    ],\n    \"poiTypes\": [\n      \"supermarket\"\n    ],\n    \"geometry\": {\n      \"type\": \"circle\",\n      \"center\": [\n        {{lon}},\n        {{lat}}\n      ],\n      \"radiusInMeters\": {{radius}}\n    }\n  },\n  \"preferences\": {\n    \"geometry\": {\n      \"type\": \"point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "let data = null; try { data = pm.response.json(); } catch (e) { console.error('Invalid JSON:', e.message); }",
+                  "if (pm.response.code !== 200) { console.error('TomTom V3 ERROR', data?.detailedError || data || pm.response.text()); }",
+                  "if (pm.response.code === 200) {",
+                  "  pm.test('Response results là mảng', () => pm.expect(data.results).to.be.an('array'));",
+                  "  const pois = (data.results || []).filter(x => x?.type === 'poi' && x.id);",
+                  "  if (pois.length) {",
+                  "    const p = pois[0]; pm.collectionVariables.set('orbisPlaceId', p.id); pm.collectionVariables.set('orbisPlaceType', 'pois');",
+                  "    console.log('Saved v3 POI for Details:', p.title || p.id, 'id:', p.id);",
+                  "  } else { console.warn('Không có POI để lưu ID. Chạy Discover v3 khác có POI trước khi chạy Details.'); }",
+                  "  console.log('Discover v3: total returned', (data.results || []).length);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 Discover V3 - Nhà hàng (query=restaurant)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "results"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "vi-VN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/discover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "discover"
+              ],
+              "query": []
+            },
+            "description": "TomTom Discover v3: query không rỗng (giá trị 'restaurant'); lọc poiTypes ['restaurant']. Không phải API liệt kê TẤT CẢ POI. Để tìm mọi loại POI theo tọa độ, chạy Nearby v2 ở nhóm 01. Đối chiếu https://docs.tomtom.com/places-search-api/documentation/places-search/discover",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"restaurant\",\n  \"origin\": {\n    \"type\": \"point\",\n    \"coordinates\": [\n      {{lon}},\n      {{lat}}\n    ]\n  },\n  \"maxResults\": {{limit}},\n  \"filters\": {\n    \"types\": [\n      \"poi\"\n    ],\n    \"poiTypes\": [\n      \"restaurant\"\n    ],\n    \"geometry\": {\n      \"type\": \"circle\",\n      \"center\": [\n        {{lon}},\n        {{lat}}\n      ],\n      \"radiusInMeters\": {{radius}}\n    }\n  },\n  \"preferences\": {\n    \"geometry\": {\n      \"type\": \"point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "let data = null; try { data = pm.response.json(); } catch (e) { console.error('Invalid JSON:', e.message); }",
+                  "if (pm.response.code !== 200) { console.error('TomTom V3 ERROR', data?.detailedError || data || pm.response.text()); }",
+                  "if (pm.response.code === 200) {",
+                  "  pm.test('Response results là mảng', () => pm.expect(data.results).to.be.an('array'));",
+                  "  const pois = (data.results || []).filter(x => x?.type === 'poi' && x.id);",
+                  "  if (pois.length) {",
+                  "    const p = pois[0]; pm.collectionVariables.set('orbisPlaceId', p.id); pm.collectionVariables.set('orbisPlaceType', 'pois');",
+                  "    console.log('Saved v3 POI for Details:', p.title || p.id, 'id:', p.id);",
+                  "  } else { console.warn('Không có POI để lưu ID. Chạy Discover v3 khác có POI trước khi chạy Details.'); }",
+                  "  console.log('Discover v3: total returned', (data.results || []).length);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 Discover V3 - Bệnh viện (query=hospital)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "results"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "vi-VN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/discover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "discover"
+              ],
+              "query": []
+            },
+            "description": "TomTom Discover v3: query không rỗng (giá trị 'hospital'); lọc poiTypes ['hospital']. Không phải API liệt kê TẤT CẢ POI. Để tìm mọi loại POI theo tọa độ, chạy Nearby v2 ở nhóm 01. Đối chiếu https://docs.tomtom.com/places-search-api/documentation/places-search/discover",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"hospital\",\n  \"origin\": {\n    \"type\": \"point\",\n    \"coordinates\": [\n      {{lon}},\n      {{lat}}\n    ]\n  },\n  \"maxResults\": {{limit}},\n  \"filters\": {\n    \"types\": [\n      \"poi\"\n    ],\n    \"poiTypes\": [\n      \"hospital\"\n    ],\n    \"geometry\": {\n      \"type\": \"circle\",\n      \"center\": [\n        {{lon}},\n        {{lat}}\n      ],\n      \"radiusInMeters\": {{radius}}\n    }\n  },\n  \"preferences\": {\n    \"geometry\": {\n      \"type\": \"point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "let data = null; try { data = pm.response.json(); } catch (e) { console.error('Invalid JSON:', e.message); }",
+                  "if (pm.response.code !== 200) { console.error('TomTom V3 ERROR', data?.detailedError || data || pm.response.text()); }",
+                  "if (pm.response.code === 200) {",
+                  "  pm.test('Response results là mảng', () => pm.expect(data.results).to.be.an('array'));",
+                  "  const pois = (data.results || []).filter(x => x?.type === 'poi' && x.id);",
+                  "  if (pois.length) {",
+                  "    const p = pois[0]; pm.collectionVariables.set('orbisPlaceId', p.id); pm.collectionVariables.set('orbisPlaceType', 'pois');",
+                  "    console.log('Saved v3 POI for Details:', p.title || p.id, 'id:', p.id);",
+                  "  } else { console.warn('Không có POI để lưu ID. Chạy Discover v3 khác có POI trước khi chạy Details.'); }",
+                  "  console.log('Discover v3: total returned', (data.results || []).length);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 Discover V3 - Nhà thuốc (query=pharmacy)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "results"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "vi-VN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/discover",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "discover"
+              ],
+              "query": []
+            },
+            "description": "TomTom Discover v3: query không rỗng (giá trị 'pharmacy'); lọc poiTypes ['pharmacy']. Không phải API liệt kê TẤT CẢ POI. Để tìm mọi loại POI theo tọa độ, chạy Nearby v2 ở nhóm 01. Đối chiếu https://docs.tomtom.com/places-search-api/documentation/places-search/discover",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"pharmacy\",\n  \"origin\": {\n    \"type\": \"point\",\n    \"coordinates\": [\n      {{lon}},\n      {{lat}}\n    ]\n  },\n  \"maxResults\": {{limit}},\n  \"filters\": {\n    \"types\": [\n      \"poi\"\n    ],\n    \"poiTypes\": [\n      \"pharmacy\"\n    ],\n    \"geometry\": {\n      \"type\": \"circle\",\n      \"center\": [\n        {{lon}},\n        {{lat}}\n      ],\n      \"radiusInMeters\": {{radius}}\n    }\n  },\n  \"preferences\": {\n    \"geometry\": {\n      \"type\": \"point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "let data = null; try { data = pm.response.json(); } catch (e) { console.error('Invalid JSON:', e.message); }",
+                  "if (pm.response.code !== 200) { console.error('TomTom V3 ERROR', data?.detailedError || data || pm.response.text()); }",
+                  "if (pm.response.code === 200) {",
+                  "  pm.test('Response results là mảng', () => pm.expect(data.results).to.be.an('array'));",
+                  "  const pois = (data.results || []).filter(x => x?.type === 'poi' && x.id);",
+                  "  if (pois.length) {",
+                  "    const p = pois[0]; pm.collectionVariables.set('orbisPlaceId', p.id); pm.collectionVariables.set('orbisPlaceType', 'pois');",
+                  "    console.log('Saved v3 POI for Details:', p.title || p.id, 'id:', p.id);",
+                  "  } else { console.warn('Không có POI để lưu ID. Chạy Discover v3 khác có POI trước khi chạy Details.'); }",
+                  "  console.log('Discover v3: total returned', (data.results || []).length);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 Suggest V3 - Gợi ý từ khóa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "results"
+              },
+              {
+                "key": "Accept-Language",
+                "value": "vi-VN"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/suggest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "suggest"
+              ],
+              "query": []
+            },
+            "description": "\n\nSuggest dùng query khác rỗng và origin/preference dạng Point, KHÔNG có filters.geometry.center trong request này. Nếu lỗi, xem detailedError.\n\nTài liệu: https://docs.tomtom.com/places-search-api/documentation/places-search/suggest",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"supermar\",\n  \"origin\": {\n    \"type\": \"point\",\n    \"coordinates\": [\n      {{lon}},\n      {{lat}}\n    ]\n  },\n  \"preferences\": {\n    \"geometry\": {\n      \"type\": \"point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "if (pm.response.code !== 200) { try { console.error('TomTom Suggest ERROR:', pm.response.json().detailedError); } catch(e) { console.error(pm.response.text()); } }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 Details V3 - Chi tiết từ Discover",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "id,type,title,subtitles,position,address,contacts"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/places/details/{{orbisPlaceType}}/{{orbisPlaceId}}?origin={{lon}},{{lat}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "places",
+                "details",
+                "{{orbisPlaceType}}",
+                "{{orbisPlaceId}}"
+              ],
+              "query": [
+                {
+                  "key": "origin",
+                  "value": "{{lon}},{{lat}}"
+                }
+              ]
+            },
+            "description": "Chạy Discover trước để lấy ID. ID v3 khác với legacyPlaceId của v2.\n\nĐiều kiện: chạy một Discover V3 có kết quả POI trước để script tự lưu orbisPlaceId / orbisPlaceType. Không dùng legacyPlaceId từ Search v2. origin=longitude,latitude.\n\nTài liệu: https://docs.tomtom.com/places-search-api/documentation/places-search/details"
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const id = pm.collectionVariables.get('orbisPlaceId');",
+                  "const type = pm.collectionVariables.get('orbisPlaceType');",
+                  "if (!id || !type) { console.warn('Chưa có orbisPlaceId. Hãy chạy Discover V3 thành công, có POI trong results trước khi gọi Details.'); }"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('HTTP 200 OK (không chấp nhận 400)', () => pm.response.to.have.status(200));",
+                  "pm.test('Phản hồi dưới 20 giây', () => pm.expect(pm.response.responseTime).to.be.below(20000));",
+                  "if (pm.response.code !== 200) { try { console.error('TomTom Details ERROR:', pm.response.json().detailedError); } catch(e) { console.error(pm.response.text()); } }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "05 - Geocoding / Reverse Geocoding",
+      "description": "Gợi ý địa chỉ, từ địa chỉ -> lat/lon và ngược lại.",
+      "item": [
+        {
+          "name": "Geocode - Địa chỉ -> tọa độ",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/geocode/{{addressText}}.json?key={{TOMTOM_API_KEY}}&limit=10&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "geocode",
+                "{{addressText}}.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/geocoding-api/documentation/tomtom-maps/v1/geocode"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Structured Geocode - phân trường địa chỉ",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/structuredGeocode.json?key={{TOMTOM_API_KEY}}&streetName={{streetName}}&municipality={{cityName}}&countryCode=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "structuredGeocode.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "streetName",
+                  "value": "{{streetName}}"
+                },
+                {
+                  "key": "municipality",
+                  "value": "{{cityName}}"
+                },
+                {
+                  "key": "countryCode",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/geocoding-api/documentation/tomtom-maps/v1/structured-geocode"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Reverse Geocode - tọa độ -> địa chỉ",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/reverseGeocode/{{lat}},{{lon}}.json?key={{TOMTOM_API_KEY}}&radius=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "reverseGeocode",
+                "{{lat}},{{lon}}.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/reverse-geocoding-api/documentation/tomtom-maps/v1/reverse-geocode"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "06 - Routing API (Đi đường thực tế)",
+      "description": "Tính distance/time thay vì chỉ bán kính đường chim bay.",
+      "item": [
+        {
+          "name": "Routing V1 - ô tô",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&travelMode=car&traffic=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "routing",
+                "1",
+                "calculateRoute",
+                "{{lat}},{{lon}}:{{destLat}},{{destLon}}",
+                "json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "travelMode",
+                  "value": "car"
+                },
+                {
+                  "key": "traffic",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "Khoảng cách và thời gian đi bằng ô tô.\n\nTài liệu: https://docs.tomtom.com/routing-api/documentation/tomtom-maps/v1/calculate-route"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Routing V1 - đi bộ",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&travelMode=pedestrian",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "routing",
+                "1",
+                "calculateRoute",
+                "{{lat}},{{lon}}:{{destLat}},{{destLon}}",
+                "json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "travelMode",
+                  "value": "pedestrian"
+                }
+              ]
+            },
+            "description": "Tính khoảng cách đường đi bộ, khác với khoảng cách đường chim bay.\n\nTài liệu: https://docs.tomtom.com/routing-api/documentation/tomtom-maps/v1/calculate-route"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Routing V1 - xe đạp",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&travelMode=bicycle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "routing",
+                "1",
+                "calculateRoute",
+                "{{lat}},{{lon}}:{{destLat}},{{destLon}}",
+                "json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "travelMode",
+                  "value": "bicycle"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/routing-api/documentation/tomtom-maps/v1/calculate-route"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Routing V1 - ngắn nhất",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&routeType=shortest&travelMode=car",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "routing",
+                "1",
+                "calculateRoute",
+                "{{lat}},{{lon}}:{{destLat}},{{destLon}}",
+                "json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "routeType",
+                  "value": "shortest"
+                },
+                {
+                  "key": "travelMode",
+                  "value": "car"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/routing-api/documentation/tomtom-maps/v1/calculate-route"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Routing Orbis V3 - Calculate Route",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "TomTom-Api-Key",
+                "value": "{{TOMTOM_API_KEY}}"
+              },
+              {
+                "key": "TomTom-Api-Version",
+                "value": "3"
+              },
+              {
+                "key": "Attributes",
+                "value": "routes"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/routing/routes/calculate?apiVersion=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "routing",
+                "routes",
+                "calculate"
+              ],
+              "query": [
+                {
+                  "key": "apiVersion",
+                  "value": "3"
+                }
+              ]
+            },
+            "description": "TomTom Orbis API v3; yêu cầu quyền riêng nếu tài khoản chưa bật.\n\nTài liệu: https://docs.tomtom.com/routing-api/documentation/tomtom-orbis-maps/v3/calculate-route",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"routePlanningLocations\": {\n    \"origin\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        {{lon}},\n        {{lat}}\n      ]\n    },\n    \"destination\": {\n      \"type\": \"Point\",\n      \"coordinates\": [\n        106.694,\n        10.836\n      ]\n    }\n  },\n  \"routeType\": \"fastest\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "07 - Traffic API (Tham khảo)",
+      "description": "Không bắt buộc cho HomeSpace. API quyền/quota có thể khác Search.",
+      "item": [
+        {
+          "name": "Traffic - tốc độ đoạn đường gần tọa độ",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/traffic/services/4/flowSegmentData/absolute/10/json?key={{TOMTOM_API_KEY}}&point={{lat}},{{lon}}&unit=kmph",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "traffic",
+                "services",
+                "4",
+                "flowSegmentData",
+                "absolute",
+                "10",
+                "json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "point",
+                  "value": "{{lat}},{{lon}}"
+                },
+                {
+                  "key": "unit",
+                  "value": "kmph"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/traffic-api/documentation/tomtom-maps/v1/traffic-flow/flow-segment-data"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Traffic - sự cố trong bounding box",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/traffic/services/5/incidentDetails?key={{TOMTOM_API_KEY}}&bbox={{minLon}},{{minLat}},{{maxLon}},{{maxLat}}&fields={incidents{type,geometry{type,coordinates},properties{iconCategory}}}&language=en-GB&timeValidityFilter=present",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "traffic",
+                "services",
+                "5",
+                "incidentDetails"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "bbox",
+                  "value": "{{minLon}},{{minLat}},{{maxLon}},{{maxLat}}"
+                },
+                {
+                  "key": "fields",
+                  "value": "{incidents{type,geometry{type,coordinates},properties{iconCategory}}}"
+                },
+                {
+                  "key": "language",
+                  "value": "en-GB"
+                },
+                {
+                  "key": "timeValidityFilter",
+                  "value": "present"
+                }
+              ]
+            },
+            "description": "\n\nTài liệu: https://docs.tomtom.com/traffic-api/documentation/tomtom-maps/v1/traffic-incidents/incident-details"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "08 - Map Display API (Ảnh tile)",
+      "description": "Một tile trả về ảnh PNG; không phải danh sách địa điểm. Chỉ để kiểm tra Maps API.",
+      "item": [
+        {
+          "name": "Raster Tile - ảnh bản đồ khu vực (Legacy V1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/map/1/tile/basic/main/{{zoom}}/{{tileX}}/{{tileY}}.png?key={{TOMTOM_API_KEY}}&tileSize=256",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "map",
+                "1",
+                "tile",
+                "basic",
+                "main",
+                "{{zoom}}",
+                "{{tileX}}",
+                "{{tileY}}.png"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "tileSize",
+                  "value": "256"
+                }
+              ]
+            },
+            "description": "Trả về IMAGE PNG, không phải JSON. Postman sẽ có tab Preview.\n\nTài liệu: https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/raster/map-tile"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Raster Tile - ảnh bản đồ thế giới (Orbis V2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/maps/orbis/display/raster/tile/0/0/0?key={{TOMTOM_API_KEY}}&apiVersion=2&style=street-light",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maps",
+                "orbis",
+                "display",
+                "raster",
+                "tile",
+                "0",
+                "0",
+                "0"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "apiVersion",
+                  "value": "2"
+                },
+                {
+                  "key": "style",
+                  "value": "street-light"
+                }
+              ]
+            },
+            "description": "Ví dụ trực tiếp từ hướng dẫn API key TomTom (Orbis raster v2).\n\nTài liệu: https://docs.tomtom.com/platform/documentation/my-tomtom/how-to-get-a-tomtom-api-key"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Phản hồi thành công (2xx)', function(){pm.expect(pm.response.code).to.be.within(200,299)});",
+                  "pm.test('Thời gian dưới 20 giây', function(){pm.expect(pm.response.responseTime).to.be.below(20000)});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "legacyPlaceId",
+      "value": ""
+    },
+    {
+      "key": "orbisPlaceId",
+      "value": ""
+    },
+    {
+      "key": "orbisPlaceType",
+      "value": "pois"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "if (!pm.environment.get('TOMTOM_API_KEY')) console.warn('Hãy nhập TOMTOM_API_KEY trong Environment.');"
+        ]
+      }
+    }
+  ]
+}

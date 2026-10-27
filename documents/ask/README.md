@@ -48,6 +48,7 @@ Bản v3 **thay thế** bản v2 có25 bước gửi link trước. Đủ100 câ
 - SQL chỉ là kiểm tra giả định chi phí/ứng viên đủ một số điều kiện đã khai báo, không chứng minh cách âm,sạch,an ninh,đi học bao nhiêu phút hoặc chủ sẽ nhận mèo.
 - Với tổng chi tháng,phải tính điện,nước,mạng,phí người/xe và khoản đã gồm giá theo đúng đơn vị. Ước tính có giả định,không phải hóa đơn/trọn gói; cách chia đồng hồ chung cần xác nhận.
 - Không khóa một UUID làm đáp án “phù hợp nhất”. Xếp hạng khác nhau vẫn có thể đạt nếu tôn trọng điều kiện cứng,có căn cứ và giải thích đánh đổi theo chính khách đó.
+- Hiện không bật quét tiện ích xung quanh hoặc xếp hạng theo bán kính/khoảng cách. Tìm theo địa danh chỉ đối chiếu nội dung tin đăng; AI phải nói rõ giới hạn, không tự khẳng định gần trường, bệnh viện hay thời gian di chuyển.
 - Giới hạn kết quả mặc định5,cap cấu hình mặc định20; nhu cầu2/3/10 phải linh động. Không kéo cả nghìn detail để AI lọc.
 - Tại thời điểm soạn,AI chỉ nạp8 message gần nhất. Lượt quay lại “phòng A” kiểm tra memory dài thật; mất context mà xin làm rõ là an toàn nhưng chưa đạt memory.
 - **Chưa chạy100 câu bằng model.** Script PASS chỉ chứng minh tài liệu hợp lệ. Không tự gọi provider tính phí hoặc thay đổi nghiệp vụ thuê phòng.
