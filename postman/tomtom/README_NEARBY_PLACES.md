@@ -79,7 +79,11 @@ Quét chạy nền và tuân thủ giới hạn request trong properties; dữ l
    Ở web, bản đồ tùy chọn dùng
    NEXT_PUBLIC_VIETMAP_MAP_API_KEY (key trình duyệt giới hạn domain, khác key backend).
    Không có key map vẫn đọc danh sách/khoảng cách và mở Google Maps chỉ đường.
-   SDK browser được ghim Vietmap GL 6.0.1; chỉ tải khi người dùng mở bản đồ.
+   SDK npm được ghim VietMap GL 6.0.1, là dependency runtime; chỉ tải khi mở tab Bản đồ,
+   không tải script từ CDN. Xem `hs-web-app/README.md` để cấu hình key và chạy.
+   Hai tab Danh sách/Bản đồ dùng chung bộ lọc 2 km, 5 tiện ích/trang và API phân trang.
+   Bản đồ có ghim tin đăng màu xanh, ghim tiện ích theo nhóm, chọn hai chiều giữa danh sách
+   và popup bản đồ. Không fetch thêm POI từ TomTom/VietMap khi chuyển tab.
 5. Công khai một tin có tọa độ; hệ thống tự quét bán kính 2 km.
    Admin → Vận hành & Hỗ trợ → Tiện ích xung quanh theo dõi 100 job gần nhất,
    thử lại, hủy hoặc chủ động quét 5 km khi cần. Không cần bấm quét từng tin.
