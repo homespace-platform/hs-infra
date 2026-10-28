@@ -130,9 +130,10 @@ Quét chạy nền và tuân thủ giới hạn request trong properties; dữ l
 - Địa chỉ hiển thị ghép streetNumber + streetName, municipality, countrySubdivision; bỏ thành phần thiếu,
   không dùng freeformAddress hoặc tên hành chính cũ làm fallback. source_address vẫn giữ JSON gốc để đối chiếu.
   API dựng lại địa chỉ từ source_address cho cả dữ liệu đã cache, không cần SQL sửa dữ liệu hoặc gọi lại TomTom.
-- Google Maps nhận origin là latitude/longitude địa chỉ tài khoản hiện tại và destination là tọa độ POI.
-  Không dùng tọa độ listing làm origin. Chưa đăng nhập thì mời đăng nhập; tài khoản thiếu vị trí thì dẫn cập nhật hồ sơ.
-  Khoảng cách hiển thị trong danh sách vẫn là listing–POI; URL chỉ đường dùng account–POI.
+- Google Maps nhận origin là latitude/longitude của listing và destination là tọa độ POI,
+  áp dụng cả danh sách và popup bản đồ. Không đọc vị trí tài khoản, không yêu cầu đăng nhập.
+  Thiếu tọa độ hợp lệ ở listing hoặc POI thì không tạo URL chỉ đường.
+  Khoảng cách hiển thị trong danh sách và URL chỉ đường cùng đi từ listing đến POI.
 - Khối Nearby trên Web chỉ gọi phạm vi 2000 m, không có bộ chọn 3/5 km; mỗi trang yêu cầu 5 địa điểm.
   API dùng nearby.public-page-size khi thiếu size và chặn kích thước trang ở mức đã cấu hình
   (hiện là 5), kể cả client gửi size=20. LIMIT và OFFSET cùng dùng kích thước đã giới hạn.
@@ -200,7 +201,7 @@ Kết quả kiểm tra ngày 28/10/2026:
 - Bộ test AI unit/contract: 462 qua, 2 Mongo integration test bỏ qua vì chưa bật opt-in;
   kiểm tra tool Nearby bật sẵn, chế độ tắt và từ chối tool provider cũ.
 - Web: 22 test Nearby directions/address/pagination qua; TypeScript và ESLint phần thay đổi qua.
-  Kiểm tra account origin/POI destination, tọa độ thiếu/sai và không dùng hồ sơ của tài khoản trước.
+  Kiểm tra listing origin/POI destination, tọa độ thiếu/sai và chỉ đường không phụ thuộc hồ sơ tài khoản.
 - Gateway: 7 test route/header/security qua. Web và Admin production build thành công; ESLint phần Nearby qua.
 - Web card/chat regression: 41/42 qua. Test `guest can use the shared composer and sees an anonymous greeting; loading stays gated`
   lỗi ở assertion chữ “Khách được hỏi 3 câu”; kiểm tra lại source HEAD cũng có cùng lỗi, ngoài phạm vi module Nearby.
