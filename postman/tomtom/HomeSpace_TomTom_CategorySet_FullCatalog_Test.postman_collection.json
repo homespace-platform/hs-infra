@@ -1,0 +1,1043 @@
+{
+  "info": {
+    "name": "HomeSpace - TomTom CategorySet Full Catalog & Manual Test (2026-10-27)",
+    "_postman_id": "c81900e1-2c6d-4979-9d02-c2c9ea231816",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Bộ thử nghiệm mã POI Categories Search V2. Request 01 trả danh sách đầy đủ từ TomTom bằng key của bạn; request 02/03/04 thử từng mã/gộp mã. Không tự gọi hàng loạt; tránh tiêu hao quota. Phân biệt mã categories V2 (số) với poiTypes V3 (chuỗi)."
+  },
+  "variable": [
+    {
+      "key": "categorySetTest",
+      "value": "7372"
+    },
+    {
+      "key": "categorySetBatch",
+      "value": "7372,7377,7321,7332005,9361009,7326,9663"
+    },
+    {
+      "key": "categoryLanguage",
+      "value": "en-US"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 — Tra cứu danh mục đầy đủ (1 request)",
+      "item": [
+        {
+          "name": "01 GET Toàn bộ CategorySet ID + tên + mã con",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/poiCategories.json?key={{TOMTOM_API_KEY}}&language={{categoryLanguage}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "poiCategories.json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "language",
+                  "value": "{{categoryLanguage}}"
+                }
+              ]
+            },
+            "description": "Nguồn DUY NHẤT để lấy hết categories trong tài khoản của bạn. Sau Send, xem tab Visualize để duyệt đầy đủ và chọn Save Response để xuất JSON. Không dùng code 4 chữ số từ classifications (chuỗi)."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  const roots = payload.poiCategories;",
+                  "  pm.test(\"Danh mục poiCategories[]\", () => pm.expect(roots).to.be.an(\"array\"));",
+                  "  if (Array.isArray(roots)) {",
+                  "    const found = new Map();",
+                  "    roots.forEach(c => {",
+                  "      if (c && Number.isFinite(Number(c.id))) {",
+                  "        const id = String(c.id);",
+                  "        const old = found.get(id) || {};",
+                  "        found.set(id, { id, name: c.name || old.name || \"\", children: (c.childCategoryIds || []).length, type: \"category\" });",
+                  "        (c.childCategoryIds || []).forEach(n => {",
+                  "          const key = String(n);",
+                  "          if (!found.has(key)) found.set(key, {id:key, name:\"(child: xem danh mục chi tiết)\", children:0, type:\"child ID\"});",
+                  "        });",
+                  "      }",
+                  "    });",
+                  "    const all = Array.from(found.values()).sort((a,b) => Number(a.id)-Number(b.id));",
+                  "    pm.collectionVariables.set(\"categoryCountLastLoaded\", String(all.length));",
+                  "    console.log(\"TomTom category entries:\", roots.length, \"distinct IDs (incl. child IDs):\", all.length);",
+                  "    console.log(\"First 25:\", JSON.stringify(all.slice(0,25)));",
+                  "    const template = `<style>body{font:14px system-ui;padding:10px}table{border-collapse:collapse;width:100%}th,td{padding:7px;border-bottom:1px solid #ddd;text-align:left}th{position:sticky;top:0;background:#f5f5f5}small{color:#666}</style><h2>Toàn bộ mã TomTom trả về</h2><p>{{num}} mã riêng biệt (bao gồm child IDs), {{parentNum}} đối tượng poiCategories[]. Để xuất đầy đủ, Save Response → JSON rồi chạy script kèm theo.</p><table><thead><tr><th>Mã</th><th>Tên</th><th>Loại</th><th>Số mã con</th></tr></thead><tbody>{{#each rows}}<tr><td><code>{{id}}</code></td><td>{{name}}</td><td>{{type}}</td><td>{{children}}</td></tr>{{/each}}</tbody></table>`;",
+                  "    pm.visualizer.set(template, {num:all.length,parentNum:roots.length,rows:all});",
+                  "  }",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02 — Nearby kiểm thử thủ công (không spam)",
+      "item": [
+        {
+          "name": "02 Test MỘT code — chỉnh categorySetTest",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet={{categorySetTest}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "{{categorySetTest}}"
+                }
+              ]
+            },
+            "description": "Thay collection variable categorySetTest để thử 1 mã từ danh mục. Nếu kết quả rỗng, chưa chứng minh code sai."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "03 Test GỘP code — chỉnh categorySetBatch",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet={{categorySetBatch}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "{{categorySetBatch}}"
+                }
+              ]
+            },
+            "description": "Gộp mã bằng dấu phẩy. OR logic. Nếu kết quả đạt 100, có thể chạm limit, không bao phủ tất cả POI."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "04 Test KHÔNG lọc categorySet — đối chứng",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                }
+              ]
+            },
+            "description": "Đối chứng để xem kết quả Nearby không lọc. Có thể đạt giới hạn 100 ở rất gần tâm."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03 — Các nhóm tiện ích HomeSpace (ví dụ được đối chiếu)",
+      "item": [
+        {
+          "name": "01 Giáo dục [7372,7377]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=7372,7377",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7372,7377"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Giáo dục. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "02 Y tế [7321,7326,9373,9374,9663,9956]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=7321,7326,9373,9374,9663,9956",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7321,7326,9373,9374,9663,9956"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Y tế. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "03 Mua sắm [7332,7332005,9361,9361009,7373,7327]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=7332,7332005,9361,9361009,7373,7327",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7332,7332005,9361,9361009,7373,7327"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Mua sắm. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "04 Ăn uống [7315,9376]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=7315,9376",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7315,9376"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Ăn uống. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "05 Giao thông [9942,7380,7311,7369,7313]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=9942,7380,7311,7369,7313",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "9942,7380,7311,7369,7313"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Giao thông. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "06 Thể thao, giải trí [9362,7320,7374,7342,9902,7338]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=9362,7320,7374,7342,9902,7338",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "9362,7320,7374,7342,9902,7338"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Thể thao, giải trí. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "07 Tài chính [7328,7397]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=7328,7397",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7328,7397"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Tài chính. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        },
+        {
+          "name": "08 Lưu trú [7314,7303,7304]",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0&countrySet=VN&categorySet=7314,7303,7304",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search",
+                "2",
+                "nearbySearch",
+                ".json"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "{{TOMTOM_API_KEY}}"
+                },
+                {
+                  "key": "lat",
+                  "value": "{{lat}}"
+                },
+                {
+                  "key": "lon",
+                  "value": "{{lon}}"
+                },
+                {
+                  "key": "radius",
+                  "value": "{{radius}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "{{limit}}"
+                },
+                {
+                  "key": "ofs",
+                  "value": "0"
+                },
+                {
+                  "key": "countrySet",
+                  "value": "VN"
+                },
+                {
+                  "key": "categorySet",
+                  "value": "7314,7303,7304"
+                }
+              ]
+            },
+            "description": "Bộ mã minh họa để test nhóm Lưu trú. Không bao gồm mọi mã con; dùng POI Categories để kiểm tra danh mục đầy đủ."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "",
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "if (pm.response.code === 200) {",
+                  "  const payload = pm.response.json();",
+                  "  pm.test(\"results[] là mảng\", () => pm.expect(payload.results).to.be.an(\"array\"));",
+                  "  const results = Array.isArray(payload.results) ? payload.results : [];",
+                  "  const radius = Number(pm.variables.get(\"radius\") || 2000);",
+                  "  console.log(\"Số POI:\", results.length, \"categorySet:\", pm.variables.get(\"categorySetTest\") || pm.variables.get(\"categorySetBatch\"));",
+                  "  console.log(\"Mẫu (tối đa 15):\", JSON.stringify(results.slice(0,15).map(x => ({name:x.poi?.name, distanceMeters:x.dist, ids:(x.poi?.categorySet||[]).map(y=>y.id), lat:x.position?.lat, lon:x.position?.lon}))));",
+                  "  pm.test(\"POI có dist <= radius nếu đã cung cấp\", () => {",
+                  "    if (radius > 0) results.forEach(x => { if (typeof x.dist === \"number\") pm.expect(x.dist).to.be.at.most(radius+2); });",
+                  "  });",
+                  "  // 0 results = truy vấn hợp lệ nhưng có thể không có POI trong khu vực, KHÔNG phải mã không hợp lệ.",
+                  "}",
+                  ""
+                ]
+              }
+            }
+          ],
+          "response": []
+        }
+      ]
+    }
+  ]
+}

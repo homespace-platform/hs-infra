@@ -1,0 +1,120 @@
+﻿Nhóm,CategorySet ID,Tên tiếng Anh,Cấp,Mã cha (nếu có),Nguồn tài liệu
+Doanh nghiệp & dịch vụ,7328,Bank,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,7335,Agriculture Business,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,7378,Business Park,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,7388,Courier Drop Box,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,7391,Emergency Medical Service,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,7397,ATM,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9156,Manufacturing Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9157,Research Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9158,Media Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9160,Exchange,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9352,Company,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9377,Exhibition & Convention Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9382,Commercial Building,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Doanh nghiệp & dịch vụ,9383,Industrial Building,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Du lịch & tín ngưỡng,7316,Tourist Information Office,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Du lịch & tín ngưỡng,7337,Scenic/Panoramic View,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Du lịch & tín ngưỡng,7339,Place of Worship,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Du lịch & tín ngưỡng,7376,Tourist Attraction,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Du lịch & tín ngưỡng,7339008,Pagoda,child,7339,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,7308,Helipad,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,7352,Ferry Terminal,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,7366,Frontier Crossing,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,7380,Railroad Station,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,7383,Airport,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,7389,Access Gateway,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9159,Port/Warehouse Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9935,Mountain Pass,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9942,Public Transportation Stop,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9955,Checkpoint,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9942002,Bus Stop,child,9942,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9942003,Taxi Stand,child,9942,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9942004,Streetcar Stop,child,9942,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giao thông công cộng,9942005,Coach Stop,child,9942,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7301,Traffic Service Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7322,Police Station,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7324,Post Office,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7365,Embassy,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7367,Government Office,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7372,School,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7377,College/University,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,7392,Fire Station/Brigade,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9150,Primary Resource/Utility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9151,Transport Authority/Vehicle Registration,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9152,Non Governmental Organization,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9153,Welfare Organization,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9154,Prison/Correctional Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9363,Courthouse,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9388,Military Installation,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9389,Native Reservation,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9913,Library,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giáo dục & công cộng,9932,Public Amenity,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7302,Trail System,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7317,Museum,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7318,Theater,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7319,Cultural Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7341,Casino,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7342,Movie Theater,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7347,Marina,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7349,Winery,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,7363,Community Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9362,Park & Recreation Area,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9378,Leisure Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9379,Nightlife,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9900,Entertainment,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9902,Amusement Park,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9927,"Zoo, Arboreta & Botanical Garden",parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9937,Club & Association,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9362003,Cemetery,child,9362,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Giải trí & văn hóa,9362008,National Park,child,9362,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7303,Residential Accommodations,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7304,Vacation Rental,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7314,Hotel/Motel,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7327,Department Store,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7332,Market,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7360,Camping Ground,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7373,Shopping Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,9361,Shop,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Lưu trú & mua sắm,7332005,Supermarkets & Hypermarkets,child,7332,https://docs.tomtom.com/search-api/documentation/search-service/nearby-search
+Lưu trú & mua sắm,9361009,Convenience Store,child,9361,https://docs.tomtom.com/search-api/documentation/search-service/nearby-search
+Thể thao,7305,Adventure Sports Venue,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,7320,Sports Center,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,7338,Swimming Pool,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,7374,Stadium,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,9357,Beach,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,9360,Ice Skating Rink,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,9369,Tennis Court,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,9371,Water Sport,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Thể thao,9911,Golf Course,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Tự nhiên,8099,Geographic Feature,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,7321,Hospital,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,7326,Pharmacy,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,9373,Doctor,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,9374,Dentist,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,9375,Veterinarian,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,9663,Health Care Service,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Y tế,9956,Emergency Room,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7309,Electric Vehicle Station,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7310,Repair Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7311,Gas Station,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7312,Rent-a-Car Facility,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7313,Parking Garage,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7358,Truck Stop,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7359,Weigh Station,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7368,Motoring Organization Office,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7369,Open Parking Area,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7375,Toll Gate,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,7395,Rest Area,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,9155,Car Wash,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,9910,Automotive Dealer,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ô tô & di chuyển,9930,Rent-a-Car-Parking,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,7315,Restaurant,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,9376,Café/Pub,parent,,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,7315015,Pizza (example category),child,7315,https://docs.tomtom.com/search-api/documentation/search-service/nearby-search
+Ẩm thực,9376002,Café,child,9376,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,9376003,Pub,child,9376,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,9376004,Internet Café,child,9376,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,9376005,Tea House,child,9376,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,9376006,Coffee Shop,child,9376,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content
+Ẩm thực,9376007,Microbrewery,child,9376,https://docs.tomtom.com/map-display-api/documentation/tomtom-maps/v1/vector/content

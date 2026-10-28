@@ -1,0 +1,167 @@
+{
+  "info": {
+    "name": "HomeSpace - Nearby Places (Core cached POI)",
+    "description": "HomeSpace endpoints only. Do not run all requests: ADMIN rescan/cancel mutate the job queue. No TomTom key or automatic provider request in read endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1"
+    },
+    {
+      "key": "listingId",
+      "value": ""
+    },
+    {
+      "key": "placeId",
+      "value": ""
+    },
+    {
+      "key": "jobId",
+      "value": ""
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Read nearby places (2 km)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/public/listings/{{listingId}}/nearby-places?radiusMeters=2000&page=1&size=5"
+      }
+    },
+    {
+      "name": "02 Batch shortlist evidence",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/public/listings/ai/nearby-summary",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"listingIds\": [\n    \"{{listingId}}\"\n  ],\n  \"radiusMeters\": 2000,\n  \"groups\": [\n    \"EDUCATION\",\n    \"SHOPPING\"\n  ],\n  \"nearestPerGroup\": 3,\n  \"targetPlaceId\": null\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "03 Resolve exact place/campus",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/public/listings/ai/nearby-places/search?keyword=Đại học Công nghiệp"
+      }
+    },
+    {
+      "name": "04 Search rooms near a category, filters before LIMIT",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/public/listings/ai/search",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"filters\": [\n    {\n      \"field\": \"category\",\n      \"op\": \"eq\",\n      \"value\": \"ROOM\"\n    },\n    {\n      \"field\": \"price_amount\",\n      \"op\": \"lte\",\n      \"value\": 4000000\n    }\n  ],\n  \"sort\": \"price_asc\",\n  \"limit\": 10,\n  \"nearby\": {\n    \"group\": \"SHOPPING\",\n    \"radiusMeters\": 2000\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 Reverse: place to listings",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/public/listings/ai/nearby-places/{{placeId}}/listings?radiusMeters=2000",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"filters\": [\n    {\n      \"field\": \"category\",\n      \"op\": \"eq\",\n      \"value\": \"ROOM\"\n    }\n  ],\n  \"sort\": \"price_asc\",\n  \"limit\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "06 ADMIN scan status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{baseUrl}}/admin/nearby-scans"
+      }
+    },
+    {
+      "name": "07 ADMIN enqueue / retry (mutates queue)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{baseUrl}}/admin/listings/{{listingId}}/nearby-scans?radiusMeters=2000"
+      }
+    },
+    {
+      "name": "08 ADMIN cancel (mutates queue)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "url": "{{baseUrl}}/admin/nearby-scans/{{jobId}}/cancel"
+      }
+    }
+  ]
+}

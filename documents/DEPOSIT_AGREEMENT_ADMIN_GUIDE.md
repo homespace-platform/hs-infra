@@ -65,7 +65,7 @@ Admin xem hồ sơ và các PDF tại **Hồ sơ & tài liệu đã ký**, chọ
 
 ## 5. Cấu hình và lỗi thường gặp
 
-Giữ chế độ `homespace.signature.mode=SMARTCA`, kết nối VNPT, storage và Gotenberg đã dùng cho hợp đồng thuê. Không thêm API key vào source. `DEPOSIT_SIGNING_HOURS=48` là cửa sổ khách ký cọc tính từ khi chữ ký chủ nhà được xác minh; cửa sổ ký thuê độc lập. Mỗi bên cần tự phê duyệt hai giao dịch ký cho hai PDF.
+Giữ chế độ `homespace.signature.mode=SMARTCA`, kết nối VNPT, storage và Gotenberg đã dùng cho hợp đồng thuê. Không thêm API key vào source. `rental.deposit-signing-hours=48` trong Core application.properties là cửa sổ khách ký cọc tính từ khi chữ ký chủ nhà được xác minh; cửa sổ ký thuê độc lập. Mỗi bên cần tự phê duyệt hai giao dịch ký cho hai PDF.
 
 | Hiện tượng | Xử lý |
 | --- | --- |
