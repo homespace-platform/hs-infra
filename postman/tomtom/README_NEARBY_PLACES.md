@@ -1,5 +1,7 @@
 # Nearby Places — triển khai và vận hành
 
+Prompt memory để AI tiếp tục đúng luồng đã chốt: [HOMESPACE_NEARBY_MEMORY_PROMPT.md](../../prompts/HOMESPACE_NEARBY_MEMORY_PROMPT.md).
+
 Module mới nằm trong hs-core-api/hs-listing-service/com.hs.listing.nearby. Không thay bảng amenities,
 amenity_categories, listing_amenities; không thay geocoding Vietmap; không khôi phục provider cũ.
 
@@ -159,7 +161,7 @@ Quét chạy nền và tuân thủ giới hạn request trong properties; dữ l
   Khoảng cách hiển thị trong danh sách và URL chỉ đường cùng đi từ listing đến POI.
 - Khối Nearby trên Web chỉ gọi phạm vi 2000 m, không có bộ chọn 3/5 km; mỗi trang yêu cầu 10 địa điểm.
   API dùng nearby.public-page-size khi thiếu size và chặn kích thước trang ở mức đã cấu hình
-  (hiện là 5), kể cả client gửi size=20. LIMIT và OFFSET cùng dùng kích thước đã giới hạn.
+  (hiện là 10), kể cả client gửi size=20. LIMIT và OFFSET cùng dùng kích thước đã giới hạn.
 - AI đọc summary ngắn của shortlist rồi chỉ lấy detail tối đa 3 tin cho lời khuyên Nearby.
   Tìm phòng thông thường vẫn hỗ trợ số lượng linh động và lọc tiêu chí trong DB trước LIMIT.
 - Named target được resolve từ kho POI; nhiều cơ sở → hỏi rõ. Không lấy trường ngoại ngữ gần nhất
@@ -177,7 +179,7 @@ Import HomeSpace_Nearby_Places_Core.postman_collection.json; điền listingId v
 Collection này chỉ gọi HomeSpace Core qua Gateway, không nhúng TomTom key.
 Các request admin là thao tác chủ động; không chạy Runner toàn bộ collection.
 
-- GET /api/v1/public/listings/{id}/nearby-places?radiusMeters=2000&page=1&size=5
+- GET /api/v1/public/listings/{id}/nearby-places?radiusMeters=2000&page=1&size=10
 - POST /api/v1/public/listings/ai/nearby-summary
 - GET /api/v1/public/listings/ai/nearby-places/search?keyword=...
 - POST /api/v1/public/listings/ai/nearby-places/{id}/listings?radiusMeters=2000
