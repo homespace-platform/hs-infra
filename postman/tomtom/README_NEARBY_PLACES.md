@@ -5,8 +5,10 @@ amenity_categories, listing_amenities; không thay geocoding Vietmap; không kh�
 
 ## Chạy ngắn gọn
 
-1. Cấu hình hs-core-api/.env với JPA_DDL_AUTO=update rồi khởi động Core.
-   Có thể giữ database hiện có; không cần drop database hoặc chạy file SQL tạo/sửa schema Nearby.
+1. Với lần đổi từ quét riêng 8 nhóm sang truy vấn gộp: tạo lại CSDL dev theo kế hoạch của bạn,
+   cấu hình hs-core-api/.env với JPA_DDL_AUTO=update rồi khởi động Core để Java tạo schema mới.
+   Hibernate update không tự xóa cột category_group NOT NULL của schema cũ. Không dùng file SQL fix/migration.
+   Không chạy seed trước khi Core tạo xong schema.
 2. Hibernate tự tạo 7 bảng Nearby từ entity Java trong com.hs.listing.nearby.model,
    gồm field, khóa ngoại, khóa ghép, unique, index và default. NearbyCategoryInitializer
    tự bổ sung 8 nhóm nội bộ khi startup; không gọi TomTom hoặc seed POI.
@@ -28,6 +30,8 @@ nearby.tomtom.license-approved=true
 nearby.tomtom.license-policy-id=homespace-tomtom-poi-v1
 nearby.tomtom.base-url=https://api.tomtom.com
 nearby.tomtom.api-key=${TOMTOM_API_KEY}
+nearby.tomtom.category-set=7372,7377,7321,7326,7332005,9361009,7315,7328,9942002,9362
+nearby.tomtom.result-limit=100
 ~~~
 
 Không có fallback trong @Value, scheduler hoặc placeholder của file properties.
@@ -41,10 +45,10 @@ Các giá trị vận hành sau cũng được khai báo ngay trong cùng file p
 |---|---:|
 | nearby.default-radius-m | 2000 m |
 | nearby.scan-radius-m | 2000 m |
-| nearby.public-page-size | 5 địa điểm/trang |
+| nearby.public-page-size | 10 địa điểm/trang |
 | nearby.max-radius-m | 5000 m |
-| nearby.retention-hours | 24 giờ |
-| nearby.max-pages-per-group | 10 |
+| nearby.retention-hours | 0: giữ snapshot, không tự hết hạn/xóa |
+| nearby.tomtom.result-limit | 100 địa điểm, một request Nearby/lượt quét thành công |
 | nearby.max-attempts | 4 |
 | nearby.requests-per-minute | 40 |
 | nearby.requests-per-day | 2000 |
@@ -65,14 +69,15 @@ File properties của AI được đóng gói cùng ứng dụng; thiếu file h
 Không dùng NEARBY_QUERY_ENABLED trong .env của AI nữa.
 
 Postman baseUrl tương ứng nearby.tomtom.base-url. latitude/longitude lấy từ từng listing,
-không cấu hình một tọa độ chung. ofs tự tăng khi phân trang; categorySet lấy từ mapping 8 nhóm.
+không cấu hình một tọa độ chung. ofs luôn bằng 0; gộp 10 categorySet trong một request.
 Cap request trong bảng là giới hạn của ứng dụng, không phải quota TomTom; đồng bộ cần Redis.
 Restart dịch vụ sau khi sửa cấu hình.
 
 Không cần cấu hình mốc kích hoạt. Khi Core chạy, worker tự đưa các tin PUBLISHED, active,
 chưa hết hạn và có tọa độ hợp lệ vào hàng đợi, kể cả tin đã đăng trước lúc bật tính năng.
-Mỗi lượt đối soát lấy tối đa 25 tin cần quét, ưu tiên tin mới nhất; job còn mới không bị tạo lại.
-Dữ liệu hết hạn được tự quét lại. Tin ẩn/hết hạn hoặc thiếu tọa độ không được quét.
+Mỗi lượt đối soát lấy tối đa 25 tin chưa quét hoặc đã đổi vị trí, ưu tiên tin mới nhất.
+Job đã hoàn tất (SUCCESS/PARTIAL) không được tạo lại chỉ vì thời gian trôi qua, kể cả sau restart.
+Tin ẩn/hết hạn hoặc thiếu tọa độ không được quét.
 Quét chạy nền và tuân thủ giới hạn request trong properties; dữ liệu không xuất hiện tức thì khi khởi động.
 
 4. Build/restart Core và AI để áp dụng cấu hình. Web/Admin chỉ cần build khi cập nhật giao diện.
@@ -81,12 +86,12 @@ Quét chạy nền và tuân thủ giới hạn request trong properties; dữ l
    Không có key map vẫn đọc danh sách/khoảng cách và mở Google Maps chỉ đường.
    SDK npm được ghim VietMap GL 6.0.1, là dependency runtime; chỉ tải khi mở tab Bản đồ,
    không tải script từ CDN. Xem `hs-web-app/README.md` để cấu hình key và chạy.
-   Hai tab Danh sách/Bản đồ dùng chung bộ lọc 2 km, 5 tiện ích/trang và API phân trang.
+   Hai tab Danh sách/Bản đồ dùng chung bộ lọc 2 km, 10 tiện ích/trang và API phân trang.
    Bản đồ có ghim tin đăng màu xanh, ghim tiện ích theo nhóm, chọn hai chiều giữa danh sách
    và popup bản đồ. Không fetch thêm POI từ TomTom/VietMap khi chuyển tab.
 5. Công khai một tin có tọa độ; hệ thống tự quét bán kính 2 km.
-   Admin → Vận hành & Hỗ trợ → Tiện ích xung quanh theo dõi 100 job gần nhất,
-   thử lại, hủy hoặc chủ động quét 5 km khi cần. Không cần bấm quét từng tin.
+   Mục quản trị Tiện ích xung quanh được ẩn khỏi admin; URL cũ chuyển về Tổng quan.
+   Backend tiếp tục tự đồng bộ khi công khai tin hoặc thay đổi vị trí; không cần bấm quét từng tin.
 6. Sau khi có dữ liệu, chi tiết tin có khối Tiện ích xung quanh. AI có thể hỏi:
    “Trong các phòng vừa tìm, gần siêu thị thì nên chọn phòng nào?”
    “So sánh khoảng cách của các phòng này đến Đại học Công nghiệp, đúng cơ sở ở Gò Vấp.”
@@ -98,33 +103,51 @@ Quét chạy nền và tuân thủ giới hạn request trong properties; dữ l
 - Sự kiện sau commit chỉ đánh thức worker, không gọi provider hay ghi job trong HTTP publish.
 - Reconciliation định kỳ bù tín hiệu bị mất. Job lưu ở PostgreSQL, có unique snapshot/hash,
   claim SKIP LOCKED, lease token, heartbeat và retry. Scheduler riêng không chiếm scheduler hợp đồng.
-- Lấy actual POI Categories V2 trước khi quét; graph cha–con từ API, không cắt prefix ID.
-  Mapping versioned chứa 119 mã tham khảo, 55 mapping nghiệp vụ; mã chưa được catalog xác minh
-  không được đoán nhóm. Source lưu parent-edge evidence cùng TTL để audit cách phân loại.
-- Không gọi 42 request trong collection cho mỗi tin. Quét 8 nhóm, mỗi nhóm có pagination/budget.
-  5/100 kết quả luôn PARTIAL. 100 là giới hạn một trang, không chứng minh quét hết vùng.
+  Đối soát không tự fetch lại snapshot đã hoàn tất; cập nhật nội dung/đăng lại ở cùng địa chỉ không gọi lại.
+  Lượt fetch mới xuất phát từ tin chưa từng quét hoặc thay đổi vị trí; retry chỉ dành cho lượt fetch bị lỗi.
+- POI Categories V2 được client cache 24 giờ, dùng chung để xác minh graph cha–con; không tải lại cho từng listing.
+  Mapping runtime gồm đúng 10 mã cấu hình, phủ 7 nhóm; CSV 119 mã chỉ còn là tài liệu tham khảo.
+  Mã con được phân loại theo graph thật, không cắt prefix. Mã chưa biết vẫn lưu source/POI, không đoán nhóm,
+  không xuất hiện như tiện ích đã phân loại và làm coverage PARTIAL. Nghĩa trang bị loại khỏi RECREATION.
+- Mỗi listing dùng một query Nearby gộp 10 categorySet với radius=2000, limit=100, countrySet=VN.
+  Chỉ gọi trang đầu ofs=0. Không phân trang TomTom, không gọi bù cho đủ 100 hoặc đủ các nhóm.
+  Trả 40 địa điểm thì lưu tối đa 40; có ID lặp thì số POI riêng biệt sẽ ít hơn số kết quả nhận.
+  Một phản hồi thành công được lưu và hoàn tất job ngay, kể cả summary.totalResults lớn hơn 100.
+  Khi còn kết quả ngoài giới hạn, coverage=LIMITED_PROVIDER_RESPONSE; job=SUCCESS, không xếp lịch gọi trang sau.
+  COMPLETE_PROVIDER_RESPONSE chỉ nghĩa là phản hồi đã lấy hết tập provider báo cáo, không chứng minh mọi POI ngoài thực tế.
+  Retry chỉ xử lý request lỗi; phản hồi đã lưu được hoàn tất từ CSDL sau crash mà không gọi lại.
+  Mã chưa xác minh, ID lặp hoặc dữ liệu hỏng vẫn có trạng thái PARTIAL; không gọi thêm để bù dữ liệu.
+  Nhóm có 0 kết quả chỉ là không thấy trong snapshot đã thu thập; AI không được kết luận khu vực không có tiện ích đó.
+  SPORTS không nằm trong 10 mã; yêu cầu nhóm này trả NOT_REQUESTED, không diễn giải là không có gym/thể thao.
 - Redis reservation theo cửa sổ trượt 60 giây/ngày/tháng áp dụng chung các instance HomeSpace;
   không nhân đôi burst khi đổi phút. Mặc định tối đa 40 request trong mọi cửa sổ 60 giây.
   429 theo Retry-After; lỗi quota không làm tiêu hết số lần retry nghiệp vụ.
   401/403 tạm dừng client 15 phút; sửa key rồi restart/thử lại job FAILED.
 - Source unique theo provider/version/external ID; PK place là UUID nội bộ.
   Không tự merge hai provider/V2–V3 hay địa điểm trùng tên/tọa độ.
+  Unique constraint cùng advisory lock chặn trùng cả khi hai worker ghi cùng POI đồng thời.
+  Phiên bản job/coverage bao gồm mapping và fingerprint categorySet; đổi query không tái dùng bằng chứng scope cũ.
 - Khoảng cách tính lại Haversine theo mỗi listing, không copy dist từ truy vấn khác.
   Khi tin công khai đổi tọa độ, worker xóa các liên kết có location hash cũ của riêng tin đó
   trong listing_nearby_places, vô hiệu job cũ và đánh dấu coverage cũ STALE rồi đưa vị trí mới vào hàng đợi.
   Không xóa nearby_places, nearby_place_sources hoặc liên kết của listing khác vì đổi địa chỉ.
   POI mới được đối chiếu theo provider/api_version/external_id: đã có thì dùng lại, chưa có thì tạo,
-  sau đó thêm liên kết và khoảng cách cho listing tại tọa độ mới. Giới hạn lưu trữ/TTL nguồn vẫn áp dụng riêng.
+  sau đó thêm liên kết và khoảng cách cho listing tại tọa độ mới. POI/source dùng chung vẫn được giữ.
   Khóa địa chỉ và kiểm tra lease/hash trong transaction chặn kết quả đang bay từ vị trí cũ ghi lại liên kết.
   Đổi về địa chỉ từng dùng vẫn kích hoạt quét lại, không bỏ qua vì job trước đó còn hạn.
   Đổi POI position revision cũng làm khoảng cách cũ không được sử dụng.
+  Khi nhận và lưu phản hồi mới ở cùng địa chỉ, chỉ bỏ liên kết của listing không còn trong snapshot mới;
+  không xóa POI/source dùng chung. Request lỗi trước khi lưu phản hồi không xóa các liên kết còn hợp lệ.
   POI đổi vị trí làm coverage cũ thành STALE; source được tin khác làm mới không kéo dài
   thời hạn bằng chứng khoảng cách của tin này. Coverage gắn với đúng license policy.
 - Scan 2 km không tự được báo là đủ 3/5 km. Để trả 5 km ngay, chủ động cấu hình scan 5000
   hoặc Admin gửi job 5 km, có kiểm soát chi phí; API đọc/chat không tự gọi provider.
 - Tin RESERVED/RENTED/ẩn/hết hạn không xuất hiện trong truy vấn thuê mới. Không xóa POI chung.
-- Nguồn hết hạn không được trả; purge nền xóa source hết hạn và place không còn nguồn.
-  Đây là TTL nội bộ, không thay thế nghĩa vụ license/backup. Khi đổi policy/revoke:
+- nearby.retention-hours=0 tắt TTL nội bộ: dữ liệu đã thu thập được giữ và đọc từ CSDL.
+  Cả API danh sách, summary, địa điểm đích và bộ lọc AI đều giữ cách đọc này;
+  các timestamp expiry của dữ liệu cũ được bỏ qua, purge không xóa nguồn/POI. Không cần SQL fix hay gọi lại TomTom.
+  Nếu chủ động cấu hình retention-hours dương, TTL nguồn/bằng chứng và purge áp dụng lại, nhưng không tự tạo request làm mới.
+  Cấu hình lưu trữ không thay thế nghĩa vụ license/backup. Khi đổi policy/revoke:
   tắt flags, dừng worker, purge nội dung nguồn theo chính sách được phê duyệt cả backup/tracing.
 - Không lưu raw_payload, key/URI key hay response body vào log.
 - Địa chỉ hiển thị ghép streetNumber + streetName, municipality, countrySubdivision; bỏ thành phần thiếu,
@@ -134,7 +157,7 @@ Quét chạy nền và tuân thủ giới hạn request trong properties; dữ l
   áp dụng cả danh sách và popup bản đồ. Không đọc vị trí tài khoản, không yêu cầu đăng nhập.
   Thiếu tọa độ hợp lệ ở listing hoặc POI thì không tạo URL chỉ đường.
   Khoảng cách hiển thị trong danh sách và URL chỉ đường cùng đi từ listing đến POI.
-- Khối Nearby trên Web chỉ gọi phạm vi 2000 m, không có bộ chọn 3/5 km; mỗi trang yêu cầu 5 địa điểm.
+- Khối Nearby trên Web chỉ gọi phạm vi 2000 m, không có bộ chọn 3/5 km; mỗi trang yêu cầu 10 địa điểm.
   API dùng nearby.public-page-size khi thiếu size và chặn kích thước trang ở mức đã cấu hình
   (hiện là 5), kể cả client gửi size=20. LIMIT và OFFSET cùng dùng kích thước đã giới hạn.
 - AI đọc summary ngắn của shortlist rồi chỉ lấy detail tối đa 3 tin cho lời khuyên Nearby.
@@ -166,7 +189,49 @@ Các request admin là thao tác chủ động; không chạy Runner toàn bộ 
 Các cờ trong properties tắt: public panel không hiển thị, AI giữ luồng tìm phòng cũ; không có outbound POI call.
 Schema được quản lý bằng entity JPA, cùng JPA_DDL_AUTO của Core. Không còn bước migration SQL riêng.
 
+## CSDL của truy vấn gộp
+
+Java quản lý 7 bảng, không tạo bảng riêng cho từng nhóm tiện ích:
+
+| Bảng | Dữ liệu / khóa |
+|---|---|
+| nearby_places | Một POI dùng chung: tên, tọa độ, địa chỉ đã ghép và position_revision |
+| nearby_place_sources | results.id → external_id; unique(provider, api_version, external_id); categorySet IDs, nhãn/classifications, địa chỉ nguồn, TTL |
+| nearby_categories | Từ điển nhóm HomeSpace; giữ SPORTS để tương thích API, nhưng scope hiện tại không quét nhóm này |
+| nearby_place_categories | N–N POI ↔ nhóm; một POI nhiều categorySet có thể thuộc nhiều nhóm, không nhân bản POI |
+| listing_nearby_places | N–N listing ↔ POI, PK(listing_id, place_id); khoảng cách, hash tọa độ và evidence_run_id |
+| nearby_scan_jobs | Hàng đợi theo listing + tọa độ + radius + phiên bản mapping/categorySet |
+| nearby_scan_runs | Một phản hồi gộp: requested_category_ids, requested_groups, limit, số nhận/số POI duy nhất, tổng provider báo cáo, coverage và response_consistent |
+
+Scan run không còn category_group. Một scan chứa cả 7 requested_groups; API đọc coverage của từng nhóm
+từ cùng scan, không tạo 7/8 bản sao dữ liệu. results.dist/score không được dùng làm khoảng cách dùng chung
+hoặc điểm chất lượng; khoảng cách được backend tính riêng từ tọa độ listing tới POI.
+
+Nhập lại collection `HomeSpace_TomTom_CategorySet_FullCatalog_Test.postman_collection.json`.
+Folder `00 — HomeSpace` chỉ có một query gộp limit=100, ofs=0. Đặt key trong Postman environment,
+lat/lon theo listing; gửi thủ công, không tự chạy toàn bộ collection. Chuyển tab Web hoặc hỏi AI chỉ đọc CSDL.
+
+Lưu ý seed 300 listing vẫn được worker tự đưa vào hàng đợi và tiêu quota thật. Thay đổi này giảm query theo nhóm,
+không biến TomTom thành nguồn miễn phí: mỗi lượt quét thành công có một request Nearby/listing, cộng catalog dùng chung khi cache hết hạn.
+Đổi địa chỉ kích hoạt lượt quét mới; thời gian trôi qua không kích hoạt request mới. Request lỗi vẫn có retry theo cấu hình.
+Để dev không gọi provider, đặt nearby.sync-enabled=false trước khi khởi động; nearby.query-enabled có thể giữ true
+để đọc dữ liệu đã có. Không thêm cờ/env mới.
+
 ## Kiểm thử
+
+Xác nhận luồng một request và vòng đời snapshot (29/10/2026): 55 test Nearby Core và 8 test tìm listing bằng AI qua
+trên PostgreSQL/Redis tạm riêng; AI Python 49 test qua, 2 Mongo integration bỏ qua do chưa bật opt-in;
+Web 21 test Nearby qua, TypeScript và ESLint component qua. Không gọi TomTom thật hoặc tác động DB HomeSpace.
+
+Luồng mới cần kiểm tra một request ofs=0 ngay cả khi totalResults lớn hơn 100; không gọi bù nhóm trống;
+chống trùng trong phản hồi và giữa listing; request lỗi mới retry; phản hồi đã lưu không bị gọi lại sau crash.
+Đã kiểm tra dữ liệu sau 30 ngày, purge, restart, phát lại sự kiện publish ở cùng tọa độ: không gọi lại provider,
+API danh sách/summary/địa điểm đích và bộ lọc AI vẫn đọc được. Đổi tọa độ phát sinh đúng một request Nearby mới.
+Kiểm tra thêm N–N phân loại, đổi địa chỉ, giới hạn snapshot mới và giữ POI/liên kết của listing khác.
+AI chỉ so sánh bằng chứng dương có thật giữa các listing khi snapshot bị giới hạn; giới hạn được đưa vào context trả lời.
+
+Tham khảo chính thức: [TomTom Nearby Search](https://docs.tomtom.com/search-api/documentation/search-service/nearby-search)
+(`categorySet` là OR, mỗi trang tối đa 100; HomeSpace chủ động chỉ lấy trang đầu).
 
 ~~~powershell
 # Core unit + integration opt-in, URL chỉ chấp nhận database hs_nearby_test
@@ -192,7 +257,8 @@ Kết quả kiểm tra ngày 28/10/2026:
   gồm kiểm tra 7 bảng, initializer 8 nhóm chạy lại an toàn, JSON, khóa ghép và worker; không đọc DDL từ file SQL.
 - Sau khi cố định Web 2 km và phân trang 5 địa điểm: 40 test Nearby Core qua, gồm 24 PostgreSQL và Redis quota trên container tạm riêng.
   Kiểm tra tự quét tin cũ không cần mốc kích hoạt/Admin, ưu tiên tin mới, bỏ tin không khả dụng,
-  tự làm mới job hết hạn và không tạo trùng job còn mới. Test cấu hình vẫn kiểm tra thiếu thuộc tính khiến startup lỗi.
+  đối soát tin chưa quét và không tạo trùng job đã hoàn tất. Không tự làm mới snapshot theo thời gian.
+  Test cấu hình vẫn kiểm tra thiếu thuộc tính khiến startup lỗi.
   Kiểm tra thay đúng liên kết của listing đổi địa chỉ, giữ POI/liên kết của listing khác, provider lỗi,
   job cũ trả kết quả muộn và quay về địa chỉ từng dùng; sự kiện công khai tin vẫn kích hoạt worker.
   Kiểm tra địa chỉ đã cache vẫn được dựng lại từ thành phần mới, không dùng freeformAddress cũ;
@@ -216,4 +282,5 @@ nhiều instance chia lease + budget Redis.
 
 Rollback bằng tắt nearby.sync-enabled/nearby.query-enabled trong properties Core
 và nearby.query-enabled trong properties AI, rồi restart. Không drop bảng lúc worker còn chạy.
-Schema additive có thể giữ khi rollback app; không đụng bảng tiện nghi/địa chỉ/hợp đồng cũ.
+Schema scan gộp khác schema scan từng nhóm; không chạy binary worker cũ với schema mới.
+Khôi phục phiên bản ứng dụng/schema phù hợp nếu rollback toàn bộ; không đụng bảng tiện nghi/địa chỉ/hợp đồng ngoài phạm vi.

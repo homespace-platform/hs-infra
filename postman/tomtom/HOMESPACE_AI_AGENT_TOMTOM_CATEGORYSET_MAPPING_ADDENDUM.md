@@ -1,6 +1,27 @@
-# PHỤ LỤC PROMPT CHO AI AGENT — TOMTOM `categorySet` V2 → 8 NHÓM TIỆN ÍCH HOMESPACE
+# PHỤ LỤC PROMPT CHO AI AGENT — TOMTOM `categorySet` V2 → NHÓM TIỆN ÍCH HOMESPACE
 
-> **Mục đích:** Đây là tài liệu bổ sung cho `HOMESPACE_AI_AGENT_NEARBY_AMENITIES_ARCHITECTURE_PROMPT.md`, không thay thế tài liệu chính. Dùng để đọc, kiểm tra, chuẩn hóa và đề xuất mapping danh mục TomTom Search V2 cho kho POI dùng chung của HomeSpace. **Giai đoạn hiện tại: khảo sát và đề xuất, chưa viết code hay migrate.**
+## Quyết định triển khai mới — 29/10/2026 (ưu tiên hơn phương án khảo sát bên dưới)
+
+- Đã chuyển backend sang **một query gộp**, không còn vòng lặp 8 request theo nhóm:
+  `categorySet=7372,7377,7321,7326,7332005,9361009,7315,7328,9942002,9362`.
+- `GET /search/2/nearbySearch/.json`, tọa độ listing, radius=2000, limit=100, ofs=0.
+  Người dùng đã chốt chỉ một request Nearby/lượt quét thành công; không phân trang hoặc gọi bù nhóm còn thiếu.
+  Lưu tối đa 100 kết quả thực nhận sau chống trùng. Nhóm không xuất hiện trong snapshot có knownCount=0.
+  Khi totalResults lớn hơn số nhận: LIMITED_PROVIDER_RESPONSE, không khẳng định toàn khu vực không có nhóm đang thiếu.
+- 10 mã phủ EDUCATION, HEALTHCARE, SHOPPING, FOOD_DRINK, FINANCE, TRANSPORT, RECREATION.
+  SPORTS không được quét trong scope này; trả NOT_REQUESTED thay vì kết luận không có tiện ích.
+- CSDL dùng chung POI theo unique(provider, api_version, results.id). Category IDs là danh mục,
+  không dùng làm ID địa điểm. N–N POI↔nhóm và listing↔POI; khoảng cách lưu trên liên kết listing.
+- nearby_scan_runs chứa requested_category_ids + requested_groups của cả query, không còn category_group.
+  Lưu phản hồi thành công để sau crash không gọi lại; request lỗi mới retry. Không có vòng lặp trang tiếp theo.
+- Dùng graph từ POI Categories API đã cache để phân loại mã con; mã lạ vẫn lưu nhưng không đoán nhóm.
+- Schema ánh xạ bằng entity Java. Theo kế hoạch người dùng, tạo lại CSDL dev; **không tạo SQL migration/fix**.
+- Chi tiết vận hành/schema: [README_NEARBY_PLACES.md](README_NEARBY_PLACES.md).
+
+Phần khảo sát dưới đây giữ để tham khảo catalog rộng; các đề xuất phạm vi/luồng chưa phù hợp
+quyết định trên không phải cấu hình đang chạy. Không tự chạy Postman Runner hoặc gọi live API khi kiểm thử offline.
+
+> **Mục đích phần tham khảo:** Tài liệu khảo sát bổ sung cho `HOMESPACE_AI_AGENT_NEARBY_AMENITIES_ARCHITECTURE_PROMPT.md`; quyết định triển khai hiện tại nằm ở đầu file này.
 >
 > **Nguồn duy nhất cho bảng mã trong tài liệu này:** file người dùng cung cấp `HomeSpace_TomTom_CategorySet_DanhMucThamKhao(2).csv`; giữ nguyên ID, tên tiếng Anh, nhãn parent/child, mã cha và nguồn tài liệu. Tổng cộng **119 ID riêng biệt: 103 parent và 16 child** thuộc **11 nhóm nguồn**. Đây là **tập tham khảo, KHÔNG phải toàn bộ catalog chính thức của TomTom**.
 
@@ -8,7 +29,7 @@
 
 Bạn là AI Agent thực hiện tư vấn kiến trúc cho HomeSpace. Hãy đọc tài liệu chính và phụ lục này theo thứ tự, sau đó khảo sát repository và schema thực tế. Nhiệm vụ của bạn là thiết kế **category taxonomy + provider mapping** để phục vụ một POI dùng lại ở nhiều bài đăng, truy vấn được cả bài đăng → tiện ích và tiện ích → bài đăng, không nhân bản POI chỉ vì nhiều listing cùng vùng.
 
-**Tuyệt đối không tự ý triển khai:** Không sửa source, chạy migration, seed DB, backfill, chạy Postman Runner, gửi request TomTom tốn quota hoặc tự kích hoạt worker trước khi người dùng phê duyệt. Mọi kết luận liên quan source hiện hữu cần trích dẫn đường dẫn file/class/migration; phần chưa rõ phải ghi `CHƯA XÁC MINH`.
+**Phạm vi hiện tại:** Người dùng đã yêu cầu triển khai query gộp nêu trên. Không tạo SQL migration/fix, không chạy live TomTom hoặc Postman Runner chỉ để kiểm thử; dùng fixture và database tạm. Phần chưa xác minh phải ghi rõ.
 
 ## B. Các kết luận đã biết và điều KHÔNG được suy diễn
 
@@ -293,4 +314,4 @@ Trả **một bản đề xuất, không phải bản code** gồm:
 - **TomTom POI Categories endpoint:** `GET https://api.tomtom.com/search/2/poiCategories.json?key=...&language=en-US` (cần test theo key, không mặc định mọi ID trong CSV đều hiện diện).
 - **TomTom Terms:** https://docs.tomtom.com/legal/terms-and-conditions (cần kiểm điều khoản đúng gói/tài khoản).
 
-**Chốt:** Không triển khai chức năng chỉ dựa vào CSV tĩnh; dùng CSV làm danh sách test/gợi ý, xác minh dữ liệu nguồn trước khi seed/mapping, thực hiện source audit trước khi thiết kế thực thi. Không lưu lâu dài POI TomTom nếu chưa xác nhận quyền. **Chỉ báo cáo và đề xuất, không sửa hệ thống nếu chưa có phê duyệt.**
+**Chốt cho phần tham khảo:** Không phân loại chỉ bằng prefix ID hoặc CSV tĩnh. Phạm vi hiện tại: query gộp 10 mã, một request limit=100, POI dùng chung, schema Java; các phần khảo sát cũ không thay thế quyết định đó.
