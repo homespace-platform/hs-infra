@@ -1,0 +1,2732 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.826392,
+    "lon": 106.6891123,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "7377"
+  },
+  "fetchedAt": "2026-10-30T19:58:15.593Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 43,
+      "numResults": 40,
+      "offset": 0,
+      "totalResults": 40,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.826392,
+        "lon": 106.6891123
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "ne0rixfM51wh0tHJgbZp-Q",
+        "score": 99.8465957642,
+        "dist": 153.393896,
+        "info": "search:ta:704009000255588-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Kinh Tế Kỹ Thuật Miền Nam",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "364/1A",
+          "streetName": "Hẻm 364 Phan Văn Trị",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 364/1A, Hẻm 364 Phan Văn Trị, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826036,
+          "lon": 106.690469
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82694,
+            "lon": 106.68955
+          },
+          "btmRightPoint": {
+            "lat": 10.82514,
+            "lon": 106.69138
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8261,
+              "lon": 106.6904
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ODRGzgpndmqJxSRLqnXl1A",
+        "score": 99.7443313599,
+        "dist": 255.669493,
+        "info": "search:ta:704009000399255-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Kỹ Thuật Công Nghệ Vạn Xuân",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "15K",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 15K, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827842,
+          "lon": 106.687295
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82874,
+            "lon": 106.68638
+          },
+          "btmRightPoint": {
+            "lat": 10.82694,
+            "lon": 106.68821
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82775,
+              "lon": 106.68727
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "6gF_HDVOdbFIQXjcO83qdQ",
+        "score": 99.5511703491,
+        "dist": 448.829605,
+        "info": "search:ta:704009002662807-VN",
+        "poi": {
+          "name": "Đại Học Công Nghiệp Thành Phố Hồ Chí Minh",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "12",
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 12, Đường Nguyễn Văn Nghi, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822455,
+          "lon": 106.688207
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82335,
+            "lon": 106.68729
+          },
+          "btmRightPoint": {
+            "lat": 10.82156,
+            "lon": 106.68912
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82249,
+              "lon": 106.68829
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vhymfRh9VGQX6hCj6J3XAA",
+        "score": 99.4790267944,
+        "dist": 520.978141,
+        "info": "search:ta:704009000226661-VN",
+        "poi": {
+          "name": "Trường Đại Học Công Nghiệp Thành Phố Hồ Chí Minh",
+          "phone": "+84 28 3894 0390",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "12",
+          "streetName": "Đường Nguyễn Văn Bảo",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 12, Đường Nguyễn Văn Bảo, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822263,
+          "lon": 106.686858
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82264,
+            "lon": 106.68656
+          },
+          "btmRightPoint": {
+            "lat": 10.82136,
+            "lon": 106.68833
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82221,
+              "lon": 106.68675
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "f04aea14-f03d-4bd9-a662-162c82f38596"
+          }
+        }
+      },
+      {
+        "type": "POI",
+        "id": "7XCg99Bir1oYfS_Wgy3cuA",
+        "score": 99.4680252075,
+        "dist": 531.969012,
+        "info": "search:ta:704009002659701-VN",
+        "poi": {
+          "name": "Cao Đẳng Kỹ Thuật Công Nghệ Vạn Xuân",
+          "phone": "+84 28 3985 5015",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1/3",
+          "streetName": "Hẻm 114 Đường Dương Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1/3, Hẻm 114 Đường Dương Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825924,
+          "lon": 106.69396
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82682,
+            "lon": 106.69304
+          },
+          "btmRightPoint": {
+            "lat": 10.82502,
+            "lon": 106.69488
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82599,
+              "lon": 106.69403
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "XpYtySoLBS5Ke5LLftzoeQ",
+        "score": 99.2783203125,
+        "dist": 721.679568,
+        "info": "search:ta:704009000427704-VN",
+        "poi": {
+          "name": "Hệ Thống Trường Quốc Tế Châu Á Thái Bình Dương-Asia Pacific College",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "91",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 91, Đường Nguyễn Thái Sơn, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.8218,
+          "lon": 106.684442
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8227,
+            "lon": 106.68353
+          },
+          "btmRightPoint": {
+            "lat": 10.8209,
+            "lon": 106.68536
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82174,
+              "lon": 106.68451
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "1DEU1JLrsqLWvf_5DGclzg",
+        "score": 99.2201385498,
+        "dist": 779.861667,
+        "info": "search:ta:704009001892761-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Bách Việt",
+          "phone": "+84 28 3985 8978",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "194A",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 194A, Đường Nguyễn Thái Sơn, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821193,
+          "lon": 106.684319
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82209,
+            "lon": 106.6834
+          },
+          "btmRightPoint": {
+            "lat": 10.82029,
+            "lon": 106.68523
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82124,
+              "lon": 106.68423
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "s_HXmhNsLmKQ5BuXRcKHJw",
+        "score": 99.0823669434,
+        "dist": 917.640963,
+        "info": "search:ta:704009000370421-VN",
+        "poi": {
+          "name": "Trường Trung Cấp Kinh Tế Kỹ Thuật Sài Gòn-Cơ Sở 2",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "524",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 524, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829813,
+          "lon": 106.681466
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83071,
+            "lon": 106.68055
+          },
+          "btmRightPoint": {
+            "lat": 10.82891,
+            "lon": 106.68238
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82965,
+              "lon": 106.68143
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "jmgD0JyWpNr9Zlmg_A7-TA",
+        "score": 98.8734130859,
+        "dist": 1126.583031,
+        "info": "search:ta:704009001806224-VN",
+        "poi": {
+          "name": "Trường Đại Học Y Dược Huế-Văn Phòng Đại Diện-T",
+          "phone": "+84 28 6273 7804",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "141",
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 141, Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836524,
+          "lon": 106.68909
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83742,
+            "lon": 106.68817
+          },
+          "btmRightPoint": {
+            "lat": 10.83562,
+            "lon": 106.69001
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83645,
+              "lon": 106.68915
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "7l7abWOtG3r1gB_5qS5Njw",
+        "score": 98.826423645,
+        "dist": 1173.582296,
+        "info": "search:ta:704009000387133-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Nghề iSPACE-Bệnh Viện Máy Tính",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "34",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 34, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827145,
+          "lon": 106.678394
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82804,
+            "lon": 106.67748
+          },
+          "btmRightPoint": {
+            "lat": 10.82625,
+            "lon": 106.67931
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82705,
+              "lon": 106.6784
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "HzSY7eYEypP2jtLPU1syPA",
+        "score": 98.8232955933,
+        "dist": 1176.707165,
+        "info": "search:ta:704009001910460-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Nghề iSPACE-Chi Nhánh Quận Gò Vấp",
+          "phone": "+84 28 6295 7295",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "34",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 34, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827155,
+          "lon": 106.678366
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82805,
+            "lon": 106.67745
+          },
+          "btmRightPoint": {
+            "lat": 10.82626,
+            "lon": 106.67928
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82706,
+              "lon": 106.67837
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "rq_YigWb0qQ5Rd8hsEdJUQ",
+        "score": 98.8186721802,
+        "dist": 1181.327405,
+        "info": "search:ta:704009003278163-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Sài Gòn Gia Định",
+          "phone": "+84 28 6256 4639",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "url": "www.sgc.edu.vn",
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "514",
+          "streetName": "Đường Lê Quang Định",
+          "municipalitySubdivision": "Phường 1",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 514, Đường Lê Quang Định, Phường 1, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.815772,
+          "lon": 106.688801
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81667,
+            "lon": 106.68789
+          },
+          "btmRightPoint": {
+            "lat": 10.81487,
+            "lon": 106.68972
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81565,
+              "lon": 106.68874
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BQvMHVVQeFDhZBRW0CUfDA",
+        "score": 98.7851867676,
+        "dist": 1214.814383,
+        "info": "search:ta:704009000781811-VN",
+        "poi": {
+          "name": "Trường Trung Cấp Kinh Tế-Kỹ Thuật Tân Việt",
+          "categorySet": [
+            {
+              "id": 7377003
+            }
+          ],
+          "categories": [
+            "college/university",
+            "junior college/community college"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "junior college/community college"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "516",
+          "streetName": "Đường Lê Quang Định",
+          "municipalitySubdivision": "Phường 1",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 516, Đường Lê Quang Định, Phường 1, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.815468,
+          "lon": 106.688965
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81637,
+            "lon": 106.68805
+          },
+          "btmRightPoint": {
+            "lat": 10.81457,
+            "lon": 106.68988
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81539,
+              "lon": 106.68892
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "o7M-YSwKDLLGlOqCFbfdjA",
+        "score": 98.7633132935,
+        "dist": 1236.683312,
+        "info": "search:ta:704009001361964-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Công Nghệ Việt Tronics",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "106A",
+          "streetName": "Đường Nguyên Hồng",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 106A, Đường Nguyên Hồng, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.816725,
+          "lon": 106.694712
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81762,
+            "lon": 106.6938
+          },
+          "btmRightPoint": {
+            "lat": 10.81583,
+            "lon": 106.69563
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8168,
+              "lon": 106.69476
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BRUAlfQwJ33vhCIb80KgDA",
+        "score": 98.7623443604,
+        "dist": 1237.651283,
+        "info": "search:ta:704009002567368-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Kỹ Thuật Vinatex",
+          "phone": "+84 28 3968 2810",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "106A",
+          "streetName": "Đường Nguyên Hồng",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 106A, Đường Nguyên Hồng, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.81672,
+          "lon": 106.694721
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81762,
+            "lon": 106.69381
+          },
+          "btmRightPoint": {
+            "lat": 10.81582,
+            "lon": 106.69564
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8168,
+              "lon": 106.69477
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Lle9URgOxT2OXDNoLhx_vw",
+        "score": 98.5794143677,
+        "dist": 1420.580409,
+        "info": "search:ta:704009001878815-VN",
+        "poi": {
+          "name": "Trường Đại Học Hồng Bàng",
+          "phone": "+84 28 3516 1911",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "3",
+          "streetName": "Đường Trần Quý Cáp",
+          "municipalitySubdivision": "Phường 12",
+          "municipality": "Bình Thạnh",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72326",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 3, Đường Trần Quý Cáp, Phường 12, Hồ Chí Minh, Hồ Chí Minh, 72326",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.816547,
+          "lon": 106.697402
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81745,
+            "lon": 106.69649
+          },
+          "btmRightPoint": {
+            "lat": 10.81565,
+            "lon": 106.69832
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81655,
+              "lon": 106.6973
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "4UoSYe1XkSYMxIjjPHVqeg",
+        "score": 98.5289001465,
+        "dist": 1471.094835,
+        "info": "search:ta:704009001841126-VN",
+        "poi": {
+          "name": "Bộ Nội Vụ-Trường Đại Học Nội Vụ Hà Nội-Cơ Sở Tại Thành Phố Hồ Chí Minh",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "181",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 181, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836813,
+          "lon": 106.680814
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83771,
+            "lon": 106.6799
+          },
+          "btmRightPoint": {
+            "lat": 10.83591,
+            "lon": 106.68173
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83685,
+              "lon": 106.6809
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "NTiWta4MUJOk5T9tGNpcXQ",
+        "score": 98.525642395,
+        "dist": 1474.358194,
+        "info": "search:ta:704009001920668-VN",
+        "poi": {
+          "name": "Văn Phòng Ghi Danh Trường Cao Đẳng Kinh Tế Đối Ngoại",
+          "phone": "+84 28 3917 4146",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "17",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 17, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836841,
+          "lon": 106.680802
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83774,
+            "lon": 106.67989
+          },
+          "btmRightPoint": {
+            "lat": 10.83594,
+            "lon": 106.68172
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83688,
+              "lon": 106.68089
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BrHmfACJOFHvjDbDT0IXWg",
+        "score": 98.497505188,
+        "dist": 1502.500346,
+        "info": "search:ta:704007000016872-VN",
+        "poi": {
+          "name": "Trường Đại Học Ngân Hàng Thành Phố Hồ Chí Minh-Cơ Sở Hợp Tác Đào Tạo",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "371",
+          "streetName": "Hẻm 785 Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 371, Hẻm 785 Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818132,
+          "lon": 106.678225
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81903,
+            "lon": 106.67731
+          },
+          "btmRightPoint": {
+            "lat": 10.81723,
+            "lon": 106.67914
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81822,
+              "lon": 106.67823
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "yM42gtzHCp4r4_vW-MbNHg",
+        "score": 98.4954299927,
+        "dist": 1504.577979,
+        "info": "search:ta:704009003347106-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Việt Mỹ",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "34",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 34, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828132,
+          "lon": 106.675451
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82903,
+            "lon": 106.67454
+          },
+          "btmRightPoint": {
+            "lat": 10.82723,
+            "lon": 106.67637
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82805,
+              "lon": 106.67542
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "iFEETmfQc0ftaOur-2XmOA",
+        "score": 98.4947128296,
+        "dist": 1505.290577,
+        "info": "search:ta:704009000906917-VN",
+        "poi": {
+          "name": "Chi Nhánh Đại Học Ngân Hàng",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 785 Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 785 Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818133,
+          "lon": 106.678192
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81903,
+            "lon": 106.67728
+          },
+          "btmRightPoint": {
+            "lat": 10.81723,
+            "lon": 106.67911
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81822,
+              "lon": 106.6782
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "z40nt-b43Ksm3P07YMoVKA",
+        "score": 98.4432296753,
+        "dist": 1556.774393,
+        "info": "search:ta:704009002125942-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Bách Việt-Cơ Sở 2",
+          "phone": "+84 28 3842 0730",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "10",
+          "streetName": "Đường An Nhơn",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 10, Đường An Nhơn, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83674,
+          "lon": 106.679511
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83764,
+            "lon": 106.6786
+          },
+          "btmRightPoint": {
+            "lat": 10.83584,
+            "lon": 106.68043
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83661,
+              "lon": 106.67951
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "a6psAZAuj-ljD5etl_hUqQ",
+        "score": 98.4329376221,
+        "dist": 1567.063708,
+        "info": "search:ta:704009003345414-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Viễn Đông",
+          "phone": "+84 28 2245 9333",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "207/20/1",
+          "streetName": "Hẻm 207/20 Đường Nguyễn Văn Đậu",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 207/20/1, Hẻm 207/20 Đường Nguyễn Văn Đậu, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.812712,
+          "lon": 106.692561
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81361,
+            "lon": 106.69165
+          },
+          "btmRightPoint": {
+            "lat": 10.81181,
+            "lon": 106.69348
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81279,
+              "lon": 106.69251
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "nlDXCNl629sTa2teisRIYw",
+        "score": 98.4297485352,
+        "dist": 1570.250835,
+        "info": "search:ta:704009002560993-VN",
+        "poi": {
+          "name": "Cao Đẳng Nghề Việt Mỹ",
+          "phone": "+84 28 3516 2154",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "215G-215H",
+          "streetName": "Đường Nơ Trang Long",
+          "municipalitySubdivision": "Phường 12",
+          "municipality": "Bình Thạnh",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72326",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 215G-215H, Đường Nơ Trang Long, Phường 12, Hồ Chí Minh, Hồ Chí Minh, 72326",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.815166,
+          "lon": 106.697835
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81607,
+            "lon": 106.69692
+          },
+          "btmRightPoint": {
+            "lat": 10.81427,
+            "lon": 106.69875
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81516,
+              "lon": 106.69793
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gnSMgd_N1ChAxam4lFFrkA",
+        "score": 98.3911590576,
+        "dist": 1608.840754,
+        "info": "search:ta:704009002663805-VN",
+        "poi": {
+          "name": "Trường Đại Học Dân Lập Văn Lang-Ban Trung Học Chuy",
+          "phone": "+84 28 3843 2478",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "233A",
+          "streetName": "Đường Nguyễn Văn Đậu",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 233A, Đường Nguyễn Văn Đậu, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.81247,
+          "lon": 106.693123
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81337,
+            "lon": 106.69221
+          },
+          "btmRightPoint": {
+            "lat": 10.81157,
+            "lon": 106.69404
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8124,
+              "lon": 106.69319
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "GRh31JvMo9bm_S27njug6Q",
+        "score": 98.3878860474,
+        "dist": 1612.107118,
+        "info": "search:ta:704009000408025-VN",
+        "poi": {
+          "name": "Sở Giáo Dục và Đào Tạo Thành Phố Hồ Chí Minh-Trường",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "281",
+          "streetName": "Đường Nơ Trang Long",
+          "municipalitySubdivision": "Phường 13",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 281, Đường Nơ Trang Long, Phường 13, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.819438,
+          "lon": 106.702064
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82034,
+            "lon": 106.70115
+          },
+          "btmRightPoint": {
+            "lat": 10.81854,
+            "lon": 106.70298
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81935,
+              "lon": 106.70209
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "IgmltlMKJrkhOxr16MlTLA",
+        "score": 98.3790359497,
+        "dist": 1620.966909,
+        "info": "search:ta:704009000251242-VN",
+        "poi": {
+          "name": "Trường Đại Học Dân Lập Văn Lang",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "233A",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72326",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 233A, Đường Phan Văn Trị, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72326",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.813095,
+          "lon": 106.695196
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81399,
+            "lon": 106.69428
+          },
+          "btmRightPoint": {
+            "lat": 10.8122,
+            "lon": 106.69611
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81309,
+              "lon": 106.69529
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "e_IrCUZV1QFOV0NLnuILTg",
+        "score": 98.3079528809,
+        "dist": 1692.045894,
+        "info": "search:ta:704009002565671-VN",
+        "poi": {
+          "name": "Trường Đại Học Kinh Tế Thành Phố Hồ Chí Minh-Khoa",
+          "phone": "+84 28 3550 1366",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "206",
+          "streetName": "Đường Nguyễn Văn Đậu",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 206, Đường Nguyễn Văn Đậu, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.811379,
+          "lon": 106.691642
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81228,
+            "lon": 106.69073
+          },
+          "btmRightPoint": {
+            "lat": 10.81048,
+            "lon": 106.69256
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81146,
+              "lon": 106.6916
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gXXT1QWs9xNdD3aw_lKHjQ",
+        "score": 98.2674102783,
+        "dist": 1732.586726,
+        "info": "search:ta:704009000496707-VN",
+        "poi": {
+          "name": "Trường Wil Helm Pick",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "27",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 27, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838432,
+          "lon": 106.679043
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83933,
+            "lon": 106.67813
+          },
+          "btmRightPoint": {
+            "lat": 10.83753,
+            "lon": 106.67996
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83852,
+              "lon": 106.67904
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bvUo2TgamGTxqsI01mbAXw",
+        "score": 98.2212524414,
+        "dist": 1778.751068,
+        "info": "search:ta:704009002124322-VN",
+        "poi": {
+          "name": "Đại Học FPT",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "121",
+          "streetName": "Đường Nơ Trang Long",
+          "municipalitySubdivision": "Phường 12",
+          "municipality": "Bình Thạnh",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72326",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 121, Đường Nơ Trang Long, Phường 12, Hồ Chí Minh, Hồ Chí Minh, 72326",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.811825,
+          "lon": 106.695843
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81272,
+            "lon": 106.69493
+          },
+          "btmRightPoint": {
+            "lat": 10.81093,
+            "lon": 106.69676
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81177,
+              "lon": 106.69592
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "m-JqXB9FNkRhulPd5d-QGA",
+        "score": 98.2189254761,
+        "dist": 1781.077527,
+        "info": "search:ta:704009000969944-VN",
+        "poi": {
+          "name": "FPT-APTECH",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "131",
+          "streetName": "Đường Nơ Trang Long",
+          "municipalitySubdivision": "Phường 12",
+          "municipality": "Bình Thạnh",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72326",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 131, Đường Nơ Trang Long, Phường 12, Hồ Chí Minh, Hồ Chí Minh, 72326",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.81176,
+          "lon": 106.695747
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81266,
+            "lon": 106.69483
+          },
+          "btmRightPoint": {
+            "lat": 10.81086,
+            "lon": 106.69666
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8117,
+              "lon": 106.69582
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vRWvdW09ZkPxx2btv0ABMg",
+        "score": 98.1911239624,
+        "dist": 1808.877836,
+        "info": "search:ta:704009000240530-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Kỹ Thuật Vinhempich",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "189",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 189, Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835588,
+          "lon": 106.67545
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83649,
+            "lon": 106.67453
+          },
+          "btmRightPoint": {
+            "lat": 10.83469,
+            "lon": 106.67637
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8355,
+              "lon": 106.6755
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bKJr1MH7lxMqm36hjRkNPw",
+        "score": 98.1911010742,
+        "dist": 1808.898207,
+        "info": "search:ta:704009002529833-VN",
+        "poi": {
+          "name": "Trường Đại Học Trần Đại Nghĩa",
+          "phone": "+84 28 3894 0535",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "189",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 189, Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835588,
+          "lon": 106.67545
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83649,
+            "lon": 106.67453
+          },
+          "btmRightPoint": {
+            "lat": 10.83469,
+            "lon": 106.67637
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8355,
+              "lon": 106.67547
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "7d_seUjAl2xLx6yQcYdvDA",
+        "score": 98.1898880005,
+        "dist": 1810.11186,
+        "info": "search:ta:704009001735422-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Kỹ Thuật Vin Hem Pich-Công Ty Ánh Châu",
+          "phone": "+84 28 3984 7052",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838444,
+          "lon": 106.67797
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83934,
+            "lon": 106.67705
+          },
+          "btmRightPoint": {
+            "lat": 10.83754,
+            "lon": 106.67889
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83849,
+              "lon": 106.67806
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "wFhGihk3LpxAHhaMMWhdxA",
+        "score": 98.1803588867,
+        "dist": 1819.644152,
+        "info": "search:ta:704009002660849-VN",
+        "poi": {
+          "name": "Trường Sĩ Quan Kỹ Thuật Quân Sự Vinhempics",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "189",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 189, Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835747,
+          "lon": 106.675442
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83665,
+            "lon": 106.67453
+          },
+          "btmRightPoint": {
+            "lat": 10.83485,
+            "lon": 106.67636
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83575,
+              "lon": 106.67553
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "TGhp_qBy-uKb5oc1sn43Cw",
+        "score": 98.1039199829,
+        "dist": 1896.08455,
+        "info": "search:ta:704009002853852-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Tài Chính Hải Quan-Cơ Sở 2",
+          "phone": "+84 28 3845 0798",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "778",
+          "streetName": "Hẻm 778 Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Đức Nhuận",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72223",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 778, Hẻm 778 Nguyễn Kiệm, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 72223",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.811737,
+          "lon": 106.680237
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81264,
+            "lon": 106.67932
+          },
+          "btmRightPoint": {
+            "lat": 10.81084,
+            "lon": 106.68115
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81167,
+              "lon": 106.67988
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "kmL4HwlK5flkb5ZoaJ_saA",
+        "score": 98.0951766968,
+        "dist": 1904.830024,
+        "info": "search:ta:704009002146008-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Thực Hành FPT Polytechnic Cơ Sở 2",
+          "phone": "+84 28 6252 3434",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "url": "www.poly.edu.vn",
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "B1",
+          "streetName": "Hẻm 778 Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Đức Nhuận",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72223",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số B1, Hẻm 778 Nguyễn Kiệm, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 72223",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.811739,
+          "lon": 106.680078
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81264,
+            "lon": 106.67916
+          },
+          "btmRightPoint": {
+            "lat": 10.81084,
+            "lon": 106.68099
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81172,
+              "lon": 106.67978
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "67VeWlPbXkfaTmFKA39W7g",
+        "score": 98.0896453857,
+        "dist": 1910.353953,
+        "info": "search:ta:704009002131338-VN",
+        "poi": {
+          "name": "Trường Đại Học Mở Thành Phố Hồ Chí Minh",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "465",
+          "streetName": "Đường Nơ Trang Long",
+          "municipalitySubdivision": "Phường 13",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 465, Đường Nơ Trang Long, Phường 13, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821529,
+          "lon": 106.705888
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82243,
+            "lon": 106.70497
+          },
+          "btmRightPoint": {
+            "lat": 10.82063,
+            "lon": 106.7068
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82146,
+              "lon": 106.70594
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "YLZbvntLhkDOGtz2qZ3cDA",
+        "score": 98.067276001,
+        "dist": 1932.728733,
+        "info": "search:ta:704009002085577-VN",
+        "poi": {
+          "name": "Trường Đại Học Trần Đại Nghĩa-Trung Tâm Dạy Nghề-Giới Thiệu Việc Làm Vinhempich",
+          "phone": "+84 28 3894 3868",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.837414,
+          "lon": 106.675429
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83831,
+            "lon": 106.67451
+          },
+          "btmRightPoint": {
+            "lat": 10.83651,
+            "lon": 106.67634
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83735,
+              "lon": 106.67552
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "2g0pghQMo5eRAE8Z7NB3BA",
+        "score": 98.048828125,
+        "dist": 1951.169959,
+        "info": "search:ta:704007000017595-VN",
+        "poi": {
+          "name": "Trường Cao Đẳng Bách Việt-Tt Ứng Dụng Công Nghệ Và Tư Vấn Kiểm Định Xây Dựng",
+          "phone": "+84 28 3842 0730",
+          "categorySet": [
+            {
+              "id": 7377002
+            }
+          ],
+          "categories": [
+            "college/university"
+          ],
+          "classifications": [
+            {
+              "code": "COLLEGE_UNIVERSITY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "college/university"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "778K/35",
+          "streetName": "Hẻm 778 Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Đức Nhuận",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72223",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 778K/35, Hẻm 778 Nguyễn Kiệm, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 72223",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.811366,
+          "lon": 106.679886
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81227,
+            "lon": 106.67897
+          },
+          "btmRightPoint": {
+            "lat": 10.81047,
+            "lon": 106.6808
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81138,
+              "lon": 106.67975
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

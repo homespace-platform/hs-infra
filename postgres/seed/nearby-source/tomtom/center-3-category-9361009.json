@@ -1,0 +1,4861 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.8358332,
+    "lon": 106.6802188,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "9361009"
+  },
+  "fetchedAt": "2026-10-30T19:58:45.123Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 60,
+      "numResults": 65,
+      "offset": 0,
+      "totalResults": 65,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.8358332,
+        "lon": 106.6802188
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "rhN7wqwmQzbl_UT7qIdXTQ",
+        "score": 99.8676071167,
+        "dist": 132.383043,
+        "info": "search:ta:704009001461971-VN",
+        "poi": {
+          "name": "Cửa Hàng Tiện Lợi Circle K",
+          "brands": [
+            {
+              "name": "Circle K"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Quảng Hàm",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Quảng Hàm, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836678,
+          "lon": 106.681072
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83758,
+            "lon": 106.68016
+          },
+          "btmRightPoint": {
+            "lat": 10.83578,
+            "lon": 106.68199
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83659,
+              "lon": 106.68106
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "jb4SqEFDibhqTnwsPwrDtg",
+        "score": 99.8606338501,
+        "dist": 139.36547,
+        "info": "search:ta:704009001889840-VN",
+        "poi": {
+          "name": "Cửa Hàng Tiện Lợi Bsmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "188",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 188, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836816,
+          "lon": 106.681011
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83772,
+            "lon": 106.6801
+          },
+          "btmRightPoint": {
+            "lat": 10.83592,
+            "lon": 106.68193
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83678,
+              "lon": 106.68093
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "cW0C7VsSndWXcD4fTwbhEw",
+        "score": 99.8506317139,
+        "dist": 149.368823,
+        "info": "search:ta:704009003345199-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "101",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 101, Đường Nguyễn Huy Điển, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835066,
+          "lon": 106.681341
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83597,
+            "lon": 106.68043
+          },
+          "btmRightPoint": {
+            "lat": 10.83417,
+            "lon": 106.68226
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83509,
+              "lon": 106.68143
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ml_RisCc2u_jjGsNav_EIg",
+        "score": 99.6359405518,
+        "dist": 364.052795,
+        "info": "search:ta:704009001935236-VN",
+        "poi": {
+          "name": "Cửa Hàng Thực Phẩm Tiện Lợi Satrafoods",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "100A",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 100A, Đường Nguyễn Huy Điển, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833312,
+          "lon": 106.682345
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83421,
+            "lon": 106.68143
+          },
+          "btmRightPoint": {
+            "lat": 10.83241,
+            "lon": 106.68326
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83327,
+              "lon": 106.68226
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "LA1agKBjGcWZHLNLuGvifQ",
+        "score": 99.6323394775,
+        "dist": 367.666413,
+        "info": "search:ta:704009001813389-VN",
+        "poi": {
+          "name": "Vissan",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 9",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 9, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832541,
+          "lon": 106.679911
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83344,
+            "lon": 106.679
+          },
+          "btmRightPoint": {
+            "lat": 10.83164,
+            "lon": 106.68083
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83262,
+              "lon": 106.67986
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "F7qs15dj6edPl7SJUZwpuA",
+        "score": 99.5625610352,
+        "dist": 437.437467,
+        "info": "search:ta:704009002572990-VN",
+        "poi": {
+          "name": "Đại Lý Thực Phẩm Vissan",
+          "phone": "+84 28 3504 9293",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "57/31",
+          "streetName": "Hẻm 214 Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 57/31, Hẻm 214 Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835787,
+          "lon": 106.676214
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83669,
+            "lon": 106.6753
+          },
+          "btmRightPoint": {
+            "lat": 10.83489,
+            "lon": 106.67713
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83588,
+              "lon": 106.67622
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "JICDfHykpwfVcSwJloSRLw",
+        "score": 99.5546798706,
+        "dist": 445.321303,
+        "info": "search:ta:704009001752266-VN",
+        "poi": {
+          "name": "Tổng Công Ty Thương Mại Sài Gòn Thương Mại Dịch Vụ Một Thành Viên Satrafoods",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "247",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 247, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839688,
+          "lon": 106.679112
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84059,
+            "lon": 106.6782
+          },
+          "btmRightPoint": {
+            "lat": 10.83879,
+            "lon": 106.68003
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83974,
+              "lon": 106.67919
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Sf2sr9ZvokWJtQ7hvoRfyQ",
+        "score": 99.5053024292,
+        "dist": 494.69435,
+        "info": "search:ta:704009001821657-VN",
+        "poi": {
+          "name": "Circle K",
+          "brands": [
+            {
+              "name": "Circle K"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "67",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 67, Đường Nguyễn Huy Điển, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832027,
+          "lon": 106.682565
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83293,
+            "lon": 106.68165
+          },
+          "btmRightPoint": {
+            "lat": 10.83113,
+            "lon": 106.68348
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83198,
+              "lon": 106.68265
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "yy_5oNAUT0uZaSisJ70moQ",
+        "score": 99.5011901855,
+        "dist": 498.813161,
+        "info": "search:ta:704009001482608-VN",
+        "poi": {
+          "name": "Vin Mart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "194",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 194, Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835248,
+          "lon": 106.67569
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83615,
+            "lon": 106.67477
+          },
+          "btmRightPoint": {
+            "lat": 10.83435,
+            "lon": 106.67661
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83523,
+              "lon": 106.6756
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "AXBLFo1E1BGU5mgvhBIvYA",
+        "score": 99.4909820557,
+        "dist": 509.021093,
+        "info": "search:ta:704009001803428-VN",
+        "poi": {
+          "name": "Vissan",
+          "phone": "+84 96 988 21 19",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "8",
+          "streetName": "Đường Lê Thị Hồng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 8, Đường Lê Thị Hồng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831921,
+          "lon": 106.677798
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83282,
+            "lon": 106.67688
+          },
+          "btmRightPoint": {
+            "lat": 10.83102,
+            "lon": 106.67871
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83193,
+              "lon": 106.67772
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "MITXGS9-N7TIhuWEjU7_Rw",
+        "score": 99.4399032593,
+        "dist": 560.094191,
+        "info": "search:ta:704009003350696-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "326",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 326, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840634,
+          "lon": 106.678666
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84153,
+            "lon": 106.67775
+          },
+          "btmRightPoint": {
+            "lat": 10.83973,
+            "lon": 106.67958
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8406,
+              "lon": 106.67858
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "g6_9kbn12xO_9A2yKVG2EQ",
+        "score": 99.3564834595,
+        "dist": 643.520237,
+        "info": "search:ta:704009001458559-VN",
+        "poi": {
+          "name": "Satra Foods Cửa Hàng Thực Phẩm Tiện Lợi",
+          "brands": [
+            {
+              "name": "Satra Foods"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839898,
+          "lon": 106.676024
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8408,
+            "lon": 106.67511
+          },
+          "btmRightPoint": {
+            "lat": 10.839,
+            "lon": 106.67694
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83993,
+              "lon": 106.67594
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Y7OZrm2fJ4XgjDD1kqYZkg",
+        "score": 99.3314971924,
+        "dist": 668.510148,
+        "info": "search:ta:704009001417703-VN",
+        "poi": {
+          "name": "Guardian Saigon Mall",
+          "brands": [
+            {
+              "name": "Guardian"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "2A",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 2A, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831675,
+          "lon": 106.675798
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83257,
+            "lon": 106.67488
+          },
+          "btmRightPoint": {
+            "lat": 10.83078,
+            "lon": 106.67671
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83155,
+              "lon": 106.67574
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gLajbjOfi_4nVvNJ4uZVdw",
+        "score": 99.2973403931,
+        "dist": 702.656217,
+        "info": "search:ta:704009001386738-VN",
+        "poi": {
+          "name": "Cửa Hàng Shop&Go",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "372",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 372, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841536,
+          "lon": 106.677448
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84244,
+            "lon": 106.67653
+          },
+          "btmRightPoint": {
+            "lat": 10.84064,
+            "lon": 106.67836
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84146,
+              "lon": 106.6774
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "YEttuPNLjwAH4XPOgw50aQ",
+        "score": 99.2881622314,
+        "dist": 711.839917,
+        "info": "search:ta:704009001414459-VN",
+        "poi": {
+          "name": "Cửa Hàng B's Mart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "376",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 376, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841588,
+          "lon": 106.677364
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84249,
+            "lon": 106.67645
+          },
+          "btmRightPoint": {
+            "lat": 10.84069,
+            "lon": 106.67828
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84151,
+              "lon": 106.67731
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "qcl2D5xFbGVas6Lm_Tj3mw",
+        "score": 99.2831268311,
+        "dist": 716.871589,
+        "info": "search:ta:704009001931303-VN",
+        "poi": {
+          "name": "Công Ty Trách Nhiệm Hữu Hạn BSmart - Cửa Hàng Bsmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "402",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 402, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841616,
+          "lon": 106.677318
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84252,
+            "lon": 106.6764
+          },
+          "btmRightPoint": {
+            "lat": 10.84072,
+            "lon": 106.67823
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84154,
+              "lon": 106.67727
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "YD_6SxSENxoXGL_4r5LNIQ",
+        "score": 99.2804107666,
+        "dist": 719.588789,
+        "info": "search:ta:704009002945060-VN",
+        "poi": {
+          "name": "Shop & Go",
+          "brands": [
+            {
+              "name": "Shop & Go"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.shopngo.com.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "372",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 372, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841632,
+          "lon": 106.677293
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84253,
+            "lon": 106.67638
+          },
+          "btmRightPoint": {
+            "lat": 10.84073,
+            "lon": 106.67821
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84156,
+              "lon": 106.67724
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ZGG4oUuOUTVJcmEKIgxHcg",
+        "score": 99.1837997437,
+        "dist": 816.197179,
+        "info": "search:ta:704009001413169-VN",
+        "poi": {
+          "name": "G7 Mart - Shop Kiều",
+          "brands": [
+            {
+              "name": "G7 Mart"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842149,
+          "lon": 106.676411
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84305,
+            "lon": 106.6755
+          },
+          "btmRightPoint": {
+            "lat": 10.84125,
+            "lon": 106.67733
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84207,
+              "lon": 106.67637
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "3zM71al5dwNjOzettC2xrA",
+        "score": 99.1199188232,
+        "dist": 880.075394,
+        "info": "search:ta:704009001435145-VN",
+        "poi": {
+          "name": "Công Ty TNHH B-S Mart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "338",
+          "streetName": "Đường Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 338, Đường Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831567,
+          "lon": 106.687006
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83247,
+            "lon": 106.68609
+          },
+          "btmRightPoint": {
+            "lat": 10.83067,
+            "lon": 106.68792
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8315,
+              "lon": 106.68694
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "CUxqchUog8TS-10cgQEdnQ",
+        "score": 99.0740661621,
+        "dist": 925.932529,
+        "info": "search:ta:704009001441435-VN",
+        "poi": {
+          "name": "Công Ty Cổ Phần Lương Thực Thành Phố Hồ Chí Minh - Cửa Hàng Foodcomart",
+          "phone": "+84 28 3894 5746",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "38",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 38, Đường Nguyễn Oanh, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827521,
+          "lon": 106.679712
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82842,
+            "lon": 106.6788
+          },
+          "btmRightPoint": {
+            "lat": 10.82662,
+            "lon": 106.68063
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8275,
+              "lon": 106.67966
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "lm3Qn6B7BCZw9tHyxk9eeQ",
+        "score": 99.0316772461,
+        "dist": 968.316524,
+        "info": "search:ta:704009003354432-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "135B",
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 135B, Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836496,
+          "lon": 106.689059
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8374,
+            "lon": 106.68814
+          },
+          "btmRightPoint": {
+            "lat": 10.8356,
+            "lon": 106.68997
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83643,
+              "lon": 106.68912
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "EB0Ke-fSARL-Bf67UO2AmQ",
+        "score": 98.9671173096,
+        "dist": 1032.889331,
+        "info": "search:ta:704009003352111-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "143",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 143, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827924,
+          "lon": 106.675259
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82882,
+            "lon": 106.67434
+          },
+          "btmRightPoint": {
+            "lat": 10.82702,
+            "lon": 106.67617
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.828,
+              "lon": 106.67531
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "yDy-EbRgiT3KXFSk91RTJA",
+        "score": 98.9670333862,
+        "dist": 1032.972017,
+        "info": "search:ta:704009001882983-VN",
+        "poi": {
+          "name": "Cửa Hàng Tiện Ích Vinmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "143",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 143, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827923,
+          "lon": 106.675259
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82882,
+            "lon": 106.67434
+          },
+          "btmRightPoint": {
+            "lat": 10.82702,
+            "lon": 106.67617
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.828,
+              "lon": 106.67531
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "O4AHq_KzdrOh89wMpsUSyA",
+        "score": 98.9611816406,
+        "dist": 1038.813926,
+        "info": "search:ta:704009001472039-VN",
+        "poi": {
+          "name": "Vinmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "749",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 749, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828123,
+          "lon": 106.68559
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82902,
+            "lon": 106.68467
+          },
+          "btmRightPoint": {
+            "lat": 10.82722,
+            "lon": 106.68651
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82824,
+              "lon": 106.68563
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "WtXCDWPyhzw4anNoZGjMrw",
+        "score": 98.9524383545,
+        "dist": 1047.569074,
+        "info": "search:ta:704009001937419-VN",
+        "poi": {
+          "name": "Shop & Go",
+          "brands": [
+            {
+              "name": "Shop & Go"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "179",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vap",
+          "countrySubdivision": "Ho Chi Minh City",
+          "countrySubdivisionName": "Ho Chi Minh City",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Vietnam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 179, Đường Quang Trung, Ho Chi Minh City, Ho Chi Minh City, 71422",
+          "localName": "Ho Chi Minh City"
+        },
+        "position": {
+          "lat": 10.82819,
+          "lon": 106.67461
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82909,
+            "lon": 106.67369
+          },
+          "btmRightPoint": {
+            "lat": 10.82729,
+            "lon": 106.67553
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82825,
+              "lon": 106.67464
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Qx99AEsR15W4ksECG1XMSg",
+        "score": 98.9040298462,
+        "dist": 1095.966987,
+        "info": "search:ta:704009003361549-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "490",
+          "streetName": "Hẻm 325 Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 490, Hẻm 325 Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.845436,
+          "lon": 106.677957
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84634,
+            "lon": 106.67704
+          },
+          "btmRightPoint": {
+            "lat": 10.84454,
+            "lon": 106.67887
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84547,
+              "lon": 106.67789
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "V0UrQNYOq1KT2Z80wYRzMQ",
+        "score": 98.9024124146,
+        "dist": 1097.588002,
+        "info": "search:ta:704009001856461-VN",
+        "poi": {
+          "name": "Vissan",
+          "phone": "+84 90 895 08 83",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "554",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 554, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843712,
+          "lon": 106.674164
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84461,
+            "lon": 106.67325
+          },
+          "btmRightPoint": {
+            "lat": 10.84281,
+            "lon": 106.67508
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84366,
+              "lon": 106.67409
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "DM1wlq0-8Ynf8c48jHR_7A",
+        "score": 98.8553543091,
+        "dist": 1144.655955,
+        "info": "search:ta:704009003293386-VN",
+        "poi": {
+          "name": "VinMart",
+          "phone": "+84 1800 6968",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "190",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 190, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82937,
+          "lon": 106.672061
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83027,
+            "lon": 106.67115
+          },
+          "btmRightPoint": {
+            "lat": 10.82847,
+            "lon": 106.67298
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82926,
+              "lon": 106.67201
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "OvdgzyBDtjkOMtGMkFtpPg",
+        "score": 98.7559585571,
+        "dist": 1244.041617,
+        "info": "search:ta:704009001491930-VN",
+        "poi": {
+          "name": "Vinmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1051",
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1051, Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.824692,
+          "lon": 106.679183
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82559,
+            "lon": 106.67827
+          },
+          "btmRightPoint": {
+            "lat": 10.82379,
+            "lon": 106.6801
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82466,
+              "lon": 106.67927
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "wPS-z8VCOIvlLbQWdWFZIQ",
+        "score": 98.7223129272,
+        "dist": 1277.688133,
+        "info": "search:ta:704009001901567-VN",
+        "poi": {
+          "name": "Cửa Hàng Ministop",
+          "brands": [
+            {
+              "name": "Mini Stop"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "15",
+          "streetName": "Đường Nguyễn Du",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 15, Đường Nguyễn Du, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825741,
+          "lon": 106.685811
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82664,
+            "lon": 106.6849
+          },
+          "btmRightPoint": {
+            "lat": 10.82484,
+            "lon": 106.68673
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8257,
+              "lon": 106.68587
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "h52GFgTfzdmCT53dPue8_w",
+        "score": 98.6837921143,
+        "dist": 1316.209776,
+        "info": "search:ta:704009001919172-VN",
+        "poi": {
+          "name": "Bsmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 383 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 383 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830169,
+          "lon": 106.669637
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83107,
+            "lon": 106.66872
+          },
+          "btmRightPoint": {
+            "lat": 10.82927,
+            "lon": 106.67055
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83013,
+              "lon": 106.66973
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "briEXtjdNYXsmkUpvTQIIg",
+        "score": 98.6674041748,
+        "dist": 1332.609416,
+        "info": "search:ta:704009001742034-VN",
+        "poi": {
+          "name": "Satra Foods",
+          "brands": [
+            {
+              "name": "Satra Foods"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "393",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 393, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830789,
+          "lon": 106.669151
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83169,
+            "lon": 106.66824
+          },
+          "btmRightPoint": {
+            "lat": 10.82989,
+            "lon": 106.67007
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83086,
+              "lon": 106.66921
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "JWHy_8_UfF-lYecQPCcD9A",
+        "score": 98.6526489258,
+        "dist": 1347.348579,
+        "info": "search:ta:704009000487596-VN",
+        "poi": {
+          "name": "Cửa Hàng Vissan",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Dương Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Dương Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828324,
+          "lon": 106.689901
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82922,
+            "lon": 106.68899
+          },
+          "btmRightPoint": {
+            "lat": 10.82742,
+            "lon": 106.69082
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82826,
+              "lon": 106.68983
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "yXKUQ9udJq1fo1JGNEqDwg",
+        "score": 98.6237258911,
+        "dist": 1376.275439,
+        "info": "search:ta:704009001910338-VN",
+        "poi": {
+          "name": "Công Ty Cổ Phần Lương Thực Tphcm Cửa Hàng Foodcomart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "14",
+          "streetName": "Đường Lý Thường Kiệt",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 14, Đường Lý Thường Kiệt, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.824459,
+          "lon": 106.685187
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82536,
+            "lon": 106.68427
+          },
+          "btmRightPoint": {
+            "lat": 10.82356,
+            "lon": 106.6861
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8244,
+              "lon": 106.68526
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Y5rro3rcs7_z-eOnNpyrNw",
+        "score": 98.5707092285,
+        "dist": 1429.291598,
+        "info": "search:ta:704009000938053-VN",
+        "poi": {
+          "name": "Cửa Hàng Thực Phẩm Vissan",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "223",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 223, Đường Nguyễn Thái Sơn, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825001,
+          "lon": 106.687264
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8259,
+            "lon": 106.68635
+          },
+          "btmRightPoint": {
+            "lat": 10.8241,
+            "lon": 106.68818
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82491,
+              "lon": 106.6873
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "L-e1l_6PoQN9hGDc3Em18w",
+        "score": 98.5632476807,
+        "dist": 1436.752725,
+        "info": "search:ta:704009001398274-VN",
+        "poi": {
+          "name": "Guardian Lê Đức Thọ",
+          "brands": [
+            {
+              "name": "Guardian"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "600",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 15",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 600, Đường Lê Đức Thọ, Phường 15, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.845625,
+          "lon": 106.671635
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84652,
+            "lon": 106.67072
+          },
+          "btmRightPoint": {
+            "lat": 10.84473,
+            "lon": 106.67255
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84557,
+              "lon": 106.67156
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "xfe-4Rwqxy48nlmCDp8J9A",
+        "score": 98.5344619751,
+        "dist": 1465.531227,
+        "info": "search:ta:704009001469253-VN",
+        "poi": {
+          "name": "Cửa Hàng Tiện Lợi Co.op Food",
+          "brands": [
+            {
+              "name": "Co-op Food"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "410",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 410, Đường Nguyễn Thái Sơn, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825312,
+          "lon": 106.6883
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82621,
+            "lon": 106.68738
+          },
+          "btmRightPoint": {
+            "lat": 10.82441,
+            "lon": 106.68922
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82536,
+              "lon": 106.6882
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "yaofCptPvxudEkWclQnk9g",
+        "score": 98.5073623657,
+        "dist": 1492.636625,
+        "info": "search:ta:704009001753019-VN",
+        "poi": {
+          "name": "Circle K",
+          "brands": [
+            {
+              "name": "Circle K"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "668",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 15",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 668, Đường Lê Đức Thọ, Phường 15, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.846003,
+          "lon": 106.671298
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8469,
+            "lon": 106.67038
+          },
+          "btmRightPoint": {
+            "lat": 10.8451,
+            "lon": 106.67221
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84597,
+              "lon": 106.6712
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "B4Yq4AZGBptVoPUCNQFNkA",
+        "score": 98.4564056396,
+        "dist": 1543.592197,
+        "info": "search:ta:704009001944340-VN",
+        "poi": {
+          "name": "FamilyMart",
+          "brands": [
+            {
+              "name": "FamilyMart"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Văn Bảo",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Văn Bảo, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823183,
+          "lon": 106.686039
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82408,
+            "lon": 106.68512
+          },
+          "btmRightPoint": {
+            "lat": 10.82228,
+            "lon": 106.68695
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82311,
+              "lon": 106.68598
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "83zt8lzL5QlcZvXjkt8F3Q",
+        "score": 98.4373931885,
+        "dist": 1562.604141,
+        "info": "search:ta:704009003212697-VN",
+        "poi": {
+          "name": "Trung Tâm Kinh Doanh Thực Phẩm Vissan Số 4",
+          "phone": "+84 28 3894 4858",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Văn Nghi, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82358,
+          "lon": 106.687225
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82448,
+            "lon": 106.68631
+          },
+          "btmRightPoint": {
+            "lat": 10.82268,
+            "lon": 106.68814
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82366,
+              "lon": 106.68728
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "S1wJh6EQfbFabOvUjvF8Mg",
+        "score": 98.4371490479,
+        "dist": 1562.852319,
+        "info": "search:ta:704009001797422-VN",
+        "poi": {
+          "name": "Vissan",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "21",
+          "streetName": "Hẻm 118 Đường Huỳnh Khương An",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 21, Hẻm 118 Đường Huỳnh Khương An, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.824277,
+          "lon": 106.688364
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82518,
+            "lon": 106.68745
+          },
+          "btmRightPoint": {
+            "lat": 10.82338,
+            "lon": 106.68928
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82433,
+              "lon": 106.68844
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "UtexYEDmFVgCuK50P4_H1A",
+        "score": 98.393371582,
+        "dist": 1606.633591,
+        "info": "search:ta:704009001882019-VN",
+        "poi": {
+          "name": "Vinmart Nơi An Tâm Mua Sắm",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Văn Nghi, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823413,
+          "lon": 106.687736
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82431,
+            "lon": 106.68682
+          },
+          "btmRightPoint": {
+            "lat": 10.82251,
+            "lon": 106.68865
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82334,
+              "lon": 106.68768
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "37jk0MaVnyA4tk6BR55tCg",
+        "score": 98.3796615601,
+        "dist": 1620.340141,
+        "info": "search:ta:704009001476077-VN",
+        "poi": {
+          "name": "Guardian",
+          "brands": [
+            {
+              "name": "Guardian"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.guardian.com.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Thái Sơn, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822028,
+          "lon": 106.684969
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82293,
+            "lon": 106.68405
+          },
+          "btmRightPoint": {
+            "lat": 10.82113,
+            "lon": 106.68588
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82209,
+              "lon": 106.6849
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "7Lj_mdnepk0fRZufJAIH1g",
+        "score": 98.3657073975,
+        "dist": 1634.293008,
+        "info": "search:ta:704007000016085-VN",
+        "poi": {
+          "name": "Cửa Hàng Shop&Go",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "294",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 294, Đường Nguyễn Thái Sơn, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82185,
+          "lon": 106.684828
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82275,
+            "lon": 106.68391
+          },
+          "btmRightPoint": {
+            "lat": 10.82095,
+            "lon": 106.68574
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82191,
+              "lon": 106.68475
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "J_AsxhQ02Nfd9TNevYiTyA",
+        "score": 98.3647918701,
+        "dist": 1635.21321,
+        "info": "search:ta:704009000929646-VN",
+        "poi": {
+          "name": "Cửa Hàng Tự Chọn Mini Phương Giang",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "18A",
+          "streetName": "Hẻm 236 Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 18A, Hẻm 236 Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.837615,
+          "lon": 106.665356
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83851,
+            "lon": 106.66444
+          },
+          "btmRightPoint": {
+            "lat": 10.83672,
+            "lon": 106.66627
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83752,
+              "lon": 106.66535
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "odDYMV4AdOLb5QFzkluScg",
+        "score": 98.3567504883,
+        "dist": 1643.248731,
+        "info": "search:ta:704009003345838-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "668",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 15",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 668, Đường Lê Đức Thọ, Phường 15, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.846826,
+          "lon": 106.670162
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84773,
+            "lon": 106.66925
+          },
+          "btmRightPoint": {
+            "lat": 10.84593,
+            "lon": 106.67108
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84675,
+              "lon": 106.67011
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "160-tMJlMaVB76ZmYL8VlQ",
+        "score": 98.316986084,
+        "dist": 1683.013579,
+        "info": "search:ta:704009001779906-VN",
+        "poi": {
+          "name": "Circle K",
+          "brands": [
+            {
+              "name": "Circle K"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "47",
+          "streetName": "Đường Nguyễn Văn Bảo",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 47, Đường Nguyễn Văn Bảo, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.8221,
+          "lon": 106.686697
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.823,
+            "lon": 106.68578
+          },
+          "btmRightPoint": {
+            "lat": 10.8212,
+            "lon": 106.68761
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82214,
+              "lon": 106.68678
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "2uHGv_BpHRcHt_t7lGcxxA",
+        "score": 98.2926483154,
+        "dist": 1707.359993,
+        "info": "search:ta:704009001896094-VN",
+        "poi": {
+          "name": "Vissan",
+          "brands": [
+            {
+              "name": "Vissan"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "183",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 183, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835452,
+          "lon": 106.66459
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83635,
+            "lon": 106.66367
+          },
+          "btmRightPoint": {
+            "lat": 10.83455,
+            "lon": 106.66551
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83544,
+              "lon": 106.66469
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "U8cNyzOBeFPtyeRKUbgk5A",
+        "score": 98.2125091553,
+        "dist": 1787.490774,
+        "info": "search:ta:704009001904922-VN",
+        "poi": {
+          "name": "Cửa Hàng Bsmart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "613",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 613, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.847415,
+          "lon": 106.668868
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84831,
+            "lon": 106.66795
+          },
+          "btmRightPoint": {
+            "lat": 10.84652,
+            "lon": 106.66978
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84752,
+              "lon": 106.66887
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gLM1MC9VzlH1KmFESL83lg",
+        "score": 98.2120132446,
+        "dist": 1787.991878,
+        "info": "search:ta:704009000982956-VN",
+        "poi": {
+          "name": "Shop & Go",
+          "brands": [
+            {
+              "name": "Shop & Go"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 843 Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 843 Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.819821,
+          "lon": 106.678724
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82072,
+            "lon": 106.67781
+          },
+          "btmRightPoint": {
+            "lat": 10.81892,
+            "lon": 106.67964
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81973,
+              "lon": 106.67877
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "jE6FY17nYSG0G6sc_qIOiA",
+        "score": 98.1934585571,
+        "dist": 1806.541347,
+        "info": "search:ta:704009001391072-VN",
+        "poi": {
+          "name": "Cửa Hàng Shop&Go",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "7",
+          "streetName": "Đường Nguyễn Văn Bảo",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 7, Đường Nguyễn Văn Bảo, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821062,
+          "lon": 106.687106
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82196,
+            "lon": 106.68619
+          },
+          "btmRightPoint": {
+            "lat": 10.82016,
+            "lon": 106.68802
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82112,
+              "lon": 106.68724
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "B6NpZya1iCYsepnPCwHItA",
+        "score": 98.1904220581,
+        "dist": 1809.579316,
+        "info": "search:ta:704009001398297-VN",
+        "poi": {
+          "name": "Cửa Hàng Bs Mart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "10",
+          "streetName": "Đường Lê Lợi",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 10, Đường Lê Lợi, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821433,
+          "lon": 106.687937
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82233,
+            "lon": 106.68702
+          },
+          "btmRightPoint": {
+            "lat": 10.82053,
+            "lon": 106.68885
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82137,
+              "lon": 106.688
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BEBPr4ZBWFyTtUT_tI9lvA",
+        "score": 98.1756896973,
+        "dist": 1824.313262,
+        "info": "search:ta:704009001823979-VN",
+        "poi": {
+          "name": "VinMart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "372",
+          "streetName": "Đường Nguyễn Văn Công",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 372, Đường Nguyễn Văn Công, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.820528,
+          "lon": 106.674201
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82143,
+            "lon": 106.67329
+          },
+          "btmRightPoint": {
+            "lat": 10.81963,
+            "lon": 106.67512
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82057,
+              "lon": 106.67428
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "4zr5g85sgxybOw90EWQjVA",
+        "score": 98.1690216064,
+        "dist": 1830.975739,
+        "info": "search:ta:704009003347868-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "117",
+          "streetName": "Đường Số 9",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 117, Đường Số 9, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825908,
+          "lon": 106.693596
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82681,
+            "lon": 106.69268
+          },
+          "btmRightPoint": {
+            "lat": 10.82501,
+            "lon": 106.69451
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82584,
+              "lon": 106.69366
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "wN09n4z7KVhU5Qq1i5d8lQ",
+        "score": 98.1649551392,
+        "dist": 1835.041287,
+        "info": "search:ta:704009001462690-VN",
+        "poi": {
+          "name": "Cửa Hàng Tiện Lợi VinMart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "174",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 174, Đường Nguyễn Thái Sơn, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.81956,
+          "lon": 106.683015
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82046,
+            "lon": 106.6821
+          },
+          "btmRightPoint": {
+            "lat": 10.81866,
+            "lon": 106.68393
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81962,
+              "lon": 106.68294
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "dwI4IU-JxgbR9N7VTMy2Dw",
+        "score": 98.1575088501,
+        "dist": 1842.489939,
+        "info": "search:ta:704009001490044-VN",
+        "poi": {
+          "name": "Cửa Hàng B'smart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "493",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 493, Đường Phan Văn Trị, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823823,
+          "lon": 106.691842
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82472,
+            "lon": 106.69093
+          },
+          "btmRightPoint": {
+            "lat": 10.82292,
+            "lon": 106.69276
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82389,
+              "lon": 106.6919
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "fGvXtefaH4VfIEbx1PLLbQ",
+        "score": 98.1488189697,
+        "dist": 1851.174727,
+        "info": "search:ta:704009001892971-VN",
+        "poi": {
+          "name": "Cửa Hàng FamilyMart",
+          "brands": [
+            {
+              "name": "FamilyMart"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "581",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 581, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.847766,
+          "lon": 106.668399
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84867,
+            "lon": 106.66748
+          },
+          "btmRightPoint": {
+            "lat": 10.84687,
+            "lon": 106.66931
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8478,
+              "lon": 106.66842
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "DOEz1txQCPi6-nG9BFsrLg",
+        "score": 98.1475296021,
+        "dist": 1852.469595,
+        "info": "search:ta:704009001472432-VN",
+        "poi": {
+          "name": "Công Ty TNHH BS-Mart - B's Mart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 9",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 9, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825834,
+          "lon": 106.693786
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82673,
+            "lon": 106.69287
+          },
+          "btmRightPoint": {
+            "lat": 10.82493,
+            "lon": 106.6947
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8259,
+              "lon": 106.69372
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "5vIMHu5I0ssTt8dGe1x0mA",
+        "score": 98.1452713013,
+        "dist": 1854.733588,
+        "info": "search:ta:704009001801161-VN",
+        "poi": {
+          "name": "Circle K",
+          "brands": [
+            {
+              "name": "Circle K"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "29",
+          "streetName": "Đường Lê Lợi",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 29, Đường Lê Lợi, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.820761,
+          "lon": 106.687492
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82166,
+            "lon": 106.68658
+          },
+          "btmRightPoint": {
+            "lat": 10.81986,
+            "lon": 106.68841
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82083,
+              "lon": 106.68743
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "pmdqTIh3YEZXpB6pSYIrKA",
+        "score": 98.1357498169,
+        "dist": 1864.248896,
+        "info": "search:ta:704009001768283-VN",
+        "poi": {
+          "name": "VinMart",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "70",
+          "streetName": "Đường Lê Lợi",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 70, Đường Lê Lợi, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.820202,
+          "lon": 106.686391
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8211,
+            "lon": 106.68548
+          },
+          "btmRightPoint": {
+            "lat": 10.8193,
+            "lon": 106.68731
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82014,
+              "lon": 106.68645
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "UHyGabnxo9dJzx86yOdbOg",
+        "score": 98.129737854,
+        "dist": 1870.270612,
+        "info": "search:ta:704009001879254-VN",
+        "poi": {
+          "name": "Công Ty TNHH Một Thành Viên Thương Mại Và Đầu Tư Liên Á Châu - Cửa Hàng Guardian",
+          "brands": [
+            {
+              "name": "Guardian"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835015,
+          "lon": 106.663114
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83591,
+            "lon": 106.6622
+          },
+          "btmRightPoint": {
+            "lat": 10.83412,
+            "lon": 106.66403
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8351,
+              "lon": 106.66315
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "5dDlV-y9FKGkVY44VQitFQ",
+        "score": 98.1119689941,
+        "dist": 1888.032064,
+        "info": "search:ta:704009001489595-VN",
+        "poi": {
+          "name": "Circle K",
+          "brands": [
+            {
+              "name": "Circle K"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1, Đường Phan Văn Trị, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823932,
+          "lon": 106.692549
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82483,
+            "lon": 106.69163
+          },
+          "btmRightPoint": {
+            "lat": 10.82303,
+            "lon": 106.69346
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82397,
+              "lon": 106.69265
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "B2VNzzj07lj_ZbEZZYn3Ig",
+        "score": 98.0814819336,
+        "dist": 1918.521095,
+        "info": "search:ta:704009002566894-VN",
+        "poi": {
+          "name": "Cửa Hàng G7 Mart",
+          "brands": [
+            {
+              "name": "G7 Mart"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "406",
+          "streetName": "Hẻm 402 Nguyễn Văn Công",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 406, Hẻm 402 Nguyễn Văn Công, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.819445,
+          "lon": 106.674726
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82034,
+            "lon": 106.67381
+          },
+          "btmRightPoint": {
+            "lat": 10.81855,
+            "lon": 106.67564
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81937,
+              "lon": 106.6748
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "97kstqujis70sR9f3WSyuw",
+        "score": 98.0456848145,
+        "dist": 1954.317594,
+        "info": "search:ta:704009003360163-VN",
+        "poi": {
+          "name": "VinMart+",
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "url": "www.vinmartplus.vn",
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818322,
+          "lon": 106.678693
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81922,
+            "lon": 106.67778
+          },
+          "btmRightPoint": {
+            "lat": 10.81742,
+            "lon": 106.67961
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81832,
+              "lon": 106.67879
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "KrUooKYj8uivK2j5gl1G3w",
+        "score": 98.028755188,
+        "dist": 1971.242789,
+        "info": "search:ta:704009001381932-VN",
+        "poi": {
+          "name": "Guardian Thống Nhất",
+          "brands": [
+            {
+              "name": "Guardian"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 9361009
+            }
+          ],
+          "categories": [
+            "convenience stores",
+            "shop"
+          ],
+          "classifications": [
+            {
+              "code": "SHOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "shop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "convenience stores"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "231",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 231, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844829,
+          "lon": 106.664665
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84573,
+            "lon": 106.66375
+          },
+          "btmRightPoint": {
+            "lat": 10.84393,
+            "lon": 106.66558
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84482,
+              "lon": 106.66478
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

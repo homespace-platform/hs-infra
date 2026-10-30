@@ -1,0 +1,101 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.831393,
+    "lon": 106.6662159,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "9942002"
+  },
+  "fetchedAt": "2026-10-30T19:58:09.183Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 11,
+      "numResults": 1,
+      "offset": 0,
+      "totalResults": 1,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.831393,
+        "lon": 106.6662159
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "xeze0slUy7DMqKXeazQbeQ",
+        "score": 98.0704498291,
+        "dist": 1929.557568,
+        "info": "search:ta:704009002110911-VN",
+        "poi": {
+          "name": "Nhà Chờ Xe Buýt",
+          "categorySet": [
+            {
+              "id": 9942002
+            }
+          ],
+          "categories": [
+            "bus stop",
+            "public transport stop"
+          ],
+          "classifications": [
+            {
+              "code": "PUBLIC_TRANSPORT_STOP",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "bus stop"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "public transport stop"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Bạch Đằng",
+          "municipalitySubdivision": "Phường 2",
+          "municipality": "Tân Sơn Hòa",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72122",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Bạch Đằng, Phường 2, Hồ Chí Minh, Hồ Chí Minh, 72122",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.814042,
+          "lon": 106.666475
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81494,
+            "lon": 106.66556
+          },
+          "btmRightPoint": {
+            "lat": 10.81314,
+            "lon": 106.66739
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81398,
+              "lon": 106.66648
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

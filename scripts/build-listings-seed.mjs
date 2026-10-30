@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { nearbyConfig, renderNearbySeed, snapshotCoverage } from './build-nearby-seed.mjs';
+import { nearbyConfig, renderNearbySeed, snapshotCoverage, validateNearbyEvidence } from './build-nearby-seed.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const JSON_PATH = path.join(ROOT, 'postgres/seed/homespace_seed_300_duong_govap.json');
@@ -10,6 +10,7 @@ export const SQL_PATH = path.join(ROOT, 'postgres/seed/listings_seed_hcm.sql');
 export const NEARBY_PATH = path.join(ROOT, 'postgres/seed/nearby_places_tomtom_snapshot.json');
 export const CORE_PROPERTIES = path.resolve(ROOT, '../hs-core-api/hs-api-service/src/main/resources/application.properties');
 export const NEARBY_CATALOG = path.resolve(ROOT, '../hs-core-api/hs-listing-service/src/main/java/com/hs/listing/nearby/NearbyCatalog.java');
+export const NEARBY_REGISTRY = path.resolve(ROOT, '../hs-core-api/hs-listing-service/src/main/resources/nearby/tomtom-v2-category-mapping.json');
 // Use exactly the same admin_new snapshot as the Next.js filter, never the old province/ward codes.
 export const CATALOG_DIR = path.resolve(ROOT, '../hs-web-app/data/vietmap');
 const START = '-- BEGIN SEED ADDRESS JSON (generated; do not edit)';
@@ -95,12 +96,13 @@ export function renderCatalog(sql, rows, provinceText, wardText) {
 }
 
 export async function buildSeed(check = false) {
-  const [sql, json, provinces, wards, nearby, properties, catalogJava] = await Promise.all([
+  const [sql, json, provinces, wards, nearby, properties, catalogJava, registry] = await Promise.all([
     readFile(SQL_PATH, 'utf8'), readFile(JSON_PATH, 'utf8'),
     readFile(path.join(CATALOG_DIR, 'province.json'), 'utf8'), readFile(path.join(CATALOG_DIR, 'ward.json'), 'utf8'),
-    readFile(NEARBY_PATH, 'utf8'), readFile(CORE_PROPERTIES, 'utf8'), readFile(NEARBY_CATALOG, 'utf8'),
+    readFile(NEARBY_PATH, 'utf8'), readFile(CORE_PROPERTIES, 'utf8'), readFile(NEARBY_CATALOG, 'utf8'), readFile(NEARBY_REGISTRY,'utf8'),
   ]);
   const config = nearbyConfig(properties, catalogJava);
+  await validateNearbyEvidence(JSON.parse(nearby), file=>readFile(path.join(ROOT,'postgres/seed',file),'utf8'), JSON.parse(registry));
   const result = renderNearbySeed(renderCatalog(renderSeed(sql, json), JSON.parse(json), provinces, wards), nearby, config);
   if (check && result !== sql) throw new Error('SQL snapshot is stale. Run node scripts/build-listings-seed.mjs');
   if (!check && result !== sql) await writeFile(SQL_PATH, result, 'utf8');

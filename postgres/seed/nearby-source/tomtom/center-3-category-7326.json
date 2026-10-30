@@ -1,0 +1,6730 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.8358332,
+    "lon": 106.6802188,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "7326"
+  },
+  "fetchedAt": "2026-10-30T19:58:41.078Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 82,
+      "numResults": 100,
+      "offset": 0,
+      "totalResults": 100,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.8358332,
+        "lon": 106.6802188
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "rDwTTHHnsVred79DvCpeZw",
+        "score": 99.8850402832,
+        "dist": 114.950672,
+        "info": "search:ta:704009001402635-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 170 Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 170 Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836096,
+          "lon": 106.681237
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.837,
+            "lon": 106.68032
+          },
+          "btmRightPoint": {
+            "lat": 10.8352,
+            "lon": 106.68215
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83618,
+              "lon": 106.68121
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "i1RkGHgNgEx_BaP98fU8_Q",
+        "score": 99.8828887939,
+        "dist": 117.104695,
+        "info": "search:ta:704009000834212-VN",
+        "poi": {
+          "name": "Nhà Thuốc Hoàng Lan",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Huy Điển, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836324,
+          "lon": 106.681168
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83722,
+            "lon": 106.68025
+          },
+          "btmRightPoint": {
+            "lat": 10.83542,
+            "lon": 106.68208
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8363,
+              "lon": 106.68108
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ID0Ref38ZejKHGeoFouNbw",
+        "score": 99.8781051636,
+        "dist": 121.890236,
+        "info": "search:ta:704009003353491-VN",
+        "poi": {
+          "name": "Nhà Thuốc Bách Việt",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "194",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 194, Đường Nguyễn Huy Điển, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83646,
+          "lon": 106.681134
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83736,
+            "lon": 106.68022
+          },
+          "btmRightPoint": {
+            "lat": 10.83556,
+            "lon": 106.68205
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83644,
+              "lon": 106.68104
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "3z35ocdL_sQAA8Nr319jWg",
+        "score": 99.8595199585,
+        "dist": 140.477739,
+        "info": "search:ta:704009003358553-VN",
+        "poi": {
+          "name": "Nhà Thuốc Kiều Nga",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "206",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 206, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836834,
+          "lon": 106.681004
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83773,
+            "lon": 106.68009
+          },
+          "btmRightPoint": {
+            "lat": 10.83593,
+            "lon": 106.68192
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83681,
+              "lon": 106.68091
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "iVDMifB4wo1Nrca10ViZuA",
+        "score": 99.7887954712,
+        "dist": 211.207948,
+        "info": "search:ta:704009003360553-VN",
+        "poi": {
+          "name": "Nhà Thuốc Chánh Tâm",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "K35",
+          "streetName": "Đường An Nhơn",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số K35, Đường An Nhơn, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836716,
+          "lon": 106.678506
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83762,
+            "lon": 106.67759
+          },
+          "btmRightPoint": {
+            "lat": 10.83582,
+            "lon": 106.67942
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83662,
+              "lon": 106.6785
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Kp1rV41HlHuWFv0FDVC0Pg",
+        "score": 99.7848129272,
+        "dist": 215.186877,
+        "info": "search:ta:704009003360339-VN",
+        "poi": {
+          "name": "Nhà Thuốc Phano",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "128",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 128, Đường Nguyễn Huy Điển, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834587,
+          "lon": 106.681727
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83549,
+            "lon": 106.68081
+          },
+          "btmRightPoint": {
+            "lat": 10.83369,
+            "lon": 106.68264
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83455,
+              "lon": 106.68164
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bA0fTguv8hoojgn9SCpfIg",
+        "score": 99.7774887085,
+        "dist": 222.508682,
+        "info": "search:ta:704009001841816-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Mai Uyên",
+          "phone": "+84 28 3984 0795",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "118",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 118, Đường Nguyễn Huy Điển, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834522,
+          "lon": 106.681758
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83542,
+            "lon": 106.68084
+          },
+          "btmRightPoint": {
+            "lat": 10.83362,
+            "lon": 106.68267
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83449,
+              "lon": 106.68167
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "k3TqDPWryiRcVwX_0QN40A",
+        "score": 99.7687835693,
+        "dist": 231.212532,
+        "info": "search:ta:704009000355532-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Mỹ Trang",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "234",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 234, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.837882,
+          "lon": 106.680582
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83878,
+            "lon": 106.67967
+          },
+          "btmRightPoint": {
+            "lat": 10.83698,
+            "lon": 106.6815
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83785,
+              "lon": 106.6805
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "db6XupOWjrg-9dvPJ8wgtw",
+        "score": 99.7580947876,
+        "dist": 241.903795,
+        "info": "search:ta:704009003360315-VN",
+        "poi": {
+          "name": "Nhà Thuốc Xuân Thu",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "90/986B",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 90/986B, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838006,
+          "lon": 106.680329
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83891,
+            "lon": 106.67941
+          },
+          "btmRightPoint": {
+            "lat": 10.83711,
+            "lon": 106.68124
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83805,
+              "lon": 106.68041
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "J-8jtemGMNBJTadF4cSe8g",
+        "score": 99.7571258545,
+        "dist": 242.872409,
+        "info": "search:ta:704009002632965-VN",
+        "poi": {
+          "name": "Công Ty Tnhh Dược Phẩm Tuệ Phúc",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "26",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 26, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838014,
+          "lon": 106.680343
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83891,
+            "lon": 106.67943
+          },
+          "btmRightPoint": {
+            "lat": 10.83711,
+            "lon": 106.68126
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83805,
+              "lon": 106.68041
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "RAp3_X5WRRmgWLSb7PLxmA",
+        "score": 99.7569351196,
+        "dist": 243.061833,
+        "info": "search:ta:704009001958261-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Minh Thảo",
+          "phone": "+84 28 3984 1298",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Huy Điển, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83434,
+          "lon": 106.681844
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83524,
+            "lon": 106.68093
+          },
+          "btmRightPoint": {
+            "lat": 10.83344,
+            "lon": 106.68276
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8343,
+              "lon": 106.68176
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "wF1Y0Apo4B4c1QdBDAIwZg",
+        "score": 99.748878479,
+        "dist": 251.127396,
+        "info": "search:ta:704009000930629-VN",
+        "poi": {
+          "name": "Nhà Thuốc Yến Nguyên",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 214/50 Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 214/50 Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83538,
+          "lon": 106.677966
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83628,
+            "lon": 106.67705
+          },
+          "btmRightPoint": {
+            "lat": 10.83448,
+            "lon": 106.67888
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83538,
+              "lon": 106.67787
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "li-yKSWpgXMiBuVyb4vzhA",
+        "score": 99.7338104248,
+        "dist": 266.195185,
+        "info": "search:ta:704009000969028-VN",
+        "poi": {
+          "name": "Nhà Thuốc Hoàng Kim",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "22/37-22/39",
+          "streetName": "Đường Số 8",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 22/37-22/39, Đường Số 8, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833855,
+          "lon": 106.678846
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83475,
+            "lon": 106.67793
+          },
+          "btmRightPoint": {
+            "lat": 10.83296,
+            "lon": 106.67976
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83383,
+              "lon": 106.67894
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "f-VR3Cg1KWAfGDjJ5AMR8Q",
+        "score": 99.732421875,
+        "dist": 267.584403,
+        "info": "search:ta:704009001797798-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Bình An",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 214/50 Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 214/50 Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835523,
+          "lon": 106.677789
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83642,
+            "lon": 106.67687
+          },
+          "btmRightPoint": {
+            "lat": 10.83462,
+            "lon": 106.6787
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83552,
+              "lon": 106.67788
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "16G7Vc7A5I7BKgNGEGgM6Q",
+        "score": 99.7021026611,
+        "dist": 297.894196,
+        "info": "search:ta:704009001484878-VN",
+        "poi": {
+          "name": "Nhà Thuốc Sinh Phúc",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "25",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 25, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838421,
+          "lon": 106.679513
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83932,
+            "lon": 106.6786
+          },
+          "btmRightPoint": {
+            "lat": 10.83752,
+            "lon": 106.68043
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83852,
+              "lon": 106.67951
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Eamh5ro0h0_PLfXfkQnGZw",
+        "score": 99.6817855835,
+        "dist": 318.219522,
+        "info": "search:ta:704009001859241-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Hà Vy",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "152",
+          "streetName": "Đường Lê Thị Hồng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 152, Đường Lê Thị Hồng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834318,
+          "lon": 106.677747
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83522,
+            "lon": 106.67683
+          },
+          "btmRightPoint": {
+            "lat": 10.83342,
+            "lon": 106.67866
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83431,
+              "lon": 106.67784
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "l7nsnmWZsWF5IiI-JqYsKw",
+        "score": 99.6817321777,
+        "dist": 318.264991,
+        "info": "search:ta:704009000780612-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Minh Phúc",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "A1",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số A1, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838661,
+          "lon": 106.679765
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83956,
+            "lon": 106.67885
+          },
+          "btmRightPoint": {
+            "lat": 10.83776,
+            "lon": 106.68068
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83857,
+              "lon": 106.67976
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Nf_mk3Mpn7LQW5C28F0V-Q",
+        "score": 99.656288147,
+        "dist": 343.71092,
+        "info": "search:ta:704009002579613-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Số 79",
+          "phone": "+84 365 483 328",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "79",
+          "streetName": "Đường Phạm Huy Thông",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 79, Đường Phạm Huy Thông, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832774,
+          "lon": 106.680672
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83367,
+            "lon": 106.67976
+          },
+          "btmRightPoint": {
+            "lat": 10.83187,
+            "lon": 106.68159
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8327,
+              "lon": 106.68072
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "K85SGdPnd4lPDgXPyroT7w",
+        "score": 99.6495666504,
+        "dist": 350.430163,
+        "info": "search:ta:704009001820291-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Hương Nhi",
+          "phone": "+84 28 6289 0206",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "94/1042B1",
+          "streetName": "Đường Dương Quảng Hàm",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 94/1042B1, Đường Dương Quảng Hàm, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.837047,
+          "lon": 106.68318
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83795,
+            "lon": 106.68226
+          },
+          "btmRightPoint": {
+            "lat": 10.83615,
+            "lon": 106.6841
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.837,
+              "lon": 106.6831
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "xI-Qm5aNFgoX0AURoCtMAA",
+        "score": 99.6328735352,
+        "dist": 367.133086,
+        "info": "search:ta:704009000790899-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Hồng Quyên",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm Số 2 Đường Số 5",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm Số 2 Đường Số 5, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833014,
+          "lon": 106.681968
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83391,
+            "lon": 106.68105
+          },
+          "btmRightPoint": {
+            "lat": 10.83211,
+            "lon": 106.68288
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83298,
+              "lon": 106.68188
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "XrgoFXZT_uSLtc8vVMnKmQ",
+        "score": 99.6266021729,
+        "dist": 373.393068,
+        "info": "search:ta:704009001758462-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Nhật Thanh",
+          "phone": "+84 28 6295 6294",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "72",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 72, Đường Nguyễn Huy Điển, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833231,
+          "lon": 106.68238
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83413,
+            "lon": 106.68146
+          },
+          "btmRightPoint": {
+            "lat": 10.83233,
+            "lon": 106.6833
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83319,
+              "lon": 106.6823
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "dK3aFc79bYgawcFBankXPg",
+        "score": 99.60546875,
+        "dist": 394.536137,
+        "info": "search:ta:704009001847241-VN",
+        "poi": {
+          "name": "Nhà Thốc Tây Phương Trang",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 8",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 8, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832392,
+          "lon": 106.679339
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83329,
+            "lon": 106.67842
+          },
+          "btmRightPoint": {
+            "lat": 10.83149,
+            "lon": 106.68025
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83248,
+              "lon": 106.67934
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "w_g0lDcTGOO3AKED37CgMg",
+        "score": 99.6035079956,
+        "dist": 396.495518,
+        "info": "search:ta:704009000476251-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Ngọc Thoa",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "30",
+          "streetName": "Đường Lê Thị Hồng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 30, Đường Lê Thị Hồng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833107,
+          "lon": 106.677879
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83401,
+            "lon": 106.67696
+          },
+          "btmRightPoint": {
+            "lat": 10.83221,
+            "lon": 106.67879
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83311,
+              "lon": 106.67779
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vu9FEvxjevjgsvFy0-FmIw",
+        "score": 99.583152771,
+        "dist": 416.848246,
+        "info": "search:ta:704009001941265-VN",
+        "poi": {
+          "name": "Nhà Thuốc Xuân Anh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "77",
+          "streetName": "Đường Lê Thị Hồng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 77, Đường Lê Thị Hồng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833024,
+          "lon": 106.677692
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83392,
+            "lon": 106.67678
+          },
+          "btmRightPoint": {
+            "lat": 10.83212,
+            "lon": 106.67861
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83302,
+              "lon": 106.67778
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "YK8Oaj7Jnyw6NuyCwRK_oA",
+        "score": 99.5808334351,
+        "dist": 419.170451,
+        "info": "search:ta:704009001911816-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Thùy Dung",
+          "phone": "+84 28 3912 9269",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "187",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 187, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839494,
+          "lon": 106.679303
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84039,
+            "lon": 106.67839
+          },
+          "btmRightPoint": {
+            "lat": 10.83859,
+            "lon": 106.68022
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83952,
+              "lon": 106.67934
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "FLF7ryazHhK60KTypkZLKg",
+        "score": 99.5777206421,
+        "dist": 422.278972,
+        "info": "search:ta:704009003352953-VN",
+        "poi": {
+          "name": "Nhà Thuốc Thủy Dung",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "187",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 187, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839514,
+          "lon": 106.679267
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84041,
+            "lon": 106.67835
+          },
+          "btmRightPoint": {
+            "lat": 10.83861,
+            "lon": 106.68018
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83955,
+              "lon": 106.67932
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ciDeQkCAgcCrau-Oz1l_dw",
+        "score": 99.5546798706,
+        "dist": 445.321303,
+        "info": "search:ta:704009002600783-VN",
+        "poi": {
+          "name": "Nhà Thuốc Nhân Ái 1",
+          "phone": "+84 98 275 47 44",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1174/102A",
+          "streetName": "Hẻm 199 Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1174/102A, Hẻm 199 Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839688,
+          "lon": 106.679112
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84059,
+            "lon": 106.6782
+          },
+          "btmRightPoint": {
+            "lat": 10.83879,
+            "lon": 106.68003
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83978,
+              "lon": 106.67908
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "m2bKsRPCNL2nS88qB08Dcw",
+        "score": 99.5304260254,
+        "dist": 469.579543,
+        "info": "search:ta:704009000962773-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Triết Anh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "A25",
+          "streetName": "Hẻm 164 Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số A25, Hẻm 164 Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832447,
+          "lon": 106.67765
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83335,
+            "lon": 106.67673
+          },
+          "btmRightPoint": {
+            "lat": 10.83155,
+            "lon": 106.67857
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83236,
+              "lon": 106.67772
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "CkNrCxBJCLsxgm2ZjRqs9Q",
+        "score": 99.5263900757,
+        "dist": 473.60539,
+        "info": "search:ta:704009003272400-VN",
+        "poi": {
+          "name": "Nhà Thuốc Long Anh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "117",
+          "streetName": "Hẻm 119/19 Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 117, Hẻm 119/19 Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83844,
+          "lon": 106.676789
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83934,
+            "lon": 106.67587
+          },
+          "btmRightPoint": {
+            "lat": 10.83754,
+            "lon": 106.6777
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83844,
+              "lon": 106.6767
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "NGbaqSHa6PfKwf76IfZIeA",
+        "score": 99.5227203369,
+        "dist": 477.282427,
+        "info": "search:ta:704009001470580-VN",
+        "poi": {
+          "name": "Nhà Thuốc Gia Truyền Đông Y Bảo Minh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "5",
+          "streetName": "Đường Phạm Huy Thông",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 5, Đường Phạm Huy Thông, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831687,
+          "lon": 106.679088
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83259,
+            "lon": 106.67817
+          },
+          "btmRightPoint": {
+            "lat": 10.83079,
+            "lon": 106.68
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83161,
+              "lon": 106.67915
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "PbkgCr7MAei72AxJU5FDjA",
+        "score": 99.4935836792,
+        "dist": 506.41875,
+        "info": "search:ta:704009000401099-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường An Nhơn",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường An Nhơn, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836752,
+          "lon": 106.675677
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83765,
+            "lon": 106.67476
+          },
+          "btmRightPoint": {
+            "lat": 10.83585,
+            "lon": 106.67659
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83666,
+              "lon": 106.67567
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "tR5maKYPIDodN5UAcqAvVA",
+        "score": 99.4872665405,
+        "dist": 512.73415,
+        "info": "search:ta:704009001873641-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Cẩm Anh",
+          "phone": "+84 28 3894 1878",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836752,
+          "lon": 106.675618
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83765,
+            "lon": 106.6747
+          },
+          "btmRightPoint": {
+            "lat": 10.83585,
+            "lon": 106.67653
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83672,
+              "lon": 106.67553
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "UXvyIjaCo3QREHAN4-lxuA",
+        "score": 99.4691925049,
+        "dist": 530.809662,
+        "info": "search:ta:704009001916859-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Hà Châu",
+          "phone": "+84 28 3989 1661",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "23",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 23, Đường Nguyễn Huy Điển, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83157,
+          "lon": 106.682406
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83247,
+            "lon": 106.68149
+          },
+          "btmRightPoint": {
+            "lat": 10.83067,
+            "lon": 106.68332
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83154,
+              "lon": 106.68249
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "oh8P7ijchAeaMCHzCBTaSQ",
+        "score": 99.4676742554,
+        "dist": 532.325354,
+        "info": "search:ta:704009001847738-VN",
+        "poi": {
+          "name": "Nhà Thuốc Hà Châu",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "53",
+          "streetName": "Đường Nguyễn Huy Điển",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 53, Đường Nguyễn Huy Điển, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831552,
+          "lon": 106.6824
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83245,
+            "lon": 106.68148
+          },
+          "btmRightPoint": {
+            "lat": 10.83065,
+            "lon": 106.68332
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83152,
+              "lon": 106.68249
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "NHpfPqVxa-EBu1XVIyYVww",
+        "score": 99.4442749023,
+        "dist": 555.732746,
+        "info": "search:ta:704009001490254-VN",
+        "poi": {
+          "name": "Nhà Thuốc Trung Nguyên 3",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "189",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 189, Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.837518,
+          "lon": 106.675428
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83842,
+            "lon": 106.67451
+          },
+          "btmRightPoint": {
+            "lat": 10.83662,
+            "lon": 106.67634
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83752,
+              "lon": 106.67552
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "y52BIzGvUQpgTDsE0et-eA",
+        "score": 99.4352722168,
+        "dist": 564.730732,
+        "info": "search:ta:704009001439544-VN",
+        "poi": {
+          "name": "Nhà Thuốc Phương Chính",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "162",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 162, Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831824,
+          "lon": 106.677045
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83272,
+            "lon": 106.67613
+          },
+          "btmRightPoint": {
+            "lat": 10.83092,
+            "lon": 106.67796
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83178,
+              "lon": 106.67696
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "8fDCNMLheI9ys563n3-Nrg",
+        "score": 99.434135437,
+        "dist": 565.863926,
+        "info": "search:ta:704009000367261-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Đức Trung",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "227",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 227, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840613,
+          "lon": 106.678441
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84151,
+            "lon": 106.67753
+          },
+          "btmRightPoint": {
+            "lat": 10.83971,
+            "lon": 106.67936
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84068,
+              "lon": 106.6785
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "KjryGqCHRYuUQ7bA1e1O5g",
+        "score": 99.4086990356,
+        "dist": 591.301289,
+        "info": "search:ta:704009000231475-VN",
+        "poi": {
+          "name": "Công Ty Dược Thành Phố Hồ Chí Minh - Sapharco - Hiệu Thu T",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "101/1152B",
+          "streetName": "Hẻm 235 Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 101/1152B, Hẻm 235 Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840788,
+          "lon": 106.678252
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84169,
+            "lon": 106.67734
+          },
+          "btmRightPoint": {
+            "lat": 10.83989,
+            "lon": 106.67917
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84076,
+              "lon": 106.67835
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Z6ANFATuCnPaUdmyZTqrBw",
+        "score": 99.4036712646,
+        "dist": 596.326403,
+        "info": "search:ta:704009001868846-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Xuân Thu",
+          "phone": "+84 28 3895 2377",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "338",
+          "streetName": "Hẻm 338 Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 338, Hẻm 338 Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840893,
+          "lon": 106.678409
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84179,
+            "lon": 106.67749
+          },
+          "btmRightPoint": {
+            "lat": 10.83999,
+            "lon": 106.67932
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84093,
+              "lon": 106.67831
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "KK7zuzCfxw8FPah37NjX0g",
+        "score": 99.3852996826,
+        "dist": 614.706706,
+        "info": "search:ta:704009003353749-VN",
+        "poi": {
+          "name": "Nhà Thuốc Xuân Thu",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "338",
+          "streetName": "Hẻm 338 Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 338, Hẻm 338 Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841017,
+          "lon": 106.678264
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84192,
+            "lon": 106.67735
+          },
+          "btmRightPoint": {
+            "lat": 10.84012,
+            "lon": 106.67918
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84091,
+              "lon": 106.67829
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "6YzXnjxBnIQH8_fivJXpKA",
+        "score": 99.3708114624,
+        "dist": 629.190003,
+        "info": "search:ta:704009003346688-VN",
+        "poi": {
+          "name": "Nhà Thuốc Minh Châu",
+          "phone": "+84 28 6275 8729",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "257",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 257, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841032,
+          "lon": 106.677944
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84193,
+            "lon": 106.67703
+          },
+          "btmRightPoint": {
+            "lat": 10.84013,
+            "lon": 106.67886
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84111,
+              "lon": 106.67799
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "NotTt72GIIt5HNBvuON2xQ",
+        "score": 99.3683242798,
+        "dist": 631.673001,
+        "info": "search:ta:704009001768250-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Huỳnh Nhi",
+          "phone": "+84 28 3894 0308",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "99/1113",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 99/1113, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841047,
+          "lon": 106.677922
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84195,
+            "lon": 106.67701
+          },
+          "btmRightPoint": {
+            "lat": 10.84015,
+            "lon": 106.67884
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84112,
+              "lon": 106.67797
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "D4AbrwyWyLyqDqggymAnKA",
+        "score": 99.3577575684,
+        "dist": 642.242676,
+        "info": "search:ta:704009001441241-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Trí Khang",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 350 Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 350 Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841596,
+          "lon": 106.679825
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8425,
+            "lon": 106.67891
+          },
+          "btmRightPoint": {
+            "lat": 10.8407,
+            "lon": 106.68074
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8415,
+              "lon": 106.6798
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "hWtdDwXCbE5XRHhTO8YocA",
+        "score": 99.3363342285,
+        "dist": 663.675085,
+        "info": "search:ta:704009002112673-VN",
+        "poi": {
+          "name": "Thuốc Gia Truyền Đông Y Đỗ Thái Nam",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1085",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1085, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.8312,
+          "lon": 106.676388
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8321,
+            "lon": 106.67547
+          },
+          "btmRightPoint": {
+            "lat": 10.8303,
+            "lon": 106.6773
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83125,
+              "lon": 106.67641
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Rpe58_XAxkltbx6j6tvmuw",
+        "score": 99.3238372803,
+        "dist": 676.163621,
+        "info": "search:ta:704009001884705-VN",
+        "poi": {
+          "name": "Nhà Thuốc Ngoài Giờ Thanh Tiến",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833782,
+          "lon": 106.686047
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83468,
+            "lon": 106.68513
+          },
+          "btmRightPoint": {
+            "lat": 10.83288,
+            "lon": 106.68696
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83371,
+              "lon": 106.68611
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "alcInw4TtdzhNSpivbjpRA",
+        "score": 99.3182373047,
+        "dist": 681.765699,
+        "info": "search:ta:704009001485110-VN",
+        "poi": {
+          "name": "Nhà Thuốc Pharmacity",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "390",
+          "streetName": "Đường Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 390, Đường Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832844,
+          "lon": 106.685669
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83374,
+            "lon": 106.68475
+          },
+          "btmRightPoint": {
+            "lat": 10.83194,
+            "lon": 106.68658
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83278,
+              "lon": 106.68561
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "o2MxkJRohtMV5lFssPpd9g",
+        "score": 99.294593811,
+        "dist": 705.405262,
+        "info": "search:ta:704009001805437-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Bằng Hiền",
+          "phone": "+84 28 6673 5162",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "241",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 241, Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840658,
+          "lon": 106.676025
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84156,
+            "lon": 106.67511
+          },
+          "btmRightPoint": {
+            "lat": 10.83976,
+            "lon": 106.67694
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84062,
+              "lon": 106.67616
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "zT9g43EEvUYmEVAspNq_kw",
+        "score": 99.2934570313,
+        "dist": 706.545792,
+        "info": "search:ta:704009003350578-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Hoàng Long 1",
+          "phone": "+84 28 3984 2048",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "90/979A",
+          "streetName": "Đường Số 27",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 90/979A, Đường Số 27, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.84192,
+          "lon": 106.678363
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84282,
+            "lon": 106.67745
+          },
+          "btmRightPoint": {
+            "lat": 10.84102,
+            "lon": 106.67928
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.842,
+              "lon": 106.67832
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "XNNVsmVupGm8RR6hDdqYow",
+        "score": 99.291015625,
+        "dist": 708.987252,
+        "info": "search:ta:704009000329132-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Trung Nghĩa",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "57",
+          "streetName": "Đường Lê Hoàng Phái",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 57, Đường Lê Hoàng Phái, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839986,
+          "lon": 106.675293
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84089,
+            "lon": 106.67438
+          },
+          "btmRightPoint": {
+            "lat": 10.83909,
+            "lon": 106.67621
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83999,
+              "lon": 106.67538
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "OnYslxxwBp3UVvK3mCpCqQ",
+        "score": 99.2890853882,
+        "dist": 710.9116,
+        "info": "search:ta:704009001787434-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Hồng Huệ",
+          "phone": "+84 28 3984 4150",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "4/42",
+          "streetName": "Đường Lê Hoàng Phái",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 4/42, Đường Lê Hoàng Phái, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840205,
+          "lon": 106.675469
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8411,
+            "lon": 106.67455
+          },
+          "btmRightPoint": {
+            "lat": 10.83931,
+            "lon": 106.67638
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84011,
+              "lon": 106.67545
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ghG-NK-uR831pJU1UMOk3Q",
+        "score": 99.2714920044,
+        "dist": 728.510194,
+        "info": "search:ta:704009002668258-VN",
+        "poi": {
+          "name": "Nhà Thuốc Thi Trang",
+          "phone": "+84 28 5446 2557",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "174/9A",
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 174/9A, Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834411,
+          "lon": 106.68673
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83531,
+            "lon": 106.68581
+          },
+          "btmRightPoint": {
+            "lat": 10.83351,
+            "lon": 106.68765
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83434,
+              "lon": 106.68679
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "3ODTbTR6UVAK3uzBOdFcOg",
+        "score": 99.2661590576,
+        "dist": 733.837675,
+        "info": "search:ta:704009001930248-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Thi Trang - Dược Sĩ Lê Minh Bảo Thi",
+          "phone": "+84 28 5446 2557",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "174/9A",
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 174/9A, Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834467,
+          "lon": 106.686792
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83537,
+            "lon": 106.68588
+          },
+          "btmRightPoint": {
+            "lat": 10.83357,
+            "lon": 106.68771
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8344,
+              "lon": 106.68685
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "LOzl67m3q2aMCrh-XQJ0XQ",
+        "score": 99.2621917725,
+        "dist": 737.80487,
+        "info": "search:ta:704009001461656-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Bách Việt",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "867",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 867, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829372,
+          "lon": 106.681755
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83027,
+            "lon": 106.68084
+          },
+          "btmRightPoint": {
+            "lat": 10.82847,
+            "lon": 106.68267
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82946,
+              "lon": 106.68178
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "F_MlrD0bPlz6XaifG1lFkg",
+        "score": 99.2599487305,
+        "dist": 740.052203,
+        "info": "search:ta:704009000722821-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Trí Tâm",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "390",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 390, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841748,
+          "lon": 106.677113
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84265,
+            "lon": 106.6762
+          },
+          "btmRightPoint": {
+            "lat": 10.84085,
+            "lon": 106.67803
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84167,
+              "lon": 106.67706
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "SbMe3w2c4Nnk6CaUn6mdYw",
+        "score": 99.2486572266,
+        "dist": 751.338366,
+        "info": "search:ta:704009000289533-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "83/932",
+          "streetName": "Đường Số 27",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 83/932, Đường Số 27, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842575,
+          "lon": 106.679766
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84347,
+            "lon": 106.67885
+          },
+          "btmRightPoint": {
+            "lat": 10.84168,
+            "lon": 106.68068
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84248,
+              "lon": 106.67975
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gf-IKiG63JPpgBryzewX8Q",
+        "score": 99.232673645,
+        "dist": 767.323178,
+        "info": "search:ta:704009001472651-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Mai Uyên 2",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "60",
+          "streetName": "Hẻm 56 Đường Số 27",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 60, Hẻm 56 Đường Số 27, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842734,
+          "lon": 106.680153
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84363,
+            "lon": 106.67924
+          },
+          "btmRightPoint": {
+            "lat": 10.84183,
+            "lon": 106.68107
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84262,
+              "lon": 106.68023
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "1vMP6KwjvxRzCB5VNdWOmg",
+        "score": 99.2273406982,
+        "dist": 772.655246,
+        "info": "search:ta:704009001879666-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tuyết Nhung",
+          "phone": "+84 28 3984 0876",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "171",
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 171, Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834863,
+          "lon": 106.687224
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83576,
+            "lon": 106.68631
+          },
+          "btmRightPoint": {
+            "lat": 10.83396,
+            "lon": 106.68814
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83479,
+              "lon": 106.68728
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "FagioS0XAc_gifHOBrn-Mw",
+        "score": 99.2148590088,
+        "dist": 785.147111,
+        "info": "search:ta:704009003359843-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Minh Thảo 2",
+          "phone": "+84 28 3984 1298",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "180",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 180, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838717,
+          "lon": 106.673657
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83962,
+            "lon": 106.67274
+          },
+          "btmRightPoint": {
+            "lat": 10.83782,
+            "lon": 106.67457
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83863,
+              "lon": 106.67366
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "JPreJyscpUteFvn8B5KjrA",
+        "score": 99.2106170654,
+        "dist": 789.384339,
+        "info": "search:ta:704009001447959-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Xuân Ngọc",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "84",
+          "streetName": "Hẻm 86 Đường Số 27",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 84, Hẻm 86 Đường Số 27, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842922,
+          "lon": 106.680614
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84382,
+            "lon": 106.6797
+          },
+          "btmRightPoint": {
+            "lat": 10.84202,
+            "lon": 106.68153
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84282,
+              "lon": 106.68072
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "QeUO716TVbkp_53ELle0hQ",
+        "score": 99.2082901001,
+        "dist": 791.70867,
+        "info": "search:ta:704009000976140-VN",
+        "poi": {
+          "name": "Nhà Thuốc An Nhơn 2",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "65/718",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 65/718, Đường Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842092,
+          "lon": 106.676762
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84299,
+            "lon": 106.67585
+          },
+          "btmRightPoint": {
+            "lat": 10.84119,
+            "lon": 106.67768
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84208,
+              "lon": 106.67668
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bnTnVSxavBhHM6-6XV2o1g",
+        "score": 99.2069549561,
+        "dist": 793.047112,
+        "info": "search:ta:704009003341837-VN",
+        "poi": {
+          "name": "Nhà Thuốc Lan Anh",
+          "phone": "+84 28 3895 1068",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "382",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 382, Đường Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842109,
+          "lon": 106.676768
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84301,
+            "lon": 106.67585
+          },
+          "btmRightPoint": {
+            "lat": 10.84121,
+            "lon": 106.67768
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8421,
+              "lon": 106.67669
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "oApM5td3yl5MlWyPszdTXA",
+        "score": 99.2053756714,
+        "dist": 794.627512,
+        "info": "search:ta:704009000237694-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Ngọc Thảo",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "186",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 186, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838717,
+          "lon": 106.673562
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83962,
+            "lon": 106.67265
+          },
+          "btmRightPoint": {
+            "lat": 10.83782,
+            "lon": 106.67448
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83863,
+              "lon": 106.67353
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "_pEZGezx8Lt1OzrYuos9hA",
+        "score": 99.1983108521,
+        "dist": 801.689159,
+        "info": "search:ta:704009001457519-VN",
+        "poi": {
+          "name": "Hệ Thống Nhà Thuốc Pharmacity",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842217,
+          "lon": 106.676807
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84312,
+            "lon": 106.67589
+          },
+          "btmRightPoint": {
+            "lat": 10.84132,
+            "lon": 106.67772
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84221,
+              "lon": 106.67673
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "nscDd7A-vu0_MOfcx1zWSQ",
+        "score": 99.1773071289,
+        "dist": 822.694775,
+        "info": "search:ta:704009000891032-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Nhị Minh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "183",
+          "streetName": "Hẻm 364 Đường Dương Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 183, Hẻm 364 Đường Dương Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831935,
+          "lon": 106.686622
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83283,
+            "lon": 106.68571
+          },
+          "btmRightPoint": {
+            "lat": 10.83104,
+            "lon": 106.68754
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83199,
+              "lon": 106.68655
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vVbVwZkHaYiLZ6tzobWO2A",
+        "score": 99.1754684448,
+        "dist": 824.527603,
+        "info": "search:ta:704009001896882-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Hà Kiều",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835341,
+          "lon": 106.687752
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83624,
+            "lon": 106.68684
+          },
+          "btmRightPoint": {
+            "lat": 10.83444,
+            "lon": 106.68867
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83527,
+              "lon": 106.68781
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "CvhZ5B2_PEGcB9P0CPjqgg",
+        "score": 99.1643981934,
+        "dist": 835.603054,
+        "info": "search:ta:704009000890801-VN",
+        "poi": {
+          "name": "Nhà Thuốc Vân Long",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "94/1052C",
+          "streetName": "Hẻm 496 Đường Dương Quảng Hàm",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 94/1052C, Hẻm 496 Đường Dương Quảng Hàm, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838925,
+          "lon": 106.687192
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83982,
+            "lon": 106.68628
+          },
+          "btmRightPoint": {
+            "lat": 10.83803,
+            "lon": 106.68811
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83887,
+              "lon": 106.68726
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "qlxAvGacuqMpBqIfLir7_A",
+        "score": 99.1422119141,
+        "dist": 857.789666,
+        "info": "search:ta:704009001885266-VN",
+        "poi": {
+          "name": "Nhà Thuốc Ngọc Hân",
+          "phone": "+84 28 2244 2476",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "120",
+          "streetName": "Đường Lê Hoàng Phái",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 120, Đường Lê Hoàng Phái, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.84194,
+          "lon": 106.67542
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84284,
+            "lon": 106.6745
+          },
+          "btmRightPoint": {
+            "lat": 10.84104,
+            "lon": 106.67634
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84194,
+              "lon": 106.67532
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "zrsW8BwvzbjYybVQPxiEeQ",
+        "score": 99.1410293579,
+        "dist": 858.96772,
+        "info": "search:ta:704009001873947-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Tài Lộc",
+          "phone": "+84 28 2244 1549",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "319",
+          "streetName": "Hẻm 309 Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 319, Hẻm 309 Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842757,
+          "lon": 106.676731
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84366,
+            "lon": 106.67582
+          },
+          "btmRightPoint": {
+            "lat": 10.84186,
+            "lon": 106.67765
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8429,
+              "lon": 106.67679
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "kdOYbMN-joQX38ygcthcgg",
+        "score": 99.1398086548,
+        "dist": 860.190509,
+        "info": "search:ta:704009000296964-VN",
+        "poi": {
+          "name": "Nhà Thuốc Số 9",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "19",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 19, Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82819,
+          "lon": 106.679003
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82909,
+            "lon": 106.67809
+          },
+          "btmRightPoint": {
+            "lat": 10.82729,
+            "lon": 106.67992
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82825,
+              "lon": 106.67911
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "phfIFRWNcLu0M-ijZQxuvA",
+        "score": 99.1365814209,
+        "dist": 863.414614,
+        "info": "search:ta:704009001761873-VN",
+        "poi": {
+          "name": "Nhà Thuốc An Nhơn",
+          "phone": "+84 28 3984 2746",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "64/715B",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 64/715B, Đường Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842954,
+          "lon": 106.677067
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84385,
+            "lon": 106.67615
+          },
+          "btmRightPoint": {
+            "lat": 10.84205,
+            "lon": 106.67798
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84298,
+              "lon": 106.677
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "IPCDy7hvhjZGeS0oVSSRjA",
+        "score": 99.1324768066,
+        "dist": 867.520682,
+        "info": "search:ta:704009003359438-VN",
+        "poi": {
+          "name": "Nhà Thuốc Long Châu",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "404",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 404, Đường Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843002,
+          "lon": 106.677084
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8439,
+            "lon": 106.67617
+          },
+          "btmRightPoint": {
+            "lat": 10.8421,
+            "lon": 106.678
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84288,
+              "lon": 106.67696
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "388a9T1x2m6AzJBNGE19oQ",
+        "score": 99.1324462891,
+        "dist": 867.556694,
+        "info": "search:ta:704009001925637-VN",
+        "poi": {
+          "name": "Nhà Thuốc Abc",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 41 Đường Nguyễn Oanh",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 41 Đường Nguyễn Oanh, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82825,
+          "lon": 106.678351
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82915,
+            "lon": 106.67744
+          },
+          "btmRightPoint": {
+            "lat": 10.82735,
+            "lon": 106.67927
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82834,
+              "lon": 106.67849
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "C9urwQ3xGStTfDPNaC0okw",
+        "score": 99.1144180298,
+        "dist": 885.583938,
+        "info": "search:ta:704009001442447-VN",
+        "poi": {
+          "name": "Nhà Thuốc 138",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "138",
+          "streetName": "Đường Lê Hoàng Phái",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 138, Đường Lê Hoàng Phái, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842246,
+          "lon": 106.67541
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84315,
+            "lon": 106.67449
+          },
+          "btmRightPoint": {
+            "lat": 10.84135,
+            "lon": 106.67633
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84224,
+              "lon": 106.67532
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ZEvhswfwlzzz5FA_h3lRhQ",
+        "score": 99.1089019775,
+        "dist": 891.097842,
+        "info": "search:ta:704009000746783-VN",
+        "poi": {
+          "name": "Nhà Thuốc Minh Tân",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1133",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1133, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832416,
+          "lon": 106.672838
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83332,
+            "lon": 106.67192
+          },
+          "btmRightPoint": {
+            "lat": 10.83152,
+            "lon": 106.67375
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8325,
+              "lon": 106.67287
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ES24jps94SW_F3n33KaB5Q",
+        "score": 99.0985031128,
+        "dist": 901.496355,
+        "info": "search:ta:704009001839461-VN",
+        "poi": {
+          "name": "Nhà Thuốc Sông Trà",
+          "phone": "+84 28 3895 2023",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "51/A2",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 51/A2, Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843296,
+          "lon": 106.676993
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8442,
+            "lon": 106.67608
+          },
+          "btmRightPoint": {
+            "lat": 10.8424,
+            "lon": 106.67791
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84327,
+              "lon": 106.6771
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "O_9gOX8KfIanUdSxxlOaDA",
+        "score": 99.0904693604,
+        "dist": 909.527508,
+        "info": "search:ta:704009001456565-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Anh Thư 2",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "322",
+          "streetName": "Đường Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 322, Đường Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831368,
+          "lon": 106.687196
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83227,
+            "lon": 106.68628
+          },
+          "btmRightPoint": {
+            "lat": 10.83047,
+            "lon": 106.68811
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8313,
+              "lon": 106.68713
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "kSVN6Zjnq9cAbRqk-n8EuA",
+        "score": 99.0898132324,
+        "dist": 910.189572,
+        "info": "search:ta:704009001470397-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Thiện Đức",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1173",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1173, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832567,
+          "lon": 106.672577
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83347,
+            "lon": 106.67166
+          },
+          "btmRightPoint": {
+            "lat": 10.83167,
+            "lon": 106.67349
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83267,
+              "lon": 106.67262
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Bz2HVOHT78XGlHTT_NDGZA",
+        "score": 99.069442749,
+        "dist": 930.54743,
+        "info": "search:ta:704009001443983-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Vinh Châu",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "312",
+          "streetName": "Đường Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 312, Đường Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831226,
+          "lon": 106.687332
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83213,
+            "lon": 106.68642
+          },
+          "btmRightPoint": {
+            "lat": 10.83033,
+            "lon": 106.68825
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83115,
+              "lon": 106.68728
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "xmtOqJ0pSO9ClrBfurSsCQ",
+        "score": 99.0662918091,
+        "dist": 933.703188,
+        "info": "search:ta:704009000499131-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Thảo Bình",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "23/26",
+          "streetName": "Đường Số 28",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 23/26, Đường Số 28, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844119,
+          "lon": 106.681604
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84502,
+            "lon": 106.68069
+          },
+          "btmRightPoint": {
+            "lat": 10.84322,
+            "lon": 106.68252
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84404,
+              "lon": 106.68166
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "R0dEmaB53Ge9dC2Ft7vHag",
+        "score": 99.0502319336,
+        "dist": 949.764789,
+        "info": "search:ta:704009001756108-VN",
+        "poi": {
+          "name": "Nhà Thuốc Thảo Nguyên",
+          "phone": "+84 28 3895 2277",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "70",
+          "streetName": "Đường Số 30",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 70, Đường Số 30, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844172,
+          "lon": 106.678335
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84507,
+            "lon": 106.67742
+          },
+          "btmRightPoint": {
+            "lat": 10.84327,
+            "lon": 106.67925
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84416,
+              "lon": 106.67823
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "mBkxEkjorjkE4V-UvKTu2A",
+        "score": 99.0196075439,
+        "dist": 980.396282,
+        "info": "search:ta:704009001953401-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Bình Minh",
+          "phone": "+84 90 330 28 67",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "84",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 84, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827681,
+          "lon": 106.676798
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82858,
+            "lon": 106.67588
+          },
+          "btmRightPoint": {
+            "lat": 10.82678,
+            "lon": 106.67771
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82759,
+              "lon": 106.67679
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "80cqsAroxktLvMxzku85jQ",
+        "score": 99.019493103,
+        "dist": 980.511419,
+        "info": "search:ta:704009003344576-VN",
+        "poi": {
+          "name": "Nhà Thuốc Y Đức 1",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "52/1C",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 52/1C, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827325,
+          "lon": 106.677859
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82822,
+            "lon": 106.67694
+          },
+          "btmRightPoint": {
+            "lat": 10.82643,
+            "lon": 106.67877
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82724,
+              "lon": 106.67782
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "l9M0-AEtk7lsl667wxIUxw",
+        "score": 99.0187301636,
+        "dist": 981.269879,
+        "info": "search:ta:704009002630861-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Hoàng Châu",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "512",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 512, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843084,
+          "lon": 106.675097
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84398,
+            "lon": 106.67418
+          },
+          "btmRightPoint": {
+            "lat": 10.84218,
+            "lon": 106.67601
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.843,
+              "lon": 106.67505
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "fc7il3NZDvf1M5IWcH1nxg",
+        "score": 99.018699646,
+        "dist": 981.302607,
+        "info": "search:ta:704009001490540-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "4",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 4, Đường Nguyễn Oanh, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827011,
+          "lon": 106.679996
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82791,
+            "lon": 106.67908
+          },
+          "btmRightPoint": {
+            "lat": 10.82611,
+            "lon": 106.68091
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82696,
+              "lon": 106.67996
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "mmMvrS5gUbA8HDFYx5gjbA",
+        "score": 99.016242981,
+        "dist": 983.756915,
+        "info": "search:ta:704009003221049-VN",
+        "poi": {
+          "name": "Nhà Thuốc Minh Quân",
+          "phone": "+84 28 6295 7119",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "4",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 4, Đường Nguyễn Oanh, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826988,
+          "lon": 106.680009
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82789,
+            "lon": 106.67909
+          },
+          "btmRightPoint": {
+            "lat": 10.82609,
+            "lon": 106.68092
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82687,
+              "lon": 106.68001
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "78fG43-2I1EB-w-6xQvqfg",
+        "score": 98.9959487915,
+        "dist": 1004.05105,
+        "info": "search:ta:704009001477455-VN",
+        "poi": {
+          "name": "Nhà Thuốc Bệnh Viện Vũ Anh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828406,
+          "lon": 106.685447
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82931,
+            "lon": 106.68453
+          },
+          "btmRightPoint": {
+            "lat": 10.82751,
+            "lon": 106.68636
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82832,
+              "lon": 106.68541
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "6SFtvJc_-ZJrr37_PDeiow",
+        "score": 98.9754333496,
+        "dist": 1024.566972,
+        "info": "search:ta:704009003361809-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Đăng Khoa",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "737",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 737, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828328,
+          "lon": 106.685661
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82923,
+            "lon": 106.68475
+          },
+          "btmRightPoint": {
+            "lat": 10.82743,
+            "lon": 106.68658
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82824,
+              "lon": 106.68562
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "HqFkCiCDWqxNTWFlYuIW6g",
+        "score": 98.9732208252,
+        "dist": 1026.783647,
+        "info": "search:ta:704009000746488-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Minh Tâm",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "119",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 119, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827832,
+          "lon": 106.675526
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82873,
+            "lon": 106.67461
+          },
+          "btmRightPoint": {
+            "lat": 10.82693,
+            "lon": 106.67644
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82792,
+              "lon": 106.67555
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "GfYF-FgAqenG1fu4o7P_bg",
+        "score": 98.9727401733,
+        "dist": 1027.261967,
+        "info": "search:ta:704009003360863-VN",
+        "poi": {
+          "name": "Nhà Thuốc Quang Trung",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "95",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 95, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82782,
+          "lon": 106.675538
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82872,
+            "lon": 106.67462
+          },
+          "btmRightPoint": {
+            "lat": 10.82692,
+            "lon": 106.67645
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8279,
+              "lon": 106.67561
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "0uyjIo9O8NOFQduFuCz17Q",
+        "score": 98.9650421143,
+        "dist": 1034.961424,
+        "info": "search:ta:704009003352200-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Tiến Vinh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "113",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 113, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82795,
+          "lon": 106.675181
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82885,
+            "lon": 106.67427
+          },
+          "btmRightPoint": {
+            "lat": 10.82705,
+            "lon": 106.6761
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82804,
+              "lon": 106.67521
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "GrN-HJkuH5CUc_fObIDOJQ",
+        "score": 98.9650421143,
+        "dist": 1034.961424,
+        "info": "search:ta:704009003343007-VN",
+        "poi": {
+          "name": "Nhà Thuốc Bảo Sanh Vạn Hạnh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "113",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 113, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82795,
+          "lon": 106.675181
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82885,
+            "lon": 106.67427
+          },
+          "btmRightPoint": {
+            "lat": 10.82705,
+            "lon": 106.6761
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82804,
+              "lon": 106.67521
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "DpBTkMM_uZfMkl4zcDHEPw",
+        "score": 98.9561080933,
+        "dist": 1043.889035,
+        "info": "search:ta:704009001473071-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Phương Tài",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "152",
+          "streetName": "Đường Trần Bá Giao",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 152, Đường Trần Bá Giao, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834054,
+          "lon": 106.689604
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83495,
+            "lon": 106.68869
+          },
+          "btmRightPoint": {
+            "lat": 10.83315,
+            "lon": 106.69052
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83403,
+              "lon": 106.68952
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "MUMlhSZSWaPdHLlfC8tOZQ",
+        "score": 98.9541778564,
+        "dist": 1045.819021,
+        "info": "search:ta:704009002562978-VN",
+        "poi": {
+          "name": "Nhà Thuốc Nhị Minh",
+          "phone": "+84 90 368 08 22",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "278",
+          "streetName": "Đường Số 14",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 278, Đường Số 14, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83056,
+          "lon": 106.688148
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83146,
+            "lon": 106.68723
+          },
+          "btmRightPoint": {
+            "lat": 10.82966,
+            "lon": 106.68906
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83049,
+              "lon": 106.68821
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "h7t7P19dbwLWyeJcT3kmaQ",
+        "score": 98.9410476685,
+        "dist": 1058.953041,
+        "info": "search:ta:704009001895537-VN",
+        "poi": {
+          "name": "Nhà Thuốc Vạn Hạnh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828226,
+          "lon": 106.674385
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82913,
+            "lon": 106.67347
+          },
+          "btmRightPoint": {
+            "lat": 10.82733,
+            "lon": 106.6753
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82831,
+              "lon": 106.67442
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "pds355w5uxmRU07kZfj6NA",
+        "score": 98.9396209717,
+        "dist": 1060.380642,
+        "info": "search:ta:704009001874950-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Thủy Anh đạt Chuẩn GPP",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "382",
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 382, Đường Nguyễn Văn Nghi, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826329,
+          "lon": 106.681011
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82723,
+            "lon": 106.6801
+          },
+          "btmRightPoint": {
+            "lat": 10.82543,
+            "lon": 106.68193
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82624,
+              "lon": 106.681
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Urg89AUR26MfrXsCj0LYtQ",
+        "score": 98.9385757446,
+        "dist": 1061.431849,
+        "info": "search:ta:704009000859925-VN",
+        "poi": {
+          "name": "Phòng Khám Nội Tổng Quát - Nhà Thuốc - Bảo Sanh Vạn Hạnh",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "113",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 113, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828248,
+          "lon": 106.674319
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82915,
+            "lon": 106.6734
+          },
+          "btmRightPoint": {
+            "lat": 10.82735,
+            "lon": 106.67523
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82833,
+              "lon": 106.67436
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Q_3fBZW_73sWQpURpbCH9w",
+        "score": 98.9375152588,
+        "dist": 1062.491342,
+        "info": "search:ta:704009001755433-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Ánh Dương",
+          "phone": "+84 28 3984 0217",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "240",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 240, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838736,
+          "lon": 106.67095
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83964,
+            "lon": 106.67003
+          },
+          "btmRightPoint": {
+            "lat": 10.83784,
+            "lon": 106.67187
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83864,
+              "lon": 106.67095
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "oxAk_N0KvMiZCu-bLeUCnw",
+        "score": 98.9328994751,
+        "dist": 1067.105299,
+        "info": "search:ta:704009001787112-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tây Anh Quốc",
+          "phone": "+84 94 547 00 45",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "360",
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 360, Đường Nguyễn Văn Nghi, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826327,
+          "lon": 106.68156
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82723,
+            "lon": 106.68064
+          },
+          "btmRightPoint": {
+            "lat": 10.82543,
+            "lon": 106.68248
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82624,
+              "lon": 106.68157
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BhvDHDg1f8ZDs6h-SCklGw",
+        "score": 98.9308776855,
+        "dist": 1069.120352,
+        "info": "search:ta:704009000712839-VN",
+        "poi": {
+          "name": "Nhà Thuốc Tư Nhân Ngã Năm",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "107",
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 107, Đường Nguyễn Văn Nghi, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826219,
+          "lon": 106.680361
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82712,
+            "lon": 106.67945
+          },
+          "btmRightPoint": {
+            "lat": 10.82532,
+            "lon": 106.68128
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82631,
+              "lon": 106.6804
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "fYEAsvxrTCd9RXmwS9cOKQ",
+        "score": 98.9121551514,
+        "dist": 1087.84984,
+        "info": "search:ta:704009000361811-VN",
+        "poi": {
+          "name": "Nhà Thuốc Khôi Nguyên",
+          "categorySet": [
+            {
+              "id": 7326
+            }
+          ],
+          "categories": [
+            "pharmacy"
+          ],
+          "classifications": [
+            {
+              "code": "PHARMACY",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "pharmacy"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "361",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 361, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843526,
+          "lon": 106.674065
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84443,
+            "lon": 106.67315
+          },
+          "btmRightPoint": {
+            "lat": 10.84263,
+            "lon": 106.67498
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84357,
+              "lon": 106.67415
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

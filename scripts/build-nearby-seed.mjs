@@ -29,7 +29,7 @@ export function nearbyConfig(properties, catalogJava) {
 }
 
 export function validateNearbySnapshot(snapshot, config) {
-  if (snapshot.schemaVersion !== 1 || snapshot.provenance?.kind !== 'EXISTING_TOMTOM_CACHE'
+  if (snapshot.schemaVersion !== 1 || !['EXISTING_TOMTOM_CACHE','TOMTOM_SEED_COLLECTION'].includes(snapshot.provenance?.kind)
       || !Number.isFinite(Date.parse(snapshot.provenance.exportedAt)) || !Array.isArray(snapshot.places) || !snapshot.places.length) throw new Error('Missing real nearby cache provenance');
   const identities = new Set(), ids = new Set(), sourceIds = new Set();
   for (const p of snapshot.places) {
@@ -52,14 +52,74 @@ export function validateNearbySnapshot(snapshot, config) {
   return snapshot;
 }
 
+// Each new fixture POI must be traceable back to a saved provider response.
+// The caller supplies a local file loader: verification is entirely offline.
+export async function validateNearbyEvidence(snapshot, loadText, registry) {
+  if (snapshot.provenance.kind !== 'TOMTOM_SEED_COLLECTION') return;
+  const captures = new Map();
+  for (const ref of snapshot.provenance.captures ?? []) {
+    if (!/^nearby-source\/tomtom\/[a-z0-9-]+\.json$/.test(ref.file) || captures.has(ref.file)) throw new Error('Invalid/duplicate evidence path');
+    const text = await loadText(ref.file);
+    if (hash(text) !== ref.sha256) throw new Error('Provider evidence SHA256 mismatch');
+    const envelope = JSON.parse(text);
+    if (envelope.provider !== 'TOMTOM' || envelope.path !== ref.path || envelope.fetchedAt !== ref.fetchedAt
+        || JSON.stringify(envelope.parameters) !== JSON.stringify(ref.parameters) || Object.hasOwn(envelope.parameters,'key')) throw new Error('Evidence metadata mismatch or secret included');
+    captures.set(ref.file,{...ref,envelope});
+  }
+  const catalog = captures.get('nearby-source/tomtom/categories.json')?.envelope.body.poiCategories;
+  if (!Array.isArray(catalog) || !catalog.length) throw new Error('Missing actual category graph evidence');
+  const graph = new Map();
+  for (const c of catalog) {
+    const id=String(c.id); if (!graph.has(id)) graph.set(id,new Set());
+    for (const child of c.childCategoryIds ?? []) { const key=String(child); if(!graph.has(key)) graph.set(key,new Set()); graph.get(key).add(id); }
+  }
+  const lineage = id => {
+    const proof={}, queue=[id];
+    while (queue.length) { const code=queue.pop(); if(Object.hasOwn(proof,code)||!graph.has(code))continue;
+      proof[code]=[...graph.get(code)].sort();queue.push(...proof[code]); if(Object.keys(proof).length>1000)throw new Error('Invalid category graph'); }
+    return proof;
+  };
+  for (const p of snapshot.places) {
+    const ref = captures.get(p.source.evidence?.file);
+    if (!ref || ref.sha256 !== p.source.evidence.sha256) throw new Error('POI has no matching real response evidence');
+    const n = ref.envelope.body.results?.find(n=>n.id===p.source.externalId);
+    if (!n || n.type!=='POI' || n.poi?.name!==p.name || n.position?.lat!==p.latitude || n.position?.lon!==p.longitude
+        || ref.fetchedAt!==p.source.lastSeenAt || JSON.stringify(n.address)!==JSON.stringify(p.source.sourceAddress)
+        || JSON.stringify([...new Set(n.poi.categorySet.map(c=>String(c.id)))].sort())!==JSON.stringify(p.source.categoryIds)) throw new Error('POI differs from real provider coordinates/name/categories/address');
+    const proof={}, groups=new Set();
+    for (const id of p.source.categoryIds) {
+      const parents=lineage(id); Object.assign(proof,parents);
+      if (Object.keys(parents).some(code=>registry.excludedBranches.includes(code)))continue;
+      for (const rule of registry.categories) if(Object.hasOwn(parents,rule.id))rule.groups.forEach(g=>groups.add(g));
+    }
+    if (JSON.stringify(Object.keys(proof).sort().map(id=>[id,proof[id]]))!==JSON.stringify(Object.entries(p.source.classifications.verifiedCategoryParents).sort(([a],[b])=>a.localeCompare(b,'en',{numeric:false})))
+        || [...groups].sort().join(',')!==p.groups.map(g=>g.code).sort().join(',')) throw new Error('Fabricated category/group evidence');
+  }
+}
+
 export function distanceMeters(a, b) {
   const rad = x => x * Math.PI / 180;
   const v = Math.sin(rad(b.latitude - a.latitude) / 2) ** 2 + Math.cos(rad(a.latitude)) * Math.cos(rad(b.latitude)) * Math.sin(rad(b.longitude - a.longitude) / 2) ** 2;
   return 6371008.8 * 2 * Math.atan2(Math.sqrt(v), Math.sqrt(Math.max(0, 1 - v)));
 }
 
+// Reserve nearest 5/group and nearest 3/requested subtype (college != preschool,
+// hospital != pharmacy), then fill by distance. At most 65 reserved identities.
+// This is a documented offline sample, not a forged combined provider response.
+// Never pad an absent group or expand the radius to meet the 100-item ceiling.
+export function selectNearbyPlaces(address, places, config) {
+  const candidates = places.map(p=>({place:p,distance:distanceMeters(address,p)})).filter(p=>p.distance<=config.radius)
+    .sort((a,b)=>a.distance-b.distance || a.place.id.localeCompare(b.place.id,'en'));
+  const reserved = new Set();
+  for (const group of config.groups) candidates.filter(c=>c.place.groups.some(g=>g.code===group)).slice(0,5).forEach(c=>reserved.add(c.place.id));
+  for (const category of config.categoryIds) candidates.filter(c=>Object.hasOwn(c.place.source.classifications?.verifiedCategoryParents ?? {},category))
+    .slice(0,3).forEach(c=>reserved.add(c.place.id));
+  return candidates.sort((a,b)=>Number(reserved.has(b.place.id))-Number(reserved.has(a.place.id)) || a.distance-b.distance || a.place.id.localeCompare(b.place.id,'en'))
+    .slice(0,config.limit).sort((a,b)=>a.distance-b.distance || a.place.id.localeCompare(b.place.id,'en'));
+}
+
 export function snapshotCoverage(addresses, snapshot, config) {
-  const counts = addresses.map(a => Math.min(config.limit, snapshot.places.filter(p => distanceMeters(a, p) <= config.radius).length));
+  const counts = addresses.map(a => selectNearbyPlaces(a,snapshot.places,config).length);
   return { places: snapshot.places.length, full: counts.filter(n => n === config.limit).length,
     partial: counts.filter(n => n > 0 && n < config.limit).length, empty: counts.filter(n => n === 0).length,
     links: counts.reduce((a, b) => a + b, 0) };
@@ -158,7 +218,8 @@ INSERT INTO nearby_scan_runs(id,job_id,provider,api_version,requested_groups,cen
 SELECT l.run_id,l.job_id,'OFFLINE_SEED','CACHE_V1',c.requested_groups,l.latitude,l.longitude,c.radius_m,
  c.category_ids,c.result_limit,0,0,0,0,false,NULL,
  jsonb_build_array(jsonb_build_object('kind','OFFLINE_CACHE_REPLAY','snapshotSha256',${literal(hash(snapshotText))},
- 'importedAt',now(),'providerRequests',0,'sourceDataAsOf',t.data_as_of)),
+ 'importedAt',now(),'providerRequests',0,'sourceDataAsOf',t.data_as_of,
+ 'selection','DIVERSE_NEAREST_100_V1','nearestPerGroup',5,'nearestPerCategory',3)),
  'PARTIAL','OFFLINE_CACHE_REPLAY',t.data_as_of,t.data_as_of,t.data_as_of,c.policy
 FROM hs_seed_nearby_jobs l CROSS JOIN hs_seed_nearby_config c CROSS JOIN
  (SELECT max((data#>>'{source,lastSeenAt}')::timestamptz) AS data_as_of FROM hs_seed_nearby_input) t
@@ -168,7 +229,8 @@ ON CONFLICT(id) DO UPDATE SET center_lat=excluded.center_lat,center_lon=excluded
  page_summaries=excluded.page_summaries,coverage_status='PARTIAL',stopped_reason='OFFLINE_CACHE_REPLAY',
  started_at=excluded.started_at,finished_at=excluded.finished_at,expires_at=excluded.expires_at,license_policy_id=excluded.license_policy_id;
 
--- Derive links from real coordinates. Filter radius BEFORE nearest-100, deduplicate by place_id.
+-- Offline diversity sample: nearest 5/group + 3/requested subtype, fill to 100 by distance.
+-- Distance filtering precedes selection; absent groups are not padded with fake points.
 WITH pool AS (
  SELECT DISTINCT p.id,p.latitude,p.longitude,p.position_revision FROM hs_seed_nearby_identity i
  JOIN nearby_places p ON p.id=i.place_id AND p.active IS TRUE
@@ -176,6 +238,11 @@ WITH pool AS (
   WHERE s.place_id=p.id AND s.provider='TOMTOM' AND s.api_version='V2' AND s.license_policy_id=c.policy)
  AND EXISTS(SELECT 1 FROM nearby_place_categories g WHERE g.place_id=p.id AND g.category_code IN
   (SELECT jsonb_array_elements_text(requested_groups) FROM hs_seed_nearby_config))
+), place_kinds AS MATERIALIZED (
+ SELECT DISTINCT s.place_id,kind.code FROM nearby_place_sources s JOIN pool p ON p.id=s.place_id
+ CROSS JOIN hs_seed_nearby_config c CROSS JOIN LATERAL jsonb_array_elements_text(c.category_ids) kind(code)
+ WHERE s.provider='TOMTOM' AND s.api_version='V2' AND s.license_policy_id=c.policy
+  AND (s.classifications->'verifiedCategoryParents') ? kind.code
 ), distances AS (
  SELECT l.listing_id,l.location_hash,l.run_id,p.id AS place_id,p.position_revision,
   6371008.8*2*asin(sqrt(least(1.0,greatest(0.0,
@@ -183,9 +250,24 @@ WITH pool AS (
    +cos(radians(l.latitude::double precision))*cos(radians(p.latitude::double precision))
     *power(sin(radians((p.longitude-l.longitude)::double precision)/2),2))))) AS meters
  FROM hs_seed_nearby_jobs l CROSS JOIN pool p
+), in_radius AS (
+ SELECT d.* FROM distances d CROSS JOIN hs_seed_nearby_config c WHERE meters<=c.radius_m
+), per_group AS (
+ SELECT d.listing_id,d.place_id,g.category_code,
+  row_number() OVER(PARTITION BY d.listing_id,g.category_code ORDER BY d.meters,d.place_id) AS group_n
+ FROM in_radius d JOIN nearby_place_categories g ON g.place_id=d.place_id
+ CROSS JOIN hs_seed_nearby_config c WHERE c.requested_groups ? g.category_code
+), reserved AS (
+ SELECT DISTINCT listing_id,place_id FROM per_group WHERE group_n<=5
+ UNION
+ SELECT listing_id,place_id FROM (
+  SELECT d.listing_id,d.place_id,k.code,
+   row_number() OVER(PARTITION BY d.listing_id,k.code ORDER BY d.meters,d.place_id) AS kind_n
+  FROM in_radius d JOIN place_kinds k ON k.place_id=d.place_id
+ ) kinds WHERE kind_n<=3
 ), ranked AS (
- SELECT d.*,row_number() OVER(PARTITION BY listing_id ORDER BY meters,place_id) AS n
- FROM distances d CROSS JOIN hs_seed_nearby_config c WHERE meters<=c.radius_m
+ SELECT d.*,row_number() OVER(PARTITION BY d.listing_id ORDER BY (r.place_id IS NOT NULL) DESC,d.meters,d.place_id) AS n
+ FROM in_radius d LEFT JOIN reserved r ON r.listing_id=d.listing_id AND r.place_id=d.place_id
 )
 INSERT INTO listing_nearby_places(listing_id,place_id,straight_distance_m,listing_location_hash,place_position_revision,evidence_run_id)
 SELECT r.listing_id,r.place_id,r.meters,r.location_hash,r.position_revision,r.run_id

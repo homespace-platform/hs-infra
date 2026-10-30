@@ -1,0 +1,6946 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.831393,
+    "lon": 106.6662159,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "7315"
+  },
+  "fetchedAt": "2026-10-30T19:58:05.388Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 84,
+      "numResults": 100,
+      "offset": 0,
+      "totalResults": 100,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.831393,
+        "lon": 106.6662159
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "pjCMJvM4rL6oEhQkcRfB2A",
+        "score": 99.9453964233,
+        "dist": 54.599986,
+        "info": "search:ta:704009001942620-VN",
+        "poi": {
+          "name": "Quán Ăn Nướng Ngói và Lẩu",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 485 Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 485 Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831125,
+          "lon": 106.666635
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83202,
+            "lon": 106.66572
+          },
+          "btmRightPoint": {
+            "lat": 10.83023,
+            "lon": 106.66755
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8312,
+              "lon": 106.6667
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Aq7V-61_ps5mjr9Jgz9jqw",
+        "score": 99.9313201904,
+        "dist": 68.672815,
+        "info": "search:ta:704009001820962-VN",
+        "poi": {
+          "name": "Hủ Tiếu Mì Cô Tư",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 499/6 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 499/6 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83201,
+          "lon": 106.666239
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83291,
+            "lon": 106.66532
+          },
+          "btmRightPoint": {
+            "lat": 10.83111,
+            "lon": 106.66715
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83204,
+              "lon": 106.66615
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "W9wgT8XsC0hnBcw1X0AymA",
+        "score": 99.8855514526,
+        "dist": 114.448007,
+        "info": "search:ta:704009001946271-VN",
+        "poi": {
+          "name": "Hủ Tiếu Nam Vang",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 51 Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 51 Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832418,
+          "lon": 106.666126
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83332,
+            "lon": 106.66521
+          },
+          "btmRightPoint": {
+            "lat": 10.83152,
+            "lon": 106.66704
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8325,
+              "lon": 106.66618
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "UNapAA_9ArWqTbn3DITUkQ",
+        "score": 99.8842773438,
+        "dist": 115.724546,
+        "info": "search:ta:704009001959391-VN",
+        "poi": {
+          "name": "Cây Xoài Quán",
+          "phone": "+84 91 953 53 64",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 51 Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 51 Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832429,
+          "lon": 106.666111
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83333,
+            "lon": 106.6652
+          },
+          "btmRightPoint": {
+            "lat": 10.83153,
+            "lon": 106.66703
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83251,
+              "lon": 106.66616
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ZHH1T9AwXgrNecL1Svc86Q",
+        "score": 99.8807296753,
+        "dist": 119.271947,
+        "info": "search:ta:704009001900649-VN",
+        "poi": {
+          "name": "Quán Ốc Ngon",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 51 Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 51 Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832456,
+          "lon": 106.666068
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83336,
+            "lon": 106.66515
+          },
+          "btmRightPoint": {
+            "lat": 10.83156,
+            "lon": 106.66698
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83253,
+              "lon": 106.66612
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Tb0CPz_9LdaMoSr-wY3zXA",
+        "score": 99.8467407227,
+        "dist": 153.250679,
+        "info": "search:ta:704009003344308-VN",
+        "poi": {
+          "name": "Tocotoco",
+          "categorySet": [
+            {
+              "id": 7315149
+            }
+          ],
+          "url": "www.tocotocotea.com",
+          "categories": [
+            "restaurant",
+            "yogurt/juice bar"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "yogurt/juice bar"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 499 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 499 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832182,
+          "lon": 106.667366
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83308,
+            "lon": 106.66645
+          },
+          "btmRightPoint": {
+            "lat": 10.83128,
+            "lon": 106.66828
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8323,
+              "lon": 106.66734
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "PoOHWWbHXTCDyzFKyqMIiw",
+        "score": 99.826675415,
+        "dist": 173.317783,
+        "info": "search:ta:704009002173393-VN",
+        "poi": {
+          "name": "Cơm Tấm 9999",
+          "phone": "+84 93 764 84 30",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "382",
+          "streetName": "Hẻm 499 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 382, Hẻm 499 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832672,
+          "lon": 106.667123
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83357,
+            "lon": 106.66621
+          },
+          "btmRightPoint": {
+            "lat": 10.83177,
+            "lon": 106.66804
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83224,
+              "lon": 106.66662
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "oHI4-7AyNdd00LuUZxMmjw",
+        "score": 99.8076858521,
+        "dist": 192.314493,
+        "info": "search:ta:704009001482624-VN",
+        "poi": {
+          "name": "Kapo",
+          "phone": "+84 90 252 68 22",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "410",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 410, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833063,
+          "lon": 106.666675
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83396,
+            "lon": 106.66576
+          },
+          "btmRightPoint": {
+            "lat": 10.83216,
+            "lon": 106.66759
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.833,
+              "lon": 106.6666
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "qYxi7V5XZD9WkJsMGrUpzA",
+        "score": 99.791267395,
+        "dist": 208.731774,
+        "info": "search:ta:704009001773720-VN",
+        "poi": {
+          "name": "Ốc Nguyên",
+          "phone": "+84 98 558 10 80",
+          "categorySet": [
+            {
+              "id": 7315043
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "seafood"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "seafood"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833259,
+          "lon": 106.66601
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83416,
+            "lon": 106.66509
+          },
+          "btmRightPoint": {
+            "lat": 10.83236,
+            "lon": 106.66693
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83333,
+              "lon": 106.66607
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "2M-jOfTaPUnzmtxGPEqByg",
+        "score": 99.7851867676,
+        "dist": 214.804402,
+        "info": "search:ta:704009002171496-VN",
+        "poi": {
+          "name": "Quán Hủ Tiếu Nam Vang Tường Phát",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "439",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 439, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831547,
+          "lon": 106.668176
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83245,
+            "lon": 106.66726
+          },
+          "btmRightPoint": {
+            "lat": 10.83065,
+            "lon": 106.66909
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83157,
+              "lon": 106.6683
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "aJQWwsaqcxvJRe25cbCZ-w",
+        "score": 99.7844924927,
+        "dist": 215.504,
+        "info": "search:ta:704009001938373-VN",
+        "poi": {
+          "name": "Quán Ăn Hàn Quốc",
+          "categorySet": [
+            {
+              "id": 7315028
+            }
+          ],
+          "categories": [
+            "korean",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "korean"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "445",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 445, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831546,
+          "lon": 106.668183
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83245,
+            "lon": 106.66727
+          },
+          "btmRightPoint": {
+            "lat": 10.83065,
+            "lon": 106.6691
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83162,
+              "lon": 106.66824
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "4o91Zm7o5mZaTVuqrfsqyQ",
+        "score": 99.7732620239,
+        "dist": 226.734198,
+        "info": "search:ta:704009001737056-VN",
+        "poi": {
+          "name": "Bo",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 417 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 417 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830526,
+          "lon": 106.668095
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83143,
+            "lon": 106.66718
+          },
+          "btmRightPoint": {
+            "lat": 10.82963,
+            "lon": 106.66901
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83045,
+              "lon": 106.66815
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "jQ_xJJWMVIMW1LStZQvTVA",
+        "score": 99.7580795288,
+        "dist": 241.916737,
+        "info": "search:ta:704009003351150-VN",
+        "poi": {
+          "name": "Quán Ăn Thanh Thủy",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "12",
+          "streetName": "Hẻm 525 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 12, Hẻm 525 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83345,
+          "lon": 106.665494
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83435,
+            "lon": 106.66458
+          },
+          "btmRightPoint": {
+            "lat": 10.83255,
+            "lon": 106.66641
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8334,
+              "lon": 106.66557
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "b0fbG7RSs1R3GqMA-9-RsQ",
+        "score": 99.7532501221,
+        "dist": 246.75249,
+        "info": "search:ta:704009001460054-VN",
+        "poi": {
+          "name": "Quán Cây Bàng",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "61",
+          "streetName": "Hẻm 417 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 61, Hẻm 417 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830904,
+          "lon": 106.66842
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8318,
+            "lon": 106.6675
+          },
+          "btmRightPoint": {
+            "lat": 10.83,
+            "lon": 106.66934
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83083,
+              "lon": 106.66848
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "-z7E3-jyqlyXV6b4Is-dDg",
+        "score": 99.7481842041,
+        "dist": 251.819756,
+        "info": "search:ta:704009001839928-VN",
+        "poi": {
+          "name": "Cơm Tấm-Cơm Bình Dân",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "48",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 48, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831818,
+          "lon": 106.663951
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83272,
+            "lon": 106.66304
+          },
+          "btmRightPoint": {
+            "lat": 10.83092,
+            "lon": 106.66487
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83184,
+              "lon": 106.66386
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "a89vDpvAOW4gy-fyFRRXaQ",
+        "score": 99.7481689453,
+        "dist": 251.837902,
+        "info": "search:ta:704009001839825-VN",
+        "poi": {
+          "name": "Bò 7 Món",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83193,
+          "lon": 106.663976
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83283,
+            "lon": 106.66306
+          },
+          "btmRightPoint": {
+            "lat": 10.83103,
+            "lon": 106.66489
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83195,
+              "lon": 106.66389
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "xltjjUtcYCq1KDYZpcvIlg",
+        "score": 99.7479171753,
+        "dist": 252.086122,
+        "info": "search:ta:704009002558333-VN",
+        "poi": {
+          "name": "Cô Gái",
+          "phone": "+84 825 349 015",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "44",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 44, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831784,
+          "lon": 106.663942
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83268,
+            "lon": 106.66303
+          },
+          "btmRightPoint": {
+            "lat": 10.83088,
+            "lon": 106.66486
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83175,
+              "lon": 106.66384
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "O9AhpRYxP90e-CAzZk_KSw",
+        "score": 99.747467041,
+        "dist": 252.537299,
+        "info": "search:ta:704009001954350-VN",
+        "poi": {
+          "name": "A Tư Trà Vinh-Quán Ốc Bình Dân",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "58",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 58, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831997,
+          "lon": 106.663987
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8329,
+            "lon": 106.66307
+          },
+          "btmRightPoint": {
+            "lat": 10.8311,
+            "lon": 106.6649
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83205,
+              "lon": 106.6639
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Ar0IcZNi_1H3cVKceu4mLw",
+        "score": 99.7473907471,
+        "dist": 252.619509,
+        "info": "search:ta:704009001921494-VN",
+        "poi": {
+          "name": "Phở Hà Nội",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "58",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 58, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831996,
+          "lon": 106.663986
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8329,
+            "lon": 106.66307
+          },
+          "btmRightPoint": {
+            "lat": 10.8311,
+            "lon": 106.6649
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83208,
+              "lon": 106.66391
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "6YLpx92G_rLHtLFZKrs4Ng",
+        "score": 99.7467803955,
+        "dist": 253.223147,
+        "info": "search:ta:704009001803746-VN",
+        "poi": {
+          "name": "Phở Bò Kho Duy",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 51 Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 51 Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833311,
+          "lon": 106.664966
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83421,
+            "lon": 106.66405
+          },
+          "btmRightPoint": {
+            "lat": 10.83241,
+            "lon": 106.66588
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83324,
+              "lon": 106.66489
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "YQvRxBXLBWQl2jO_DnY7jw",
+        "score": 99.7449951172,
+        "dist": 255.002939,
+        "info": "search:ta:704009001805394-VN",
+        "poi": {
+          "name": "Còi Dũng Quán",
+          "phone": "+84 90 403 60 48",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "60",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 60, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832176,
+          "lon": 106.664021
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83308,
+            "lon": 106.66311
+          },
+          "btmRightPoint": {
+            "lat": 10.83128,
+            "lon": 106.66494
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83216,
+              "lon": 106.66393
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "-xjhPTgqwUhDPrf8dmAYXg",
+        "score": 99.7447814941,
+        "dist": 255.222327,
+        "info": "search:ta:704009001775441-VN",
+        "poi": {
+          "name": "Thúy",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832194,
+          "lon": 106.664026
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83309,
+            "lon": 106.66311
+          },
+          "btmRightPoint": {
+            "lat": 10.83129,
+            "lon": 106.66494
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83221,
+              "lon": 106.66394
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "aU8qCWrRWOzkMSnzn04XZQ",
+        "score": 99.7425308228,
+        "dist": 257.469037,
+        "info": "search:ta:704009001871574-VN",
+        "poi": {
+          "name": "Mùa Hạ",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832306,
+          "lon": 106.664049
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83321,
+            "lon": 106.66313
+          },
+          "btmRightPoint": {
+            "lat": 10.83141,
+            "lon": 106.66496
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83233,
+              "lon": 106.66396
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "or1WUzt2MoU2-dUUZ4mAgQ",
+        "score": 99.7414550781,
+        "dist": 258.545917,
+        "info": "search:ta:704009001841736-VN",
+        "poi": {
+          "name": "Tuyết",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83235,
+          "lon": 106.664059
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83325,
+            "lon": 106.66314
+          },
+          "btmRightPoint": {
+            "lat": 10.83145,
+            "lon": 106.66497
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83237,
+              "lon": 106.66397
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Ca_h1td_YJzwdSg8dbLI2Q",
+        "score": 99.740020752,
+        "dist": 259.976751,
+        "info": "search:ta:704009001896279-VN",
+        "poi": {
+          "name": "Papaxốt",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "458",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 458, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833706,
+          "lon": 106.665871
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83461,
+            "lon": 106.66496
+          },
+          "btmRightPoint": {
+            "lat": 10.83281,
+            "lon": 106.66679
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83365,
+              "lon": 106.6658
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gJz99HRDah--fjun4vUimw",
+        "score": 99.7277908325,
+        "dist": 272.218194,
+        "info": "search:ta:704009003350547-VN",
+        "poi": {
+          "name": "Cơm Tấm Má Hai",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "43",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 43, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831828,
+          "lon": 106.663763
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83273,
+            "lon": 106.66285
+          },
+          "btmRightPoint": {
+            "lat": 10.83093,
+            "lon": 106.66468
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83181,
+              "lon": 106.66385
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "PaHWAEoFJMHHI-_Myj0P0A",
+        "score": 99.7264328003,
+        "dist": 273.567576,
+        "info": "search:ta:704009001788334-VN",
+        "poi": {
+          "name": "Cô Son",
+          "phone": "+84 96 402 31 24",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "57",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 57, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832092,
+          "lon": 106.663814
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83299,
+            "lon": 106.6629
+          },
+          "btmRightPoint": {
+            "lat": 10.83119,
+            "lon": 106.66473
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83207,
+              "lon": 106.66391
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BIbS-it-5kBmwuKNXYnL6w",
+        "score": 99.7250137329,
+        "dist": 274.9964,
+        "info": "search:ta:704009001790473-VN",
+        "poi": {
+          "name": "Quán Cơm Quế Trâm",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "6",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 6, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830928,
+          "lon": 106.663743
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83183,
+            "lon": 106.66283
+          },
+          "btmRightPoint": {
+            "lat": 10.83003,
+            "lon": 106.66466
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83092,
+              "lon": 106.66363
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "iTCS3Zv4k11QvDD5bmNa4g",
+        "score": 99.7246170044,
+        "dist": 275.382017,
+        "info": "search:ta:704009001459054-VN",
+        "poi": {
+          "name": "Lotteria",
+          "brands": [
+            {
+              "name": "Lotteria"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 7315015
+            }
+          ],
+          "categories": [
+            "fast food",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "fast food"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "460",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vap",
+          "countrySubdivision": "Ho Chi Minh City",
+          "countrySubdivisionName": "Ho Chi Minh City",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Vietnam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 460, Đường Quang Trung, Ho Chi Minh City, Ho Chi Minh City, 71422",
+          "localName": "Ho Chi Minh City"
+        },
+        "position": {
+          "lat": 10.833822,
+          "lon": 106.665725
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83472,
+            "lon": 106.66481
+          },
+          "btmRightPoint": {
+            "lat": 10.83292,
+            "lon": 106.66664
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83375,
+              "lon": 106.66567
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "qG6JshhB1EqWKM6JMKFhGQ",
+        "score": 99.7160339355,
+        "dist": 283.960901,
+        "info": "search:ta:704009001816009-VN",
+        "poi": {
+          "name": "Hai Con Bò",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "417",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 417, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831069,
+          "lon": 106.668795
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83197,
+            "lon": 106.66788
+          },
+          "btmRightPoint": {
+            "lat": 10.83017,
+            "lon": 106.66971
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83114,
+              "lon": 106.66885
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bIGbTxm3OzVUlSIeidi5Ig",
+        "score": 99.7138290405,
+        "dist": 286.174042,
+        "info": "search:ta:704009001927068-VN",
+        "poi": {
+          "name": "Quán Chay Khai Tuệ",
+          "phone": "+84 93 893 04 19",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 458 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 458 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833934,
+          "lon": 106.665799
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83483,
+            "lon": 106.66488
+          },
+          "btmRightPoint": {
+            "lat": 10.83303,
+            "lon": 106.66671
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83388,
+              "lon": 106.66588
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "_EhdXJejdMOupFzZR9Sk7A",
+        "score": 99.7102432251,
+        "dist": 289.759269,
+        "info": "search:ta:704009001783101-VN",
+        "poi": {
+          "name": "Cơm Tấm Mộng Thành",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 458 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 458 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83397,
+          "lon": 106.66582
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83487,
+            "lon": 106.6649
+          },
+          "btmRightPoint": {
+            "lat": 10.83307,
+            "lon": 106.66674
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83393,
+              "lon": 106.6659
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "r34B530-3Nr5Ztq8TAW6jQ",
+        "score": 99.7075119019,
+        "dist": 292.494169,
+        "info": "search:ta:704009001744218-VN",
+        "poi": {
+          "name": "Phở Vân",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "83",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 83, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832732,
+          "lon": 106.663911
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83363,
+            "lon": 106.663
+          },
+          "btmRightPoint": {
+            "lat": 10.83183,
+            "lon": 106.66483
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83273,
+              "lon": 106.664
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "d4dH0oc92Zu-svT5n6TDkw",
+        "score": 99.6902923584,
+        "dist": 309.707392,
+        "info": "search:ta:704009001924418-VN",
+        "poi": {
+          "name": "Nhà Hàng Sườn Cây",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "474",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 474, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834067,
+          "lon": 106.665422
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83497,
+            "lon": 106.66451
+          },
+          "btmRightPoint": {
+            "lat": 10.83317,
+            "lon": 106.66634
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83399,
+              "lon": 106.66537
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "s251e_iB_jTH5HfopQ4heQ",
+        "score": 99.6756439209,
+        "dist": 324.363551,
+        "info": "search:ta:704009001934815-VN",
+        "poi": {
+          "name": "Quán Cơm Chay Bồ Đề Trai",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "80",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 80, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833417,
+          "lon": 106.664078
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83432,
+            "lon": 106.66316
+          },
+          "btmRightPoint": {
+            "lat": 10.83252,
+            "lon": 106.66499
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83344,
+              "lon": 106.66399
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "rieo0YXa7O-YlRcPvoJ7hQ",
+        "score": 99.654876709,
+        "dist": 345.119016,
+        "info": "search:ta:704009001810458-VN",
+        "poi": {
+          "name": "Cô Nụ",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "72",
+          "streetName": "Đường Thông Tây Hội",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 72, Đường Thông Tây Hội, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832851,
+          "lon": 106.669006
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83375,
+            "lon": 106.66809
+          },
+          "btmRightPoint": {
+            "lat": 10.83195,
+            "lon": 106.66992
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83293,
+              "lon": 106.66897
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "4aKb88zXyRF8l2RDGrmwpw",
+        "score": 99.6383361816,
+        "dist": 361.664567,
+        "info": "search:ta:704009001425189-VN",
+        "poi": {
+          "name": "Quán Bánh Cuốn-Bánh Ướt-Giò Chả",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 1367 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 1367 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.8345,
+          "lon": 106.667194
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8354,
+            "lon": 106.66628
+          },
+          "btmRightPoint": {
+            "lat": 10.8336,
+            "lon": 106.66811
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83456,
+              "lon": 106.66726
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "S_IeEVyR1TRVFdUjDcbpYA",
+        "score": 99.6346893311,
+        "dist": 365.304575,
+        "info": "search:ta:704009003350856-VN",
+        "poi": {
+          "name": "Quán Bún Vân Anh",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1409",
+          "streetName": "Hẻm 1377 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1409, Hẻm 1377 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834601,
+          "lon": 106.666939
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8355,
+            "lon": 106.66602
+          },
+          "btmRightPoint": {
+            "lat": 10.8337,
+            "lon": 106.66785
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83458,
+              "lon": 106.66698
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "PgWLWIgHz4D4hgPiqcbCRg",
+        "score": 99.6328659058,
+        "dist": 367.131549,
+        "info": "search:ta:704009003358108-VN",
+        "poi": {
+          "name": "Quán Ăn Lò Gạch",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1353",
+          "streetName": "Hẻm 1345 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1353, Hẻm 1345 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834222,
+          "lon": 106.66795
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83512,
+            "lon": 106.66703
+          },
+          "btmRightPoint": {
+            "lat": 10.83332,
+            "lon": 106.66887
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83426,
+              "lon": 106.66787
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "sBRT0DOS_Ipw9tg32RikXA",
+        "score": 99.6307373047,
+        "dist": 369.258239,
+        "info": "search:ta:704009002176359-VN",
+        "poi": {
+          "name": "Bún Bò Huế Thanh Xuân",
+          "phone": "+84 28 3895 9693",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1331",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1331, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834191,
+          "lon": 106.668037
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83509,
+            "lon": 106.66712
+          },
+          "btmRightPoint": {
+            "lat": 10.83329,
+            "lon": 106.66895
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83422,
+              "lon": 106.66823
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ixBL9jb5qZfJ6tBOaOqT0w",
+        "score": 99.6249008179,
+        "dist": 375.101137,
+        "info": "search:ta:704009001930771-VN",
+        "poi": {
+          "name": "Bún Bò-Bún Mắm 112",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "112",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 112, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834235,
+          "lon": 106.664366
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83513,
+            "lon": 106.66345
+          },
+          "btmRightPoint": {
+            "lat": 10.83334,
+            "lon": 106.66528
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83427,
+              "lon": 106.66428
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "1iVyLRrFSYUMmuNIt24JyA",
+        "score": 99.6222991943,
+        "dist": 377.700136,
+        "info": "search:ta:704009001899449-VN",
+        "poi": {
+          "name": "Bánh Cuốn Thông",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "114",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 114, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834272,
+          "lon": 106.664381
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83517,
+            "lon": 106.66347
+          },
+          "btmRightPoint": {
+            "lat": 10.83337,
+            "lon": 106.6653
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83431,
+              "lon": 106.6643
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "QYJwIJOfs-wlDuP5eW36zg",
+        "score": 99.6220169067,
+        "dist": 377.979836,
+        "info": "search:ta:704009001430963-VN",
+        "poi": {
+          "name": "Quán Gà Nướng Muối Ớt và Lẩu Gà Ớt Hiểm",
+          "phone": "+84 93 353 00 63",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834088,
+          "lon": 106.668325
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83499,
+            "lon": 106.66741
+          },
+          "btmRightPoint": {
+            "lat": 10.83319,
+            "lon": 106.66924
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83419,
+              "lon": 106.6683
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "q-36u7qGIkE50eIdoa2PSg",
+        "score": 99.6220092773,
+        "dist": 377.985414,
+        "info": "search:ta:704009003358492-VN",
+        "poi": {
+          "name": "Quán Gà Rán Gaxeo Express",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1351",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1351, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834088,
+          "lon": 106.668325
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83499,
+            "lon": 106.66741
+          },
+          "btmRightPoint": {
+            "lat": 10.83319,
+            "lon": 106.66924
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83413,
+              "lon": 106.66824
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "JaXFszo_lkWvh9aJFob2PA",
+        "score": 99.6219863892,
+        "dist": 378.007737,
+        "info": "search:ta:704009001427787-VN",
+        "poi": {
+          "name": "Quán Cơm Tấm Cô Ngọc",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834088,
+          "lon": 106.668325
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83499,
+            "lon": 106.66741
+          },
+          "btmRightPoint": {
+            "lat": 10.83319,
+            "lon": 106.66924
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83418,
+              "lon": 106.66835
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "VEFpbgoSzf92n1ZmQ8Ij5A",
+        "score": 99.6202850342,
+        "dist": 379.713668,
+        "info": "search:ta:704009001840413-VN",
+        "poi": {
+          "name": "Hòa Ký",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "116",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 116, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834301,
+          "lon": 106.664393
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8352,
+            "lon": 106.66348
+          },
+          "btmRightPoint": {
+            "lat": 10.8334,
+            "lon": 106.66531
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83434,
+              "lon": 106.66431
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "FS3QKBxL-w_19rp2o93QvA",
+        "score": 99.6152801514,
+        "dist": 384.716081,
+        "info": "search:ta:704007000016516-VN",
+        "poi": {
+          "name": "Quán Ăn Cơm Tấm Số 1",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834853,
+          "lon": 106.666183
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83575,
+            "lon": 106.66527
+          },
+          "btmRightPoint": {
+            "lat": 10.83395,
+            "lon": 106.6671
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83492,
+              "lon": 106.66621
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "9M7QjsxY87FjrSvEGyDbag",
+        "score": 99.614944458,
+        "dist": 385.05102,
+        "info": "search:ta:704009001428177-VN",
+        "poi": {
+          "name": "Ye Nee Ya Korean Bingsu & Drinks",
+          "categorySet": [
+            {
+              "id": 7315028
+            }
+          ],
+          "categories": [
+            "korean",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "korean"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834016,
+          "lon": 106.668517
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83492,
+            "lon": 106.6676
+          },
+          "btmRightPoint": {
+            "lat": 10.83312,
+            "lon": 106.66943
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8341,
+              "lon": 106.66855
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "aLQ4YwUl2qTFgsuBHvMA5A",
+        "score": 99.6137542725,
+        "dist": 386.24331,
+        "info": "search:ta:704009001734784-VN",
+        "poi": {
+          "name": "Cơm Tấm Đêm",
+          "phone": "+84 98 718 91 63",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "122",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 122, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83439,
+          "lon": 106.664429
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83529,
+            "lon": 106.66351
+          },
+          "btmRightPoint": {
+            "lat": 10.83349,
+            "lon": 106.66534
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83443,
+              "lon": 106.66434
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "5GdlVSKLT5-FszArgEFiQA",
+        "score": 99.612991333,
+        "dist": 386.998169,
+        "info": "search:ta:704009001429128-VN",
+        "poi": {
+          "name": "Quán Bánh Canh Cua Út Hường",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833999,
+          "lon": 106.668565
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8349,
+            "lon": 106.66765
+          },
+          "btmRightPoint": {
+            "lat": 10.8331,
+            "lon": 106.66948
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83408,
+              "lon": 106.6686
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vKH9pW_EpITT7W8a2AwOwQ",
+        "score": 99.612159729,
+        "dist": 387.838767,
+        "info": "search:ta:704009003358695-VN",
+        "poi": {
+          "name": "Nhà Hàng Hải Sản Hoàng Châu",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "18B",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 18B, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834632,
+          "lon": 106.667532
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83553,
+            "lon": 106.66662
+          },
+          "btmRightPoint": {
+            "lat": 10.83373,
+            "lon": 106.66845
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83454,
+              "lon": 106.66751
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "wfDhnE75G9GVNA8NrZQBkw",
+        "score": 99.6101455688,
+        "dist": 389.849651,
+        "info": "search:ta:704009001425457-VN",
+        "poi": {
+          "name": "Quán Cơm Bình Dân Hải Tâm",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 1307 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 1307 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833974,
+          "lon": 106.668632
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83487,
+            "lon": 106.66772
+          },
+          "btmRightPoint": {
+            "lat": 10.83307,
+            "lon": 106.66955
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83404,
+              "lon": 106.66872
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "pC_Y_qw2aotwK1aaWo1QoA",
+        "score": 99.6078186035,
+        "dist": 392.176563,
+        "info": "search:ta:704009001908162-VN",
+        "poi": {
+          "name": "Ốc-Bột Chiên",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831068,
+          "lon": 106.669792
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83197,
+            "lon": 106.66888
+          },
+          "btmRightPoint": {
+            "lat": 10.83017,
+            "lon": 106.67071
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83113,
+              "lon": 106.66972
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "9ylRh5CnzohHd9C-VvnE1g",
+        "score": 99.6062393188,
+        "dist": 393.75905,
+        "info": "search:ta:704009003352627-VN",
+        "poi": {
+          "name": "Lẩu Nướng Loklok",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 383 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 383 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830234,
+          "lon": 106.669623
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83113,
+            "lon": 106.66871
+          },
+          "btmRightPoint": {
+            "lat": 10.82933,
+            "lon": 106.67054
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8303,
+              "lon": 106.66956
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "5aRNgtWpOI4vG8vhWBlq_w",
+        "score": 99.6021270752,
+        "dist": 397.868196,
+        "info": "search:ta:704009002088679-VN",
+        "poi": {
+          "name": "Nhà Hàng Ngôi Nhà Ẩm Thực",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834398,
+          "lon": 106.668194
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8353,
+            "lon": 106.66728
+          },
+          "btmRightPoint": {
+            "lat": 10.8335,
+            "lon": 106.66911
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83431,
+              "lon": 106.66817
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "yCTgQsP3watM2kkuHEyHuw",
+        "score": 99.6005783081,
+        "dist": 399.415997,
+        "info": "search:ta:704009001428463-VN",
+        "poi": {
+          "name": "Quán Hủ Tiếu Nam Vang-Hủ Tiếu Sườn",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83393,
+          "lon": 106.668805
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83483,
+            "lon": 106.66789
+          },
+          "btmRightPoint": {
+            "lat": 10.83303,
+            "lon": 106.66972
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83399,
+              "lon": 106.66885
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "1CIitxITWqh240AGrbiONQ",
+        "score": 99.5959014893,
+        "dist": 404.091027,
+        "info": "search:ta:704009001773425-VN",
+        "poi": {
+          "name": "Anh Thư",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 383 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 383 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830255,
+          "lon": 106.66973
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83115,
+            "lon": 106.66881
+          },
+          "btmRightPoint": {
+            "lat": 10.82936,
+            "lon": 106.67065
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83019,
+              "lon": 106.66979
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "1VkWHglXo03vEA7RK36yCQ",
+        "score": 99.5872497559,
+        "dist": 412.748582,
+        "info": "search:ta:704009001425262-VN",
+        "poi": {
+          "name": "Quán Mì Cay 7 Cấp Độ Hàn Quốc Singa 5",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835057,
+          "lon": 106.665612
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83596,
+            "lon": 106.6647
+          },
+          "btmRightPoint": {
+            "lat": 10.83416,
+            "lon": 106.66653
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83512,
+              "lon": 106.66564
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "p1LE10GkyxVNBDImt-Ms5Q",
+        "score": 99.5816879272,
+        "dist": 418.312877,
+        "info": "search:ta:704009002141172-VN",
+        "poi": {
+          "name": "Trà Sữa Trân Châu MeMo",
+          "phone": "+84 99 581 41 36",
+          "categorySet": [
+            {
+              "id": 7315149
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "yogurt/juice bar"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "yogurt/juice bar"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834806,
+          "lon": 106.664605
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83571,
+            "lon": 106.66369
+          },
+          "btmRightPoint": {
+            "lat": 10.83391,
+            "lon": 106.66552
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83479,
+              "lon": 106.6645
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "MC9vl3haONjw-0PVwvTdDQ",
+        "score": 99.5793685913,
+        "dist": 420.632312,
+        "info": "search:ta:704009002610480-VN",
+        "poi": {
+          "name": "Nước Ép Trái Cây Nguyên Chất Yến Xuân",
+          "categorySet": [
+            {
+              "id": 7315078
+            }
+          ],
+          "categories": [
+            "ice cream parlor",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "ice cream parlor"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "569",
+          "streetName": "Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 569, Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834571,
+          "lon": 106.664126
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83547,
+            "lon": 106.66321
+          },
+          "btmRightPoint": {
+            "lat": 10.83367,
+            "lon": 106.66504
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83471,
+              "lon": 106.66404
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "lvx6K2r5U8LvAwGNrO-Mhw",
+        "score": 99.5756149292,
+        "dist": 424.380502,
+        "info": "search:ta:704009001836479-VN",
+        "poi": {
+          "name": "Phở Bò A Lý",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 383 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 383 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830194,
+          "lon": 106.669905
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83109,
+            "lon": 106.66899
+          },
+          "btmRightPoint": {
+            "lat": 10.82929,
+            "lon": 106.67082
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83024,
+              "lon": 106.66985
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "OfjuTm8U2yEdaf1HKmu1Vw",
+        "score": 99.5724945068,
+        "dist": 427.5027,
+        "info": "search:ta:704009003349154-VN",
+        "poi": {
+          "name": "Quán Ăn Bò-Lế-Rồ",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1445",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1445, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835146,
+          "lon": 106.665366
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83605,
+            "lon": 106.66445
+          },
+          "btmRightPoint": {
+            "lat": 10.83425,
+            "lon": 106.66628
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83521,
+              "lon": 106.66539
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "D7O9E-A07jP3DIR1s6L4Og",
+        "score": 99.5660400391,
+        "dist": 433.959911,
+        "info": "search:ta:704009001959840-VN",
+        "poi": {
+          "name": "Bún Bò Huế Cô Huyền",
+          "phone": "+84 93 327 26 59",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 383/23 Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 383/23 Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82948,
+          "lon": 106.669679
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83038,
+            "lon": 106.66876
+          },
+          "btmRightPoint": {
+            "lat": 10.82858,
+            "lon": 106.67059
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82942,
+              "lon": 106.66961
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "lFVg9viY-OF1QQ9x0mSATA",
+        "score": 99.5646972656,
+        "dist": 435.304911,
+        "info": "search:ta:704009001901718-VN",
+        "poi": {
+          "name": "Cơm Tấm Cây Khế 6",
+          "phone": "+84 93 863 69 96",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835011,
+          "lon": 106.664693
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83591,
+            "lon": 106.66378
+          },
+          "btmRightPoint": {
+            "lat": 10.83411,
+            "lon": 106.66561
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.835,
+              "lon": 106.66459
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "hEkZtf_HdvDQCMiahns5Ig",
+        "score": 99.5634536743,
+        "dist": 436.543193,
+        "info": "search:ta:704009001873351-VN",
+        "poi": {
+          "name": "Phở Hải Nam",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.831699,
+          "lon": 106.670201
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8326,
+            "lon": 106.66929
+          },
+          "btmRightPoint": {
+            "lat": 10.8308,
+            "lon": 106.67112
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83173,
+              "lon": 106.67011
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "R6mTk5mpcFRn849CsRm41Q",
+        "score": 99.562828064,
+        "dist": 437.163956,
+        "info": "search:ta:704009003352972-VN",
+        "poi": {
+          "name": "Quán Phở Bò Tèo",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1299",
+          "streetName": "Hẻm 1279 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1299, Hẻm 1279 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833692,
+          "lon": 106.669463
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83459,
+            "lon": 106.66855
+          },
+          "btmRightPoint": {
+            "lat": 10.83279,
+            "lon": 106.67038
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83367,
+              "lon": 106.66953
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "T8MmJjb3Xd7g0flcpMTDRw",
+        "score": 99.5623779297,
+        "dist": 437.618356,
+        "info": "search:ta:704009002088778-VN",
+        "poi": {
+          "name": "Quán Phở Nam Định",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "724",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 724, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835292,
+          "lon": 106.66567
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83619,
+            "lon": 106.66475
+          },
+          "btmRightPoint": {
+            "lat": 10.83439,
+            "lon": 106.66659
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83517,
+              "lon": 106.66567
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Vd61ed36BNZqeXHmKpLwbw",
+        "score": 99.5596160889,
+        "dist": 440.386158,
+        "info": "search:ta:704009003350492-VN",
+        "poi": {
+          "name": "Milk Tea & Fruit Tea Soul",
+          "phone": "+84 28 3895 8133",
+          "categorySet": [
+            {
+              "id": 7315149
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "yogurt/juice bar"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "yogurt/juice bar"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "168",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 168, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83507,
+          "lon": 106.664718
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83597,
+            "lon": 106.6638
+          },
+          "btmRightPoint": {
+            "lat": 10.83417,
+            "lon": 106.66563
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83506,
+              "lon": 106.66461
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "jyv624A4XMj0CWQ7re8PPQ",
+        "score": 99.5540618896,
+        "dist": 445.928596,
+        "info": "search:ta:704009002148452-VN",
+        "poi": {
+          "name": "Quán Xào A Phát",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1295",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1295, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833619,
+          "lon": 106.669613
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83452,
+            "lon": 106.6687
+          },
+          "btmRightPoint": {
+            "lat": 10.83272,
+            "lon": 106.67053
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83371,
+              "lon": 106.66964
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "eO2lDkqjPdVkDWmtfnpAWg",
+        "score": 99.5536346436,
+        "dist": 446.364366,
+        "info": "search:ta:704009002680388-VN",
+        "poi": {
+          "name": "Cháo Dinh Dưỡng Cây Thị",
+          "phone": "+84 28 3592 1161",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "36",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 36, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835107,
+          "lon": 106.664665
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83601,
+            "lon": 106.66375
+          },
+          "btmRightPoint": {
+            "lat": 10.83421,
+            "lon": 106.66558
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83563,
+              "lon": 106.66464
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "xe2BhUlAIH7AxiqztMvX1Q",
+        "score": 99.549446106,
+        "dist": 450.549514,
+        "info": "search:ta:704009003361481-VN",
+        "poi": {
+          "name": "Cơm Tấm A Phát",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833594,
+          "lon": 106.669679
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83449,
+            "lon": 106.66876
+          },
+          "btmRightPoint": {
+            "lat": 10.83269,
+            "lon": 106.67059
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83371,
+              "lon": 106.66962
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "SXV_Oe5FdvWMBXvvA8GIpQ",
+        "score": 99.5460891724,
+        "dist": 453.910288,
+        "info": "search:ta:704009001425396-VN",
+        "poi": {
+          "name": "Quán Bún Chả Nem Cua Bể Phố Cổ Hà Nội",
+          "phone": "+84 96 717 61 38",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 1457 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 1457 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835287,
+          "lon": 106.664968
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83619,
+            "lon": 106.66405
+          },
+          "btmRightPoint": {
+            "lat": 10.83439,
+            "lon": 106.66588
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83529,
+              "lon": 106.66506
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "LEIpxBmssvZhEFn30f60jw",
+        "score": 99.54246521,
+        "dist": 457.53402,
+        "info": "search:ta:704009001490509-VN",
+        "poi": {
+          "name": "Quán Mì Quảng",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 597 Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 597 Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834274,
+          "lon": 106.663225
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83517,
+            "lon": 106.66231
+          },
+          "btmRightPoint": {
+            "lat": 10.83337,
+            "lon": 106.66414
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83424,
+              "lon": 106.66331
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "X8LhecqVXI4RbUPp2t4rvA",
+        "score": 99.5405197144,
+        "dist": 459.474081,
+        "info": "search:ta:704009001462808-VN",
+        "poi": {
+          "name": "Quán Cơm",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 710 Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 710 Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835511,
+          "lon": 106.665863
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83641,
+            "lon": 106.66495
+          },
+          "btmRightPoint": {
+            "lat": 10.83461,
+            "lon": 106.66678
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83551,
+              "lon": 106.66594
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "QXhctKBIKKWgQuj5Vo40KQ",
+        "score": 99.5381698608,
+        "dist": 461.828753,
+        "info": "search:ta:704009003344857-VN",
+        "poi": {
+          "name": "Nước Ép Sinh Tố Sức Sống Mới",
+          "categorySet": [
+            {
+              "id": 7315149
+            }
+          ],
+          "url": "www.nuoceponline.vn",
+          "categories": [
+            "restaurant",
+            "yogurt/juice bar"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "yogurt/juice bar"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "730",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 730, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835439,
+          "lon": 106.665261
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83634,
+            "lon": 106.66435
+          },
+          "btmRightPoint": {
+            "lat": 10.83454,
+            "lon": 106.66618
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83529,
+              "lon": 106.66532
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "5-xzHReO9EDlZWyg63BnmQ",
+        "score": 99.5371704102,
+        "dist": 462.832448,
+        "info": "search:ta:704009001958498-VN",
+        "poi": {
+          "name": "Hòa",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 710/1 Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 710/1 Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835539,
+          "lon": 106.665843
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83644,
+            "lon": 106.66493
+          },
+          "btmRightPoint": {
+            "lat": 10.83464,
+            "lon": 106.66676
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83562,
+              "lon": 106.66589
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "LP-oQmNy-kjwd9uRR7Y2MQ",
+        "score": 99.5303573608,
+        "dist": 469.639726,
+        "info": "search:ta:704009001931323-VN",
+        "poi": {
+          "name": "Ốc 79",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832634,
+          "lon": 106.670326
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83353,
+            "lon": 106.66941
+          },
+          "btmRightPoint": {
+            "lat": 10.83173,
+            "lon": 106.67124
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83264,
+              "lon": 106.67042
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Pnz7CbCZffAaoA5g0sXypw",
+        "score": 99.5260543823,
+        "dist": 473.945348,
+        "info": "search:ta:704009003342686-VN",
+        "poi": {
+          "name": "Bún Quậy Phú Quốc",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "736",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 736, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835506,
+          "lon": 106.665077
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83641,
+            "lon": 106.66416
+          },
+          "btmRightPoint": {
+            "lat": 10.83461,
+            "lon": 106.66599
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83538,
+              "lon": 106.66508
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "XafUQIinpGO5gV3jtSU_ew",
+        "score": 99.5222854614,
+        "dist": 477.708703,
+        "info": "search:ta:704009001828264-VN",
+        "poi": {
+          "name": "Cháo Ếch Singapore Cô Hương",
+          "phone": "+84 94 664 41 60",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "357",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 357, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829985,
+          "lon": 106.670348
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83088,
+            "lon": 106.66943
+          },
+          "btmRightPoint": {
+            "lat": 10.82909,
+            "lon": 106.67126
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83006,
+              "lon": 106.6704
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "HsGONI0gWquwsPGg0MADkA",
+        "score": 99.5201721191,
+        "dist": 479.824009,
+        "info": "search:ta:704009001847554-VN",
+        "poi": {
+          "name": "Phở Liên",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832265,
+          "lon": 106.670519
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83316,
+            "lon": 106.6696
+          },
+          "btmRightPoint": {
+            "lat": 10.83137,
+            "lon": 106.67143
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83226,
+              "lon": 106.67043
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "94StaLAhBYLNOB5CYotRDA",
+        "score": 99.5198440552,
+        "dist": 480.146938,
+        "info": "search:ta:704009001923554-VN",
+        "poi": {
+          "name": "Cơm Tấm-Bún Thịt Nướng-Cơm Trưa",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832911,
+          "lon": 106.670332
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83381,
+            "lon": 106.66942
+          },
+          "btmRightPoint": {
+            "lat": 10.83201,
+            "lon": 106.67125
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83292,
+              "lon": 106.67042
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "WfINX9iVGrcoeDa9ZUPBeg",
+        "score": 99.5179672241,
+        "dist": 482.029099,
+        "info": "search:ta:704009003357347-VN",
+        "poi": {
+          "name": "Tôm Hùm Quán",
+          "phone": "+84 28 6271 7888",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "740",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 740, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835549,
+          "lon": 106.66496
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83645,
+            "lon": 106.66404
+          },
+          "btmRightPoint": {
+            "lat": 10.83465,
+            "lon": 106.66588
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83541,
+              "lon": 106.66499
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "KSs9CZCLpyC1yYI5lx1oEw",
+        "score": 99.5176849365,
+        "dist": 482.315473,
+        "info": "search:ta:704009003352094-VN",
+        "poi": {
+          "name": "Bò Né 2 Chị Em",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "536",
+          "streetName": "Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 536, Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835014,
+          "lon": 106.663784
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83591,
+            "lon": 106.66287
+          },
+          "btmRightPoint": {
+            "lat": 10.83411,
+            "lon": 106.6647
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83493,
+              "lon": 106.66374
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "_olW8tCqZdBlo0vOrWkVXQ",
+        "score": 99.515838623,
+        "dist": 484.158081,
+        "info": "search:ta:704009003345433-VN",
+        "poi": {
+          "name": "Quán Ăn Thảo",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835444,
+          "lon": 106.664591
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83634,
+            "lon": 106.66368
+          },
+          "btmRightPoint": {
+            "lat": 10.83454,
+            "lon": 106.66551
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83545,
+              "lon": 106.66469
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "h-ULVKNGE89Z26kOW1eyaA",
+        "score": 99.515838623,
+        "dist": 484.158081,
+        "info": "search:ta:704009003357624-VN",
+        "poi": {
+          "name": "Quán Ăn A Ngon",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "url": "www.angon.vn",
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835444,
+          "lon": 106.664591
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83634,
+            "lon": 106.66368
+          },
+          "btmRightPoint": {
+            "lat": 10.83454,
+            "lon": 106.66551
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83545,
+              "lon": 106.66469
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "DH9N0jLpqChtCWp0WY3dvw",
+        "score": 99.5144119263,
+        "dist": 485.579912,
+        "info": "search:ta:704009001830497-VN",
+        "poi": {
+          "name": "Bún Đậu-Lòng Heo",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832521,
+          "lon": 106.670511
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83342,
+            "lon": 106.6696
+          },
+          "btmRightPoint": {
+            "lat": 10.83162,
+            "lon": 106.67143
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83252,
+              "lon": 106.67042
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "QP88aWDNvFXE-7Nb4Y9WvA",
+        "score": 99.5136489868,
+        "dist": 486.351729,
+        "info": "search:ta:704009003343653-VN",
+        "poi": {
+          "name": "Chè Thạch Thảo",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "742",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 742, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835571,
+          "lon": 106.664899
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83647,
+            "lon": 106.66398
+          },
+          "btmRightPoint": {
+            "lat": 10.83467,
+            "lon": 106.66581
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83543,
+              "lon": 106.66495
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BvmH5oEJ0M40L3yqW_w0Ug",
+        "score": 99.5064849854,
+        "dist": 493.506731,
+        "info": "search:ta:704009001430266-VN",
+        "poi": {
+          "name": "Quán Ăn Bún Vịt-Miến Gà Ngon Nhất",
+          "phone": "+84 28 6682 4245",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 1251 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 1251 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833419,
+          "lon": 106.670237
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83432,
+            "lon": 106.66932
+          },
+          "btmRightPoint": {
+            "lat": 10.83252,
+            "lon": 106.67115
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83349,
+              "lon": 106.67024
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "k9KE-lbssgHkIUkm89Mm0A",
+        "score": 99.505355835,
+        "dist": 494.64045,
+        "info": "search:ta:704009001837210-VN",
+        "poi": {
+          "name": "Bún Bò An Cựu 1",
+          "categorySet": [
+            {
+              "id": 7315
+            }
+          ],
+          "categories": [
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 710/1 Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 710/1 Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835826,
+          "lon": 106.665836
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83673,
+            "lon": 106.66492
+          },
+          "btmRightPoint": {
+            "lat": 10.83493,
+            "lon": 106.66675
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83573,
+              "lon": 106.66586
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ve78uAhjz2T9OGKzU9lK5g",
+        "score": 99.5006637573,
+        "dist": 499.333653,
+        "info": "search:ta:704009003350543-VN",
+        "poi": {
+          "name": "Quán Trà Bí Đao Cô Ba",
+          "categorySet": [
+            {
+              "id": 7315149
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "yogurt/juice bar"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "yogurt/juice bar"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "113",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 113, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835642,
+          "lon": 106.664738
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83654,
+            "lon": 106.66382
+          },
+          "btmRightPoint": {
+            "lat": 10.83474,
+            "lon": 106.66565
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83563,
+              "lon": 106.66464
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "qY-aQLUiqcagOBGj-LmzJw",
+        "score": 99.4987411499,
+        "dist": 501.252508,
+        "info": "search:ta:704009001933635-VN",
+        "poi": {
+          "name": "Quán Ốc Vân",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832965,
+          "lon": 106.670517
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83386,
+            "lon": 106.6696
+          },
+          "btmRightPoint": {
+            "lat": 10.83207,
+            "lon": 106.67143
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83297,
+              "lon": 106.67042
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "HpYRhgVubT5H6UwsNSKjQQ",
+        "score": 99.4968719482,
+        "dist": 503.131353,
+        "info": "search:ta:704009001789200-VN",
+        "poi": {
+          "name": "Quán Mekong Special",
+          "phone": "+84 97 902 40 48",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 538 Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 538 Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835282,
+          "lon": 106.663861
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83618,
+            "lon": 106.66295
+          },
+          "btmRightPoint": {
+            "lat": 10.83438,
+            "lon": 106.66478
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83529,
+              "lon": 106.66377
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "BV-oJFckMknTGK2y1BVyLQ",
+        "score": 99.4895782471,
+        "dist": 510.413651,
+        "info": "search:ta:704009002878952-VN",
+        "poi": {
+          "name": "Quán Phở Lý Quốc Sư Hà Nội",
+          "phone": "+84 91 943 20 24",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "216L",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 216L, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830087,
+          "lon": 106.670696
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83099,
+            "lon": 106.66978
+          },
+          "btmRightPoint": {
+            "lat": 10.82919,
+            "lon": 106.67161
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82977,
+              "lon": 106.67111
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "idLwyxsty1cnDUEaroNL5A",
+        "score": 99.4794158936,
+        "dist": 520.583065,
+        "info": "search:ta:704009002898990-VN",
+        "poi": {
+          "name": "Cửa Hàng Cháo Dinh Dưỡng Đoremi",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "237",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 237, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829795,
+          "lon": 106.670696
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83069,
+            "lon": 106.66978
+          },
+          "btmRightPoint": {
+            "lat": 10.8289,
+            "lon": 106.67161
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82988,
+              "lon": 106.67064
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "AAY-tfGq7kphV-dtShMyFQ",
+        "score": 99.4789276123,
+        "dist": 521.072277,
+        "info": "search:ta:704009001461270-VN",
+        "poi": {
+          "name": "Quán Ăn Huy Hoàng",
+          "categorySet": [
+            {
+              "id": 7315012
+            }
+          ],
+          "categories": [
+            "chinese",
+            "restaurant"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "chinese"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 1239 Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 1239 Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833217,
+          "lon": 106.670611
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83412,
+            "lon": 106.6697
+          },
+          "btmRightPoint": {
+            "lat": 10.83232,
+            "lon": 106.67153
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83319,
+              "lon": 106.6707
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "kd4LhlP3Z6MGeTL4YsXINg",
+        "score": 99.4787445068,
+        "dist": 521.256656,
+        "info": "search:ta:704009001771724-VN",
+        "poi": {
+          "name": "Bún Đậu Tiên Tiên",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "206",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 206, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835863,
+          "lon": 106.664779
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83676,
+            "lon": 106.66386
+          },
+          "btmRightPoint": {
+            "lat": 10.83496,
+            "lon": 106.66569
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83587,
+              "lon": 106.66469
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "tuv0FgNnw8vRXrw9R-bTJQ",
+        "score": 99.4761962891,
+        "dist": 523.805551,
+        "info": "search:ta:704009002540427-VN",
+        "poi": {
+          "name": "Quán Cơm Út Hà",
+          "phone": "+84 28 3504 9505",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1239",
+          "streetName": "Đường Phan Văn Trị",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1239, Đường Phan Văn Trị, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833272,
+          "lon": 106.670614
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83417,
+            "lon": 106.6697
+          },
+          "btmRightPoint": {
+            "lat": 10.83237,
+            "lon": 106.67153
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83368,
+              "lon": 106.66971
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Dbikc12aaRzMSIBpuukX6A",
+        "score": 99.4737014771,
+        "dist": 526.294932,
+        "info": "search:ta:704009003352561-VN",
+        "poi": {
+          "name": "Hủ Tiếu Lâm Chi",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835914,
+          "lon": 106.66479
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83681,
+            "lon": 106.66387
+          },
+          "btmRightPoint": {
+            "lat": 10.83501,
+            "lon": 106.66571
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83593,
+              "lon": 106.6647
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "VjnlNdVey0GN0mlt_2PkVQ",
+        "score": 99.4704360962,
+        "dist": 529.563426,
+        "info": "search:ta:704009002672238-VN",
+        "poi": {
+          "name": "Phở Kiêm",
+          "phone": "+84 396 510 656",
+          "categorySet": [
+            {
+              "id": 7315051
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "vietnamese"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "vietnamese"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1234",
+          "streetName": "Hẻm 312 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1234, Hẻm 312 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833517,
+          "lon": 106.670556
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83442,
+            "lon": 106.66964
+          },
+          "btmRightPoint": {
+            "lat": 10.83262,
+            "lon": 106.67147
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83318,
+              "lon": 106.67042
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "7kg6VRU14nBhVrSV-E_68A",
+        "score": 99.4649429321,
+        "dist": 535.059943,
+        "info": "search:ta:704009003358690-VN",
+        "poi": {
+          "name": "Quán Ăn Lâm Anh",
+          "categorySet": [
+            {
+              "id": 7315041
+            }
+          ],
+          "categories": [
+            "restaurant",
+            "roadside"
+          ],
+          "classifications": [
+            {
+              "code": "RESTAURANT",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "roadside"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "restaurant"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.836002,
+          "lon": 106.664809
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8369,
+            "lon": 106.66389
+          },
+          "btmRightPoint": {
+            "lat": 10.8351,
+            "lon": 106.66572
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83602,
+              "lon": 106.66472
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

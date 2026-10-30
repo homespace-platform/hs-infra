@@ -23,21 +23,33 @@ Seed chạy trong transaction, kiểm tra dữ liệu trước COMMIT, upsert th
 
 ## Nearby offline — không gọi TomTom khi seed
 
-`nearby_places_tomtom_snapshot.json` đã lưu **100 POI thật đang có trong cache TomTom**, kèm external ID, tọa độ, phân loại, địa chỉ và timestamp nguồn. Toàn bộ snapshot này cũng được nhúng vào `listings_seed_hcm.sql`. Vì vậy **drop volume xong vẫn seed được**, không cần CSDL cũ, không cần import JSON riêng hoặc gọi API để lấy lại.
+`nearby_places_tomtom_snapshot.json` lưu **1.328 POI thật từ TomTom**, kèm external ID, tọa độ, phân loại, địa chỉ, timestamp và tham chiếu SHA256 tới response gốc trong `nearby-source/tomtom/`. Dữ liệu đã được thu thập một lần tại ba tọa độ listing có thật trong JSON, đối chiếu cây danh mục chính thức; không sinh POI hoặc nội suy tọa độ. Toàn bộ snapshot đã nhúng vào `listings_seed_hcm.sql`, nên **drop volume xong vẫn seed được**, không cần CSDL cũ hay gọi API lấy lại.
 
-SQL seed thêm cả 7 bảng: `nearby_categories`, `nearby_places`, `nearby_place_sources`, `nearby_place_categories`, `nearby_scan_jobs`, `nearby_scan_runs`, `listing_nearby_places`. Một POI chỉ lưu một lần; nhiều listing dùng chung `place_id`. Khoảng cách được tính từ tọa độ POI thật và tọa độ listing, chỉ liên kết trong **2.000 m**, lấy tối đa **100 điểm gần nhất**. Không nhân bản 100 POI cho từng tin và không di chuyển tọa độ để đủ số lượng.
+SQL seed thêm cả 7 bảng: `nearby_categories`, `nearby_places`, `nearby_place_sources`, `nearby_place_categories`, `nearby_scan_jobs`, `nearby_scan_runs`, `listing_nearby_places`. Một POI chỉ lưu một lần theo `TOMTOM/V2/externalId`; nhiều listing dùng chung `place_id`. Tính khoảng cách từ tọa độ gốc, chỉ liên kết trong **2.000 m**, tối đa **100 điểm/tin**. Chọn mẫu offline: giữ tối đa 5 điểm gần nhất mỗi nhóm và 3 điểm gần nhất mỗi loại trong 10 category đã cấu hình, chống trùng rồi lấp phần còn lại theo khoảng cách. Nhờ vậy trường đại học không bị trường mầm non lấn hết, bệnh viện không bị nhà thuốc lấn hết, và quán ăn không chiếm toàn bộ 100 điểm. Không ép đủ nhóm nếu nguồn không có; không đổi workflow runtime một request gộp khi publish/đổi tọa độ.
 
 Snapshot hiện tại cho kết quả:
 
 | Kết quả trong 2 km | Số listing |
 |---|---:|
-| Đủ 100 điểm từ kho | 229 |
-| Có 1–99 điểm | 41 |
-| Chưa có điểm trong snapshot | 30 |
+| Đủ 100 điểm từ kho | 300 |
+| Có 1–99 điểm | 0 |
+| Chưa có điểm trong snapshot | 0 |
 
-Tổng **100 POI dùng chung / 24.853 liên kết / 300 snapshot offline**. Kho này tập trung quanh IUH; 0 kết quả nghĩa là snapshot chưa có bằng chứng cho khu vực đó, không phải thực tế không có tiện ích. Muốn đủ 100 điểm cho cả 300 tin cần bổ sung snapshot POI thật bao phủ các khu vực thiếu, không thể tự tạo tọa độ giả.
+Nguyên nhân lỗi cũ: kho 100 POI chỉ quanh một tin gần IUH, dùng lại cho cả 300 tin nên 30 tin rỗng và 41 tin thiếu. Kho mới tạo **30.000 liên kết / 300 snapshot offline**, sử dụng **772 POI**, trong đó **743 POI được nhiều tin dùng chung**. Tổng 1.328 POI được giữ để tra cứu địa điểm đích; không phải 30.000 POI bị nhân bản.
 
-Các job được seed terminal `PARTIAL`, attempts=0, đúng location hash, radius và fingerprint cấu hình hiện tại. Worker `reconcile/claim` không gọi TomTom cho 300 tin seed khi restart hoặc qua 24 giờ. Runs ghi `OFFLINE_SEED/CACHE_V1`, `OFFLINE_CACHE_REPLAY`, request count=0 và coverage `PARTIAL`, **không giả là 300 phản hồi provider mới**. Public Nearby vẫn xem được điểm và phân trang; AI hiện có thể từ chối xếp hạng nhóm theo coverage chưa đủ. Không đổi coverage thành COMPLETE chỉ để AI trả lời chắc chắn.
+| Nhóm | POI trong kho | Tin có nhóm trong 2 km |
+|---|---:|---:|
+| Giáo dục (cả trường học và đại học/cao đẳng) | 341 | 300 |
+| Y tế (bệnh viện, nhà thuốc) | 352 | 300 |
+| Mua sắm (siêu thị, cửa hàng tiện lợi) | 163 | 300 |
+| Ăn uống | 300 | 300 |
+| Ngân hàng | 164 | 300 |
+| Trạm xe buýt | 1 | 79 |
+| Giải trí/công viên theo phân loại nguồn | 7 | 300 |
+
+Mỗi tin có ít nhất **6 nhóm**, không giả trạm xe buýt cho 221 tin còn lại. Không có điểm trong một nhóm nghĩa là chưa ghi nhận trong kho, không chứng minh ngoài thực tế không có. `nearby_seed_audit.json` ghi từng ID địa chỉ, số điểm/nhóm/loại, khoảng cách gần/xa nhất và 100 `place_id` đã chọn để đối chiếu.
+
+Các job được seed terminal `PARTIAL`, attempts=0, đúng location hash, radius và fingerprint cấu hình hiện tại. Worker `reconcile/claim` không gọi TomTom cho 300 tin seed khi restart hoặc qua 24 giờ. Runs ghi `OFFLINE_SEED/CACHE_V1`, `OFFLINE_CACHE_REPLAY`, request count=0 và coverage `PARTIAL`, **không giả là 300 phản hồi provider mới**. Public/AI đọc được các liên kết và điểm đã lưu. Dòng vàng có thể vẫn hiển thị: 100 điểm là mẫu có thật, không phải bằng chứng đã thu thập mọi địa điểm/nhóm trong bán kính. Không đổi coverage thành COMPLETE để che cảnh báo.
 
 Đổi tọa độ listing sau seed, thay scope/category/version cấu hình hoặc chủ động force đồng bộ vẫn có thể tạo request thật theo workflow backend. Tin mới ngoài seed cũng hoạt động như bình thường. Seed không tắt Nearby toàn hệ thống.
 
@@ -51,19 +63,27 @@ Tại `D:\Workspace\homespace\hs-infra`:
 
 ```powershell
 node scripts/build-listings-seed.mjs
+node scripts/audit-nearby-seed.mjs
 node --test scripts/build-listings-seed.test.mjs scripts/build-nearby-seed.test.mjs
 node scripts/build-listings-seed.mjs --check
+node scripts/audit-nearby-seed.mjs --check
 ```
 
 Script cập nhật các vùng snapshot sinh tự động (JSON địa chỉ, mã hành chính đã đối chiếu và Nearby), không sửa JSON gốc. Cần checkout `hs-web-app` bên cạnh `hs-infra` để đọc catalog; khi đổi catalog frontend hãy chạy lại build và `--check`. SQL xuất ra vẫn tự chứa dữ liệu, chạy độc lập bằng pgAdmin. Giữ `id` và `pointIndex` ổn định khi cập nhật để không tạo listing khác. Không dùng `sync-hcm-seed-wards.mjs` cũ với seed mới.
 
 Build cũng cập nhật vùng Nearby và đọc properties/`NearbyCatalog.VERSION` từ `hs-core-api` bên cạnh để sinh đúng fingerprint runtime. Build hoàn toàn offline, không đọc API key. Khi đổi cấu hình scope hoặc thêm POI thật vào snapshot, chạy build + tests + `--check` trước khi seed. Không tự đổi tên/provider/external ID của dữ liệu nguồn; giữ provenance rõ ràng.
 
+### Chuẩn bị nguồn một lần (đã làm sẵn, không cần chạy khi seed)
+
+`collect-nearby-seed.mjs` tách biệt hoàn toàn khỏi build/SQL/Core. Lần chuẩn bị này đã dùng **31 request thật**: 1 danh mục + 30 truy vấn (3 tâm × 10 loại), không phân trang, không retry ngầm. Mỗi request limit 100, radius 2 km, cách nhau tối thiểu 2,1 giây. Response không chứa API key được lưu cố định; ID/tên/tọa độ/địa chỉ/cây category đều kiểm chứng lại trước build.
+
+`node scripts/collect-nearby-seed.mjs` chỉ dựng lại từ các response đã lưu, **0 request**; thiếu file thì dừng. Chỉ lệnh có `--fetch` mới được phép đọc `TOMTOM_API_KEY` backend và lấy các capture còn thiếu (tối đa 31 request, file đã có không gọi lại). Không cần chạy lệnh này cho việc seed thông thường. Quy cách provider: [Nearby Search](https://docs.tomtom.com/search-api/documentation/search-service/nearby-search), [POI Categories](https://docs.tomtom.com/search-api/documentation/poi-categories-service/poi-categories).
+
 ## Kiểm thử database dùng một lần
 
 Test opt-in `ListingSeedPostgresTest` trong Core tạo schema thực bằng Hibernate và chạy SQL hai lần, kiểm tra tọa độ/NULL, mã phường, chi tiết/ảnh, idempotency, rollback và không ảnh hưởng bản ghi khác. Test còn gọi `ListingPublicService.search` trên PostgreSQL thật để kiểm tra tỉnh, ba phường, mã cũ/sai tỉnh, phân trang, loại hình, giá, diện tích và từ khóa. Chỉ trỏ `HS_SEED_TEST_PG_URL` tới PostgreSQL test rỗng tên `hs_seed_test`, **không trỏ vào DB dev/production** (test dùng create-drop).
 
-Test Nearby đối chiếu từng POI với snapshot, tính lại khoảng cách, kiểm tra chia sẻ/chống trùng, đúng số điểm trong 2 km, page size 10, rerun/rollback và giữ liên kết của tin ngoài seed. Chạy `reconcile` cùng worker bật sync với provider mock để chứng minh **0 provider calls** cho 300 tin đã seed.
+Test Nearby đối chiếu từng POI với snapshot và response gốc, tính lại khoảng cách, kiểm tra chính xác 100 ID được chọn/nhóm cho từng tin trong báo cáo, chống trùng, page size 10, rerun/rollback và giữ liên kết của tin ngoài seed. Chạy `reconcile` cùng worker bật sync với provider mock để chứng minh **0 provider calls** cho 300 tin đã seed.
 
 Hoặc dùng runner tự tạo/xóa PostgreSQL riêng (cần Docker, Java 21, `mvn` trong PATH và image `postgres:16-alpine` có sẵn):
 

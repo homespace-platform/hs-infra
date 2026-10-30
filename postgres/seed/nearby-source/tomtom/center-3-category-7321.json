@@ -1,0 +1,4722 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.8358332,
+    "lon": 106.6802188,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "7321"
+  },
+  "fetchedAt": "2026-10-30T19:58:38.797Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 62,
+      "numResults": 65,
+      "offset": 0,
+      "totalResults": 65,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.8358332,
+        "lon": 106.6802188
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "6mNxM_Wh3ayW-H2pokIbqQ",
+        "score": 99.685005188,
+        "dist": 314.998724,
+        "info": "search:ta:704009002633068-VN",
+        "poi": {
+          "name": "Trạm Y Tế Phường 17",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "6",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 6, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838432,
+          "lon": 106.67907
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83933,
+            "lon": 106.67815
+          },
+          "btmRightPoint": {
+            "lat": 10.83753,
+            "lon": 106.67999
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83852,
+              "lon": 106.67901
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "-GijJQX4nH_Fe7Oiic3kYQ",
+        "score": 99.6779327393,
+        "dist": 322.06491,
+        "info": "search:ta:704009003344799-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Khang Vinh",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "42",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 42, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838662,
+          "lon": 106.679587
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83956,
+            "lon": 106.67867
+          },
+          "btmRightPoint": {
+            "lat": 10.83776,
+            "lon": 106.6805
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83857,
+              "lon": 106.67959
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Lia5UuT4V9lVB-j9dYcGpQ",
+        "score": 99.653968811,
+        "dist": 346.030484,
+        "info": "search:ta:704009001933934-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Tổng Hợp Bác Sĩ Lê Như Vương Anh",
+          "phone": "+84 91 388 36 04",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "262",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 262, Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83893,
+          "lon": 106.67991
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83983,
+            "lon": 106.67899
+          },
+          "btmRightPoint": {
+            "lat": 10.83803,
+            "lon": 106.68083
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83888,
+              "lon": 106.67983
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "E2KWB2WMGXBWQFlGDYLkZA",
+        "score": 99.6459732056,
+        "dist": 354.024685,
+        "info": "search:ta:704009002659993-VN",
+        "poi": {
+          "name": "Đông Y Họ Trịnh",
+          "phone": "+84 834 410 352",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "18",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 18, Đường Nguyễn Văn Lượng, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838989,
+          "lon": 106.680646
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83989,
+            "lon": 106.67973
+          },
+          "btmRightPoint": {
+            "lat": 10.83809,
+            "lon": 106.68156
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83887,
+              "lon": 106.6807
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "tf6LrZsNkP8i8GvR9xTsmA",
+        "score": 99.6036834717,
+        "dist": 396.318154,
+        "info": "search:ta:704009002161086-VN",
+        "poi": {
+          "name": "Đông Nam Dược",
+          "phone": "+84 90 224 29 89",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "41",
+          "streetName": "Hẻm 67 Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 41, Hẻm 67 Đường Lê Đức Thọ, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832444,
+          "lon": 106.681341
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83334,
+            "lon": 106.68043
+          },
+          "btmRightPoint": {
+            "lat": 10.83154,
+            "lon": 106.68226
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83253,
+              "lon": 106.68137
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "jz1XgOlebyVLTWs9Bbc44w",
+        "score": 99.4210968018,
+        "dist": 578.90989,
+        "info": "search:ta:704009002876191-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Vạn Phước Tường",
+          "phone": "+84 28 3894 0456",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "702",
+          "streetName": "Hẻm 590/2 Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 702, Hẻm 590/2 Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.830825,
+          "lon": 106.678772
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83172,
+            "lon": 106.67786
+          },
+          "btmRightPoint": {
+            "lat": 10.82993,
+            "lon": 106.67969
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83095,
+              "lon": 106.67875
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "TgAYbWTYj02tRC5jCOw0KQ",
+        "score": 99.3286895752,
+        "dist": 671.314031,
+        "info": "search:ta:704009002903130-VN",
+        "poi": {
+          "name": "Nhà Thuốc Bắc Phước Thọ Đường",
+          "phone": "+84 28 3895 2239",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "199",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 199, Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.84018,
+          "lon": 106.675953
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84108,
+            "lon": 106.67504
+          },
+          "btmRightPoint": {
+            "lat": 10.83928,
+            "lon": 106.67687
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8406,
+              "lon": 106.67615
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Nksb2fT6Urr6AuiqzWxutg",
+        "score": 99.3265686035,
+        "dist": 673.432912,
+        "info": "search:ta:704009003357188-VN",
+        "poi": {
+          "name": "Y Học Cổ Truyền 530",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "496",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 496, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829869,
+          "lon": 106.681293
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83077,
+            "lon": 106.68038
+          },
+          "btmRightPoint": {
+            "lat": 10.82897,
+            "lon": 106.68221
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8297,
+              "lon": 106.68125
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "KFK1rDyhH0T2BHtwTS5ykw",
+        "score": 99.1929092407,
+        "dist": 807.096174,
+        "info": "search:ta:704009002103221-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền",
+          "phone": "+84 97 625 19 51",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "96",
+          "streetName": "Đường Lê Hoàng Phái",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 96, Đường Lê Hoàng Phái, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841358,
+          "lon": 106.675426
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84226,
+            "lon": 106.67451
+          },
+          "btmRightPoint": {
+            "lat": 10.84046,
+            "lon": 106.67634
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84135,
+              "lon": 106.67533
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "qnMmPe5-u4taZsyJjMv9Kw",
+        "score": 99.1469268799,
+        "dist": 853.075273,
+        "info": "search:ta:704009003345456-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Đông Y Xuân Nghĩa Đường",
+          "phone": "+84 28 3895 1760",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "112",
+          "streetName": "Đường Lê Hoàng Phái",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 112, Đường Lê Hoàng Phái, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841888,
+          "lon": 106.675421
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84279,
+            "lon": 106.67451
+          },
+          "btmRightPoint": {
+            "lat": 10.84099,
+            "lon": 106.67634
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84189,
+              "lon": 106.67532
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "cF9dqZIPpyJkhurWhHy3BA",
+        "score": 99.1074142456,
+        "dist": 892.580586,
+        "info": "search:ta:704009001844860-VN",
+        "poi": {
+          "name": "Phòng Khám Nhi Bạn Của Bé",
+          "phone": "+84 94 142 17 01",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 20",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 20, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835659,
+          "lon": 106.68839
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83656,
+            "lon": 106.68747
+          },
+          "btmRightPoint": {
+            "lat": 10.83476,
+            "lon": 106.68931
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83573,
+              "lon": 106.68833
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "shXqf9CyjxIqYiB0k5Ngig",
+        "score": 99.1003265381,
+        "dist": 899.676504,
+        "info": "search:ta:704009002170363-VN",
+        "poi": {
+          "name": "Huyền Linh Xông Hơi Xoa Bóp",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "331",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 331, Đường Nguyễn Oanh, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843275,
+          "lon": 106.676985
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84417,
+            "lon": 106.67607
+          },
+          "btmRightPoint": {
+            "lat": 10.84238,
+            "lon": 106.6779
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84324,
+              "lon": 106.67709
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "a3l5kdvpeZZC-iVGDAv4qA",
+        "score": 99.0984725952,
+        "dist": 901.531482,
+        "info": "search:ta:704009001888994-VN",
+        "poi": {
+          "name": "Phòng Khám Nội Tổng Hợp Bác Sĩ Nguyễn Thị Giàu",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "466",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 466, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842663,
+          "lon": 106.67577
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84356,
+            "lon": 106.67485
+          },
+          "btmRightPoint": {
+            "lat": 10.84176,
+            "lon": 106.67669
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84259,
+              "lon": 106.67571
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "GItmUbAq_PeS8d1_k4i8Fw",
+        "score": 99.0779418945,
+        "dist": 922.063717,
+        "info": "search:ta:704009002150519-VN",
+        "poi": {
+          "name": "Phòng Khám Bệnh Y Học Cổ Truyền Nguyên Sinh Đường",
+          "phone": "+84 90 723 23 01",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 226 Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 226 Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841592,
+          "lon": 106.674144
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84249,
+            "lon": 106.67323
+          },
+          "btmRightPoint": {
+            "lat": 10.84069,
+            "lon": 106.67506
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84152,
+              "lon": 106.67408
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ysfpAOF8LTfuHgWhs9XIkA",
+        "score": 99.046661377,
+        "dist": 953.340549,
+        "info": "search:ta:704009001900998-VN",
+        "poi": {
+          "name": "Bác Sĩ Linh",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 50 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 50 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.827571,
+          "lon": 106.677887
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82847,
+            "lon": 106.67697
+          },
+          "btmRightPoint": {
+            "lat": 10.82667,
+            "lon": 106.6788
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82757,
+              "lon": 106.67798
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ga7E5nOYjAFJThshNsWTQg",
+        "score": 98.9880218506,
+        "dist": 1011.97558,
+        "info": "search:ta:704009001779753-VN",
+        "poi": {
+          "name": "Phòng Khám Đông Y Hồng Tâm",
+          "phone": "+84 94 307 60 61",
+          "categorySet": [
+            {
+              "id": 7321
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "526",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 526, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843224,
+          "lon": 106.674812
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84412,
+            "lon": 106.6739
+          },
+          "btmRightPoint": {
+            "lat": 10.84232,
+            "lon": 106.67573
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84314,
+              "lon": 106.67477
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vI1RzGAIyEYKFPHc91vU2Q",
+        "score": 98.972114563,
+        "dist": 1027.88317,
+        "info": "search:ta:704009001433651-VN",
+        "poi": {
+          "name": "Bệnh Viện Đa Khoa Quốc Tế Vũ Anh",
+          "phone": "+84 28 3989 4989",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "15-16",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 15-16, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828315,
+          "lon": 106.685695
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82925,
+            "lon": 106.68515
+          },
+          "btmRightPoint": {
+            "lat": 10.82821,
+            "lon": 106.6861
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8282,
+              "lon": 106.68573
+            }
+          },
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82821,
+              "lon": 106.68571
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "f4f41fb6-0c0c-49be-a265-c32854f8f98e"
+          }
+        }
+      },
+      {
+        "type": "POI",
+        "id": "AogOzCvd0iCrC660GyZ9BQ",
+        "score": 98.9330825806,
+        "dist": 1066.916531,
+        "info": "search:ta:704009002857477-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Phú Lương Đường",
+          "phone": "+84 28 3989 1006",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "378",
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 378, Đường Nguyễn Văn Nghi, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826317,
+          "lon": 106.681471
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82722,
+            "lon": 106.68056
+          },
+          "btmRightPoint": {
+            "lat": 10.82542,
+            "lon": 106.68239
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82623,
+              "lon": 106.68148
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "MJ2GNQVgxoJpDIuFwDNFOQ",
+        "score": 98.9126434326,
+        "dist": 1087.35321,
+        "info": "search:ta:704009002132575-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Nhân Đường Xưa Nay",
+          "phone": "+84 90 837 04 22",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "466",
+          "streetName": "Hẻm 325 Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 466, Hẻm 325 Nguyễn Oanh, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.845349,
+          "lon": 106.677927
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84625,
+            "lon": 106.67701
+          },
+          "btmRightPoint": {
+            "lat": 10.84445,
+            "lon": 106.67884
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84538,
+              "lon": 106.67786
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "xwqsKlzJ_REBHd7No72_9Q",
+        "score": 98.8622894287,
+        "dist": 1137.716118,
+        "info": "search:ta:704009001863266-VN",
+        "poi": {
+          "name": "Phòng Khám Liên Khoa Lao-HIV/AIDS",
+          "categorySet": [
+            {
+              "id": 7321
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "556",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 556, Đường Lê Đức Thọ, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844006,
+          "lon": 106.673951
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84491,
+            "lon": 106.67304
+          },
+          "btmRightPoint": {
+            "lat": 10.84311,
+            "lon": 106.67487
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84395,
+              "lon": 106.67388
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "MPov__PgzpatqTWC0i3phA",
+        "score": 98.778678894,
+        "dist": 1221.321774,
+        "info": "search:ta:704009003342764-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Lương Y Lê Thị Bình",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "11A",
+          "streetName": "Đường Hạnh Thông",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 11A, Đường Hạnh Thông, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.82485,
+          "lon": 106.680153
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82575,
+            "lon": 106.67924
+          },
+          "btmRightPoint": {
+            "lat": 10.82395,
+            "lon": 106.68107
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82476,
+              "lon": 106.68015
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "3wR0yFmDvqOKTJa_Iv35Sg",
+        "score": 98.7607345581,
+        "dist": 1239.264144,
+        "info": "search:ta:704009001816637-VN",
+        "poi": {
+          "name": "Hội Chữ Thập Đỏ Quận Gò Vấp Phòng Khám Y Học Cổ Truyền Dược Vương",
+          "categorySet": [
+            {
+              "id": 7321
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 258/1 Dương Quảng Hàm",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 258/1 Dương Quảng Hàm, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829386,
+          "lon": 106.689474
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83029,
+            "lon": 106.68856
+          },
+          "btmRightPoint": {
+            "lat": 10.82849,
+            "lon": 106.69039
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82933,
+              "lon": 106.6894
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ZTevwirrL7o4xeFKdHMM7Q",
+        "score": 98.7466583252,
+        "dist": 1253.341434,
+        "info": "search:ta:704009001850579-VN",
+        "poi": {
+          "name": "Phòng Khám Liên Hương Sản Phụ Khoa-Siêu Âm",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "461",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 461, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844416,
+          "lon": 106.67278
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84532,
+            "lon": 106.67186
+          },
+          "btmRightPoint": {
+            "lat": 10.84352,
+            "lon": 106.6737
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8445,
+              "lon": 106.67283
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "VnoK-da58SmnBa3iV_zrWw",
+        "score": 98.7405776978,
+        "dist": 1259.425852,
+        "info": "search:ta:704009001942859-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa 1 Bác Sĩ Vũ Hùng Khánh",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "463",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 463, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844447,
+          "lon": 106.67273
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84535,
+            "lon": 106.67181
+          },
+          "btmRightPoint": {
+            "lat": 10.84355,
+            "lon": 106.67365
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84453,
+              "lon": 106.67278
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "FvdKUJpUPZqaOB7j3hGTTA",
+        "score": 98.7244338989,
+        "dist": 1275.570382,
+        "info": "search:ta:704009001860351-VN",
+        "poi": {
+          "name": "Bác Sĩ Hùng",
+          "phone": "+84 91 402 21 93",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "48",
+          "streetName": "Đường Nguyễn Văn Công",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 48, Đường Nguyễn Văn Công, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.824615,
+          "lon": 106.677777
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82551,
+            "lon": 106.67686
+          },
+          "btmRightPoint": {
+            "lat": 10.82372,
+            "lon": 106.67869
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82453,
+              "lon": 106.6778
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "e3VTtO48VWWwZQWtANTJkA",
+        "score": 98.7152099609,
+        "dist": 1284.785386,
+        "info": "search:ta:704009001742489-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Nhi",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "11",
+          "streetName": "Đường Nguyễn Du",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 11, Đường Nguyễn Du, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825607,
+          "lon": 106.685695
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82651,
+            "lon": 106.68478
+          },
+          "btmRightPoint": {
+            "lat": 10.82471,
+            "lon": 106.68661
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82561,
+              "lon": 106.68581
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "3knlaa-KivNtMInjJf4Ueg",
+        "score": 98.7051239014,
+        "dist": 1294.880761,
+        "info": "search:ta:704009002133550-VN",
+        "poi": {
+          "name": "Hồng Ân Đường",
+          "phone": "+84 28 6651 1143",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "26/251",
+          "streetName": "Đường Nguyễn Du",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 26/251, Đường Nguyễn Du, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825632,
+          "lon": 106.685937
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82653,
+            "lon": 106.68502
+          },
+          "btmRightPoint": {
+            "lat": 10.82473,
+            "lon": 106.68685
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82551,
+              "lon": 106.68574
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "W99beW90JbI_Yh44rlcVqg",
+        "score": 98.6527938843,
+        "dist": 1347.211378,
+        "info": "search:ta:704009001742409-VN",
+        "poi": {
+          "name": "Bệnh Viện Quân Y 175-Nhà Công Vụ Số 2",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "2",
+          "streetName": "Hẻm 50 Phạm Ngũ Lão",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 2, Hẻm 50 Phạm Ngũ Lão, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823787,
+          "lon": 106.681543
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82469,
+            "lon": 106.68063
+          },
+          "btmRightPoint": {
+            "lat": 10.82289,
+            "lon": 106.68246
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82379,
+              "lon": 106.68159
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Q4XmrFQWXCBWynLo0BumIw",
+        "score": 98.5986099243,
+        "dist": 1401.393545,
+        "info": "search:ta:704009001753707-VN",
+        "poi": {
+          "name": "Bác Sĩ Quý-Chuyên Khoa 2 Nhi Khám Bệnh Nhi Đồng",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "19",
+          "streetName": "Đường Lý Thường Kiệt",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 19, Đường Lý Thường Kiệt, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.8242,
+          "lon": 106.685154
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8251,
+            "lon": 106.68424
+          },
+          "btmRightPoint": {
+            "lat": 10.8233,
+            "lon": 106.68607
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82424,
+              "lon": 106.68512
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "TkDsCPocsYVnk9sB-3v1SA",
+        "score": 98.5777664185,
+        "dist": 1422.239199,
+        "info": "search:ta:704009001842479-VN",
+        "poi": {
+          "name": "Phòng Chụp X-quang Siêu Âm",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "501",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 501, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.845407,
+          "lon": 106.671583
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84631,
+            "lon": 106.67067
+          },
+          "btmRightPoint": {
+            "lat": 10.84451,
+            "lon": 106.6725
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84547,
+              "lon": 106.67165
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "nnTObFcxED7dSMT_WrvQyQ",
+        "score": 98.5717315674,
+        "dist": 1428.265781,
+        "info": "search:ta:704009001957172-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Da Liễu SD Hồng Châu",
+          "phone": "+84 90 740 55 22",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "505-503",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 505-503, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.845447,
+          "lon": 106.671546
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84635,
+            "lon": 106.67063
+          },
+          "btmRightPoint": {
+            "lat": 10.84455,
+            "lon": 106.67246
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84551,
+              "lon": 106.67162
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Sjf4EzzFfMH7BthxtUaGLw",
+        "score": 98.5578460693,
+        "dist": 1442.153926,
+        "info": "search:ta:704009003350252-VN",
+        "poi": {
+          "name": "Bệnh Viện Gò Vấp",
+          "phone": "+84 28 3996 4003",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "212",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 15",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 212, Đường Lê Đức Thọ, Phường 15, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.845662,
+          "lon": 106.671603
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84644,
+            "lon": 106.67147
+          },
+          "btmRightPoint": {
+            "lat": 10.8455,
+            "lon": 106.67246
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84561,
+              "lon": 106.67153
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "a0ddc72b-36a8-43d9-8f8e-3181f4e30945"
+          }
+        }
+      },
+      {
+        "type": "POI",
+        "id": "Nz48e88ErLVvXGIPX9na_g",
+        "score": 98.5339660645,
+        "dist": 1466.029495,
+        "info": "search:ta:704009002856489-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Hưng Phát",
+          "phone": "+84 90 855 59 97",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "480",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 480, Đường Nguyễn Thái Sơn, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826892,
+          "lon": 106.690084
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82779,
+            "lon": 106.68917
+          },
+          "btmRightPoint": {
+            "lat": 10.82599,
+            "lon": 106.691
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82695,
+              "lon": 106.69001
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "l2C9u7TNXCp_n-Btx5-ctg",
+        "score": 98.5261001587,
+        "dist": 1473.899473,
+        "info": "search:ta:704009001737866-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Sản Phụ Khoa-Siêu Âm",
+          "phone": "+84 98 345 30 90",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "969",
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 969, Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822648,
+          "lon": 106.678832
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82355,
+            "lon": 106.67792
+          },
+          "btmRightPoint": {
+            "lat": 10.82175,
+            "lon": 106.67975
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82259,
+              "lon": 106.67892
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "IyO3rygnE8GrzQgoGj-OUQ",
+        "score": 98.4567947388,
+        "dist": 1543.216215,
+        "info": "search:ta:704009001837106-VN",
+        "poi": {
+          "name": "Phòng Khám Nhi Đồng",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "515",
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 515, Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832955,
+          "lon": 106.666396
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83385,
+            "lon": 106.66548
+          },
+          "btmRightPoint": {
+            "lat": 10.83206,
+            "lon": 106.66731
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83303,
+              "lon": 106.66645
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "1jfaPHlFYS0CjNdSY9u-Ew",
+        "score": 98.442489624,
+        "dist": 1557.515987,
+        "info": "search:ta:704009001822991-VN",
+        "poi": {
+          "name": "Ủy Ban Nhân Dân Quận Gò Vấp-Trung Tâm Y Tế Quận Gò Vấp-Trạm Y Tế Phường 10",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 499/6 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 499/6 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832466,
+          "lon": 106.666376
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83337,
+            "lon": 106.66546
+          },
+          "btmRightPoint": {
+            "lat": 10.83157,
+            "lon": 106.66729
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83239,
+              "lon": 106.66633
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "oYv7RYd4DsjLLCsqNepcHA",
+        "score": 98.4369354248,
+        "dist": 1563.062467,
+        "info": "search:ta:704009003354041-VN",
+        "poi": {
+          "name": "Hội Đông Y Quận Gò Vấp",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "5",
+          "streetName": "Đường Trần Phú Cường",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 5, Đường Trần Phú Cường, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823757,
+          "lon": 106.687543
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82466,
+            "lon": 106.68663
+          },
+          "btmRightPoint": {
+            "lat": 10.82286,
+            "lon": 106.68846
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82383,
+              "lon": 106.6876
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "i8lykEeV4dIrqGbAxYhgUQ",
+        "score": 98.4332962036,
+        "dist": 1566.71373,
+        "info": "search:ta:704009001846368-VN",
+        "poi": {
+          "name": "Lương Y Hồ Tấn Lộc",
+          "categorySet": [
+            {
+              "id": 7321
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 458 Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 458 Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834352,
+          "lon": 106.665953
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83525,
+            "lon": 106.66504
+          },
+          "btmRightPoint": {
+            "lat": 10.83345,
+            "lon": 106.66687
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83432,
+              "lon": 106.66604
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "WOC9FhjobBDD41rYC6DW1Q",
+        "score": 98.4020004272,
+        "dist": 1597.998979,
+        "info": "search:ta:704009001924922-VN",
+        "poi": {
+          "name": "Đơn Vị Y Học Cổ Truyền Ngoài Giờ Bác Sĩ Trần Đức Lưu",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Trưng Nữ Vương",
+          "municipalitySubdivision": "Phường 4",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Trưng Nữ Vương, Phường 4, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823252,
+          "lon": 106.687291
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82415,
+            "lon": 106.68638
+          },
+          "btmRightPoint": {
+            "lat": 10.82235,
+            "lon": 106.68821
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82333,
+              "lon": 106.68734
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "8xANuPvDDep57U8kiePseQ",
+        "score": 98.3984222412,
+        "dist": 1601.583769,
+        "info": "search:ta:704009001897491-VN",
+        "poi": {
+          "name": "Phòng Khám Nội Tổng Hợp",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 2",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 2, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821651,
+          "lon": 106.677659
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82255,
+            "lon": 106.67674
+          },
+          "btmRightPoint": {
+            "lat": 10.82075,
+            "lon": 106.67857
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82161,
+              "lon": 106.67768
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Y4PljaxEyJPquVxvf8zDtg",
+        "score": 98.3938064575,
+        "dist": 1606.19921,
+        "info": "search:ta:704009001853985-VN",
+        "poi": {
+          "name": "Bệnh Viện Quân Y 175 Bệnh Viện Dã Chiến Số 1",
+          "categorySet": [
+            {
+              "id": 7321
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 19 Đường Phạm Ngũ Lão",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 19 Đường Phạm Ngũ Lão, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821556,
+          "lon": 106.682451
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82246,
+            "lon": 106.68154
+          },
+          "btmRightPoint": {
+            "lat": 10.82066,
+            "lon": 106.68337
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82153,
+              "lon": 106.68254
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "HlpDNYlG6UJ_bqS85eifcQ",
+        "score": 98.3629989624,
+        "dist": 1636.999875,
+        "info": "search:ta:704009002871628-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Phạm Nhật Chu",
+          "phone": "+84 28 3985 3513",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "78C9",
+          "streetName": "Hẻm 19 Đường Phạm Ngũ Lão",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 78C9, Hẻm 19 Đường Phạm Ngũ Lão, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821301,
+          "lon": 106.682617
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8222,
+            "lon": 106.6817
+          },
+          "btmRightPoint": {
+            "lat": 10.8204,
+            "lon": 106.68353
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8213,
+              "lon": 106.68253
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "6Fr-izrAGp1JfQo5leFy4A",
+        "score": 98.35496521,
+        "dist": 1645.039219,
+        "info": "search:ta:704009001878063-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Da Liễu Bác Sĩ Chuyên Khoa 2 Trần Kim Phượng",
+          "phone": "+84 98 598 94 66",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Huỳnh Khương An",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Huỳnh Khương An, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823753,
+          "lon": 106.688914
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82465,
+            "lon": 106.688
+          },
+          "btmRightPoint": {
+            "lat": 10.82285,
+            "lon": 106.68983
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82369,
+              "lon": 106.68885
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "0Mw3xM2KLFz4DhZfMvzDTg",
+        "score": 98.3329925537,
+        "dist": 1667.008485,
+        "info": "search:ta:704009002177594-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Đỗ Yến",
+          "phone": "+84 28 2217 9932",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "270",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 270, Đường Thống Nhất, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839425,
+          "lon": 106.665399
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84032,
+            "lon": 106.66448
+          },
+          "btmRightPoint": {
+            "lat": 10.83853,
+            "lon": 106.66631
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83943,
+              "lon": 106.66531
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Bs0PfqbTsXTUgzU6rKqgoQ",
+        "score": 98.3188400269,
+        "dist": 1681.158088,
+        "info": "search:ta:704009002167150-VN",
+        "poi": {
+          "name": "Phòng Khám Phú Lương Đường",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 80 Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 80 Nguyễn Văn Nghi, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822903,
+          "lon": 106.688196
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8238,
+            "lon": 106.68728
+          },
+          "btmRightPoint": {
+            "lat": 10.822,
+            "lon": 106.68911
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8228,
+              "lon": 106.6882
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "86zrTebToVRBUE8aiLpjxg",
+        "score": 98.3182907104,
+        "dist": 1681.714198,
+        "info": "search:ta:704009001937657-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Răng Hàm Mặt-Nha Khoa Thống Nhất",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "239",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 239, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.837765,
+          "lon": 106.664946
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83866,
+            "lon": 106.66403
+          },
+          "btmRightPoint": {
+            "lat": 10.83687,
+            "lon": 106.66586
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83774,
+              "lon": 106.66504
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "F7sp934cfxgH0CfXdsQtrg",
+        "score": 98.3128814697,
+        "dist": 1687.120553,
+        "info": "search:ta:704009003341687-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Dân Thiên Đường",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "188",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 188, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835287,
+          "lon": 106.664781
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83619,
+            "lon": 106.66387
+          },
+          "btmRightPoint": {
+            "lat": 10.83439,
+            "lon": 106.6657
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83527,
+              "lon": 106.66469
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "WpPup1sq0Wbz8eCl0ByXJQ",
+        "score": 98.2418823242,
+        "dist": 1758.118548,
+        "info": "search:ta:704009001863129-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa Tâm Thần",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834306,
+          "lon": 106.664196
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83521,
+            "lon": 106.66328
+          },
+          "btmRightPoint": {
+            "lat": 10.83341,
+            "lon": 106.66511
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83427,
+              "lon": 106.66428
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "f3r-2NqLHX-nRpTPCyXPNw",
+        "score": 98.2411193848,
+        "dist": 1758.888286,
+        "info": "search:ta:704009001882677-VN",
+        "poi": {
+          "name": "Phòng Khám Ngoài Giờ Bác Sĩ Phan Thị Diệu Hiền",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "94",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 94, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833904,
+          "lon": 106.664234
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8348,
+            "lon": 106.66332
+          },
+          "btmRightPoint": {
+            "lat": 10.833,
+            "lon": 106.66515
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83394,
+              "lon": 106.66415
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "XBBEqAov4gwCSmToCdVdiA",
+        "score": 98.2137298584,
+        "dist": 1786.274603,
+        "info": "search:ta:704009002138924-VN",
+        "poi": {
+          "name": "Vạn Ninh Đường",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "12/4A",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 12/4A, Đường Thống Nhất, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.841546,
+          "lon": 106.664932
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84245,
+            "lon": 106.66402
+          },
+          "btmRightPoint": {
+            "lat": 10.84065,
+            "lon": 106.66585
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84188,
+              "lon": 106.6648
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "0VyOZwP2hlpA4eIIh9ppeA",
+        "score": 98.2133865356,
+        "dist": 1786.618113,
+        "info": "search:ta:704009002686570-VN",
+        "poi": {
+          "name": "Bệnh Viện Đa Khoa Hồng Đức",
+          "phone": "+84 28 3996 9999",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "32/2",
+          "streetName": "Đường Thống Nhất",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 32/2, Đường Thống Nhất, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.833209,
+          "lon": 106.664079
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83331,
+            "lon": 106.66398
+          },
+          "btmRightPoint": {
+            "lat": 10.83252,
+            "lon": 106.66535
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83316,
+              "lon": 106.66399
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "881d23ed-6cf8-4c48-b767-f128ca810706"
+          }
+        }
+      },
+      {
+        "type": "POI",
+        "id": "j6gqad4OJfQFL--kFNhzRQ",
+        "score": 98.1866455078,
+        "dist": 1813.353736,
+        "info": "search:ta:704009001929131-VN",
+        "poi": {
+          "name": "Phòng Khám Gia Phúc Sản Phụ Khoa-Siêu Âm Bác Sĩ Chuyên Khoa",
+          "phone": "+84 93 120 13 80",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Văn Nghi, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821824,
+          "lon": 106.688718
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82272,
+            "lon": 106.6878
+          },
+          "btmRightPoint": {
+            "lat": 10.82092,
+            "lon": 106.68963
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82178,
+              "lon": 106.68863
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "c8IUMSjMmDQozdpqnVr8IQ",
+        "score": 98.1657562256,
+        "dist": 1834.243386,
+        "info": "search:ta:704009001946901-VN",
+        "poi": {
+          "name": "Phòng Khám Chuyên Khoa 1 Bác Sĩ Trần Xuân Chiến",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 785 Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 785 Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.819588,
+          "lon": 106.6773
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82049,
+            "lon": 106.67638
+          },
+          "btmRightPoint": {
+            "lat": 10.81869,
+            "lon": 106.67822
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81953,
+              "lon": 106.67723
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "IRd8q4qdoVsgkFlQtjy_9Q",
+        "score": 98.134513855,
+        "dist": 1865.483791,
+        "info": "search:ta:704009002108618-VN",
+        "poi": {
+          "name": "Phòng Chẩn Trị Y Học Cổ Truyền Long Quyết Thắng",
+          "phone": "+84 28 2213 6693",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "212",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 212, Đường Thống Nhất, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842978,
+          "lon": 106.664764
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84388,
+            "lon": 106.66385
+          },
+          "btmRightPoint": {
+            "lat": 10.84208,
+            "lon": 106.66568
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84297,
+              "lon": 106.66467
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bMkbeQ4X9niB5JmZYBO1hw",
+        "score": 98.1312255859,
+        "dist": 1868.772103,
+        "info": "search:ta:704009001955247-VN",
+        "poi": {
+          "name": "Doanh Nghiệp Tư Nhân Đông Y Mê Kông-Phòng Chuẩn Trị Y Học Cổ Truyền",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "360",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 360, Đường Thống Nhất, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.843035,
+          "lon": 106.664758
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84393,
+            "lon": 106.66384
+          },
+          "btmRightPoint": {
+            "lat": 10.84214,
+            "lon": 106.66567
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84303,
+              "lon": 106.66467
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ZmXOAqLnlRw7IfuKPaK6Wg",
+        "score": 98.1231079102,
+        "dist": 1876.890136,
+        "info": "search:ta:704009001931592-VN",
+        "poi": {
+          "name": "Phòng Khám Hải Thoa",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "6",
+          "streetName": "Đường Nguyễn Văn Nghi",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 6, Đường Nguyễn Văn Nghi, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.821313,
+          "lon": 106.688981
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82221,
+            "lon": 106.68807
+          },
+          "btmRightPoint": {
+            "lat": 10.82041,
+            "lon": 106.6899
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82128,
+              "lon": 106.6889
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "2R0vU35NOChQCqSxxhgh-g",
+        "score": 98.0938796997,
+        "dist": 1906.124244,
+        "info": "search:ta:704009001852147-VN",
+        "poi": {
+          "name": "Trạm Y Tế Phường 11-Nha Khoa",
+          "phone": "+84 90 300 57 48",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.835129,
+          "lon": 106.66278
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83603,
+            "lon": 106.66186
+          },
+          "btmRightPoint": {
+            "lat": 10.83423,
+            "lon": 106.6637
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83522,
+              "lon": 106.66281
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "vlMyAeCy2UYS0Fc1LMJhWA",
+        "score": 98.045501709,
+        "dist": 1954.502371,
+        "info": "search:ta:704009003346399-VN",
+        "poi": {
+          "name": "Phòng Khám Đa Khoa-Bệnh Viện 175",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "784",
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 784, Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818305,
+          "lon": 106.678878
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8192,
+            "lon": 106.67796
+          },
+          "btmRightPoint": {
+            "lat": 10.81741,
+            "lon": 106.67979
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81829,
+              "lon": 106.67879
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "gR4hzyqmTm5aTBBtZxtvmw",
+        "score": 98.0443267822,
+        "dist": 1955.676749,
+        "info": "search:ta:704009003341641-VN",
+        "poi": {
+          "name": "Phòng Khám Đông Y Trần Thị Minh Chuyên",
+          "phone": "+84 28 6675 2573",
+          "categorySet": [
+            {
+              "id": 7321004
+            }
+          ],
+          "categories": [
+            "hospital of chinese medicine",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital of chinese medicine"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "404",
+          "streetName": "Đường Nguyễn Văn Công",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 404, Đường Nguyễn Văn Công, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.819034,
+          "lon": 106.674916
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81993,
+            "lon": 106.674
+          },
+          "btmRightPoint": {
+            "lat": 10.81813,
+            "lon": 106.67583
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81907,
+              "lon": 106.675
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "bp9faxTyySS1lF0W6mQKEw",
+        "score": 98.040512085,
+        "dist": 1959.485766,
+        "info": "search:ta:704009001864689-VN",
+        "poi": {
+          "name": "Phòng Khám Bác Sĩ Mai",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 785 Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 785 Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818309,
+          "lon": 106.678329
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81921,
+            "lon": 106.67741
+          },
+          "btmRightPoint": {
+            "lat": 10.81741,
+            "lon": 106.67924
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81822,
+              "lon": 106.67836
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "EDPkGBjD6jWA8RT338MgMg",
+        "score": 98.0311965942,
+        "dist": 1968.805062,
+        "info": "search:ta:704009001455705-VN",
+        "poi": {
+          "name": "Bệnh Viện Quân Y 175",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "1",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 1, Đường Nguyễn Thái Sơn, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818191,
+          "lon": 106.681746
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82221,
+            "lon": 106.67875
+          },
+          "btmRightPoint": {
+            "lat": 10.81597,
+            "lon": 106.68283
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81813,
+              "lon": 106.68182
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "0000564e-3200-3c00-0000-00005995fdfb"
+          }
+        }
+      },
+      {
+        "type": "POI",
+        "id": "sRT9aQe1k-rY-l_Na3Pu6g",
+        "score": 98.0311431885,
+        "dist": 1968.863358,
+        "info": "search:ta:704009001877259-VN",
+        "poi": {
+          "name": "Phòng Khám Sản-Phụ Khoa-Siêu Âm Thai 4 Chiều",
+          "phone": "+84 90 846 83 38",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "449",
+          "streetName": "Đường Thống Nhất",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 449, Đường Thống Nhất, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.844823,
+          "lon": 106.664687
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84572,
+            "lon": 106.66377
+          },
+          "btmRightPoint": {
+            "lat": 10.84392,
+            "lon": 106.6656
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84482,
+              "lon": 106.66478
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "RrqK8Zn2ql6cIlFEwvDHdA",
+        "score": 98.028137207,
+        "dist": 1971.864727,
+        "info": "search:ta:704009001892471-VN",
+        "poi": {
+          "name": "Phòng Khám Ngoài Giờ 703 Siêu Âm-Ung Bướu",
+          "categorySet": [
+            {
+              "id": 7321003
+            }
+          ],
+          "categories": [
+            "hospital/polyclinic",
+            "special"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "special"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "703",
+          "streetName": "Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 703, Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.848286,
+          "lon": 106.667364
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84919,
+            "lon": 106.66645
+          },
+          "btmRightPoint": {
+            "lat": 10.84739,
+            "lon": 106.66828
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84837,
+              "lon": 106.6674
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "dlwWletHOVfPJRiKdqnZMQ",
+        "score": 98.0260620117,
+        "dist": 1973.936232,
+        "info": "search:ta:704009001438000-VN",
+        "poi": {
+          "name": "Bệnh Viện Gò Vấp",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "641",
+          "streetName": "Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 641, Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83531,
+          "lon": 106.662152
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83621,
+            "lon": 106.66124
+          },
+          "btmRightPoint": {
+            "lat": 10.83441,
+            "lon": 106.66307
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8354,
+              "lon": 106.66218
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "Vx0fu-p-r3yXjkLZx2jGzA",
+        "score": 98.0105667114,
+        "dist": 1989.43959,
+        "info": "search:ta:704007000016369-VN",
+        "poi": {
+          "name": "Bệnh Viện Đa Khoa Gò Vấp",
+          "categorySet": [
+            {
+              "id": 7321002
+            }
+          ],
+          "categories": [
+            "general",
+            "hospital/polyclinic"
+          ],
+          "classifications": [
+            {
+              "code": "HOSPITAL_POLYCLINIC",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "general"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "hospital/polyclinic"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "641",
+          "streetName": "Đường Quang Trung",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Thông Tây Hội",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71426",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 641, Đường Quang Trung, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 71426",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.83535,
+          "lon": 106.662009
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83555,
+            "lon": 106.66099
+          },
+          "btmRightPoint": {
+            "lat": 10.83374,
+            "lon": 106.66216
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83542,
+              "lon": 106.6621
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "879b2269-05a4-4ed1-a572-d07c20dbb12f"
+          }
+        }
+      }
+    ]
+  }
+}

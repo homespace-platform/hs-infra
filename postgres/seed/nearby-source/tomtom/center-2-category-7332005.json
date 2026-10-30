@@ -1,0 +1,1502 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.826392,
+    "lon": 106.6891123,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "7332005"
+  },
+  "fetchedAt": "2026-10-30T19:58:21.830Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 28,
+      "numResults": 20,
+      "offset": 0,
+      "totalResults": 20,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.826392,
+        "lon": 106.6891123
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "Sqkg-_h4WSYhYC6YQTr8zw",
+        "score": 99.9037399292,
+        "dist": 96.253665,
+        "info": "search:ta:704009001469163-VN",
+        "poi": {
+          "name": "VinMart",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "174",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 174, Đường Nguyễn Thái Sơn, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826705,
+          "lon": 106.689934
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8276,
+            "lon": 106.68902
+          },
+          "btmRightPoint": {
+            "lat": 10.82581,
+            "lon": 106.69085
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82686,
+              "lon": 106.68983
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "EaYPCfg_oY-qw4zeWBUlfw",
+        "score": 99.8509216309,
+        "dist": 149.086314,
+        "info": "search:ta:704009003274004-VN",
+        "poi": {
+          "name": "Co.opFood",
+          "phone": "+84 28 3588 0034",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.saigonco-op.com.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "306",
+          "streetName": "Hẻm 404 Huỳnh Khương An",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 306, Hẻm 404 Huỳnh Khương An, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825313,
+          "lon": 106.688302
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82621,
+            "lon": 106.68739
+          },
+          "btmRightPoint": {
+            "lat": 10.82441,
+            "lon": 106.68922
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82528,
+              "lon": 106.68822
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "ekK7KYhtPQ7cYl15BsASMg",
+        "score": 99.5892486572,
+        "dist": 410.753431,
+        "info": "search:ta:704009001739259-VN",
+        "poi": {
+          "name": "Công Ty Trách Nhiệm Hữu Hạn B-smart",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Huỳnh Khương An",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Huỳnh Khương An, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822704,
+          "lon": 106.68933
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.8236,
+            "lon": 106.68841
+          },
+          "btmRightPoint": {
+            "lat": 10.8218,
+            "lon": 106.69025
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82277,
+              "lon": 106.68926
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "cM-sOf5M3_NGpCJJtImeig",
+        "score": 99.4596405029,
+        "dist": 540.357484,
+        "info": "search:ta:704009002559838-VN",
+        "poi": {
+          "name": "Siêu Thị Emart",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.emart.com.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "168",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 168, Đường Phan Văn Trị, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.823227,
+          "lon": 106.692866
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82413,
+            "lon": 106.69195
+          },
+          "btmRightPoint": {
+            "lat": 10.82233,
+            "lon": 106.69378
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82397,
+              "lon": 106.69271
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "t3vaioaCRQ59oKDM3xBLVg",
+        "score": 99.373550415,
+        "dist": 626.447124,
+        "info": "search:ta:704007000016072-VN",
+        "poi": {
+          "name": "E Mart",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822653,
+          "lon": 106.693403
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82355,
+            "lon": 106.69249
+          },
+          "btmRightPoint": {
+            "lat": 10.82175,
+            "lon": 106.69432
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82261,
+              "lon": 106.69332
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "QVXK9ZRnJsWUaC7lOw7B7w",
+        "score": 99.3151245117,
+        "dist": 684.877013,
+        "info": "search:ta:704009001445259-VN",
+        "poi": {
+          "name": "Emart",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 5",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Phan Văn Trị, Phường 5, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.822381,
+          "lon": 106.693872
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82328,
+            "lon": 106.69296
+          },
+          "btmRightPoint": {
+            "lat": 10.82148,
+            "lon": 106.69479
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82229,
+              "lon": 106.69389
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "IroRsEHWrOEuG9aA03pZLA",
+        "score": 99.2601242065,
+        "dist": 739.884477,
+        "info": "search:ta:704009003358505-VN",
+        "poi": {
+          "name": "VinMart+",
+          "brands": [
+            {
+              "name": "VinMart+"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "124",
+          "streetName": "Đường Trần Thị Nghỉ",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 124, Đường Trần Thị Nghỉ, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.828175,
+          "lon": 106.682586
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82907,
+            "lon": 106.68167
+          },
+          "btmRightPoint": {
+            "lat": 10.82728,
+            "lon": 106.6835
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82821,
+              "lon": 106.6825
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "AXZfuopgeqZFNQPwFMXlpw",
+        "score": 99.1527099609,
+        "dist": 847.29076,
+        "info": "search:ta:704009003357173-VN",
+        "poi": {
+          "name": "Siêu Thị Co.opMart",
+          "phone": "+84 28 3894 6887",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.co-opmart.com.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "543/1",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 543/1, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829308,
+          "lon": 106.681945
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83021,
+            "lon": 106.68103
+          },
+          "btmRightPoint": {
+            "lat": 10.82841,
+            "lon": 106.68286
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.8294,
+              "lon": 106.68197
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "zE4cjw9Bs9J50DjPavmNIA",
+        "score": 99.1517181396,
+        "dist": 848.287219,
+        "info": "search:ta:704009002665395-VN",
+        "poi": {
+          "name": "Siêu Thị co.opmart Phan Văn Trị",
+          "phone": "+84 28 3894 6887",
+          "brands": [
+            {
+              "name": "Co.opMart"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "543/1",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 543/1, Đường Phan Văn Trị, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829617,
+          "lon": 106.682074
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83052,
+            "lon": 106.68116
+          },
+          "btmRightPoint": {
+            "lat": 10.82872,
+            "lon": 106.68299
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82944,
+              "lon": 106.68206
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "HKacD9XiGZCUkVoznu4G9w",
+        "score": 99.0229797363,
+        "dist": 977.026267,
+        "info": "search:ta:704009001893119-VN",
+        "poi": {
+          "name": "Siêu Thị Mẹ Và Bé Gò Vấp Mẹ & Bé",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "410",
+          "streetName": "Đường Nguyễn Oanh",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 410, Đường Nguyễn Oanh, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826509,
+          "lon": 106.680167
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82741,
+            "lon": 106.67925
+          },
+          "btmRightPoint": {
+            "lat": 10.82561,
+            "lon": 106.68108
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82678,
+              "lon": 106.68014
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "I0i3lFeYDjkSV5SER0FOSg",
+        "score": 99.0100479126,
+        "dist": 989.958037,
+        "info": "search:ta:704009000502170-VN",
+        "poi": {
+          "name": "Công Ty 59 - Bộ Quốc Phòng - Trung Tâm Thương Mại Nguyễn Kiệm - Siêu Thị Big C",
+          "brands": [
+            {
+              "name": "Big C"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.826153,
+          "lon": 106.680051
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82705,
+            "lon": 106.67914
+          },
+          "btmRightPoint": {
+            "lat": 10.82525,
+            "lon": 106.68097
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82614,
+              "lon": 106.68024
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "LGWG9z5DIF9FxpXv2oveUQ",
+        "score": 98.9900512695,
+        "dist": 1009.954308,
+        "info": "search:ta:704009002088714-VN",
+        "poi": {
+          "name": "Siêu Thị Big C",
+          "brands": [
+            {
+              "name": "Big C"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.bigc.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825741,
+          "lon": 106.679889
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82664,
+            "lon": 106.67897
+          },
+          "btmRightPoint": {
+            "lat": 10.82484,
+            "lon": 106.6808
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82614,
+              "lon": 106.68024
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "j4uOA4VRMP-1F4tBsJGirA",
+        "score": 98.9827423096,
+        "dist": 1017.26275,
+        "info": "search:ta:704009003357514-VN",
+        "poi": {
+          "name": "BigC",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.bigc.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.825568,
+          "lon": 106.679836
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.82647,
+            "lon": 106.67892
+          },
+          "btmRightPoint": {
+            "lat": 10.82467,
+            "lon": 106.68075
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82489,
+              "lon": 106.67947
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "RP1f8KsqoYIvwYYvR4CoDQ",
+        "score": 98.8283538818,
+        "dist": 1171.651695,
+        "info": "search:ta:704009003247445-VN",
+        "poi": {
+          "name": "Co.opFood",
+          "phone": "+84 28 3588 0014",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.saigonco-op.com.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "134A-134B",
+          "streetName": "Đường Nguyễn Thái Sơn",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 134A-134B, Đường Nguyễn Thái Sơn, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818391,
+          "lon": 106.682132
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81929,
+            "lon": 106.68122
+          },
+          "btmRightPoint": {
+            "lat": 10.81749,
+            "lon": 106.68305
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81844,
+              "lon": 106.68206
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "8uq0ZYlNL8K-X-DYWkXHEA",
+        "score": 98.6825180054,
+        "dist": 1317.483874,
+        "info": "search:ta:704009002624204-VN",
+        "poi": {
+          "name": "Chi Nhánh Công Ty Thương Mại Thực Phẩm Sài Gòn Coo",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "288",
+          "streetName": "Đường Phan Văn Trị",
+          "municipalitySubdivision": "Phường 11",
+          "municipality": "Bình Lợi Trung",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 288, Đường Phan Văn Trị, Phường 11, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.816218,
+          "lon": 106.695294
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81712,
+            "lon": 106.69438
+          },
+          "btmRightPoint": {
+            "lat": 10.81532,
+            "lon": 106.69621
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81623,
+              "lon": 106.6952
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "dK33uAOMPQCorNX0_0DkMg",
+        "score": 98.6707000732,
+        "dist": 1329.30138,
+        "info": "search:ta:704009002841200-VN",
+        "poi": {
+          "name": "Bách hóa XANH",
+          "brands": [
+            {
+              "name": "Bách hóa Xanh"
+            }
+          ],
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.bachhoaxanh.com",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "26",
+          "streetName": "Đường Nguyễn Thượng Hiền",
+          "municipalitySubdivision": "Phường 1",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72329",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 26, Đường Nguyễn Thượng Hiền, Phường 1, Hồ Chí Minh, Hồ Chí Minh, 72329",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.81463,
+          "lon": 106.686935
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81553,
+            "lon": 106.68602
+          },
+          "btmRightPoint": {
+            "lat": 10.81373,
+            "lon": 106.68785
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81454,
+              "lon": 106.68696
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "AMrb5dtGzPDdl_eWwctvcw",
+        "score": 98.5734786987,
+        "dist": 1426.526547,
+        "info": "search:ta:704009003282521-VN",
+        "poi": {
+          "name": "Hệ Thống Siêu Thị Korea Mart",
+          "phone": "+84 90 950 09 86",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.koreamart.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "799",
+          "streetName": "Hẻm 799 Đường Nguyễn Kiệm",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 799, Hẻm 799 Đường Nguyễn Kiệm, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.818649,
+          "lon": 106.678698
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81955,
+            "lon": 106.67778
+          },
+          "btmRightPoint": {
+            "lat": 10.81775,
+            "lon": 106.67961
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81874,
+              "lon": 106.67871
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "LIPTMR5ee90mIrE7wV8CZQ",
+        "score": 98.5540084839,
+        "dist": 1445.994923,
+        "info": "search:ta:704009003356971-VN",
+        "poi": {
+          "name": "Siêu Thị Auchan",
+          "phone": "+84 28 6258 6036",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "url": "www.auchan.vn",
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "110A",
+          "streetName": "Đường Trương Đăng Quế",
+          "municipalitySubdivision": "Phường 3",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 110A, Đường Trương Đăng Quế, Phường 3, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.815289,
+          "lon": 106.682219
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81619,
+            "lon": 106.6813
+          },
+          "btmRightPoint": {
+            "lat": 10.81439,
+            "lon": 106.68313
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81528,
+              "lon": 106.68227
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "5ngAXu03tZgpoQnC_cdGMg",
+        "score": 98.4895629883,
+        "dist": 1510.437956,
+        "info": "search:ta:704009002859803-VN",
+        "poi": {
+          "name": "Siêu Thị Bình Hòa",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "290",
+          "streetName": "Đường Nơ Trang Long",
+          "municipalitySubdivision": "Phường 12",
+          "municipality": "Bình Thạnh",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "72326",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 290, Đường Nơ Trang Long, Phường 12, Hồ Chí Minh, Hồ Chí Minh, 72326",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.81584,
+          "lon": 106.697821
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.81674,
+            "lon": 106.69691
+          },
+          "btmRightPoint": {
+            "lat": 10.81494,
+            "lon": 106.69874
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.81583,
+              "lon": 106.69791
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "tbF0FmYIazMph787JWFONw",
+        "score": 98.1862869263,
+        "dist": 1813.712698,
+        "info": "search:ta:704009003215403-VN",
+        "poi": {
+          "name": "Siêu Thị VinMart",
+          "categorySet": [
+            {
+              "id": 7332005
+            }
+          ],
+          "categories": [
+            "market",
+            "supermarkets hypermarkets"
+          ],
+          "classifications": [
+            {
+              "code": "MARKET",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "supermarkets hypermarkets"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "market"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Quang Trung",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Quang Trung, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.829099,
+          "lon": 106.672736
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83,
+            "lon": 106.67182
+          },
+          "btmRightPoint": {
+            "lat": 10.8282,
+            "lon": 106.67365
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.82901,
+              "lon": 106.6727
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.826392,
+    "lon": 106.6891123,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "9942002"
+  },
+  "fetchedAt": "2026-10-30T19:58:30.290Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 13,
+      "numResults": 0,
+      "offset": 0,
+      "totalResults": 0,
+      "fuzzyLevel": 2,
+      "geoBias": {
+        "lat": 10.826392,
+        "lon": 106.6891123
+      }
+    },
+    "results": []
+  }
+}

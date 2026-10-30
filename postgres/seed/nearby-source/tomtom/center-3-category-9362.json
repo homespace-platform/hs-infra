@@ -1,0 +1,603 @@
+{
+  "provider": "TOMTOM",
+  "path": "/search/2/nearbySearch/.json",
+  "parameters": {
+    "lat": 10.8358332,
+    "lon": 106.6802188,
+    "radius": 2000,
+    "limit": 100,
+    "ofs": 0,
+    "countrySet": "VN",
+    "categorySet": "9362"
+  },
+  "fetchedAt": "2026-10-30T19:58:53.620Z",
+  "body": {
+    "summary": {
+      "queryType": "NEARBY",
+      "queryTime": 17,
+      "numResults": 8,
+      "offset": 0,
+      "totalResults": 8,
+      "fuzzyLevel": 1,
+      "geoBias": {
+        "lat": 10.8358332,
+        "lon": 106.6802188
+      }
+    },
+    "results": [
+      {
+        "type": "POI",
+        "id": "thiWPne2Xdokb9-DJFAgSw",
+        "score": 99.6629257202,
+        "dist": 337.073101,
+        "info": "search:ta:704009003351123-VN",
+        "poi": {
+          "name": "Công Viên Gò Vấp",
+          "categorySet": [
+            {
+              "id": 9362008
+            }
+          ],
+          "categories": [
+            "park",
+            "park recreation area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "park"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetNumber": "6",
+          "streetName": "Đường Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 17",
+          "municipality": "Gò Vấp",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71422",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Số 6, Đường Nguyễn Văn Lượng, Phường 17, Hồ Chí Minh, Hồ Chí Minh, 71422",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.838665,
+          "lon": 106.679118
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83956,
+            "lon": 106.6782
+          },
+          "btmRightPoint": {
+            "lat": 10.83777,
+            "lon": 106.68003
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83857,
+              "lon": 106.6791
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "_mFTaFUs45FWwlywhjOF-A",
+        "score": 99.4759979248,
+        "dist": 524.00121,
+        "info": "search:ta:704009001853933-VN",
+        "poi": {
+          "name": "Fitness Center",
+          "categorySet": [
+            {
+              "id": 9362036
+            }
+          ],
+          "categories": [
+            "park recreation area",
+            "river scenic area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "river scenic area"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 4",
+          "municipalitySubdivision": "Phường 7",
+          "municipality": "Hạnh Thông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71423",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 4, Phường 7, Hồ Chí Minh, Hồ Chí Minh, 71423",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.832547,
+          "lon": 106.683658
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83345,
+            "lon": 106.68274
+          },
+          "btmRightPoint": {
+            "lat": 10.83165,
+            "lon": 106.68457
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83246,
+              "lon": 106.68369
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "aoTRZgVK3XW3Z8z7v9e5jA",
+        "score": 99.4290924072,
+        "dist": 570.904449,
+        "info": "search:ta:704009002144634-VN",
+        "poi": {
+          "name": "Công Viên Gò Vấp",
+          "categorySet": [
+            {
+              "id": 9362008
+            }
+          ],
+          "categories": [
+            "park",
+            "park recreation area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "park"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 234/45 Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 6",
+          "municipality": "An Nhơn",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71424",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 234/45 Đường Lê Đức Thọ, Phường 6, Hồ Chí Minh, Hồ Chí Minh, 71424",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.840124,
+          "lon": 106.683089
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84693,
+            "lon": 106.6813
+          },
+          "btmRightPoint": {
+            "lat": 10.83921,
+            "lon": 106.68878
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83964,
+              "lon": 106.68333
+            }
+          }
+        ],
+        "dataSources": {
+          "geometry": {
+            "id": "0000564e-3200-3c00-0000-00005995f7e1"
+          }
+        }
+      },
+      {
+        "type": "POI",
+        "id": "yQEYpnHiQpLPHD2rDYPImg",
+        "score": 98.8335723877,
+        "dist": 1166.431182,
+        "info": "search:ta:704009002147901-VN",
+        "poi": {
+          "name": "Dự Án Công Viên Văn Hóa Gò Vấp",
+          "categorySet": [
+            {
+              "id": 9362008
+            }
+          ],
+          "categories": [
+            "park",
+            "park recreation area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "park"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 290 Nguyễn Văn Lượng",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 290 Nguyễn Văn Lượng, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.839544,
+          "lon": 106.670229
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84044,
+            "lon": 106.66931
+          },
+          "btmRightPoint": {
+            "lat": 10.83864,
+            "lon": 106.67114
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83943,
+              "lon": 106.67021
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "83WA5qdaTmK3NAcIlXmrsQ",
+        "score": 98.701751709,
+        "dist": 1298.251425,
+        "info": "search:ta:704009000903626-VN",
+        "poi": {
+          "name": "Đài Tưởng Niệm",
+          "categorySet": [
+            {
+              "id": 9362036
+            }
+          ],
+          "categories": [
+            "park recreation area",
+            "river scenic area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "river scenic area"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 467 Đường Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 467 Đường Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842271,
+          "lon": 106.670302
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84317,
+            "lon": 106.66939
+          },
+          "btmRightPoint": {
+            "lat": 10.84137,
+            "lon": 106.67122
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84221,
+              "lon": 106.67037
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "PVHjynQTdAT6Si-UBn2Fgw",
+        "score": 98.4595184326,
+        "dist": 1540.488616,
+        "info": "search:ta:704009000898858-VN",
+        "poi": {
+          "name": "Nghĩa Trang Huỳnh Họ Tộc",
+          "categorySet": [
+            {
+              "id": 9362003
+            }
+          ],
+          "categories": [
+            "cemetery",
+            "park recreation area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "cemetery"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Số 9",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Số 9, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.842242,
+          "lon": 106.667713
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84314,
+            "lon": 106.6668
+          },
+          "btmRightPoint": {
+            "lat": 10.84134,
+            "lon": 106.66863
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84227,
+              "lon": 106.6678
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "SzXp1MIz2JMuC3Po-pQynA",
+        "score": 98.3612213135,
+        "dist": 1638.773041,
+        "info": "search:ta:704009000211844-VN",
+        "poi": {
+          "name": "Cafe-Câu Cá Giải Trí Ao Cá Bờ Sông",
+          "categorySet": [
+            {
+              "id": 9362036
+            }
+          ],
+          "categories": [
+            "park recreation area",
+            "river scenic area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "river scenic area"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Đường Vườn Lài",
+          "municipality": "An Phú Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71516",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Đường Vườn Lài, Hồ Chí Minh, Hồ Chí Minh, 71516",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.834663,
+          "lon": 106.695177
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.83556,
+            "lon": 106.69426
+          },
+          "btmRightPoint": {
+            "lat": 10.83376,
+            "lon": 106.69609
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.83484,
+              "lon": 106.69524
+            }
+          }
+        ]
+      },
+      {
+        "type": "POI",
+        "id": "MMzYVhNkolaB9X14P10MgA",
+        "score": 98.1557006836,
+        "dist": 1844.304666,
+        "info": "search:ta:704009002652428-VN",
+        "poi": {
+          "name": "Nghĩa Trang Giáo Xứ Hoàng Mai",
+          "categorySet": [
+            {
+              "id": 9362003
+            }
+          ],
+          "categories": [
+            "cemetery",
+            "park recreation area"
+          ],
+          "classifications": [
+            {
+              "code": "PARK_RECREATION_AREA",
+              "names": [
+                {
+                  "nameLocale": "en-US",
+                  "name": "cemetery"
+                },
+                {
+                  "nameLocale": "en-US",
+                  "name": "park recreation area"
+                }
+              ]
+            }
+          ]
+        },
+        "address": {
+          "streetName": "Hẻm 579/40 Lê Đức Thọ",
+          "municipalitySubdivision": "Phường 16",
+          "municipality": "An Hội Đông",
+          "countrySubdivision": "Hồ Chí Minh",
+          "countrySubdivisionName": "Hồ Chí Minh",
+          "countrySubdivisionCode": "SG",
+          "postalCode": "71425",
+          "countryCode": "VN",
+          "country": "Việt Nam",
+          "countryCodeISO3": "VNM",
+          "freeformAddress": "Hẻm 579/40 Lê Đức Thọ, Phường 16, Hồ Chí Minh, Hồ Chí Minh, 71425",
+          "localName": "Hồ Chí Minh"
+        },
+        "position": {
+          "lat": 10.846575,
+          "lon": 106.667351
+        },
+        "viewport": {
+          "topLeftPoint": {
+            "lat": 10.84747,
+            "lon": 106.66644
+          },
+          "btmRightPoint": {
+            "lat": 10.84568,
+            "lon": 106.66827
+          }
+        },
+        "entryPoints": [
+          {
+            "type": "main",
+            "position": {
+              "lat": 10.84652,
+              "lon": 106.66742
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
