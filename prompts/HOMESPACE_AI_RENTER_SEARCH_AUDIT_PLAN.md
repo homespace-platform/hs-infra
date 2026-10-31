@@ -109,7 +109,7 @@ Sửa: mở rộng catalog hiện có và bộ compiler có whitelist, không đ
 | Phòng trọ & sinh hoạt | Hầu hết field có filter: WC/bếp/cửa sổ/ban công/gác/lối đi/giờ giấc/đồng hồ/số người/xe | Enum, null semantics, aliases và category phải được cung cấp cho planner |
 | Nhà nguyên căn, căn hộ | Các field vật lý chính có filter | Occupancy scoped theo loại nhà; chưa có OR biểu diễn chấp nhận nhiều loại một cách chính xác |
 | Bảng chi phí tháng | Có filter amount/included/billing_method/unit theo loại phí | Chưa có tổng chi phí tất định theo người/xe và định mức điện/nước |
-| Giá & điều kiện thuê | Có cọc, kỳ trả, thời hạn tối thiểu, VAT, ngày nhận nhà… | Lọc ngày theo yêu cầu và tách giá thuê khỏi tổng chi phí / chi phí ban đầu |
+| Giá & điều kiện thuê | Có cọc, kỳ trả, thời hạn tối thiểu, ngày nhận nhà… | Lọc ngày theo yêu cầu và tách giá thuê khỏi tổng chi phí / chi phí ban đầu |
 | Chính sách & nội quy | Permission/text có; INTEGER thiếu | Không đồng nhất ALLOWED và APPROVAL_REQUIRED; thêm ba policy số |
 | Tiện ích tòa nhà | Có ELEVATOR/WIFI/GYM… và custom amenity | Không dùng keyword; gym trong tòa nhà khác gym gần nhà |
 | Nội thất bàn giao | Có mã, tên và phần lớn quantity/condition | Đồng bộ live catalog và ràng buộc điều kiện cùng item |

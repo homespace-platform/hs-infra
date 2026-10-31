@@ -68,7 +68,7 @@ Các lỗi nghiêm trọng: nhận sai phòng cho ba người; vượt ngân sá
 | Q021 | Mình đang thử việc, chỉ thuê khoảng ba tháng ở Hạnh Thông. Bạn đừng gửi chỗ bắt thuê ít nhất một năm nhé. | Min lease ≤3 tháng, không gợi ý cam kết dài hơn. |
 | Q022 | Mình có thể thuê ổn định ít nhất một năm, muốn xem những phòng giá thấp nhất ở An Nhơn. | Không biến nhu cầu một năm thành min lease bắt buộc đúng 12. Sort giá hợp lệ. |
 | Q023 | Mình tìm trọ ở Hạnh Thông có thể thương lượng giá với chủ, không cần rẻ nhất. | Negotiable thật; không coi giá thương lượng là đã giảm. |
-| Q024 | Mình cần thuê căn hộ ở Hồ Chí Minh, giá công bố đã bao gồm VAT để dễ tính ngân sách. | VAT included đúng field; không suy từ phí quản lý. |
+| Q024 | Mình cần thuê căn hộ ở Hồ Chí Minh, giá công bố đã bao gồm phí quản lý tòa nhà để dễ tính ngân sách. | Phí quản lý đã gồm trong giá đúng field; không suy từ phí dịch vụ/rác. |
 | Q025 | Mình cần phòng cho ba người ở An Nhơn, tiền phòng tổng không quá 4 triệu rưỡi, chứ không phải mỗi người 4 triệu rưỡi nha. | Giữ nghĩa giá tổng; không nhân thành 13,5 triệu. |
 
 ### C. Phòng trọ và sinh hoạt — Q026–Q040

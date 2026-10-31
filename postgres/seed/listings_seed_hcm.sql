@@ -533,14 +533,14 @@ INSERT INTO listings (
     status_changed_at, status_changed_by, submitted_at, published_at, expires_at,
     version, available_from, area_m2, price_amount, currency, price_unit, negotiable,
     deposit_type, deposit_amount, deposit_months, payment_cycle, minimum_lease_months,
-    management_fee_included, vat_included, max_motorbike_count, max_car_count,
+    management_fee_included, max_motorbike_count, max_car_count,
     view_count, active, created_at, updated_at, created_by, updated_by
 )
 SELECT listing_id::text, owner_id, NULL, title, description, category, 'PUBLISHED', 'DEMO 300 điểm tọa độ gần đúng từ JSON người dùng',
        seeded_published_at, owner_id, seeded_published_at - interval '30 minutes',
        seeded_published_at, seeded_published_at + interval '180 days', 0, available_from,
        area_m2, price_amount, 'VND', price_unit, (n % 3 = 0), deposit_type, deposit_amount,
-       deposit_months, 'MONTHLY', min_lease_months, (category='ROOM' OR n % 4 = 0), (n % 13 = 0),
+       deposit_months, 'MONTHLY', min_lease_months, (category='ROOM' OR n % 4 = 0),
        CASE WHEN category = 'ROOM' THEN room_max_vehicles ELSE 1 + (n % 4) END,
        CASE WHEN category = 'HOUSE' AND house_has_garage THEN 1 + (n % 2)
             WHEN category = 'APARTMENT' AND n % 5 = 0 THEN 1 ELSE 0 END,
@@ -554,7 +554,7 @@ ON CONFLICT (id) DO UPDATE SET
     price_unit=excluded.price_unit, negotiable=excluded.negotiable, deposit_type=excluded.deposit_type,
     deposit_amount=excluded.deposit_amount, deposit_months=excluded.deposit_months,
     payment_cycle=excluded.payment_cycle, minimum_lease_months=excluded.minimum_lease_months,
-    management_fee_included=excluded.management_fee_included, vat_included=excluded.vat_included,
+    management_fee_included=excluded.management_fee_included,
     max_motorbike_count=excluded.max_motorbike_count, max_car_count=excluded.max_car_count,
     view_count=greatest(listings.view_count,excluded.view_count),
     active=true, updated_at=now(), updated_by=excluded.updated_by;

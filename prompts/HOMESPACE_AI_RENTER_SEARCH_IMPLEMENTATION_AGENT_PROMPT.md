@@ -205,7 +205,7 @@ Quy tắc merge:
 - Chốt mapping ngôn ngữ và có test boundary: “dưới X” là `<X`; “tối đa/không quá X” là `<=X`; “ít nhất X” là `>=X`. Dùng decimal cho tiền.
 - “Tầm/khoảng X” không được âm thầm dùng biên 20% như một hard constraint. Ghi nhận preference hoặc hỏi khoảng khách chấp nhận khi cần giới hạn chính xác.
 - “Tiền phòng tối đa 5 triệu” khác “tổng chi phí mỗi tháng tối đa 5 triệu”. Tính các phí cố định với số người/xe thực đã biết; không tính trùng khoản includedInRent.
-- Điện/nước theo mức dùng, phí chưa khai báo, VAT chưa rõ hoặc giá thương lượng: báo giả định/unknown. Muốn tổng chính xác thì hỏi lượng dùng/điều kiện thiếu; không bảo đảm all-in dưới ngân sách khi còn phí chưa biết.
+- Điện/nước theo mức dùng, phí chưa khai báo hoặc giá thương lượng: báo giả định/unknown. Muốn tổng chính xác thì hỏi lượng dùng/điều kiện thiếu; không bảo đảm all-in dưới ngân sách khi còn phí chưa biết.
 - Phân biệt tiền thuê tháng, cọc, khoản trả ban đầu, chu kỳ thanh toán và thời hạn thuê tối thiểu. Dùng field có thật, không tạo công thức sai nghĩa nghiệp vụ.
 - Ngày tương đối lấy thời điểm request và timezone cấu hình; không hardcode ngày audit. Lọc ngày có thể vào ở và min lease theo yêu cầu khách; hỏi lại ngày mơ hồ làm thay đổi kết quả.
 
