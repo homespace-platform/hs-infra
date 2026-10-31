@@ -83,7 +83,7 @@ Build cũng cập nhật vùng Nearby và đọc properties/`NearbyCatalog.VERSI
 
 Test opt-in `ListingSeedPostgresTest` trong Core tạo schema thực bằng Hibernate và chạy SQL hai lần, kiểm tra tọa độ/NULL, mã phường, chi tiết/ảnh, idempotency, rollback và không ảnh hưởng bản ghi khác. Test còn gọi `ListingPublicService.search` trên PostgreSQL thật để kiểm tra tỉnh, ba phường, mã cũ/sai tỉnh, phân trang, loại hình, giá, diện tích và từ khóa. Chỉ trỏ `HS_SEED_TEST_PG_URL` tới PostgreSQL test rỗng tên `hs_seed_test`, **không trỏ vào DB dev/production** (test dùng create-drop).
 
-Test Nearby đối chiếu từng POI với snapshot và response gốc, tính lại khoảng cách, kiểm tra chính xác 100 ID được chọn/nhóm cho từng tin trong báo cáo, chống trùng, page size 10, rerun/rollback và giữ liên kết của tin ngoài seed. Chạy `reconcile` cùng worker bật sync với provider mock để chứng minh **0 provider calls** cho 300 tin đã seed.
+Test Nearby đối chiếu từng POI với snapshot và response gốc, tính lại khoảng cách, kiểm tra chính xác 100 ID được chọn/nhóm cho từng tin trong báo cáo, chống trùng, page size 5, rerun/rollback và giữ liên kết của tin ngoài seed. Chạy `reconcile` cùng worker bật sync với provider mock để chứng minh **0 provider calls** cho 300 tin đã seed.
 
 Hoặc dùng runner tự tạo/xóa PostgreSQL riêng (cần Docker, Java 21, `mvn` trong PATH và image `postgres:16-alpine` có sẵn):
 
