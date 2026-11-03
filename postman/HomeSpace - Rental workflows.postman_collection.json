@@ -1,0 +1,2074 @@
+{
+  "info": {
+    "name": "HomeSpace - Rental workflows 06-08",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Manual scenario kit for staging/disposable rentals. Read the current revision before each mutation. Consent and real receipt are separate. No notification endpoints."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "ownerToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "tenantToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "rentalId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "contractId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "complaintId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "expectedRevision",
+      "value": "0",
+      "type": "string"
+    },
+    {
+      "key": "actualHandoverInstant",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "agreedEndExclusive",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "signingContractId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "signatureRequestId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "ownerCertificateSerial",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "tenantCertificateSerial",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Cọc / ký trước thuê",
+      "item": [
+        {
+          "name": "Đọc bản hiện tại / lưu phiên bản",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lập / thay bản nguồn",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã nhận tiền nhưng hai bên chưa hoàn tất ký\",\n  \"evidenceIds\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ACCEPT - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/ACCEPT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REJECT - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/REJECT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ESCALATE - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/ESCALATE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "WITHDRAW - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/WITHDRAW",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "FULL_REFUND_EXIT - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/FULL_REFUND_EXIT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REQUEST_RESUME - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/REQUEST_RESUME",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "RESUME - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/RESUME",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "DECLINE_RESUME - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/DECLINE_RESUME",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "WITHDRAW_RESUME - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/cancellation/WITHDRAW_RESUME",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 - Biên bản nhận nhà",
+      "item": [
+        {
+          "name": "Đọc bản hiện tại / lưu phiên bản",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lập / thay bản nguồn",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"handedOverAt\": \"{{actualHandoverInstant}}\",\n  \"keys\": 2,\n  \"condition\": \"Đã kiểm tra phòng và tài sản bàn giao\",\n  \"reason\": \"Hai bên cùng lập biên bản nhận nhà thực tế\",\n  \"electricity\": 100,\n  \"water\": 20,\n  \"inventory\": [\n    {\n      \"name\": \"Chìa khóa\",\n      \"quantity\": 2,\n      \"condition\": \"Đầy đủ\"\n    }\n  ],\n  \"evidenceIds\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CONFIRM - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in/CONFIRM",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CONFIRM - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in/CONFIRM",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REPORT_ISSUE - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in/REPORT_ISSUE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Danh sách PDF theo nguồn",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in/documents"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tạo / mở PDF bản đang xem",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/move-in/documents",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": false,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 - Chấm dứt sớm",
+      "item": [
+        {
+          "name": "Đọc bản hiện tại / lưu phiên bản",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lập / thay bản nguồn",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"endExclusive\": \"{{agreedEndExclusive}}\",\n  \"reason\": \"Hai bên đề nghị kết thúc do chuyển nơi làm việc\",\n  \"handoverTerms\": \"Trả phòng trống, đủ chìa khóa và tài sản theo lịch thống nhất\",\n  \"finalRentPolicy\": \"FULL_STARTED_PERIOD\",\n  \"rentRefunds\": [],\n  \"evidenceIds\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ACCEPT - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/ACCEPT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REJECT - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/REJECT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "WITHDRAW - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/WITHDRAW",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CONFIRM_RETURN - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/CONFIRM_RETURN",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CONFIRM_RETURN - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/CONFIRM_RETURN",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "REPORT_ISSUE - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/REPORT_ISSUE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": true,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Danh sách PDF theo nguồn",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/documents"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tạo / mở PDF bản đang xem",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/documents",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu đúng bản và các căn cứ của hồ sơ\",\n  \"acknowledged\": false,\n  \"tenantContacted\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Đối chiếu tính theo ngày (chỉ đọc)",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/workflow/early-exit/calculation?endExclusive={{agreedEndExclusive}}&policy=DAILY_PRORATED"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "04 - SmartCA sandbox (chủ nhà trước, người thuê sau)",
+      "description": "Chỉ chạy với tài khoản thử sau khi người ký đã đọc PDF. Không chạy collection tự động trên dữ liệu thật.",
+      "item": [
+        {
+          "name": "Đọc văn bản riêng",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Danh sách PDF",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/documents"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Trạng thái ký",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/signatures/state"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Chứng thư - owner",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/signatures/certificates"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Gửi ký sau khi xem PDF - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/signatures/initiate",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificateSerial\": \"{{ownerCertificateSerial}}\",\n  \"consent\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Chứng thư - tenant",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/signatures/certificates"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Gửi ký sau khi xem PDF - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/signatures/initiate",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"certificateSerial\": \"{{tenantCertificateSerial}}\",\n  \"consent\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Đối soát giao dịch ký",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/contracts/{{signingContractId}}/signatures/{{signatureRequestId}}/refresh",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "05 - Khiếu nại / admin",
+      "item": [
+        {
+          "name": "Các vụ việc của hồ sơ",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/rental-requests/{{rentalId}}/complaints"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Đọc căn cứ / lưu phiên bản",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/complaints/{{complaintId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "COMMENT - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/complaints/{{complaintId}}/actions/COMMENT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PROPOSE - owner",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ownerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/complaints/{{complaintId}}/actions/PROPOSE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ACCEPT - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/complaints/{{complaintId}}/actions/ACCEPT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ESCALATE - tenant",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/complaints/{{complaintId}}/actions/ESCALATE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Hàng đợi admin",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/admin/complaints?status=ESCALATED&page=1&size=20"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Admin đọc căn cứ nguồn / PDF",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/admin/complaints/{{complaintId}}"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CLAIM - admin",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/admin/complaints/{{complaintId}}/actions/CLAIM",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "DECIDE - admin",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/admin/complaints/{{complaintId}}/actions/DECIDE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\",\n  \"outcome\": \"RECORD_FINDING\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CLOSE - admin",
+          "request": {
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{adminToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/v1/admin/complaints/{{complaintId}}/actions/CLOSE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expectedRevision\": {{expectedRevision}},\n  \"reason\": \"Đã đối chiếu nguồn và chứng cứ trong vụ việc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "06 - Kết quả cuối / AI",
+      "item": [
+        {
+          "name": "Lifecycle: closure / receipt",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/{{contractId}}/lifecycle"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Projection AI chỉ đọc",
+          "request": {
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tenantToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "header": [],
+            "url": "{{baseUrl}}/api/v1/contracts/ai/items/{{contractId}}/lifecycle"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Authorized success', () => pm.expect(pm.response.code).to.be.within(200,299));",
+                  "if(pm.response.code<300){const r=pm.response.json().result;if(r&&Number.isInteger(r.revision))pm.collectionVariables.set('expectedRevision',r.revision);if(r&&r.signingContractId)pm.collectionVariables.set('signingContractId',r.signingContractId);}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

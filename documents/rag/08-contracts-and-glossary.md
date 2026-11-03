@@ -4,9 +4,9 @@ title: Quy trình hợp đồng và giải thích thuật ngữ
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.2.0
+version: 0.3.0
 locale: vi-VN
-last_reviewed: 2026-10-16
+last_reviewed: 2026-11-03
 ---
 
 # Quy trình hợp đồng
@@ -81,3 +81,8 @@ Giới hạn quan trọng:
 Câu hỏi về nội dung hợp đồng của bạn được trả lời từ dữ liệu hợp đồng mà tài khoản của bạn được quyền xem, không phải từ kho tri thức dùng chung. Hướng dẫn chung (ví dụ quy trình ký hay gia hạn) được lấy từ tài liệu này. Nếu một câu hỏi cần cả hai, phần dữ liệu riêng của bạn và phần hướng dẫn chung được trình bày tách nhau. Nếu cần phân tích tài liệu do người dùng tải lên, xử lý trong phạm vi tài liệu đó và quyền của đúng người dùng; không đưa tài liệu riêng vào kho RAG dùng chung.
 
 > Mẫu, điều khoản, các loại hợp đồng hỗ trợ và quy trình ký cần được rà soát cùng bộ phận pháp lý trước khi duyệt. Nội dung ở trên là bản làm việc đã đối chiếu với hành vi của hệ thống nhưng chưa được product owner hoặc pháp lý phê duyệt.
+
+
+## Bổ sung luồng hiện hành ngày 03/11/2026
+
+Xem tài liệu “Xử lý trước thuê, biên bản nhận nhà và chấm dứt sớm theo thỏa thuận” (16). Chấm dứt sớm không bắt buộc có nợ; nhận nhà cần biên bản riêng; khiếu nại đã giải quyết không tự mở ký hoặc xác nhận tiền. PDF biên bản/thỏa thuận dùng lượt ký riêng. Hệ thống thông báo được xây riêng, không coi mốc hạn là thông báo đã gửi.

@@ -4,9 +4,9 @@ title: Liên hệ hỗ trợ và chuyển câu hỏi cho nhân viên
 audience: [tenant, landlord, public]
 visibility: public
 status: draft
-version: 0.2.0
+version: 0.3.0
 locale: vi-VN
-last_reviewed: 2026-10-16
+last_reviewed: 2026-11-03
 ---
 
 # Liên hệ hỗ trợ và chuyển câu hỏi cho nhân viên
@@ -29,3 +29,8 @@ AI nên đề nghị chuyển nhân viên hỗ trợ khi:
 Khi chuyển tiếp, chỉ thu thập thông tin tối thiểu cần thiết, ví dụ mã yêu cầu/tin đăng/số hợp đồng và mô tả ngắn. Không yêu cầu mật khẩu, OTP, toàn bộ số thẻ/tài khoản hoặc giấy tờ tùy thân trong chatbox.
 
 Hiện chưa điền email, số điện thoại, thời gian phản hồi hay SLA hỗ trợ vì cần HomeSpace xác nhận kênh thực tế. Agent không được tự bịa thông tin liên hệ, thời hạn phản hồi, quy trình trọng tài hay cơ chế tự động chuyển người thật; khi chưa có cấu hình, hướng dẫn người dùng vào mục Hỗ trợ trong ứng dụng.
+
+
+## Bổ sung luồng hiện hành ngày 03/11/2026
+
+Xem tài liệu “Xử lý trước thuê, biên bản nhận nhà và chấm dứt sớm theo thỏa thuận” (16). Chấm dứt sớm không bắt buộc có nợ; nhận nhà cần biên bản riêng; khiếu nại đã giải quyết không tự mở ký hoặc xác nhận tiền. PDF biên bản/thỏa thuận dùng lượt ký riêng. Hệ thống thông báo được xây riêng, không coi mốc hạn là thông báo đã gửi.

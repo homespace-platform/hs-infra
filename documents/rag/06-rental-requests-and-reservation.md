@@ -4,9 +4,9 @@ title: Yêu cầu thuê và quy trình giữ chỗ
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.3.0
+version: 0.4.0
 locale: vi-VN
-last_reviewed: 2026-10-22
+last_reviewed: 2026-11-03
 ---
 
 # Yêu cầu thuê và quy trình giữ chỗ
@@ -50,3 +50,8 @@ Chủ nhà gửi thông báo cuối cùng và mở thêm ít nhất 24 giờ đ�
 Nếu thời hạn giữ chỗ kết thúc hoặc yêu cầu bị hủy, tình trạng bất động sản và khoản tiền liên quan phải được kiểm tra bằng dữ liệu giao dịch hiện hành. AI không được dựa vào tài liệu này để khẳng định một khoản tiền đã được hoàn hay một yêu cầu cụ thể còn hiệu lực.
 
 > Mốc giữ chỗ mặc định hiện được cấu hình khoảng 60 phút trong môi trường đã rà soát; giá trị có thể thay đổi theo cấu hình. Không trả lời một thời hạn cụ thể nếu chưa xác nhận cấu hình production.
+
+
+## Bổ sung luồng hiện hành ngày 03/11/2026
+
+Xem tài liệu “Xử lý trước thuê, biên bản nhận nhà và chấm dứt sớm theo thỏa thuận” (16). Chấm dứt sớm không bắt buộc có nợ; nhận nhà cần biên bản riêng; khiếu nại đã giải quyết không tự mở ký hoặc xác nhận tiền. PDF biên bản/thỏa thuận dùng lượt ký riêng. Hệ thống thông báo được xây riêng, không coi mốc hạn là thông báo đã gửi.
