@@ -1,5 +1,8 @@
 # HOMESPACE — PROMPT TẠO 03 MẪU WORD HỢP ĐỒNG ĐẶT CỌC / GIỮ CHỖ THUÊ
 
+> Cập nhật 04/11/2026: đơn phương chấm dứt với cửa sổ khiếu nại 24 giờ và trần phạt 5 ngày là luồng hóa đơn của hợp đồng thuê đã có hiệu lực, theo HOMESPACE_CONTRACT_PROMPT.md. Không áp dụng vào hồ sơ cọc trước ký; không thay cửa sổ ký/thông báo cuối hoặc tự suy mất cọc từ quy tắc này.
+
+
 **Phiên bản D2 — đối chiếu source ngày 24/10/2026.** Thay thế nội dung D1, đặc biệt giả định sai “ký hợp đồng thuê trước rồi mới đặt cọc”.
 
 **Cách dùng:** Gửi **toàn bộ file này** cho ChatGPT có khả năng tạo file Word. Đầu ra là 03 file DOCX mẫu chứa placeholder cho poi-tl, chưa điền dữ liệu giao dịch. Tài liệu tự chứa đủ ngữ cảnh để soạn mẫu; ChatGPT tạo Word không cần truy cập repository hay CONTRACT_PROMPT.md.
