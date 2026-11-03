@@ -4,7 +4,7 @@ title: Yêu cầu thuê và quy trình giữ chỗ
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.4.0
+version: 0.4.1
 locale: vi-VN
 last_reviewed: 2026-11-03
 ---
@@ -21,11 +21,13 @@ Yêu cầu thuê mới bắt buộc người thuê chủ động tích **Tôi đ
 
 Khi chủ nhà chấp nhận, tin chuyển sang giữ chỗ và mở khoản thanh toán đầu tiên. Hạn thanh toán giữ chỗ bắt đầu từ lúc chấp nhận, khác với hạn chờ chủ nhà phản hồi yêu cầu. Các yêu cầu thuê khác vẫn chờ, không tự được chấp nhận. Lịch xem nhà chưa bị hủy chỉ vì một lượt giữ chỗ ngắn hạn; khi tài sản được cho thuê chính thức, hệ thống xử lý các lịch liên quan.
 
-Nếu ngày bắt đầu thuê là hôm nay, khoản chuyển đầu tiên gồm tiền cọc và tiền thuê tháng đầu. Nếu ngày bắt đầu còn ở tương lai, chỉ mở tiền cọc; khi cọc được chủ nhà xác nhận, phòng tiếp tục được giữ đến bước nhận nhà, chưa tạo hợp đồng. Tiền tháng đầu được mở vào ngày bắt đầu thuê; không thu lại cọc. Chỉ sau khi chủ nhà xác nhận đã nhận đủ cọc và tiền tháng đầu, hệ thống tự tạo bản nháp; không cần nút tạo thủ công. Báo chuyển không phải xác nhận nhận tiền. Hai bên vẫn phải kiểm tra, hoàn thiện văn bản và ký; bản nháp không có nghĩa hợp đồng đã có hiệu lực. Nếu tạo bản nháp gặp lỗi mẫu hoặc dữ liệu, hệ thống giữ kết quả xác nhận tiền và thử lại; không yêu cầu khách chuyển tiền lần nữa. Có thể liên hệ hỗ trợ nếu chờ lâu.
+Với hồ sơ có cọc lớn hơn 0, nếu ngày bắt đầu thuê là hôm nay, khoản chuyển đầu tiên gồm tiền cọc và tiền thuê tháng đầu. Nếu ngày bắt đầu còn ở tương lai, chỉ mở tiền cọc; khi cọc được chủ nhà xác nhận, phòng tiếp tục được giữ đến bước nhận nhà và hai bên ký hợp đồng cọc riêng, chưa tạo hợp đồng thuê. Tiền tháng đầu được mở vào ngày bắt đầu thuê; không thu lại cọc. Chỉ sau khi chủ nhà xác nhận đã nhận đủ cọc và tiền tháng đầu, hệ thống tự tạo bản nháp hợp đồng thuê; không cần nút tạo thủ công. Báo chuyển không phải xác nhận nhận tiền. Hai bên vẫn phải kiểm tra, hoàn thiện văn bản và ký; bản nháp không có nghĩa hợp đồng đã có hiệu lực. Nếu tạo bản nháp gặp lỗi mẫu hoặc dữ liệu, hệ thống giữ kết quả xác nhận tiền và thử lại; không yêu cầu khách chuyển tiền lần nữa. Có thể liên hệ hỗ trợ nếu chờ lâu.
+
+Nếu tin đăng quy định **Không đặt cọc**, hoặc cọc đã thống nhất bằng **0 đồng**, hồ sơ **bỏ qua chuyển cọc và ký hợp đồng cọc**; không có văn bản giữ chỗ 0 đồng ký thay. Nếu nhận nhà hôm nay, chỉ thanh toán tiền thuê tháng đầu. Nếu nhận nhà trong tương lai, chờ đến ngày bắt đầu thuê mới mở tiền thuê tháng đầu. Hợp đồng thuê vẫn cần chủ nhà xác nhận thực nhận đủ tiền thuê rồi hai bên ký; không dùng việc miễn cọc thay xác nhận tiền. Quy tắc dựa trên số cọc đã ghi nhận trong hồ sơ thuê, không dùng việc sửa bài đăng sau đó để tự miễn một khoản cọc đã thống nhất trước đây. Chưa biết số tiền cọc không được coi là cọc 0 đồng.
 
 ## Đề nghị nhận nhà và bắt đầu hợp đồng sớm
 
-Sau khi cọc đã được xác nhận và chưa mở tiền tháng đầu/chưa bắt đầu ký, người thuê có thể đề nghị một ngày bắt đầu sớm hơn. Chủ nhà xem ngày cũ, ngày mới và các ảnh hưởng rồi quyết định. Ngày đề nghị phải từ hôm nay, trước ngày đã thống nhất và phù hợp khả năng bàn giao/chỗ xe. Chấp nhận sẽ đổi cả ngày bắt đầu thuê, ngày kết thúc và các kỳ hóa đơn, giữ số tháng và đơn giá đã chốt. Ví dụ bắt đầu 25/10 thay cho 01/11 thì kỳ thuê tính từ 25/10; không phải ký 25/10 rồi vẫn chờ 01/11. Đề nghị bị từ chối, rút hoặc hết hạn không làm mất khoản cọc và ngày thuê cũ.
+Sau khi cọc đã được xác nhận hoặc hồ sơ được miễn cọc, và chưa mở tiền tháng đầu/chưa bắt đầu ký, người thuê có thể đề nghị một ngày bắt đầu sớm hơn. Chủ nhà xem ngày cũ, ngày mới và các ảnh hưởng rồi quyết định. Ngày đề nghị phải từ hôm nay, trước ngày đã thống nhất và phù hợp khả năng bàn giao/chỗ xe. Chấp nhận sẽ đổi cả ngày bắt đầu thuê, ngày kết thúc và các kỳ hóa đơn, giữ số tháng và đơn giá đã chốt. Ví dụ bắt đầu 25/10 thay cho 01/11 thì kỳ thuê tính từ 25/10; không phải ký 25/10 rồi vẫn chờ 01/11. Đề nghị bị từ chối, rút hoặc hết hạn không làm mất khoản cọc và ngày thuê cũ.
 
 ## Đối soát và hủy trước khi ký
 
