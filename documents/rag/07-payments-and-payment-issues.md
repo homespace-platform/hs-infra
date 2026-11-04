@@ -4,9 +4,9 @@ title: Hướng dẫn thanh toán và xử lý sự cố
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.3.0
+version: 0.3.3
 locale: vi-VN
-last_reviewed: 2026-10-21
+last_reviewed: 2026-11-04
 ---
 
 # Hướng dẫn thanh toán và xử lý sự cố
@@ -37,6 +37,16 @@ Trạng thái thanh toán có nhiều bước. **Người trả báo đã chuy�
 ## Số liệu của hóa đơn đã phát hành
 
 Mỗi hóa đơn lưu lại mức giá, phí và điều khoản **tại thời điểm phát hành** cho từng kỳ. Khi có phụ lục hoặc thay đổi chính sách về sau, hóa đơn đã phát hành không bị tính lại theo mức mới. Khoản nợ được chuyển sang hóa đơn kỳ sau chỉ được tính ở hóa đơn nhận khoản chuyển, không cộng hai lần.
+
+## Gia hạn thời gian trả hóa đơn
+
+Người thuê gửi đề nghị thêm 1–30 ngày và lý do khi thao tác được hệ thống cho phép. Chủ nhà quyết định trong hạn phản hồi trên hồ sơ; chưa đồng ý thì hạn thanh toán chưa đổi. Nếu chủ nhà duyệt trước hạn, số ngày được cộng vào **hạn thanh toán hiện tại**. Nếu đã quá hạn, số ngày tính từ **thời điểm chủ nhà đồng ý**. Ví dụ duyệt thêm 1 ngày lúc 10:00 ngày 04/12 cho hóa đơn hạn 23:59:59 ngày 08/12 thì hạn mới là 23:59:59 ngày 09/12. Đây là gia hạn trả hóa đơn, không kéo dài thời gian thuê. Hạn cụ thể và lịch sử phải đọc từ API; không dùng ngày trên máy người dùng để đoán. Yêu cầu đã được duyệt giữ hạn đã ghi nhận, không tự tính lại theo quy tắc mới.
+
+Với quyết định gia hạn mới, khoản phạt đã chốt được giữ nguyên trong thời gian được gia hạn. **Trả trễ hạn mới vẫn bị phạt tiếp** theo chính sách đã ký của hóa đơn; không phạt thời gian được gia hạn, không đặt lại giới hạn tổng 5 ngày phạt cho cùng hóa đơn. Ví dụ đã phạt 300.000đ, được thêm 5 ngày, rồi trễ thêm 1 ngày ở mức 100.000đ/ngày thì tổng phạt là 400.000đ. Phí một lần không thu lần hai; hợp đồng không có phí chậm trả thì không tự thêm phí. Trong khi yêu cầu chờ duyệt, phí tạm dừng; bị từ chối/hết hạn thì tính bù theo hạn thanh toán hiện tại. Đang báo chuyển/đối soát hoặc đã xác nhận nhận tiền thì không tăng phí. Một số quyết định gia hạn cũ miễn tăng phí cho hóa đơn vẫn được giữ nguyên; AI phải đọc lịch sử và trạng thái từ API trước khi giải thích trường hợp cụ thể, không suy ra có phạt chỉ từ RAG.
+
+## Quá hạn và quyết định đơn phương của chủ nhà
+
+Phạt theo ngày tối đa tổng 5 ngày cho mỗi hóa đơn; gia hạn không đặt lại trần. Sau khi hết 5 ngày quá hạn theo hạn hiện tại, chủ nhà có thể cộng nợ sang kỳ sau còn chưa phát hành, dời hạn 1–30 ngày hoặc thông báo đơn phương chấm dứt. Đơn phương không cần người thuê bấm đồng ý. Khách có 24 giờ từ lúc thông báo trên hồ sơ để khiếu nại xin cộng nợ hoặc dời hạn. Khi có khiếu nại đúng hạn, chờ chủ nhà quyết định; đồng ý thì đổi phương án, từ chối thì chấm dứt ngay. Không có khiếu nại sau 24 giờ thì hệ thống tự ghi nhận chấm dứt khi đồng bộ; đang đối soát tiền thì tạm dừng, đã xác nhận thanh toán thì rút quyết định. Kết thúc không có nghĩa đã nhận lại phòng hoặc đã hoàn/giữ cọc. Bàn giao, cọc thực nhận và nợ còn lại theo dữ liệu giao dịch riêng. Nếu chưa chọn phương án nào, mốc tự chốt chuyển nợ vẫn là sau 10 ngày quá hạn, có điều kiện. AI đọc trạng thái và thời hạn thực tế từ API, không tự ra quyết định thay chủ nhà hoặc người thuê.
 
 ## Tiền đặt cọc và hoàn cọc
 

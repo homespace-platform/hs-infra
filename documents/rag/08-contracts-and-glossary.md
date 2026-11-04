@@ -4,9 +4,9 @@ title: Quy trình hợp đồng và giải thích thuật ngữ
 audience: [tenant, landlord]
 visibility: public
 status: draft
-version: 0.2.0
+version: 0.3.2
 locale: vi-VN
-last_reviewed: 2026-10-16
+last_reviewed: 2026-11-03
 ---
 
 # Quy trình hợp đồng
@@ -16,6 +16,10 @@ Quy trình hợp đồng trên HomeSpace có thể gồm chuẩn bị hồ sơ, 
 Cách ký phụ thuộc cấu hình của hệ thống. Khi bật ký số VNPT SmartCA, chủ nhà gửi yêu cầu ký trước, rồi người thuê ký; mỗi bên xác nhận trên ứng dụng VNPT SmartCA chứ không xác nhận ký nội bộ trong HomeSpace. Khi chạy luồng ký nội bộ, các bên xác nhận ngay trên HomeSpace. Phụ lục sửa đổi hợp đồng cần cấu hình ký SmartCA được bật. Người dùng cần kiểm tra tên các bên, địa chỉ thuê, giá, tiền đặt cọc, thời hạn, trách nhiệm, phụ lục và các khoản phí trước khi ký. Không ký nếu còn nội dung sai hoặc chưa hiểu; liên hệ bên còn lại hoặc chuyên gia phù hợp để được giải thích.
 
 ## Thuật ngữ thường gặp
+
+Hồ sơ không đặt cọc hoặc có cọc bằng 0 đồng **bỏ qua hợp đồng cọc**. Chỉ còn thanh toán tiền thuê theo ngày mở và ký hợp đồng thuê sau khi chủ nhà xác nhận nhận đủ tiền. Không tạo văn bản giữ chỗ 0 đồng ký riêng, chữ ký cọc hoặc chứng từ chuyển cọc giả để đi tiếp. Nếu số cọc chưa xác định thì cần đối soát hồ sơ, không suy ra được miễn cọc.
+
+Khi kết thúc thuê, nếu không có tiền cọc thực giữ thì **bỏ qua chuyển khoản và xác nhận hoàn cọc**. Hai bên vẫn phải hoàn tất hóa đơn kỳ cuối, xác nhận trả nhà và thống nhất các nghĩa vụ còn lại. Nếu không còn khoản phải chuyển, hợp đồng được đóng sau khi hai bên chấp thuận quyết toán; hết hạn thuê không tự xác nhận đã trả nhà hoặc trả hết nợ. Nếu có khoản phải trả thêm, người trả vẫn chuyển và bên nhận xác nhận thực nhận trước khi đóng. Ban đầu cọc 0 nhưng sau đó hai bên điều chỉnh và đã thu cọc bổ sung thì quyết toán theo số tiền thực giữ, không dùng mức cọc ban đầu để bỏ qua khoản hoàn thật.
 
 Trong luồng nhận nhà mới, bản nháp có thể được chuẩn bị sau khi xác nhận cọc. Ký chính thức chỉ mở từ ngày bắt đầu thuê đã thống nhất và sau khi xác nhận tiền tháng đầu. Đề nghị “nhận nhà và bắt đầu hợp đồng sớm” được chủ nhà chấp nhận sẽ đổi ngày thuê và kỳ hóa đơn sang ngày mới; không giữ nguyên ngày thuê cũ. Ngày lập văn bản là ngày kết xuất, khác với thời điểm chữ ký thực tế của từng bên; không ghi lùi chữ ký khi xử lý muộn. Các hợp đồng/gia hạn/phụ lục đã ký trước hoặc có ngày áp dụng riêng vẫn cần đối chiếu đúng ngày hiệu lực.
 
@@ -81,3 +85,8 @@ Giới hạn quan trọng:
 Câu hỏi về nội dung hợp đồng của bạn được trả lời từ dữ liệu hợp đồng mà tài khoản của bạn được quyền xem, không phải từ kho tri thức dùng chung. Hướng dẫn chung (ví dụ quy trình ký hay gia hạn) được lấy từ tài liệu này. Nếu một câu hỏi cần cả hai, phần dữ liệu riêng của bạn và phần hướng dẫn chung được trình bày tách nhau. Nếu cần phân tích tài liệu do người dùng tải lên, xử lý trong phạm vi tài liệu đó và quyền của đúng người dùng; không đưa tài liệu riêng vào kho RAG dùng chung.
 
 > Mẫu, điều khoản, các loại hợp đồng hỗ trợ và quy trình ký cần được rà soát cùng bộ phận pháp lý trước khi duyệt. Nội dung ở trên là bản làm việc đã đối chiếu với hành vi của hệ thống nhưng chưa được product owner hoặc pháp lý phê duyệt.
+
+
+## Bổ sung luồng hiện hành ngày 03/11/2026
+
+Xem tài liệu “Xử lý trước thuê, biên bản nhận nhà và chấm dứt sớm theo thỏa thuận” (16). Chấm dứt sớm không bắt buộc có nợ; nhận nhà cần biên bản riêng; khiếu nại đã giải quyết không tự mở ký hoặc xác nhận tiền. PDF biên bản/thỏa thuận dùng lượt ký riêng. Hệ thống thông báo được xây riêng, không coi mốc hạn là thông báo đã gửi.

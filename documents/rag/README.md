@@ -6,6 +6,8 @@ Kho tài liệu nguồn cho AI Agent trả lời câu hỏi về HomeSpace. Tron
 
 > **Trạng thái chung: WORKING DRAFT.** Nội dung mô tả tính năng được tổng hợp từ hệ thống hiện tại và cần product owner rà soát trước khi phát hành. Điều khoản, chính sách và nội dung pháp lý trong thư mục này là đề xuất phục vụ phát triển, không phải cam kết hoặc tư vấn pháp lý chính thức.
 
+Cập nhật 03/11/2026: file `16` bổ sung ba workflow, PDF/ký riêng, tính theo ngày và giới hạn tool AI. Nguồn đã cập nhật; cần ingest/apply version mới ở môi trường triển khai, không coi chỉnh file là đã đổi RAG runtime.
+
 ## Danh mục
 
 | File | Chủ đề | Đối tượng |
@@ -25,6 +27,7 @@ Kho tài liệu nguồn cho AI Agent trả lời câu hỏi về HomeSpace. Tron
 | `13-faq.md` | Câu hỏi thường gặp | Mọi người |
 | `14-contact-and-escalation.md` | Hỗ trợ và chuyển tiếp nhân viên | Mọi người |
 | `15-admin-operations.md` | Tài liệu vận hành admin | Chỉ admin |
+| `16-rental-workflows-and-handover.md` | Cọc chưa ký, nhận nhà, tiếp tục thuê, chấm dứt sớm và PDF riêng | Tenant, landlord, admin |
 
 ## Metadata và ingest
 
