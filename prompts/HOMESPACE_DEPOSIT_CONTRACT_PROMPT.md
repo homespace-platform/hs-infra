@@ -29,7 +29,7 @@ Khách đồng ý điều kiện giữ chỗ và gửi yêu cầu thuê (PENDING
 
 Nhận nhà ngay trong ngày: HomeSpace tạo **INITIAL gộp tiền tháng đầu + cọc**, không tạo RESERVATION_DEPOSIT riêng. Sau xác nhận khoản gộp, phải tách đúng dòng DEPOSIT để xuất văn bản cọc; đồng thời luồng hợp đồng thuê có thể chuẩn bị bản nháp. Hai bên ký đủ văn bản cọc rồi mới ký hợp đồng thuê, kể cả hai bước diễn ra cùng ngày.
 
-Cọc bằng 0: backend có thể tự ghi CONFIRMED để ghi nhận miễn thanh toán. Đây **không phải** giao dịch chuyển cọc 0 đồng; không xuất văn bản “đã nhận tiền cọc” trong bộ mẫu này.
+Ba DOCX D2 chỉ dùng cho hồ sơ có số tiền cọc theo yêu cầu thuê đã chốt lớn hơn 0 và phần cọc thực nhận đã được hai bên xác nhận, khớp với hồ sơ. Không cần đặt cọc và cọc 0 đồng cùng đi theo luồng hợp đồng thuê. Hệ thống bỏ qua lập và ký hợp đồng cọc, không phát sinh hoàn hay khấu trừ cọc. Khoản INITIAL chỉ có tiền thuê, kể cả khi đã CONFIRMED, không phải nguồn phát hành hợp đồng cọc. Không tạo mẫu D2 riêng cho cọc 0. Đây là quy tắc chọn mẫu của hệ thống, không in vào chính văn D2.
 
 **Thời điểm kích hoạt mong muốn:** sau khi chủ nhà xác nhận khoản có cọc dương, giao dịch được commit. Chỉ gửi yêu cầu thuê, tạo QR, upload ảnh hoặc người thuê báo chuyển chưa đủ để phát hành bản xác nhận đã nhận cọc.
 
@@ -66,9 +66,9 @@ Phụ đề: *Ghi nhận tiền cọc giữ chỗ theo yêu cầu thuê được
 - File đã xuất nhưng chưa có hai chữ ký đúng nội dung chỉ được gắn “đã lập/chờ ký”, không ghi “đã ký đủ”. Workflow cọc phải có metadata/hash của chính PDF cọc, không dùng chữ ký hợp đồng thuê để thay thế và không thay đổi lịch sử nhận tiền.
 - Ngày lập văn bản, ngày chấp nhận yêu cầu, thời điểm báo chuyển, xác nhận tiền và thời điểm ký là các sự kiện riêng. DOCX dùng **ngày lập**, không dùng ngày ký tương lai.
 
-## II. KẾT QUẢ REVIEW: DỮ LIỆU ĐÃ CÓ VÀ PHẦN THIẾU
+## II. ĐỐI CHIẾU LỊCH SỬ TRƯỚC KHI TRIỂN KHAI D2
 
-Mục này dành cho người tích hợp và ChatGPT hiểu nguồn; **không chép vào thân Word**.
+Bảng dưới ghi nhận thời điểm trước khi triển khai D2. Khi tạo Word, dùng catalog D2 ở Mục IV và lệnh thực thi ở Mục VI. **Không đưa ghi chú tích hợp vào thân Word.**
 
 | Nội dung | Source hiện có | Kết luận |
 | --- | --- | --- |
@@ -199,9 +199,9 @@ Tên tương thích V3 không có nghĩa đã có data model cọc. Các giá tr
 | {{deposit.amountNumber}} | Nghĩa vụ cọc của hồ sơ; đã kèm VNĐ |
 | {{deposit.amountWords}} | Bằng chữ nghĩa vụ cọc |
 
-### 3. Marker mới D2 — backend CHƯA hỗ trợ catalog/render cọc
+### 3. Marker riêng của D2 đã được backend hỗ trợ
 
-| Marker | Nguồn cần mapping/bổ sung |
+| Marker | Nguồn dữ liệu |
 | --- | --- |
 | {{depositAgreement.number}} | Số riêng ổn định của tài liệu cọc; cấp/lưu mới, không dùng contract.number |
 | {{depositAgreement.issuedAtText}} | Ngày giờ lập bản cọc từ snapshot.generatedAt, không phải ngày ký |
@@ -256,6 +256,8 @@ Marker bảng đặt thành đoạn riêng; backend tạo TableRenderData tươn
 10. Sau tạo Word: kiểm tra XML, render thật và xem từng trang. Không tự nhận đã render nếu công cụ không làm được; báo giới hạn trong câu trả lời, không giả file tải.
 
 ## VI. LỆNH THỰC THI CHO CHATGPT TẠO WORD
+
+Ba DOCX D2 chỉ dùng cho hồ sơ có số tiền cọc theo yêu cầu thuê đã chốt lớn hơn 0 và phần cọc thực nhận đã được hai bên xác nhận, khớp với hồ sơ. Không cần đặt cọc và cọc 0 đồng cùng đi theo luồng hợp đồng thuê. Hệ thống bỏ qua lập và ký hợp đồng cọc, không phát sinh hoàn hay khấu trừ cọc. Khoản INITIAL chỉ có tiền thuê, kể cả khi đã CONFIRMED, không phải nguồn phát hành hợp đồng cọc. Không tạo mẫu D2 riêng cho cọc 0. Đây là quy tắc chọn mẫu của hệ thống, không in vào chính văn D2.
 
 Bạn là người thiết kế mẫu Word cho HomeSpace. Hãy dùng toàn bộ đặc tả này để **tạo mới hoàn toàn 03 file DOCX tải được** ở mục I.3, không chỉ trả Markdown.
 
@@ -370,7 +372,7 @@ Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, bá
 - Quan sát mọi trang PDF/preview: lề, bảng, tiêu đề, marker dài, không trang trắng/tràn, không trang ký trùng. Nếu chưa render thật, nêu chưa kiểm tra.
 - Trong câu trả lời: link 3 DOCX + marker phát hiện/thiếu/lạ/run lỗi/render thực tế + lưu ý cần mapping D2. Không đính báo cáo vào hợp đồng.
 
-### 2. Ca nghiệm thu tích hợp backend sau này
+### 2. Ca nghiệm thu tích hợp backend
 
 | Ca | Kết quả cần có |
 | --- | --- |
@@ -378,7 +380,7 @@ Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, bá
 | Vào ngay, INITIAL 12 triệu: RENT 8 + DEPOSIT 4 | Chỉ xác nhận cọc 4, tổng 12, thuê 8; không xuất hai văn bản cọc |
 | Đã có cọc riêng, INITIAL tháng đầu được xác nhận sau | Không sinh thêm cọc hoặc tăng số cọc đã nhận |
 | Mới PENDING/ACCEPTED/QR/TRANSFER_REPORTED hoặc receipt DISPUTED/REJECTED | Không phát hành bản “đã nhận đủ”; trạng thái tiền không bị đổi để ép render |
-| Cọc miễn 0 được auto CONFIRMED | Không tạo biên nhận tiền đã chuyển |
+| Bài đăng không cọc hoặc hồ sơ thuê có cọc 0, INITIAL chỉ có tiền thuê đã CONFIRMED | Chỉ sinh hợp đồng thuê. Không chọn mẫu D2, không tạo bước ký hoặc khoản hoàn cọc. |
 | Chuyển thiếu/thừa/nhiều đợt chưa có allocation được xác nhận | Chờ đối soát, không giả số thực nhận hoặc hỗ trợ góp cọc |
 | Phần DEPOSIT không khớp request/originalAmount/tổng giao dịch | Chặn phát hành và báo field/reconciliation issue |
 | Thiếu CCCD/liên hệ pháp lý hoặc tư cách theo gate sản phẩm/pháp lý | Chỉ rõ phần cần bổ sung; không bịa hoặc coi catalog optional là miễn yêu cầu pháp lý |
@@ -395,7 +397,7 @@ Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, bá
 
 ## X. GHI CHÚ TÍCH HỢP CHO ĐỘI BACKEND — KHÔNG IN VÀO WORD
 
-Phần này để triển khai sau khi nhận 3 mẫu Word, không phải yêu cầu ChatGPT viết code trong lượt tạo mẫu.
+Phần này ghi lại các yêu cầu tích hợp D2 để đội kỹ thuật nghiệm thu với ba mẫu Word. ChatGPT chỉ tạo ba DOCX theo Mục VI.
 
 1. Thêm document kind/catalog D2, template/version riêng cho 3 loại hình. Giữ bộ thuê V3 và required thuê tách khỏi cọc; đăng ký 18 marker mới ở IV.3, map lại 24 marker tái sử dụng. Số lượng chỉ hỗ trợ review, tập key là chuẩn.
 2. Tạo snapshot cọc gắn rentalRequestId, sourcePaymentRequestId, depositRecordId, capturedAt/generatedAt, schemaVersion, templateVersionId, identity/property/rental/payment/bank snapshots và nội dung consent+hash/version. Contract/rentalRevision link để nullable tới khi hợp đồng thuê được tạo.

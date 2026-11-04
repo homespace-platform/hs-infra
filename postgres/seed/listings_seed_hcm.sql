@@ -1190,12 +1190,17 @@ DO $$ BEGIN
     END IF;
     IF EXISTS (
         SELECT 1 FROM hs_seed_rows s CROSS JOIN (VALUES
-            ('ELECTRICITY'),('WATER'),('MANAGEMENT'),('INTERNET'),('SERVICE_OR_GARBAGE')) required(code)
+            ('ELECTRICITY',1),('WATER',2),('MANAGEMENT',3),('INTERNET',4),('SERVICE_OR_GARBAGE',5)) required(code,sort_order)
         WHERE NOT EXISTS (SELECT 1 FROM listing_charges c WHERE c.listing_id=s.listing_id::text
+            AND c.id=md5('homespace-govap-300-v1-charge-' || s.n::text || '-' || required.sort_order::text)::uuid::text
             AND c.charge_type=required.code AND c.active IS TRUE)
     ) OR EXISTS (
-        SELECT 1 FROM hs_seed_rows s JOIN listing_charges c ON c.listing_id=s.listing_id::text
-        WHERE c.amount<0 OR c.currency<>'VND' OR (c.included_in_rent AND c.amount<>0)
+        -- Charges entered through the app can omit unit because billing_method carries it.
+        -- Validate this seed's rows, not charges outside its deterministic IDs.
+        SELECT 1 FROM hs_seed_rows s CROSS JOIN generate_series(1,7) AS seeded(sort_order)
+        JOIN listing_charges c ON c.listing_id=s.listing_id::text
+            AND c.id=md5('homespace-govap-300-v1-charge-' || s.n::text || '-' || seeded.sort_order::text)::uuid::text
+        WHERE c.amount IS NULL OR c.amount<0 OR c.currency IS DISTINCT FROM 'VND' OR (c.included_in_rent AND c.amount<>0)
            OR nullif(btrim(c.unit),'') IS NULL OR c.billing_method IS NULL
     ) THEN
         RAISE EXCEPTION 'Thiếu phí sinh hoạt hoặc đơn giá/đơn vị phí không hợp lệ';
