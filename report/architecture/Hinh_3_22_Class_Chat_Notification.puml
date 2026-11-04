@@ -1,0 +1,92 @@
+@startuml Hinh_3_22_Class_Chat_Notification
+title Hình 3.22 - Class Diagram Chat và Notification Service
+left to right direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam dpi 180
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 14
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "Chat - NestJS service riêng" {
+  class ChatModule <<Module>>
+  class ChatController <<REST>>
+  class ChatGateway <<Socket.IO>> {
+    +send(input: SendRealtimeMessageDto)
+  }
+  class ChatMessageService <<Service>> {
+    +sendMessage(userId, conversationId, input)
+    +listMessages(userId, conversationId, query)
+  }
+  class ChatConversationService <<Service>> {
+    +createOrReuseConversation(userId, input)
+  }
+  interface MessageModel <<Mongoose Model>>
+  interface ConversationModel <<Mongoose Model>>
+  class Message <<Mongo schema>> {
+    +conversationId: ObjectId
+    +senderId: String
+    +content: String
+  }
+  class Conversation <<Mongo schema>> {
+    +participantIds: String[]
+    +listingId: String
+    +unreadCounts: Map
+  }
+  class SendMessageDto <<DTO>> {
+    +content: String
+    +attachments: MessageAttachmentDto[]
+  }
+
+  ChatModule ..> ChatController : registers
+  ChatModule ..> ChatGateway : provides
+  ChatGateway --> ChatMessageService
+  ChatController --> ChatMessageService
+  ChatController --> ChatConversationService
+  ChatMessageService --> ChatConversationService
+  ChatMessageService --> MessageModel
+  ChatConversationService --> ConversationModel
+  MessageModel ..> Message
+  ConversationModel ..> Conversation
+  Message "*" --> "1" Conversation : conversationId
+  ChatGateway ..> SendMessageDto
+}
+
+package "Notification - module trong Core API (Spring Boot)" {
+  interface OtpService {
+    +createChallenge(request: CreateOtpChallengeRequest)
+    +resend(challengeId: String)
+    +verify(challengeId: String, code: String)
+  }
+  class OtpServiceImpl <<Service>>
+  interface OtpDeliveryService {
+    +send(challengeId, channel, destination, code, purpose, ttl)
+  }
+  class OtpDeliveryServiceImpl <<Service>>
+  class OtpChallengeRepository <<Redis repository>>
+  class NotificationDeliveryRepository <<Mongo repository>>
+  class OtpChallenge <<record>> {
+    +id: String
+    +codeHash: String
+    +expiresAt: Instant
+  }
+  class NotificationDelivery <<Mongo document>> {
+    +challengeId: String
+    +maskedDestination: String
+    +status: NotificationDeliveryStatus
+  }
+  class CreateOtpChallengeRequest <<DTO>>
+
+  OtpServiceImpl ..|> OtpService
+  OtpDeliveryServiceImpl ..|> OtpDeliveryService
+  OtpServiceImpl --> OtpChallengeRepository
+  OtpServiceImpl --> OtpDeliveryService
+  OtpDeliveryServiceImpl --> NotificationDeliveryRepository
+  OtpChallengeRepository ..> OtpChallenge
+  NotificationDeliveryRepository ..> NotificationDelivery
+  OtpService ..> CreateOtpChallengeRequest
+  NotificationDelivery ..> OtpChallenge : challengeId
+}
+@enduml

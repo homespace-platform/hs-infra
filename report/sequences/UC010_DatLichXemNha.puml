@@ -1,0 +1,96 @@
+@startuml UC010_DatLichXemNha
+' Nguồn: mục 3.2.6 trong báo cáo khóa luận được cung cấp ngày 21/10/2026.
+' Sơ đồ nghiệp vụ rút gọn theo mẫu UC001 v2; không mô tả toàn bộ chi tiết triển khai.
+title UC010 - Đặt lịch xem nhà
+
+hide footbox
+autonumber
+scale 0.55
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 16
+skinparam defaultFontStyle bold
+skinparam titleFontSize 20
+skinparam titleFontStyle bold
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 245
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+skinparam sequence {
+    ArrowFontName Segoe UI
+    ArrowFontSize 16
+    ArrowFontStyle bold
+    ArrowThickness 1.3
+    ParticipantFontSize 16
+    ParticipantFontStyle bold
+    ActorFontSize 16
+    ActorFontStyle bold
+    LifeLineBorderColor Black
+    LifeLineBackgroundColor White
+    ParticipantBackgroundColor White
+    ActorBackgroundColor White
+    GroupBackgroundColor White
+    GroupFontSize 15
+    GroupFontStyle bold
+    GroupHeaderFontSize 15
+    GroupHeaderFontStyle bold
+}
+
+actor "Người thuê" as Tenant
+boundary "**Giao diện**\n**lịch xem nhà**" as UI
+control "**Listing Service**" as Service
+entity "**Dữ liệu**\n**lịch hẹn**" as Booking
+actor "Chủ nhà" as Landlord
+
+Tenant -> UI : Mở lịch xem nhà
+activate UI
+UI -> Service : Lấy khung giờ khả dụng
+activate Service
+Service -> Booking : Tra lịch và giờ trống
+activate Booking
+deactivate Booking
+Service --> Tenant : Hiển thị khung giờ
+deactivate Service
+deactivate UI
+Tenant -> UI : Chọn giờ, gửi lời nhắn
+activate UI
+UI -> Service : Yêu cầu đặt lịch
+activate Service
+Service -> Service : Kiểm tra tin, giờ và yêu cầu trùng
+alt Khung giờ còn hợp lệ
+    Service -> Booking : Tạo lịch PENDING
+    activate Booking
+    deactivate Booking
+    Service ->> Landlord : Thông báo yêu cầu xem nhà
+    Service --> Tenant : Hiển thị lịch chờ phản hồi
+else Khung giờ không hợp lệ
+    Service --> Tenant : Yêu cầu chọn giờ khác
+end
+deactivate Service
+deactivate UI
+opt Chủ nhà xử lý yêu cầu
+    ref over Service, Landlord : UC011 - Xử lý yêu cầu đặt lịch
+    activate UI
+    UI -> Service : Lấy trạng thái lịch hẹn
+    activate Service
+    Service --> Tenant : Hiển thị kết quả hoặc đề xuất
+    deactivate Service
+    deactivate UI
+end
+opt Người thuê hủy trước khi được phản hồi
+    Tenant -> UI : Chọn hủy lịch
+    activate UI
+    UI -> Service : Hủy lịch hẹn
+    activate Service
+    Service -> Booking : Chuyển CANCELLED
+    activate Booking
+    deactivate Booking
+    Service ->> Landlord : Thông báo hủy
+    deactivate Service
+    deactivate UI
+end
+
+@enduml

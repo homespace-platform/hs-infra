@@ -1,0 +1,86 @@
+@startuml BoSung_Document_Model_News_Service
+' Nguồn: news.schema.ts, news-asset.schema.ts và news.service.ts. _id là UUID string. contentBlocks/media là dữ liệu nhúng; storageObjectId tham chiếu news_assets._id theo mã hiện tại.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 90
+skinparam ranksep 70
+skinparam roundcorner 0
+
+entity "news_articles" as Article <<MongoDB>> {
+    * _id : string <<PK>>
+    --
+    * title : string
+    * slug : string <<UK>>
+    * summary : string
+    * category : string
+    * status : string
+    * authorId : string <<REF>>
+    featured : boolean
+    views : number
+    tags : string[]
+    contentBlocks : object[]
+    media : object[]
+    publishedAt : date
+    createdAt : date
+    updatedAt : date
+}
+
+entity "contentBlock" as Block <<embedded>> {
+    * type : string
+    text : string
+    storageObjectId : string <<REF>>
+    altText : string
+    caption : string
+}
+
+entity "newsMediaSnapshot" as Media <<embedded>> {
+    * id : string
+    * storageObjectId : string <<REF>>
+    * role : string
+    * sortOrder : number
+    * url : string
+    altText : string
+    caption : string
+}
+
+entity "news_assets" as Asset <<MongoDB>> {
+    * _id : string <<PK>>
+    --
+    * originalName : string
+    * objectKey : string <<UK>>
+    * bucketName : string
+    * contentType : string
+    * sizeBytes : number
+    checksum : string
+    * ownerId : string <<REF>>
+    * status : string
+    createdAt : date
+    updatedAt : date
+}
+
+
+Article "1" *-right- "0..n" Block
+Article "1" *-down- "0..n" Media
+Asset ||-[dashed]left-o{ Media
+
+@enduml
+

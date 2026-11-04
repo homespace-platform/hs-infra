@@ -1,0 +1,61 @@
+@startuml Hinh_3_23_Deployment_HomeSpace
+title Hình 3.23 - Deployment Diagram hệ thống HomeSpace
+top to bottom direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam dpi 180
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 14
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+package "Development hiện tại" {
+  node "Máy phát triển" as DevHost {
+    artifact "Web, Admin, Mobile simulator" as DevClient
+    component "Ứng dụng chạy trên host\nGateway :8080 | Core :8081 | Chat :8082\nNews :8083 | AI :8084 | Eureka :8761" as DevApps
+    artifact ".env.dev / .env\nlocal secrets" as DevEnv
+  }
+  node "Docker Compose / hs-network" as DevCompose {
+    component "Keycloak | Gotenberg | Redis | Kafka\nPostgreSQL | pgvector | MongoDB" as DevInfra
+    folder "Named volumes\nPG, pgvector, Mongo, Redis, Kafka" as DevVolumes
+    component "pgAdmin | RedisInsight | Kafka UI" as DevOps
+  }
+  DevClient --> DevApps : HTTP / WebSocket
+  DevApps --> DevInfra : host ports
+  DevInfra --> DevVolumes : persistent data
+  DevEnv ..> DevApps : config
+  note bottom of DevCompose
+  Compose hiện publish cổng lên host để phát triển.
+  end note
+}
+
+package "Demo / deployment dự kiến" {
+  cloud "Internet\nWeb / Mobile / Admin" as Internet
+  node "Public network" as Public {
+    component "Reverse proxy\nTLS :443" as Proxy
+  }
+  node "Private application network" as PrivateApp {
+    component "API Gateway | Core API | Chat | News | AI\nKeycloak | Eureka | Gotenberg" as AppContainers
+  }
+  node "Private data network" as PrivateData {
+    database "PostgreSQL Core/Keycloak | pgvector AI\nMongoDB Chat/News/AI | Redis | Kafka" as DataContainers
+    folder "Persistent database volumes" as Volumes
+  }
+  component "Secret store / injected env" as Secrets
+  component "Monitoring\nhealth, logs, metrics" as Monitoring
+  cloud "External APIs\nS3, Didit, Vietmap/TomTom,\nSmartCA, SMTP, OpenAI" as External
+
+  Internet --> Proxy : HTTPS :443
+  Proxy --> AppContainers : /api REST + WebSocket + /auth OIDC
+  AppContainers --> DataContainers : private SQL / documents / Redis / Kafka
+  DataContainers --> Volumes : persistent data
+  Secrets ..> AppContainers : credentials
+  Monitoring ..> AppContainers : health / logs
+  AppContainers --> External : outbound API
+  note bottom of PrivateData
+  Chỉ reverse proxy mở cổng Internet;
+  dữ liệu và cổng service giữ private.
+  end note
+}
+DevCompose -[hidden]down-> Internet
+@enduml

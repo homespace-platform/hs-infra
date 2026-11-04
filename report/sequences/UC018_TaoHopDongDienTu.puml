@@ -1,0 +1,99 @@
+@startuml UC018_TaoHopDongDienTu
+' Nguồn: mục 3.2.8 trong báo cáo khóa luận được cung cấp ngày 21/10/2026.
+' Sơ đồ nghiệp vụ rút gọn theo mẫu UC001 v2; không mô tả toàn bộ chi tiết triển khai.
+title UC018 - Tạo hợp đồng điện tử
+
+hide footbox
+autonumber
+scale 0.55
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 16
+skinparam defaultFontStyle bold
+skinparam titleFontSize 20
+skinparam titleFontStyle bold
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 245
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+skinparam sequence {
+    ArrowFontName Segoe UI
+    ArrowFontSize 16
+    ArrowFontStyle bold
+    ArrowThickness 1.3
+    ParticipantFontSize 16
+    ParticipantFontStyle bold
+    ActorFontSize 16
+    ActorFontStyle bold
+    LifeLineBorderColor Black
+    LifeLineBackgroundColor White
+    ParticipantBackgroundColor White
+    ActorBackgroundColor White
+    GroupBackgroundColor White
+    GroupFontSize 15
+    GroupFontStyle bold
+    GroupHeaderFontSize 15
+    GroupHeaderFontStyle bold
+}
+
+actor "Chủ nhà" as Landlord
+boundary "**Giao diện**\n**hợp đồng**" as UI
+control "**Contract Service**" as Service
+entity "**Dữ liệu**\n**hợp đồng**" as Contract
+actor "Người thuê" as Tenant
+
+Landlord -> UI : Tạo hợp đồng từ yêu cầu thuê
+activate UI
+UI -> Service : Khởi tạo hợp đồng
+activate Service
+Service -> Contract : Kiểm tra quyền, yêu cầu thuê; lấy mẫu hiệu lực
+activate Contract
+deactivate Contract
+alt Thiếu dữ liệu bắt buộc
+    Service --> UI : Trả các mục còn thiếu
+    deactivate Service
+    UI --> Landlord : Yêu cầu bổ sung thông tin
+    deactivate UI
+else Đủ dữ liệu
+    Service -> Contract : Tạo DRAFT và phiên bản đầu
+    activate Contract
+    deactivate Contract
+    Service --> Landlord : Hiển thị dự thảo tự điền
+    deactivate Service
+    deactivate UI
+
+    Landlord -> UI : Chỉnh sửa điều khoản cho phép
+    activate UI
+    UI -> Service : Kiểm tra và lưu phiên bản
+    activate Service
+    Service -> Contract : Cập nhật hợp đồng DRAFT
+    activate Contract
+    deactivate Contract
+    deactivate Service
+    deactivate UI
+
+    Landlord -> UI : Xem trước PDF dự thảo
+    activate UI
+    UI -> Service : Render PDF có watermark DRAFT
+    activate Service
+    Service --> UI : Trả PDF xem trước
+    deactivate Service
+    deactivate UI
+
+    Landlord -> UI : Gửi người thuê xem xét
+    activate UI
+    UI -> Service : Yêu cầu gửi hợp đồng
+    activate Service
+    Service -> Contract : Chuyển REVIEWING
+    activate Contract
+    deactivate Contract
+    Service ->> Tenant : Thông báo hợp đồng cần xem xét
+    Service --> UI : Trả trạng thái REVIEWING
+    deactivate Service
+    deactivate UI
+end
+
+@enduml

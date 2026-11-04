@@ -1,0 +1,73 @@
+@startuml Hinh_3_24d_ERD_ChinhSach_Listing
+' Bổ sung listing_policy_definitions, listing_policy_values và listing_policy_definition_categories. Nguồn: ListingPolicyDefinition.java và ListingPolicyValue.java.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "listings" as Listing {
+    * id : varchar <<PK>>
+    --
+    * title : varchar
+    * category : varchar
+}
+
+entity "listing_policy_definitions" as Definition {
+    * code : varchar <<PK>>
+    --
+    * label : varchar
+    * value_type : varchar
+    help_text : varchar
+    unit_label : varchar
+    minimum_value : integer
+    maximum_value : integer
+    * required : boolean
+    * active : boolean
+    * sort_order : integer
+}
+
+entity "listing_policy_values" as Value {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * policy_code : varchar <<FK>>
+    * policy_value : varchar
+    note : varchar
+    --
+    UNIQUE(listing_id, policy_code)
+}
+
+entity "listing_policy_definition_categories" as Category {
+    * policy_code : varchar <<FK>>
+    * category : varchar
+    --
+    UNIQUE(policy_code, category)
+}
+
+
+Listing ||-right-o{ Value
+Definition ||-left-o{ Value
+Definition ||-down-o{ Category
+
+@enduml
+

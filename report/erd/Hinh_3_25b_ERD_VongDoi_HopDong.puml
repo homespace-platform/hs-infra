@@ -1,0 +1,107 @@
+@startuml Hinh_3_25b_ERD_VongDoi_HopDong
+' Mục 3.4.2 - Contract Service, hóa đơn, phụ lục, gia hạn và kết thúc hợp đồng. Nguồn: hs-contract-service/model.
+' Các trường chính được rút gọn. FK là quan hệ JPA; REF là ID tham chiếu logic.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+top to bottom direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "contracts" as Contract {
+    * id : varchar <<PK>>
+    --
+    * contract_number : varchar <<UK>>
+    * landlord_id : varchar <<REF>>
+    * tenant_id : varchar <<REF>>
+    parent_contract_id : varchar <<REF>>
+    * status : varchar
+}
+
+entity "monthly_invoices" as Invoice {
+    * id : varchar <<PK>>
+    --
+    * contract_id : varchar <<REF>>
+    * period_index : integer
+    * period_start : date
+    * period_end_exclusive : date
+    electricity_end : numeric
+    water_end : numeric
+    * total_amount : numeric
+    payment_request_id : varchar <<REF>>
+    * status : varchar
+    due_at : timestamptz
+    --
+    UNIQUE(contract_id, period_index)
+}
+
+entity "contract_amendments" as Amendment {
+    * id : varchar <<PK>>
+    --
+    * contract_id : varchar <<REF>>
+    * base_revision_id : varchar <<REF>>
+    agreement_contract_id : varchar <<UK, REF>>
+    * proposer_id : varchar <<REF>>
+    * recipient_id : varchar <<REF>>
+    * effective_on : date
+    * changes_snapshot : text
+    * status : varchar
+}
+
+entity "contract_amendment_drafts" as Draft {
+    * contract_id : varchar <<PK, REF>>
+    --
+    * owner_id : varchar <<REF>>
+    * payload : text
+}
+
+entity "contract_renewals" as Renewal {
+    * id : varchar <<PK>>
+    --
+    * contract_id : varchar <<REF>>
+    agreement_contract_id : varchar <<REF>>
+    * months : integer
+    starts_on : date
+    end_exclusive : date
+    * status : varchar
+}
+
+entity "contract_closures" as Closure {
+    * contract_id : varchar <<PK, REF>>
+    --
+    * status : varchar
+    electricity_final : numeric
+    water_final : numeric
+    refund_amount : numeric
+    balance_amount : numeric
+    refund_payment_id : varchar <<REF>>
+    balance_payment_id : varchar <<REF>>
+    closed_at : timestamptz
+}
+
+
+Contract ||-[dashed]up-o{ Invoice
+Contract ||-[dashed]right-o{ Amendment
+Contract ||-[dashed]right-o| Draft
+Contract ||-[dashed]down-o{ Renewal
+Contract ||-[dashed]down-o| Closure
+
+@enduml
+

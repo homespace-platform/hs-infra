@@ -1,0 +1,111 @@
+@startuml Hinh_3_24b_ERD_ChiTiet_LoaiHinh
+' Mục 3.4.2 - Listing Service, các bảng chi tiết theo loại hình. Nguồn: Listing*Detail và ListingOfficeOperatingHour.
+' Các trường chính được rút gọn. FK là quan hệ JPA; REF là ID tham chiếu logic.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+top to bottom direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "listings" as Listing {
+    * id : varchar <<PK>>
+    --
+    * category : varchar
+    * title : varchar
+    * area_m2 : numeric
+    * price_amount : numeric
+}
+
+entity "listing_apartment_details" as Apartment {
+    * listing_id : varchar <<PK, FK>>
+    --
+    * project_name : varchar
+    unit_code : varchar
+    * floor_number : integer
+    * bedroom_count : integer
+    * bathroom_count : integer
+    * furnishing_status : varchar
+}
+
+entity "listing_room_details" as Room {
+    * listing_id : varchar <<PK, FK>>
+    --
+    * room_code : varchar
+    floor_number : integer
+    * restroom_type : varchar
+    * furnishing_status : varchar
+    * max_occupants : integer
+    electric_meter_type : varchar
+    water_meter_type : varchar
+}
+
+entity "listing_house_details" as House {
+    * listing_id : varchar <<PK, FK>>
+    --
+    land_area_m2 : numeric
+    * total_floors : integer
+    * bedroom_count : integer
+    * bathroom_count : integer
+    * furnishing_status : varchar
+    legal_status : varchar
+}
+
+entity "listing_office_details" as Office {
+    * listing_id : varchar <<PK, FK>>
+    --
+    building_name : varchar
+    office_grade : varchar
+    * floor_number : integer
+    * handover_status : varchar
+    expected_seats : integer
+    operating_mode : varchar
+}
+
+entity "listing_commercial_details" as Commercial {
+    * listing_id : varchar <<PK, FK>>
+    --
+    * position_type : varchar
+    frontage_width_m : numeric
+    rented_floor_count : integer
+    parking_type : varchar
+    * handover_status : varchar
+    restricted_businesses : varchar
+}
+
+entity "listing_office_operating_hours" as Hours {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * day_of_week : varchar
+    * open_time : time
+    * close_time : time
+}
+
+
+Listing ||-up-o| Apartment
+Listing ||-up-o| Room
+Listing ||-right-o| House
+Listing ||-down-o| Office
+Listing ||-down-o| Commercial
+Office ||-right-o{ Hours
+
+@enduml
+

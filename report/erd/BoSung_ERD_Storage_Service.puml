@@ -1,0 +1,53 @@
+@startuml BoSung_ERD_Storage_Service
+' Nguồn: hs-core-api/hs-storage-service/src/main/java/com/hs/storage/model/StorageObject.java. Bảng chỉ lưu metadata; dữ liệu tệp nằm trong object storage.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "storage_objects" as Storage {
+    * id : varchar <<PK>>
+    --
+    * original_name : varchar
+    * object_key : varchar <<UK>>
+    * bucket_name : varchar
+    * content_type : varchar
+    * size_bytes : bigint
+    checksum : varchar
+    extension : varchar
+    * owner_id : varchar <<REF>>
+    reference_type : varchar
+    reference_id : varchar <<REF>>
+    * purpose : varchar
+    * visibility : varchar
+    * status : varchar
+    created_at : timestamptz
+    updated_at : timestamptz
+    --
+    INDEX(owner_id)
+    INDEX(reference_type, reference_id)
+}
+
+
+@enduml
+

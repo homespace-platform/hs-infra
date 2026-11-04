@@ -1,0 +1,124 @@
+@startuml Hinh_3_26_ERD_Payment_Service
+' Mục 3.4.2 - Payment Service. Các ID liên kết giữa model Payment là trường scalar, không phải quan hệ JPA. BankAccount cung cấp snapshot, PaymentRequest không lưu FK tới BankAccount.
+' Các trường chính được rút gọn. FK là quan hệ JPA; REF là ID tham chiếu logic.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+top to bottom direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "payment_requests" as Request {
+    * id : varchar <<PK>>
+    --
+    rental_request_id : varchar <<REF>>
+    contract_id : varchar <<REF>>
+    invoice_id : varchar <<UK, REF>>
+    * payer_id : varchar <<REF>>
+    * payee_id : varchar <<REF>>
+    * type : varchar
+    * direction : varchar
+    * status : varchar
+    * total_amount : numeric
+    * transfer_reference : varchar <<UK>>
+    payer_bank_account_snapshot : text
+    payee_bank_account_snapshot : text
+    due_at : timestamptz
+    version : bigint
+}
+
+entity "payment_line_items" as Line {
+    * id : varchar <<PK>>
+    --
+    * payment_request_id : varchar <<REF>>
+    * type : varchar
+    * display_name : varchar
+    * amount : numeric
+* quantity : integer
+    unit_price : numeric
+}
+
+entity "payment_evidences" as Evidence {
+    * id : varchar <<PK>>
+    --
+    * payment_request_id : varchar <<REF>>
+    * uploaded_by : varchar <<REF>>
+    * storage_object_id : varchar <<REF>>
+    declared_transfer_time : timestamptz
+    bank_transaction_reference : varchar
+}
+
+entity "payment_events" as Event {
+    * id : varchar <<PK>>
+    --
+    * payment_request_id : varchar <<REF>>
+    * event_type : varchar
+    from_status : varchar
+    to_status : varchar
+    * actor_id : varchar <<REF>>
+    metadata_json : text
+    * created_at : timestamptz
+}
+
+entity "deposit_records" as Deposit {
+    * id : varchar <<PK>>
+    --
+    * rental_request_id : varchar <<REF>>
+    contract_id : varchar <<REF>>
+    * initial_payment_request_id : varchar <<REF>>
+    refund_payment_request_id : varchar <<REF>>
+    * original_amount : numeric
+    * held_amount : numeric
+    * refundable_amount : numeric
+    * status : varchar
+}
+
+entity "payment_proof_upload_sessions" as Upload {
+    * id : varchar <<PK>>
+    --
+    * payment_request_id : varchar <<REF>>
+    * tenant_user_id : varchar <<REF>>
+    * token_hash : varchar <<UK>>
+    storage_id : varchar <<REF>>
+    * status : varchar
+    * expires_at : timestamptz
+}
+
+entity "bank_accounts" as Bank {
+    * id : varchar <<PK>>
+    --
+    * user_id : varchar <<REF>>
+    * bank_bin : varchar
+    * bank_code : varchar
+    * account_number : varchar
+    * account_holder_name : varchar
+    * status : varchar
+}
+
+
+Request ||-[dashed]left-o{ Line
+Request ||-[dashed]up-o{ Evidence
+Request ||-[dashed]right-o{ Event
+Request ||-[dashed]down-o{ Upload
+Request ||-[dashed]down-o{ Deposit
+Bank -[hidden]right-> Request
+
+@enduml
+

@@ -1,0 +1,96 @@
+@startuml Hinh_3_24e_ERD_LichXem_LichSu_BaiXe
+' Bổ sung listing_viewing_days, listing_viewing_slots, listing_view_histories và parking_reservations. Nguồn: Listing.java, ListingViewHistory.java, ParkingReservation.java. Liên kết Parking là REF scalar, không phải FK JPA.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "listings" as Listing {
+    * id : varchar <<PK>>
+    --
+    branch_id : varchar <<FK>>
+    * title : varchar
+    * status : varchar
+}
+
+entity "listing_viewing_days" as Days {
+    * listing_id : varchar <<FK>>
+    * day_of_week : varchar
+}
+
+entity "listing_viewing_slots" as Slots {
+    * listing_id : varchar <<FK>>
+    * viewing_slot : varchar
+}
+
+entity "listing_view_histories" as View {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * user_id : varchar <<REF>>
+    * viewed_at : timestamptz
+    --
+    UNIQUE(user_id, listing_id)
+}
+
+entity "parking_reservations" as Parking {
+    * id : varchar <<PK>>
+    --
+    branch_id : varchar <<REF>>
+    * listing_id : varchar <<REF>>
+    * rental_request_id : varchar <<REF>>
+    contract_id : varchar <<REF>>
+    * vehicle_type : varchar
+    * quantity : integer
+    * start_date : date
+    * end_date_exclusive : date
+    * status : varchar
+    hold_expires_at : timestamptz
+}
+
+entity "property_branches" as Branch {
+    * id : varchar <<PK>>
+    --
+    * name : varchar
+    motorbike_parking_capacity : integer
+    car_parking_capacity : integer
+}
+
+entity "rental_requests" as Rental {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * renter_id : varchar <<REF>>
+    * status : varchar
+}
+
+
+Listing ||-up-o{ Days
+Listing ||-up-o{ Slots
+Listing ||-left-o{ View
+Listing ||-[dashed]right-o{ Parking
+Branch |o-[dashed]down-o{ Parking
+Rental ||-[dashed]up-o{ Parking
+
+@enduml
+

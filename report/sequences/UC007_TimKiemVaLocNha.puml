@@ -1,0 +1,85 @@
+@startuml UC007_TimKiemVaLocNha
+' Nguồn: mục 3.2.5 trong báo cáo khóa luận được cung cấp ngày 21/10/2026.
+' Sơ đồ nghiệp vụ rút gọn theo mẫu UC001 v2; không mô tả toàn bộ chi tiết triển khai.
+title UC007 - Tìm kiếm và lọc nhà
+
+hide footbox
+autonumber
+scale 0.55
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 16
+skinparam defaultFontStyle bold
+skinparam titleFontSize 20
+skinparam titleFontStyle bold
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 245
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+skinparam sequence {
+    ArrowFontName Segoe UI
+    ArrowFontSize 16
+    ArrowFontStyle bold
+    ArrowThickness 1.3
+    ParticipantFontSize 16
+    ParticipantFontStyle bold
+    ActorFontSize 16
+    ActorFontStyle bold
+    LifeLineBorderColor Black
+    LifeLineBackgroundColor White
+    ParticipantBackgroundColor White
+    ActorBackgroundColor White
+    GroupBackgroundColor White
+    GroupFontSize 15
+    GroupFontStyle bold
+    GroupHeaderFontSize 15
+    GroupHeaderFontStyle bold
+}
+
+actor "Khách / Người dùng" as User
+boundary "**Giao diện**\n**tìm kiếm**" as UI
+control "**AI Service**" as AI
+control "**Listing Service**" as Service
+entity "**Dữ liệu**\n**tin đăng**" as Listing
+
+User -> UI : Nhập từ khóa hoặc tiêu chí lọc
+activate UI
+opt Tìm bằng ngôn ngữ tự nhiên
+    UI -> AI : Phân tích nhu cầu
+    activate AI
+    alt AI khả dụng
+        AI --> UI : Đề xuất bộ lọc để chỉnh sửa
+    else AI không khả dụng
+        UI --> User : Hướng dẫn dùng bộ lọc thường
+    end
+    deactivate AI
+end
+UI -> Service : Gửi từ khóa, bộ lọc và phân trang
+activate Service
+Service -> Listing : Tìm tin PUBLISHED, sắp xếp
+activate Listing
+alt Có kết quả
+    Listing --> UI : Trả danh sách phù hợp
+    UI --> User : Hiển thị kết quả
+else Không có kết quả
+    UI --> User : Gợi ý nới phạm vi hoặc tiêu chí
+end
+deactivate Listing
+deactivate Service
+deactivate UI
+opt Đổi bộ lọc hoặc sắp xếp
+    activate UI
+    UI -> Service : Tìm lại với tiêu chí mới
+    activate Service
+    Service --> User : Trả danh sách cập nhật
+    deactivate Service
+    deactivate UI
+end
+opt Người dùng chọn một kết quả
+    ref over User, UI : UC008 - Xem chi tiết tin đăng
+end
+
+@enduml

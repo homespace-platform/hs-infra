@@ -1,0 +1,101 @@
+@startuml BoSung_ERD_AI_Service
+' Nguồn: hs-ai-service/src/homespace_ai/models/knowledge.py. document_id của version tham chiếu khóa duy nhất knowledge_documents.document_id, không phải UUID id. worker_id của job chỉ là REF.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "knowledge_documents" as Doc {
+    * id : uuid <<PK>>
+    --
+    * document_id : varchar <<UK>>
+    source_filename : varchar <<UK>>
+    * title : varchar
+    category : varchar
+    * visibility : varchar
+    * status : varchar
+    active_version_id : uuid <<REF>>
+    * created_at : timestamptz
+    * updated_at : timestamptz
+}
+
+entity "knowledge_document_versions" as Version {
+    * id : uuid <<PK>>
+    --
+    * document_id : varchar <<FK>>
+    * version_number : integer
+    * version : varchar
+    * raw_markdown : text
+    * content_hash : varchar
+    * embedding_model_id : varchar
+    * chunk_config_version : varchar
+    * status : varchar
+    --
+    UNIQUE(document_id, version_number)
+}
+
+entity "knowledge_chunks" as Chunk {
+    * id : uuid <<PK>>
+    --
+    * version_id : uuid <<FK>>
+    * document_id : varchar <<REF>>
+    * chunk_index : integer
+    * heading_path : text
+    * content : text
+    * token_count : integer
+    * embedding : vector(384)
+    * chunk_metadata : jsonb
+}
+
+entity "knowledge_ingestion_jobs" as Job {
+    * id : uuid <<PK>>
+    --
+    * version_id : uuid <<FK>>
+    * document_id : varchar <<REF>>
+    * job_type : varchar
+    * status : varchar
+    * attempts : integer
+    * max_attempts : integer
+    worker_id : varchar <<REF>>
+    lease_until : timestamptz
+    error_message : text
+}
+
+entity "worker_heartbeats" as Worker {
+    * worker_id : varchar <<PK>>
+    --
+    * hostname : varchar
+    * pid : integer
+    * status : varchar
+    * last_heartbeat : timestamptz
+    * started_at : timestamptz
+}
+
+
+Doc ||-right-o{ Version
+Version ||-down-o{ Chunk
+Version ||-right-o{ Job
+Worker |o-[dashed]down-o{ Job
+
+@enduml
+

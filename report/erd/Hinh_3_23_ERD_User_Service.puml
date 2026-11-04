@@ -1,0 +1,119 @@
+@startuml Hinh_3_23_ERD_User_Service
+' Hình 3.23 trong mục 3.4.2 của báo cáo khóa luận.
+' Nguồn đối chiếu: model và BaseEntity của hs-user-service trong mã nguồn hiện tại.
+' Bản ERD rút gọn: giữ khóa, trường nghiệp vụ chính và quan hệ; không liệt kê mọi trường.
+' Đường liền: quan hệ JPA có khóa ngoại. Đường nét đứt: tham chiếu logic.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 65
+skinparam roundcorner 0
+skinparam entity {
+    BackgroundColor white
+    BorderColor black
+    FontColor black
+}
+
+together {
+    entity "roles" as Roles {
+        * id : varchar <<PK>>
+        --
+        * name : varchar <<UK>>
+        description : varchar
+        * active : boolean
+    }
+
+    entity "roles_permissions" as RolePermissions {
+        * role_id : varchar <<PK, FK>>
+        * permission_id : varchar <<PK, FK>>
+    }
+
+    entity "permissions" as Permissions {
+        * id : varchar <<PK>>
+        --
+        * name : varchar <<UK>>
+        description : varchar
+        * active : boolean
+    }
+}
+
+entity "users" as Users {
+    * id : varchar <<PK>>
+    --
+    role_id : varchar <<FK>>
+    * username : varchar <<UK>>
+    * email : varchar <<UK>>
+    phone : varchar <<UK>>
+    cccd : varchar <<UK>>
+    first_name : varchar
+    last_name : varchar
+    dob : date
+    gender : varchar
+    * on_boarded : boolean
+    * active : boolean
+    created_at : timestamptz
+    updated_at : timestamptz
+}
+
+entity "addresses" as Addresses {
+    * id : varchar <<PK>>
+    --
+    user_id : varchar <<FK, UK>>
+    listing_id : varchar <<UK, REF>>
+    branch_id : varchar <<UK, REF>>
+    * province_code : varchar
+    * ward_code : varchar
+    * street_line : varchar
+    * full_address : varchar
+}
+
+entity "kyc_verifications" as Kyc {
+    * id : varchar <<PK>>
+    --
+    * user_id : varchar <<REF>>
+    * provider : varchar
+    * provider_session_id : varchar
+    * status : varchar
+    provider_status : varchar
+    session_url : varchar
+    rejection_reason : varchar
+    last_event_id : varchar
+    verified_at : timestamptz
+    --
+    UNIQUE(provider, provider_session_id)
+    INDEX(user_id, status)
+}
+
+entity "kyc_webhook_events" as Webhook {
+    * event_id : varchar <<PK>>
+    --
+    session_id : varchar <<REF>>
+    webhook_type : varchar
+    * processed_at : timestamptz
+}
+
+Roles ||--o{ RolePermissions
+Permissions ||--o{ RolePermissions
+Roles |o--o{ Users
+Users |o--o| Addresses
+Users ||..o{ Kyc
+Kyc |o..o{ Webhook
+
+@enduml

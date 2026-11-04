@@ -1,0 +1,98 @@
+@startuml UC020_KySoHopDong
+' Nguồn: mục 3.2.9 trong báo cáo khóa luận được cung cấp ngày 21/10/2026.
+' Sơ đồ nghiệp vụ rút gọn theo mẫu UC001 v2; không mô tả toàn bộ chi tiết triển khai.
+title UC020 - Ký số hợp đồng
+
+hide footbox
+autonumber
+scale 0.55
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 16
+skinparam defaultFontStyle bold
+skinparam titleFontSize 20
+skinparam titleFontStyle bold
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 245
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+skinparam sequence {
+    ArrowFontName Segoe UI
+    ArrowFontSize 16
+    ArrowFontStyle bold
+    ArrowThickness 1.3
+    ParticipantFontSize 16
+    ParticipantFontStyle bold
+    ActorFontSize 16
+    ActorFontStyle bold
+    LifeLineBorderColor Black
+    LifeLineBackgroundColor White
+    ParticipantBackgroundColor White
+    ActorBackgroundColor White
+    GroupBackgroundColor White
+    GroupFontSize 15
+    GroupFontStyle bold
+    GroupHeaderFontSize 15
+    GroupHeaderFontStyle bold
+}
+
+actor "Người ký" as Signer
+boundary "**Giao diện**\n**ký hợp đồng**" as UI
+control "**Contract Service**" as Service
+participant "VNPT SmartCA" as CA
+participant "Object Storage" as Storage
+
+note over Signer, Service
+Chủ nhà ký trước; người thuê ký trên PDF đã có chữ ký chủ nhà.
+end note
+
+loop Lần lượt từng bên ký
+    Signer -> UI : Chọn ký số hợp đồng
+    activate UI
+    UI -> Service : Kiểm tra quyền, lượt ký và điều kiện
+    activate Service
+    alt Chưa đủ điều kiện ký
+        Service --> Signer : Trả lý do cần hoàn tất
+    else Đủ điều kiện
+        Service -> CA : Lấy chứng thư khả dụng
+        activate CA
+        deactivate CA
+        Service --> Signer : Cho chọn chứng thư
+        Signer -> UI : Đồng ý ký bằng chứng thư đã chọn
+        UI -> Service : Gửi yêu cầu ký, kiểm tra consent và trùng
+        Service -> Storage : Lấy PDF đúng phiên bản
+        activate Storage
+        deactivate Storage
+        Service -> Service : Chuẩn bị PDF và digest
+        Service -> CA : Gửi digest cần ký
+        activate CA
+        CA --> Service : Mã giao dịch đang chờ
+        deactivate CA
+        Signer -> CA : Xác nhận hoặc từ chối ký
+        activate CA
+        Service -> CA : Tra cứu kết quả giao dịch
+        deactivate CA
+        alt Ký thành công
+            Service -> Storage : Nhúng, kiểm tra và lưu PDF đã ký
+            activate Storage
+            deactivate Storage
+            Service -> Service : Lưu SIGNED; chuyển lượt ký kế tiếp
+            Service --> Signer : Hiển thị tài liệu đã ký
+        else Từ chối, hết hạn hoặc lỗi
+            Service --> Signer : Trả kết quả thất bại
+        end
+    end
+    deactivate Service
+    deactivate UI
+end
+opt Đã đủ hai chữ ký hợp lệ
+    activate Service
+    Service -> Service : Lưu SIGNED_FINAL, chuyển ACTIVE và hoàn tất thuê
+    Service --> Signer : Hiển thị hợp đồng đủ chữ ký
+    deactivate Service
+end
+
+@enduml

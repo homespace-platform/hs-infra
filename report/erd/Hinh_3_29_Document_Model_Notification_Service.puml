@@ -1,0 +1,62 @@
+@startuml Hinh_3_29_Document_Model_Notification_Service
+' Mục 3.4.3 - Notification Service được triển khai bằng Java / Spring Boot.
+' Nguồn: NotificationDelivery.java, OtpChallenge.java và OtpChallengeRepository.java.
+' Sơ đồ mô tả dữ liệu lưu trữ. Redis hash lưu các giá trị dạng chuỗi;
+' MongoDB lưu bản ghi NotificationDelivery, Instant được ánh xạ thành BSON Date.
+' challengeId là liên kết logic; OTP challenge có thể đã bị xóa hoặc hết TTL.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+left to right direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "notification:otp:challenge:{id}" as Otp <<Redis hash>> {
+    * key : string <<KEY>>
+    --
+    channel : string
+    purpose : string
+    destination : string
+    codeHash : string
+    attempts : string
+    maxAttempts : string
+    createdAt : string
+    expiresAt : string
+    --
+    TTL theo thời hạn OTP
+}
+
+entity "notification_deliveries" as Delivery <<MongoDB>> {
+    * _id : ObjectId <<PK>>
+    --
+    challengeId : string <<REF>>
+    channel : string
+    purpose : string
+    maskedDestination : string
+    status : string
+    failureType : string
+    createdAt : BSON Date
+}
+
+
+Otp |o..o{ Delivery
+
+@enduml
+

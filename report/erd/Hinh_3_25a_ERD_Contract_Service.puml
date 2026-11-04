@@ -1,0 +1,116 @@
+@startuml Hinh_3_25a_ERD_Contract_Service
+' Mục 3.4.2 - Contract Service, mẫu, phiên bản, tài liệu và ký số. Nguồn: hs-contract-service/model.
+' Các trường chính được rút gọn. FK là quan hệ JPA; REF là ID tham chiếu logic.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+top to bottom direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "contract_templates" as Template {
+    * id : varchar <<PK>>
+    --
+    * name : varchar
+    * category : varchar <<UK>>
+    * source : varchar
+    owner_user_id : varchar <<REF>>
+    * status : varchar
+}
+
+entity "contract_template_versions" as TemplateVersion {
+    * id : varchar <<PK>>
+    --
+    * template_id : varchar <<FK>>
+    * version_number : integer
+    * storage_object_id : varchar <<REF>>
+    * status : varchar
+    placeholders_json : text
+    --
+    UNIQUE(template_id, version_number)
+}
+
+entity "contracts" as Contract {
+    * id : varchar <<PK>>
+    --
+    * contract_number : varchar <<UK>>
+    * rental_request_id : varchar <<REF>>
+    * listing_id : varchar <<REF>>
+    * landlord_id : varchar <<REF>>
+    * tenant_id : varchar <<REF>>
+    * template_version_id : varchar <<REF>>
+    current_revision_id : varchar <<REF>>
+    parent_contract_id : varchar <<REF>>
+    * status : varchar
+    signed_at : timestamptz
+}
+
+entity "contract_revisions" as Revision {
+    * id : varchar <<PK>>
+    --
+    * contract_id : varchar <<FK>>
+    * revision_number : integer
+    * template_version_id : varchar <<REF>>
+    * landlord_snapshot : text
+    * tenant_snapshot : text
+    * property_snapshot : text
+    * lease_snapshot : text
+    * financial_snapshot : text
+    --
+    UNIQUE(contract_id, revision_number)
+}
+
+entity "contract_documents" as Document {
+    * id : varchar <<PK>>
+    --
+    * contract_id : varchar <<REF>>
+    * revision_id : varchar <<REF>>
+    * template_version_id : varchar <<REF>>
+    * document_type : varchar
+    * purpose : varchar
+    storage_object_id : varchar <<REF>>
+    * status : varchar
+    generated_at : timestamptz
+}
+
+entity "signature_requests" as Signature {
+    * id : varchar <<PK>>
+    --
+    * contract_id : varchar <<REF>>
+    * revision_id : varchar <<REF>>
+    * source_document_id : varchar <<REF>>
+    signed_document_id : varchar <<REF>>
+    * signer_user_id : varchar <<REF>>
+    * signer_role : varchar
+    * status : varchar
+    provider_tran_code : varchar
+    prepared_document_storage_id : varchar
+    version : bigint
+}
+
+
+Template ||-right-o{ TemplateVersion
+TemplateVersion ||-[dashed]right-o{ Contract
+Contract ||-down-o{ Revision
+Revision ||-[dashed]left-o{ Document
+Document ||-[dashed]left-o{ Signature
+
+@enduml
+

@@ -1,0 +1,84 @@
+@startuml Hinh_3_20_Component_HomeSpace
+title Hình 3.20 - Component Diagram hệ thống HomeSpace
+left to right direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam dpi 180
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 14
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+skinparam linetype polyline
+
+legend bottom
+P = giao diện cung cấp; U = giao diện sử dụng
+REST: đường liền | WebSocket: đường đậm | Kafka: cam chấm | External API: xanh nét đứt
+endlegend
+
+package "Client" {
+  component "Web App\nP: UI người thuê/chủ nhà\nU: REST, WS, OIDC" as Web
+  component "Mobile App\nP: UI di động\nU: REST, WS, OIDC" as Mobile
+  component "Admin Portal\nP: UI quản trị\nU: REST, OIDC" as Admin
+}
+
+package "Điều phối và xác thực" {
+  component "API Gateway\nP: REST /api/v1, chat WS\nU: Eureka, Keycloak JWT, Redis" as Gateway
+  component "Eureka\nP: service registry\nU: service registration" as Eureka
+  component "Keycloak\nP: OIDC/JWKS, Admin API\nU: PostgreSQL, Kafka" as Keycloak
+}
+
+package "Ứng dụng nghiệp vụ" {
+  component "Core API - Spring Boot\nP: REST User, Listing, Contract,\nPayment, Storage, Notification/OTP\nU: SQL, Redis, Kafka, external APIs" as Core
+  component "Chat - NestJS\nP: REST, Socket.IO\nU: MongoDB" as Chat
+  component "News - NestJS\nP: REST news\nU: MongoDB, S3" as News
+  component "AI - FastAPI\nP: REST AI\nU: Gateway, pgvector, MongoDB, OpenAI" as AI
+}
+
+package "Hạ tầng dữ liệu" {
+  database "PostgreSQL\nP: SQL Core + Keycloak\nU: persistent volume" as PG
+  database "pgvector\nP: SQL/vector AI\nU: persistent volume" as VectorPG
+  database "MongoDB\nP: documents Chat/News/AI/OTP audit\nU: persistent volume" as Mongo
+  component "Redis\nP: rate limit, cache, OTP\nU: persistent volume" as Redis
+  queue "Kafka\nP: keycloak-user-events\nU: persistent volume" as Kafka
+}
+
+package "Adapter bên ngoài" {
+  cloud "Core adapters\nP: Didit, Vietmap/TomTom,\nSmartCA, SMTP APIs\nU: —" as CoreExternal
+  cloud "AWS S3\nP: object API\nU: —" as S3
+  cloud "OpenAI\nP: generation API\nU: —" as OpenAI
+}
+component "Gotenberg\nP: DOCX/PDF HTTP\nU: Core request" as Gotenberg
+
+Web --> Gateway : REST
+Mobile --> Gateway : REST
+Admin --> Gateway : REST
+Web ==> Gateway : WebSocket
+Mobile ==> Gateway : WebSocket
+Web --> Keycloak : OIDC (các client)
+
+Gateway --> Core : REST
+Gateway --> Chat : REST
+Gateway ==> Chat : WebSocket
+Gateway --> News : REST
+Gateway --> AI : REST
+Gateway --> Eureka : discovery
+Gateway --> Redis : rate limit
+
+Core --> PG : SQL
+Core --> Redis : cache / OTP
+Core --> Mongo : OTP audit
+Chat --> Mongo : documents
+News --> Mongo : documents
+AI --> VectorPG : vector query
+AI --> Mongo : conversation
+AI --> Gateway : REST tool calls
+Keycloak --> PG : SQL
+Keycloak -[#D97706,dotted]-> Kafka : Kafka publish
+Kafka -[#D97706,dotted]-> Core : Kafka consume / User module
+
+Core -[#0F766E,dashed]-> CoreExternal : external API / HTTP
+Core -[#0F766E,dashed]-> S3 : external API
+Core --> Gotenberg : HTTP
+News -[#0F766E,dashed]-> S3 : external API
+AI -[#0F766E,dashed]-> OpenAI : external API
+@enduml

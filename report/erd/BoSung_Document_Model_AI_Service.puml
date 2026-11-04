@@ -1,0 +1,74 @@
+@startuml BoSung_Document_Model_AI_Service
+' Nguồn: hs-ai-service/src/homespace_ai/repositories/conversation_repo.py. messages là mảng nhúng. ai_guest_limits chứa bộ đếm IP và trial/session; không lưu transcript của khách. TTL trên ai_conversations phục vụ expiresAt của bản ghi guest cũ.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 90
+skinparam ranksep 70
+skinparam roundcorner 0
+
+entity "ai_conversations" as Conv <<MongoDB>> {
+    * _id : string <<PK>>
+    --
+    * ownerId : string <<REF>>
+    * title : string
+    * isPinned : boolean
+    * messages : object[]
+    * createdAt : date
+    * updatedAt : date
+    expiresAt : date
+    --
+    INDEX(ownerId, updatedAt)
+    TTL(expiresAt)
+}
+
+entity "ai_message" as Message <<embedded>> {
+    * id : string
+    * role : string
+    * content : string
+    * createdAt : date
+    status : string
+    listingIds : string[]
+    listingContext : object
+    contractContext : object
+    contractCards : object[]
+    appointmentContext : object
+    appointmentCards : object[]
+    dataSources : string[]
+}
+
+entity "ai_guest_limits" as Limits <<MongoDB>> {
+    * _id : string <<PK>>
+    --
+    * count : integer
+    * expiresAt : date
+    activeSession : string
+    claimedOwner : string <<REF>>
+    --
+    TTL(expiresAt)
+}
+
+
+Conv "1" *-right- "0..n" Message
+Limits -[hidden]down-> Conv
+
+@enduml
+

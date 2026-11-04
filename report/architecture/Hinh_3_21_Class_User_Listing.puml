@@ -1,0 +1,86 @@
+@startuml Hinh_3_21_Class_User_Listing
+title Hình 3.21 - Class Diagram User và Listing Service
+left to right direction
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam dpi 180
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 14
+skinparam packageStyle rectangle
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "User module - Spring Boot" {
+  interface UserService {
+    +getUserProfile(): UserProfileResponse
+    +updateUserProfile(request: UpdateProfileRequest)
+    +getUserPermissions(userId: String)
+  }
+  class UserServiceImpl <<Service>>
+  interface KycService {
+    +createOrReuseSession(userId: String)
+    +handleDiditWebhook(...)
+  }
+  class KycServiceImpl <<Service>>
+  interface UserRepository <<Spring Data JPA>>
+  interface KycVerificationRepository <<Spring Data JPA>>
+  class User <<Entity>> {
+    +id: String
+    +email: String
+    +phone: String
+    +onBoarded: Boolean
+  }
+  class Address <<Entity>> {
+    +user: User
+  }
+  class KycVerification <<Entity>> {
+    +userId: String
+    +providerSessionId: String
+    +status: KycStatus
+  }
+
+  UserServiceImpl ..|> UserService
+  KycServiceImpl ..|> KycService
+  UserServiceImpl --> UserRepository
+  KycServiceImpl --> KycVerificationRepository
+  UserRepository ..> User
+  KycVerificationRepository ..> KycVerification
+  User "1" -- "0..1" Address
+  KycVerification ..> User : userId
+}
+
+package "Listing module - Spring Boot" {
+  class ListingService <<Service>> {
+    +upsert(ownerId: String, request: CreateListingRequest)
+    +createByAdmin(adminId: String, ownerId: String, request)
+  }
+  class ListingStatusService <<Service>>
+  interface ListingRepository <<Spring Data JPA>>
+  interface ListingAddressRepository <<Spring Data JPA>>
+  class Listing <<Entity>> {
+    +id: String
+    +ownerId: String
+    +title: String
+    +status: ListingStatus
+    +priceAmount: BigDecimal
+  }
+  class ListingAddress <<Entity>> {
+    +listingId: String
+  }
+  class CreateListingRequest <<DTO>>
+
+  ListingService --> ListingRepository
+  ListingService --> ListingAddressRepository
+  ListingService --> ListingStatusService
+  ListingService ..> CreateListingRequest
+  ListingRepository ..> Listing
+  ListingAddressRepository ..> ListingAddress
+  Listing "1" -- "0..1" ListingAddress
+}
+
+Listing ..> User : ownerId (không có JPA relation)
+note bottom of ListingService
+ListingService là lớp concrete trong mã nguồn,
+không có service interface riêng.
+end note
+@enduml

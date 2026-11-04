@@ -1,0 +1,161 @@
+@startuml Hinh_3_24a_ERD_Listing_Service
+' Mục 3.4.2 - Listing Service, phần tin đăng và nghiệp vụ chính. Nguồn: hs-listing-service/model. Các bảng cấu hình phụ được lược bớt.
+' Các trường chính được rút gọn. FK là quan hệ JPA; REF là ID tham chiếu logic.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+top to bottom direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "property_branches" as Branch {
+    * id : varchar <<PK>>
+    --
+    * owner_id : varchar <<REF>>
+    address_id : varchar <<FK>>
+    * name : varchar
+    * category : varchar
+    total_units : integer
+}
+
+entity "listings" as Listing {
+    * id : varchar <<PK>>
+    --
+    * owner_id : varchar <<REF>>
+    branch_id : varchar <<FK>>
+    * title : varchar
+    * category : varchar
+    * status : varchar
+    * area_m2 : numeric
+    * price_amount : numeric
+    deposit_amount : numeric
+    * available_from : date
+    version : bigint
+}
+
+entity "listing_media" as Media {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * storage_object_id : varchar <<FK>>
+    * media_type : varchar
+    * sort_order : integer
+    * is_cover : boolean
+}
+
+entity "listing_charges" as Charge {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * charge_type : varchar
+    * billing_method : varchar
+    amount : numeric
+    * included_in_rent : boolean
+}
+
+entity "amenities" as Amenity {
+    * id : varchar <<PK>>
+    --
+    * code : varchar <<UK>>
+    * name : varchar
+    * sort_order : integer
+}
+
+entity "listing_amenities" as ListingAmenity {
+    * listing_id : varchar <<PK, FK>>
+    * amenity_id : varchar <<PK, FK>>
+}
+
+entity "viewing_appointments" as Appointment {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * owner_id : varchar <<REF>>
+    * renter_id : varchar <<REF>>
+    * appointment_date : date
+    * start_time : time
+    * end_time : time
+    * status : varchar
+}
+
+entity "rental_requests" as Rental {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * owner_id : varchar <<REF>>
+    * renter_id : varchar <<REF>>
+    * move_in_date : date
+    * lease_months : integer
+    * monthly_rent_price : numeric
+    * status : varchar
+}
+
+entity "listing_favorites" as Favorite {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * user_id : varchar <<REF>>
+    --
+    UNIQUE(user_id, listing_id)
+}
+
+entity "listing_status_history" as History {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<REF>>
+    from_status : varchar
+    * to_status : varchar
+    changed_by : varchar <<REF>>
+    * created_at : timestamptz
+}
+
+entity "listing_furnishing_assets" as Asset {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    furnishing_item_id : varchar <<FK>>
+    * asset_name : varchar
+    * quantity : integer
+    * handover_condition : varchar
+}
+
+entity "furnishing_items" as Item {
+    * id : varchar <<PK>>
+    --
+    * code : varchar <<UK>>
+    * name : varchar
+    * sort_order : integer
+}
+
+
+Branch |o-right-o{ Listing
+Listing ||-up-o{ Media
+Listing ||-up-o{ Charge
+Listing ||-left-o{ ListingAmenity
+Amenity ||-down-o{ ListingAmenity
+Listing ||-right-o{ Appointment
+Listing ||-right-o{ Rental
+Listing ||-down-o{ Favorite
+Listing ||-[dashed]down-o{ History
+Listing ||-down-o{ Asset
+Item |o-right-o{ Asset
+
+@enduml
+

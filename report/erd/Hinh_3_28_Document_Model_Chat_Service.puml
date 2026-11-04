@@ -1,0 +1,95 @@
+@startuml Hinh_3_28_Document_Model_Chat_Service
+' Mục 3.4.3 - Chat Service. Nguồn: conversation.schema.ts, message.schema.ts và các domain snapshot. Hai collection; ba khối còn lại là kiểu dữ liệu nhúng, không phải collection riêng.
+' Các trường chính được rút gọn. FK là quan hệ JPA; REF là ID tham chiếu logic.
+' Không có tiêu đề và chú giải ở dưới theo yêu cầu.
+left to right direction
+
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "conversations" as Conversation <<MongoDB>> {
+    * _id : ObjectId <<PK>>
+    --
+    * participantIds : string[]
+    * participantKey : string
+    * listingId : string <<REF>>
+    listing : object
+    lastMessage : string
+    lastMessageAt : date
+    unreadCounts : map
+    participantProfiles : map
+    participantRoles : map
+    createdAt : date
+    updatedAt : date
+    --
+    UNIQUE(participantKey, listingId)
+    INDEX(participantIds, updatedAt)
+}
+
+entity "messages" as Message <<MongoDB>> {
+    * _id : ObjectId <<PK>>
+    --
+    * conversationId : ObjectId <<REF>>
+    * senderId : string <<REF>>
+    * content : string
+    listing : object
+    attachments : object[]
+    hiddenFor : string[]
+    pinnedBy : string[]
+    recalledAt : date
+    createdAt : date
+    --
+    INDEX(conversationId, createdAt)
+}
+
+entity "participantProfile" as Profile <<embedded>> {
+    displayName : string
+    email : string
+    avatarUrl : string
+}
+
+entity "relatedListing" as Snapshot <<embedded>> {
+    * id : string <<REF>>
+    * title : string
+    * price : string
+    * location : string
+    * image : string
+    bedrooms : number
+    area : number
+    verified : boolean
+}
+
+entity "attachment" as Attachment <<embedded>> {
+    * storageId : string <<REF>>
+    * fileName : string
+    * contentType : string
+    * sizeBytes : number
+}
+
+
+Conversation ||..o{ Message
+Conversation "1" *-- "0..n" Profile
+Conversation "1" *-- "0..1" Snapshot
+Message "1" *-- "0..1" Snapshot
+Message "1" *-- "0..n" Attachment
+
+@enduml
+

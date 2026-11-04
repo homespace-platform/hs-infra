@@ -1,0 +1,101 @@
+@startuml Hinh_3_24c_ERD_CauHinh_Listing
+' Bổ sung 5 bảng Listing: branch_charges, branch_amenities, amenity_categories, furnishing_item_categories, listing_custom_amenities. Nguồn: model Listing hiện tại. Các CollectionTable được vẽ theo trường join/element, không gán thêm ID giả.
+' Chỉ thể hiện các trường chính. FK: khóa ngoại; REF: tham chiếu logic.
+' Không có tiêu đề, framework hay chú giải bên dưới. Chỉ xuất PNG và PUML.
+
+top to bottom direction
+hide circle
+hide methods
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+scale 0.8
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 15
+skinparam defaultFontStyle bold
+skinparam classFontSize 16
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 14
+skinparam classAttributeFontStyle bold
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor white
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 50
+skinparam roundcorner 0
+
+entity "property_branches" as Branch {
+    * id : varchar <<PK>>
+    --
+    * owner_id : varchar <<REF>>
+    * name : varchar
+    * category : varchar
+}
+
+entity "branch_charges" as BranchCharge {
+    * id : varchar <<PK>>
+    --
+    * branch_id : varchar <<FK>>
+    * charge_type : varchar
+    * billing_method : varchar
+    amount : numeric
+    currency : varchar
+    * included_in_rent : boolean
+}
+
+entity "branch_amenities" as BranchAmenity {
+    * branch_id : varchar <<FK>>
+    * amenity_id : varchar <<FK>>
+}
+
+entity "amenities" as Amenity {
+    * id : varchar <<PK>>
+    --
+    * code : varchar <<UK>>
+    * name : varchar
+}
+
+entity "amenity_categories" as AmenityCategory {
+    * amenity_id : varchar <<FK>>
+    category : varchar
+}
+
+entity "furnishing_items" as Furnishing {
+    * id : varchar <<PK>>
+    --
+    * code : varchar <<UK>>
+    * name : varchar
+}
+
+entity "furnishing_item_categories" as FurnishingCategory {
+    * furnishing_item_id : varchar <<FK>>
+    category : varchar
+}
+
+entity "listings" as Listing {
+    * id : varchar <<PK>>
+    --
+    * title : varchar
+    * category : varchar
+}
+
+entity "listing_custom_amenities" as Custom {
+    * id : varchar <<PK>>
+    --
+    * listing_id : varchar <<FK>>
+    * name : varchar
+}
+
+
+Branch ||-down-o{ BranchCharge
+Branch ||-right-o{ BranchAmenity
+Amenity ||-left-o{ BranchAmenity
+Amenity ||-down-o{ AmenityCategory
+Furnishing ||-left-o{ FurnishingCategory
+Listing ||-right-o{ Custom
+BranchCharge -[hidden]down-> Listing
+AmenityCategory -[hidden]down-> Furnishing
+
+@enduml
+

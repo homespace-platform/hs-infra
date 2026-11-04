@@ -1,0 +1,83 @@
+@startuml UC013_TroLyAITimNha
+' Nguồn: mục 3.2.7 trong báo cáo khóa luận được cung cấp ngày 21/10/2026.
+' Sơ đồ nghiệp vụ rút gọn theo mẫu UC001 v2; không mô tả toàn bộ chi tiết triển khai.
+title UC013 - Trợ lý AI tìm nhà
+
+hide footbox
+autonumber
+scale 0.55
+skinparam monochrome true
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam dpi 200
+skinparam defaultFontName Segoe UI
+skinparam defaultFontSize 16
+skinparam defaultFontStyle bold
+skinparam titleFontSize 20
+skinparam titleFontStyle bold
+skinparam sequenceMessageAlign center
+skinparam maxMessageSize 245
+skinparam ParticipantPadding 25
+skinparam BoxPadding 10
+skinparam sequence {
+    ArrowFontName Segoe UI
+    ArrowFontSize 16
+    ArrowFontStyle bold
+    ArrowThickness 1.3
+    ParticipantFontSize 16
+    ParticipantFontStyle bold
+    ActorFontSize 16
+    ActorFontStyle bold
+    LifeLineBorderColor Black
+    LifeLineBackgroundColor White
+    ParticipantBackgroundColor White
+    ActorBackgroundColor White
+    GroupBackgroundColor White
+    GroupFontSize 15
+    GroupFontStyle bold
+    GroupHeaderFontSize 15
+    GroupHeaderFontStyle bold
+}
+
+actor "Người dùng" as User
+boundary "**Giao diện**\n**trợ lý AI**" as UI
+control "**AI Service**" as AI
+control "**Listing Service**" as Listing
+entity "**Vector Store**" as Vector
+
+User -> UI : Mô tả nhu cầu tìm nhà
+activate UI
+UI -> AI : Gửi nội dung hội thoại
+activate AI
+AI -> AI : Trích xuất ý định và tiêu chí
+opt Nhu cầu chưa rõ
+    AI --> User : Hỏi thêm khu vực, giá hoặc tiện ích
+    User -> UI : Bổ sung thông tin
+    UI -> AI : Cập nhật tiêu chí
+end
+AI --> User : Cho xem và chỉnh sửa tiêu chí
+deactivate AI
+deactivate UI
+User -> UI : Xác nhận tìm kiếm
+activate UI
+UI -> AI : Gửi tiêu chí đã xác nhận
+activate AI
+AI -> Listing : Truy vấn tin phù hợp
+activate Listing
+deactivate Listing
+AI -> Vector : Truy hồi ngữ cảnh liên quan
+activate Vector
+deactivate Vector
+alt Có tin phù hợp
+    AI --> UI : Gợi ý tin thật, lý do và nguồn
+    UI --> User : Hiển thị câu trả lời và thẻ tin
+else Không có tin phù hợp
+    AI --> User : Đề xuất điều chỉnh tiêu chí
+end
+deactivate AI
+deactivate UI
+opt Người dùng chọn một tin được gợi ý
+    ref over User, UI : UC008 - Xem chi tiết tin đăng
+end
+
+@enduml
