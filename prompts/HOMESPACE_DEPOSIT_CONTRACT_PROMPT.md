@@ -254,6 +254,7 @@ Marker bảng đặt thành đoạn riêng; backend tạo TableRenderData tươn
 8. Một bản xuất chưa ký không được chèn ảnh/chữ ký của hợp đồng thuê, không thêm tuyên bố “đã ký SMARTCA”. Bản PDF ký riêng phải có hash/version và chữ ký ràng buộc đúng nội dung, không chỉnh sau ký.
 9. Nội dung điều khoản, marker là chính văn. Không in bảng mapping source, báo cáo kiểm thử, “D2 cần triển khai”, các dòng hướng dẫn “nếu có dữ liệu” hoặc checklist vào hợp đồng.
 10. Sau tạo Word: kiểm tra XML, render thật và xem từng trang. Không tự nhận đã render nếu công cụ không làm được; báo giới hạn trong câu trả lời, không giả file tải.
+11. `depositAgreement.reservationTerms`, `depositAgreement.nextStepsText` và thông tin liên hệ có thể nhận nhiều dòng. Bật tùy chọn Word **Không giãn khoảng cách trên dòng kết thúc bằng Shift+Enter** (`word/settings.xml` → `w:compat/w:doNotExpandShiftReturn`, giá trị `true`). Khi căn đều hai lề, dòng ngắn kết thúc bằng ngắt dòng mềm vẫn phải giữ khoảng trắng bình thường. Thử kết xuất với cả đoạn dài và nhiều dòng ngắn; không dùng Distributed hoặc thêm dấu cách/Tab để chữa lỗi kéo giãn.
 
 ## VI. LỆNH THỰC THI CHO CHATGPT TẠO WORD
 

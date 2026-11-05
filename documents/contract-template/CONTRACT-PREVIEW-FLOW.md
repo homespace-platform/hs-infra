@@ -48,6 +48,15 @@ vẫn hoàn tất và commit file. Refresh trang vì thế thấy PDF đã tạo
 - Gotenberg không hoạt động trong SMARTCA: báo lỗi thật, không coi DOCX là PDF hợp lệ.
 - Người thuê/hợp đồng ACTIVE không được kết xuất lại; PDF đã ký không thay đổi.
 
+## Lỗi kéo giãn khoảng trắng khi chèn nội dung nhiều dòng — 06/11/2026
+
+- Nguyên nhân: thân bài/mẫu Marker kế thừa căn đều hai lề. poi-tl đưa ký tự xuống dòng của `contract.specialTerms` và các trường TEXT vào Word bằng ngắt dòng mềm (`w:br`). Khi thiếu tùy chọn tương thích `doNotExpandShiftReturn`, LibreOffice/Gotenberg kéo giãn cả dòng ngắn trước ngắt dòng, ví dụ phần cuối Điều 9.3. Không phải chuỗi dữ liệu chứa hàng loạt dấu cách hoặc bị sai số tiền.
+- Đã tái hiện trước/sau trên Gotenberg. Renderer chung bổ sung `w:settings/w:compat/w:doNotExpandShiftReturn` với `w:val=true` trên bản DOCX kết xuất, trước chuyển PDF. Giữ nguyên XML nội dung, căn hai lề, định dạng chữ, bảng, header/footer và ngắt trang. Tùy chọn có giá trị false cũng được sửa; mẫu không có settings được bổ sung đúng quan hệ OPC. Không thêm thư viện schema Word đầy đủ.
+- Cả sáu mẫu thuê/cọc trong repo thiếu tùy chọn này. Cách sửa áp dụng cho template hiện có đã upload, cho mẫu mới và cho bản xem thử admin qua cùng renderer; không cần tạo lại/upload lại sáu Word gốc chỉ để sửa lỗi này. Hai prompt tạo mẫu đã được bổ sung quy tắc tương thích và kiểm tra dữ liệu nhiều dòng.
+- Đã tăng phiên bản `ContractPreviewIdentity` thành `onboarding-receipts-v5-word-line-spacing`: preview cũ không được dùng lại như kết quả kết xuất mới. Khởi động lại Core, mở bản nháp và Lưu/kết xuất lại để tạo DOCX/PDF đúng định dạng. Không chỉnh hoặc thay thế tài liệu đã ký.
+- Kiểm thử: **72 test qua**, gồm 9 ca riêng về sáu template thật, bảo toàn nội dung/định dạng/ngắt trang, giá trị false và thiếu settings; cùng các test bảng, nguồn preview và PDF để ký. Sáu bản thử đã chuyển PDF bằng Gotenberg đang chạy trên localhost, tổng **36 trang** với dữ liệu giả lập; kiểm tra PNG toàn bộ trang và trang điều khoản nhiều dòng. Khoảng cách lớn nhất giữa các từ trên hai dòng ngắn kiểm tra khoảng **3,02 pt**, không còn kéo giãn cả bề ngang. Mẫu gốc không bị ghi đè. Không đọc/sửa CSDL hoặc tài liệu hợp đồng thật.
+- Renderer native của skill documents không chạy được vì máy không cài `soffice.exe`; bước QA dùng chính LibreOffice của Gotenberg và Poppler để xuất ảnh. Chưa kiểm tra thêm bằng Microsoft Word desktop.
+
 ## Phạm vi
 
 Luồng này chưa chuyển sang queue/job nền: transaction khóa contract được giữ trong thời gian
