@@ -569,7 +569,7 @@ SELECT address_id, listing_id::text, ref_id, display, name, house_number, street
        district_id, district, ward_id, ward, latitude, longitude, address_note, resolved_at,
        address_version, address_active, address_created_at, address_updated_at, address_created_by, address_updated_by
 FROM hs_seed_rows
-ON CONFLICT (listing_id) DO UPDATE SET
+ON CONFLICT (id) DO UPDATE SET
     ref_id=excluded.ref_id, display=excluded.display, name=excluded.name,
     house_number=excluded.house_number, street=excluded.street, address=excluded.address,
     city_id=excluded.city_id, city=excluded.city, district_id=excluded.district_id, district=excluded.district,
