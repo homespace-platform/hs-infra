@@ -737,6 +737,7 @@
       "defaultClientScopes": [
         "web-origins",
         "acr",
+        "notification-access",
         "roles",
         "profile",
         "basic",
@@ -802,6 +803,7 @@
       "defaultClientScopes": [
         "web-origins",
         "acr",
+        "notification-access",
         "roles",
         "profile",
         "basic",
@@ -1365,6 +1367,35 @@
       ]
     },
     {
+      "id": "331c429f-f908-4a4f-9715-753103aa89bb",
+      "name": "notification-access",
+      "description": "Adds notification service audience to access tokens",
+      "protocol": "openid-connect",
+      "attributes": {
+        "include.in.token.scope": "false",
+        "display.on.consent.screen": "false",
+        "gui.order": "",
+        "consent.screen.text": "",
+        "include.in.openid.provider.metadata": "false"
+      },
+      "protocolMappers": [
+        {
+          "id": "bafaeb1e-2a0b-418b-90d1-9a27eab63e90",
+          "name": "notification-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "id.token.claim": "false",
+            "lightweight.claim": "false",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true",
+            "included.custom.audience": "hs-notification-service"
+          }
+        }
+      ]
+    },
+    {
       "id": "ee469f19-eebf-425a-bef1-3793e14ae28f",
       "name": "address",
       "description": "OpenID Connect built-in scope: address",
@@ -1819,14 +1850,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "saml-user-attribute-mapper",
             "oidc-address-mapper",
+            "oidc-usermodel-property-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-role-list-mapper",
+            "saml-user-attribute-mapper",
             "oidc-sha256-pairwise-sub-mapper",
             "saml-user-property-mapper",
-            "oidc-full-name-mapper",
-            "saml-role-list-mapper",
-            "oidc-usermodel-property-mapper",
-            "oidc-usermodel-attribute-mapper"
+            "oidc-full-name-mapper"
           ]
         }
       },
@@ -1854,14 +1885,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "saml-role-list-mapper",
             "oidc-usermodel-property-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
             "saml-user-property-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
+            "saml-user-attribute-mapper",
             "oidc-address-mapper",
-            "oidc-usermodel-attribute-mapper",
             "oidc-full-name-mapper",
-            "saml-user-attribute-mapper"
+            "saml-role-list-mapper",
+            "oidc-usermodel-attribute-mapper"
           ]
         }
       },
