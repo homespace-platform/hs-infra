@@ -150,6 +150,24 @@ services:
         networks:
             - hs-network
 
+    kafka-topics:
+        image: apache/kafka:4.3.1
+        container_name: hs-kafka-topics
+        restart: 'no'
+        depends_on:
+            kafka:
+                condition: service_healthy
+        entrypoint: ['/bin/sh', '-ec']
+        command:
+            - |
+                /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_EVENTS_TOPIC" --partitions 1 --replication-factor 1
+                /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_DLT_TOPIC" --partitions 1 --replication-factor 1
+        environment:
+            KAFKA_EVENTS_TOPIC: ${KAFKA_EVENTS_TOPIC:-homespace.notification.events.v1}
+            KAFKA_DLT_TOPIC: ${KAFKA_DLT_TOPIC:-homespace.notification.events.dlt.v1}
+        networks:
+            - hs-network
+
     #  =================================================================
     #  Keycloak
     #  =================================================================
