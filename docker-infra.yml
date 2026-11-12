@@ -145,6 +145,7 @@ services:
             KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
             KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
             KAFKA_NUM_PARTITIONS: 3
+            KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
         volumes:
             - hs-kafka-data:/var/lib/kafka/data
         networks:
@@ -160,9 +161,11 @@ services:
         entrypoint: ['/bin/sh', '-ec']
         command:
             - |
+                /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KEYCLOAK_KAFKA_TOPIC" --partitions 3 --replication-factor 1
                 /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_EVENTS_TOPIC" --partitions 1 --replication-factor 1
                 /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_DLT_TOPIC" --partitions 1 --replication-factor 1
         environment:
+            KEYCLOAK_KAFKA_TOPIC: ${KEYCLOAK_KAFKA_TOPIC:-keycloak-user-events}
             KAFKA_EVENTS_TOPIC: ${KAFKA_EVENTS_TOPIC:-homespace.notification.events.v1}
             KAFKA_DLT_TOPIC: ${KAFKA_DLT_TOPIC:-homespace.notification.events.dlt.v1}
         networks:
@@ -195,8 +198,8 @@ services:
         depends_on:
             postgres:
                 condition: service_healthy
-            kafka:
-                condition: service_healthy
+            kafka-topics:
+                condition: service_completed_successfully
         ports:
             - '9000:8080'
             - '9001:9000'
