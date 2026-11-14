@@ -166,7 +166,7 @@
     { "key": "realm", "value": "homespace-platform" },
     { "key": "clientId", "value": "homespace-id" },
     { "key": "username", "value": "homespace" },
-    { "key": "password", "value": "Homespace@123" },
+    { "key": "password", "value": "" },
     { "key": "accessToken", "value": "" },
     { "key": "otpEmail", "value": "your-email@gmail.com" },
     { "key": "otpPhone", "value": "0353999798" },
