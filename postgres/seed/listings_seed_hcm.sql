@@ -861,9 +861,9 @@ WITH media_seed AS (
            md5('homespace-govap-300-v1-media-' || s.n::text || '-' || m.media_order::text)::uuid::text AS media_id
     FROM hs_seed_rows s
     CROSS JOIN (VALUES
-      (1, '1.jfif', 'https://homespace-dev-files-v5.s3.ap-southeast-1.amazonaws.com/user_avatar/1.jfif'),
-      (2, '2.jfif', 'https://homespace-dev-files-v5.s3.ap-southeast-1.amazonaws.com/user_avatar/2.jfif'),
-      (3, '3.jfif', 'https://homespace-dev-files-v5.s3.ap-southeast-1.amazonaws.com/user_avatar/3.jfif')
+      (1, '1.jfif', 'https://homespace-production-files.s3.ap-southeast-1.amazonaws.com/public/1.jfif'),
+      (2, '2.jfif', 'https://homespace-production-files.s3.ap-southeast-1.amazonaws.com/public/2.jfif'),
+      (3, '3.jfif', 'https://homespace-production-files.s3.ap-southeast-1.amazonaws.com/public/3.jfif')
     ) AS m(media_order, file_name, sample_url)
 )
 INSERT INTO storage_objects (
@@ -872,7 +872,7 @@ INSERT INTO storage_objects (
     active, created_at, updated_at, created_by, updated_by
 )
 SELECT storage_id, file_name,
-       'user_avatar/' || file_name, 'homespace-dev-files-v5',
+       'public/' || file_name, 'homespace-production-files',
        'image/jpeg', 1000000, md5(file_name), 'jfif', owner_id, NULL, NULL,
        'LISTING_IMAGE', 'PUBLIC', 'READY', true, now(), now(), owner_id, owner_id
 FROM (SELECT DISTINCT storage_id, file_name, sample_url, owner_id, media_order FROM media_seed) media_seed
@@ -889,9 +889,9 @@ WITH media_seed AS (
            md5('homespace-govap-300-v1-media-' || s.n::text || '-' || m.media_order::text)::uuid::text AS media_id
     FROM hs_seed_rows s
     CROSS JOIN (VALUES
-      (1, '1.jfif', 'https://homespace-dev-files-v5.s3.ap-southeast-1.amazonaws.com/user_avatar/1.jfif'),
-      (2, '2.jfif', 'https://homespace-dev-files-v5.s3.ap-southeast-1.amazonaws.com/user_avatar/2.jfif'),
-      (3, '3.jfif', 'https://homespace-dev-files-v5.s3.ap-southeast-1.amazonaws.com/user_avatar/3.jfif')
+      (1, '1.jfif', 'https://homespace-production-files.s3.ap-southeast-1.amazonaws.com/public/1.jfif'),
+      (2, '2.jfif', 'https://homespace-production-files.s3.ap-southeast-1.amazonaws.com/public/2.jfif'),
+      (3, '3.jfif', 'https://homespace-production-files.s3.ap-southeast-1.amazonaws.com/public/3.jfif')
     ) AS m(media_order, file_name, sample_url)
 )
 INSERT INTO listing_media (
