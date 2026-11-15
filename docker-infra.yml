@@ -164,10 +164,14 @@ services:
                 /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KEYCLOAK_KAFKA_TOPIC" --partitions 3 --replication-factor 1
                 /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_EVENTS_TOPIC" --partitions 1 --replication-factor 1
                 /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_DLT_TOPIC" --partitions 1 --replication-factor 1
+                /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_NEWS_TOPIC" --partitions 1 --replication-factor 1
+                /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka:19092 --create --if-not-exists --topic "$$KAFKA_NEWS_DLT_TOPIC" --partitions 1 --replication-factor 1
         environment:
             KEYCLOAK_KAFKA_TOPIC: ${KEYCLOAK_KAFKA_TOPIC:-keycloak-user-events}
             KAFKA_EVENTS_TOPIC: ${KAFKA_EVENTS_TOPIC:-homespace.notification.events.v1}
             KAFKA_DLT_TOPIC: ${KAFKA_DLT_TOPIC:-homespace.notification.events.dlt.v1}
+            KAFKA_NEWS_TOPIC: ${KAFKA_NEWS_TOPIC:-homespace.news.events.v1}
+            KAFKA_NEWS_DLT_TOPIC: ${KAFKA_NEWS_DLT_TOPIC:-homespace.news.events.dlt.v1}
         networks:
             - hs-network
 

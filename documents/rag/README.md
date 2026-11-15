@@ -27,7 +27,7 @@ Cập nhật 03/11/2026: file `16` bổ sung ba workflow, PDF/ký riêng, tính 
 | `13-faq.md` | Câu hỏi thường gặp | Mọi người |
 | `14-contact-and-escalation.md` | Hỗ trợ và chuyển tiếp nhân viên | Mọi người |
 | `15-admin-operations.md` | Tài liệu vận hành admin | Chỉ admin |
-| `16-rental-workflows-and-handover.md` | Cọc chưa ký, nhận nhà, tiếp tục thuê, chấm dứt sớm và PDF riêng | Tenant, landlord, admin |
+| `16-rental-workflows-and-handover.md` | Cọc chưa ký, tiếp tục thuê, chấm dứt sớm và PDF riêng | Tenant, landlord, admin |
 
 ## Metadata và ingest
 

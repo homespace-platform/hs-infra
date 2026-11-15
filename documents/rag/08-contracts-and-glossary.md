@@ -89,4 +89,4 @@ Câu hỏi về nội dung hợp đồng của bạn được trả lời từ d
 
 ## Bổ sung luồng hiện hành ngày 03/11/2026
 
-Xem tài liệu “Xử lý trước thuê, biên bản nhận nhà và chấm dứt sớm theo thỏa thuận” (16). Chấm dứt sớm không bắt buộc có nợ; nhận nhà cần biên bản riêng; khiếu nại đã giải quyết không tự mở ký hoặc xác nhận tiền. PDF biên bản/thỏa thuận dùng lượt ký riêng. Hệ thống thông báo được xây riêng, không coi mốc hạn là thông báo đã gửi.
+Xem tài liệu “Xử lý trước thuê và chấm dứt sớm theo thỏa thuận” (16). Chấm dứt sớm không bắt buộc có nợ; khiếu nại đã giải quyết không tự mở ký hoặc xác nhận tiền. PDF thỏa thuận dùng lượt ký riêng. Hệ thống thông báo được xây riêng, không coi mốc hạn là thông báo đã gửi.
