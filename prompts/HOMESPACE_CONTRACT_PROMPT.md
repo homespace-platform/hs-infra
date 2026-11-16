@@ -2,7 +2,20 @@
 
 Tài liệu này là đặc tả chuẩn hóa (Contract Schema V3) để tạo ba mẫu hợp đồng Word (.docx) cho nền tảng HomeSpace. Mỗi mẫu gắn liền với một loại bất động sản cụ thể và sử dụng công nghệ tạo tài liệu [poi-tl](https://github.com/Sayi/poi-tl).
 
-**Cách sử dụng:** Gửi toàn bộ tài liệu này cho AI và yêu cầu tạo mới hoàn toàn cả ba file DOCX ở mục I.1. Đây là nguồn hướng dẫn duy nhất, không cần file prompt phụ hoặc ba mẫu Word cũ. Không chép lại điều khoản mặc định từ bản cũ; dựng nội dung và bố cục mới theo đặc tả dưới đây. Ba prompt tại mục IV cũng có thể dùng riêng cho từng loại hình. Đầu ra phải là file DOCX có thể tải về, không chỉ là nội dung Markdown hoặc bản mô tả cách làm.
+**Cách sử dụng:** Gửi toàn bộ tài liệu này cho AI và yêu cầu tạo mới hoàn toàn cả ba file DOCX ở mục I.1. Đây là nguồn hướng dẫn duy nhất, không cần file prompt phụ hoặc ba mẫu Word cũ. Không chép lại điều khoản mặc định từ bản cũ; dựng nội dung và bố cục mới theo đặc tả dưới đây. Mục IV gồm ba dàn ý để thực hiện cùng các quy tắc chung của file này; không cần gửi thêm yêu cầu hoặc tài liệu ngoài. Đầu ra phải là file DOCX có thể tải về, không chỉ là nội dung Markdown hoặc bản mô tả cách làm.
+
+## NHIỆM VỤ THỰC HIỆN NGAY — KHÔNG CẦN NGỮ CẢNH BÊN NGOÀI
+
+Bạn nhận đúng file hướng dẫn này, không có lịch sử trò chuyện, mã nguồn hoặc dữ liệu khách hàng. Hãy tạo **đúng 03 mẫu DOCX chưa điền dữ liệu**, theo tên file ở I.1, đủ toàn bộ điều khoản của loại hình tương ứng ở IV. Không yêu cầu quyền truy cập HomeSpace, repository, API, ảnh CCCD, file Word cũ hoặc prompt khác. Các đường dẫn/liên kết chỉ giải thích nguồn, không phải đầu vào cần tải để hoàn thành mẫu.
+
+- HomeSpace là nền tảng cho thuê bất động sản; Bên A là chủ nhà/bên cho thuê, Bên B là người thuê. `HOUSE`, `APARTMENT`, `ROOM` lần lượt là nhà nguyên căn, căn hộ chung cư, phòng trọ. “Listing” là tin đăng; “snapshot” là bản dữ liệu được hệ thống chốt và lưu tại thời điểm giao dịch; “backend/Core API” là phần mềm điền mẫu sau này, không phải việc AI cần lập trình.
+- “KYC” là danh tính đã được nhà cung cấp VNPT eKYC xác minh. Tám trường định danh của mỗi bên lấy từ KYC, không lấy hồ sơ tự nhập. AI chỉ đặt marker, không gọi dịch vụ xác minh hoặc điền thông tin người thật.
+- Placeholder là **văn bản nguyên dạng để phần mềm thay sau**, không phải Word merge field và không phải yêu cầu AI tìm giá trị. Giữ dấu ngoặc nhọn kép `{{` / `}}`, dấu chấm, chữ hoa/thường và `#` chính xác như catalog. Không đổi sang cú pháp Jinja, vòng lặp, điều kiện, `${...}` hoặc thêm marker tự đặt. Ví dụ ký hiệu chung trong lời hướng dẫn không phải marker được phép đưa vào DOCX.
+- Với cả ba mẫu: áp dụng I–III và dàn ý tương ứng trong IV. Danh mục II quyết định tên mã được hỗ trợ; dàn ý IV quyết định vị trí và **tập marker phải có trong mẫu mới**. Cột “Bắt buộc” của II mô tả kiểm tra dữ liệu tương thích hệ thống cũ, không cho phép bỏ marker đã yêu cầu ở dàn ý. Nếu câu chữ minh họa ở IV khác quy tắc I, sửa câu chữ theo I nhưng giữ marker và cấu trúc điều khoản.
+- Không tự điền tên, ngày hiện tại, CCCD, số tiền, ngân hàng, chính sách hoặc chữ ký. Ngày/tiền/bằng chữ/đơn vị do hệ thống cấp; số CCCD và tài khoản là chuỗi giữ số 0 đầu. Trường có thể trống lúc kết xuất vẫn giữ marker trong **mẫu**. Không in `null`, `N/A`, dữ liệu ví dụ hoặc lời hướng dẫn cho AI vào chính văn.
+- Các bảng động được phần mềm sinh sau: đặt nguyên marker ở một đoạn riêng trong thân tài liệu, không dựng sẵn hàng dữ liệu/bảng trống để bọc marker. Khối điều khoản động cũng chỉ đặt marker ở đoạn riêng; không viết lại chính sách bên cạnh làm lặp hoặc mâu thuẫn.
+- Chỉ đưa vào DOCX chính văn hợp đồng bằng tiếng Việt và các marker. Checklist, mã XML, nguồn dữ liệu, hướng dẫn kỹ thuật và kết quả kiểm tra chỉ ở câu trả lời bàn giao. Trả ba liên kết tải DOCX thực tế và kết quả kiểm tra riêng từng file; không tạo thêm hợp đồng đã điền hoặc tài liệu phụ.
+- Nếu có công cụ tạo file, thực hiện ngay và kiểm tra chính các file đã lưu. Nếu không thể tạo DOCX hoặc xem bố cục, báo đúng giới hạn, không tạo liên kết giả hay tuyên bố kiểm tra thành công. Chưa có dữ liệu giao dịch hoặc chưa chạy được backend không cản trở tạo mẫu chứa marker.
 
 > **LƯU Ý PHÁP LÝ QUAN TRỌNG:**
 > Các mẫu hợp đồng và prompt trong tài liệu này được thiết kế để chuẩn hóa luồng nghiệp vụ giao dịch bất động sản trực tuyến. Tài liệu **không** tuyên bố là "được chứng nhận bởi luật sư" hoặc thay thế tư vấn pháp lý chính thức. Đặc biệt, điều khoản chấm dứt do quá hạn 5 ngày và ghi nhận toàn bộ cọc cho chủ nhà phải được luật sư rà soát với [Điều 172 Luật Nhà ở 2023](https://vbpl.moj.gov.vn/hanam/Pages/vbpq-toanvan.aspx?ItemID=169032&Keyword=) và tình huống thực tế trước khi đưa vào Production; prompt không được khẳng định điều khoản này mặc nhiên đủ căn cứ cưỡng chế thu hồi nhà.
@@ -61,7 +74,7 @@ Tên file xuất ra bắt buộc:
 ### 6. Quy tắc kỹ thuật tạo file Word (Tránh lỗi poi-tl)
 - Tất cả placeholder phải nằm trọn vẹn trong **một Word run**. Nếu gõ trong Word bị ngắt định dạng, hãy xóa và gõ lại liền mạch hoặc dán dạng Plain Text.
 - Không dùng dấu chấm thủ công (ví dụ: `Họ tên: ....................`).
-- Không tạo placeholder ngoài danh mục 64 trường được hỗ trợ.
+- Không tạo placeholder ngoài danh mục 74 trường được hỗ trợ.
 
 ### 7. Quy tắc tiền cọc, hóa đơn hàng tháng, quá hạn và chấm dứt
 
@@ -100,7 +113,7 @@ Tên file xuất ra bắt buộc:
 - Những quy tắc kỹ thuật, câu hướng dẫn “đặt marker”, mã nội bộ và kịch bản kiểm thử trong prompt **không phải nội dung pháp lý để in vào DOCX**. Trong Word chỉ giữ văn bản hợp đồng và marker thực tế, không chép lời chỉ dẫn cho AI.
 
 ### 10. Checklist trường bắt buộc phải có trong FILE DOCX thực tế
-Danh mục 64 mã là tập mã được backend hỗ trợ, **không phải yêu cầu chèn đủ 64 mã vào mỗi Word**. Tuy nhiên, không được thiếu bất kỳ mã bắt buộc nào dưới đây. Chỉ liệt kê mã trong prompt, ghi tên loại hình bằng chữ, hoặc đặt trong bản báo cáo kiểm tra không thay cho marker trong DOCX.
+Danh mục 74 mã là tập mã được backend hỗ trợ, **không phải yêu cầu chèn đủ 74 mã vào mỗi Word**. Tuy nhiên, không được thiếu bất kỳ mã bắt buộc nào dưới đây. Chỉ liệt kê mã trong prompt, ghi tên loại hình bằng chữ, hoặc đặt trong bản báo cáo kiểm tra không thay cho marker trong DOCX.
 
 Backend hiện yêu cầu **27 mã chung** cho HOUSE/APARTMENT/ROOM:
 - Bên A: `{{landlord.fullName}}`, `{{landlord.phone}}`, `{{landlord.bankName}}`, `{{landlord.bankAccountNumber}}`, `{{landlord.bankAccountHolder}}`.
@@ -120,28 +133,25 @@ Trường tùy chọn khác chỉ dùng nếu phù hợp nội dung. Không tạ
 
 ---
 
-### 11. Đối chiếu số mã và giao diện hợp đồng (rà soát 15/10/2026)
+### 11. Tập marker của ba mẫu mới
 
-Đếm **mã duy nhất trong phần III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT của từng prompt**, không đếm lặp lại trong hướng dẫn/checklist. Cấu trúc hiện tại có **HOUSE: 56; APARTMENT: 57; ROOM: 57**. Đây không phải 56/57 ô nhập: một marker bảng động đại diện cho nhiều dòng/cột, còn nhiều trường do hệ thống sinh hoặc là lịch sử chỉ đọc. Danh mục backend gồm **64 mã** dùng chung cho cả ba loại hình; bộ bắt buộc kỹ thuật là **27 / 28 / 28**. Không dùng tổng số để thay kiểm tra tập mã.
+Dàn ý chính văn mục IV dùng **HOUSE: 66; APARTMENT: 67; ROOM: 67 mã duy nhất**. Đây là số marker khác nhau, không phải số ô nhập hoặc số lần xuất hiện. Mỗi marker bảng động đại diện cho cả bảng do hệ thống tạo. Catalog hỗ trợ 74 mã; không cần thêm mã tương thích cũ để đủ 74 trong Word.
 
-| Nhóm | Số mã hỗ trợ | Nơi hiển thị trên giao diện / phụ lục |
-|---|---:|---|
-| Hợp đồng | 6 | Mã hồ sơ, thông tin văn bản và ngày ký; thông tin kỹ thuật nằm trong mục mở rộng. Ngày lập in trên Word/PDF do hệ thống cấp lúc kết xuất; không suy từ ngày bắt đầu thuê. Chỉ thỏa thuận bổ sung được sửa qua phụ lục. |
-| Bên A | 8 | Hiển thị và cho sửa thông tin trên văn bản, gồm đủ ngân hàng, số tài khoản, chủ tài khoản. |
-| Bên B | 11 | Như Bên A, thêm số người, xe máy và ô tô. |
-| Tài sản | 9 | Hiển thị và chỉnh nội dung, không chuyển Listing ID hoặc quyền sở hữu. |
-| Thời hạn | 5 | Nhập ngày/số tháng/diễn giải; kiểm tra kỳ thuê và nghĩa vụ đã phát hành. |
-| Giá thuê | 5 | Giá, chu kỳ, phương thức được sửa; bằng chữ tự tính; hạn thanh toán là quy tắc chỉ đọc. |
-| Cọc | 3 | Sửa mức cọc yêu cầu và điều kiện; bằng chữ tự tính. Không sửa khoản cọc lịch sử đã nhận. |
-| Thanh toán ban đầu | 9 | Hiển thị snapshot và bảng chi tiết; tất cả chỉ đọc, không tính lại từ giá/cọc đang đề xuất. |
-| Công tơ ban đầu | 2 | Hiển thị chỉ số gốc; chỉ nhập trước ký trong bản nháp. Không sửa hồi tố bằng phụ lục. |
-| Bảng động | 6 | Phí, nội thất, tiện ích, chính sách được thêm/xóa hàng; đặc điểm tài sản chỉ sửa giá trị. Bảng thanh toán ban đầu chỉ đọc. |
+Khi tạo mẫu mới, giữ **toàn bộ tập marker trong dàn ý chính văn của loại hình đó**, kể cả các marker được ghi “Không” ở cột bắt buộc kỹ thuật. HOUSE không dùng `property.unitNumber`; APARTMENT/ROOM phải có mã này. Các mã không xuất hiện trong dàn ý không cần thêm vào mẫu. Kiểm tra theo tập mã thực tế, không chỉ dựa vào tổng số.
 
-HOUSE chưa dùng `property.unitNumber`, `property.maxOccupants`, `property.maxVehicles` và 5 mã thanh toán `payment.initial.confirmedAt`, `payment.initial.bankTransactionReference`, `payment.initial.totalAmount`, `payment.initial.paidAt`, `payment.initial.transactionCode` trong dàn ý thân mẫu hiện tại. APARTMENT/ROOM có `property.unitNumber`, còn thiếu 7 mã tùy chọn nói trên. Đây là khác biệt dàn ý với danh mục hỗ trợ, không phải dữ liệu bị xóa; giao diện vẫn phải hiển thị khi snapshot có dữ liệu. Hai mã paidAt/transactionCode là tương thích cũ, không tự thêm vào mẫu chỉ để tăng số đếm.
+Thông tin KYC không cho sửa thủ công. Điện thoại/email là liên hệ; ngân hàng lấy từ bản dữ liệu điều khoản đã chốt, giữ số 0 đầu. Việc hồ sơ tài khoản thay đổi sau này không được ghi đè nội dung văn bản đã ký.
 
-Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải lấy cùng snapshot điều khoản đang áp dụng / bản phụ lục đang soạn; giữ nguyên số 0 đầu số tài khoản. Không lấy lại ngân hàng từ hồ sơ tài khoản đang thay đổi để ghi đè văn bản đã ký. Sửa ngân hàng trên văn bản không tự sửa tài khoản đăng nhập hoặc chuyển hướng QR thanh toán của giao dịch cũ.
+### Nguồn danh tính bắt buộc: KYC đã xác thực
 
-## II. DANH MỤC 64 MÃ TRƯỜNG VÀ BẢNG ĐỘNG ĐƯỢC HỖ TRỢ (SCHEMA V3 MỞ RỘNG CHÍNH SÁCH)
+- Họ tên pháp lý, CCCD, ngày sinh, giới tính, thường trú, ngày cấp, ngày hết hạn và nơi cấp của cả hai bên lấy từ `user_kyc_details` gắn đúng user ID đã xác minh. Không lấy các trường này từ tên hiển thị, ngày sinh/địa chỉ tự nhập trong profile hoặc `renterName` của yêu cầu thuê.
+- Mẫu mới phải hiển thị đầy đủ tám marker danh tính trong phần Bên A/Bên B theo cấu trúc bên dưới. Catalog giữ một số marker là tùy chọn để tương thích mẫu và snapshot cũ; không được bỏ chúng khỏi mẫu mới.
+- Chụp dữ liệu KYC vào snapshot khi lập văn bản. Không tự thay dữ liệu của hợp đồng đã ký khi profile/KYC về sau thay đổi; không để người dùng sửa thủ công danh tính qua bản nháp/phụ lục.
+- Các trường ngày/nơi cấp hoặc hết hạn chưa được nhà cung cấp trả về phải để trống, không suy đoán. Giá trị ngày hết hạn như “Không thời hạn” phải giữ đúng kết quả KYC.
+- Điện thoại/email là thông tin liên hệ; ngân hàng giữ đúng snapshot giao dịch. Điểm so khớp khuôn mặt và kết quả kiểm tra kỹ thuật lưu tại hồ sơ KYC, không in vào phần định danh trên hợp đồng.
+
+## II. DANH MỤC 74 MÃ TRƯỜNG VÀ BẢNG ĐỘNG ĐƯỢC HỖ TRỢ (SCHEMA V3 MỞ RỘNG CHÍNH SÁCH)
+
+> Cột “Bắt buộc” dưới đây là ràng buộc kỹ thuật của dữ liệu/backend. Đối với nhiệm vụ tạo ba mẫu mới, phải giữ toàn bộ marker trong dàn ý IV, gồm đủ tám trường KYC của mỗi bên, ngay cả khi hàng tương ứng ghi “Không”.
 
 ### 1. Nhóm Pháp lý & Hợp đồng
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
@@ -157,8 +167,13 @@ Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải l�
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
 |---|:---:|---|
 | `{{landlord.fullName}}` | Có | Họ và tên chủ nhà |
-| `{{landlord.idNumber}}` | Không | Số CCCD/Hộ chiếu của chủ nhà |
+| `{{landlord.idNumber}}` | Không | Số CCCD từ KYC đã xác thực của chủ nhà |
 | `{{landlord.permanentAddress}}` | Không | Nơi thường trú của chủ nhà |
+| `{{landlord.birthDate}}` | Không | Ngày sinh từ KYC đã xác thực |
+| `{{landlord.gender}}` | Không | Giới tính từ KYC đã xác thực |
+| `{{landlord.issueDate}}` | Không | Ngày cấp CCCD từ KYC đã xác thực |
+| `{{landlord.expirationDate}}` | Không | Ngày hết hạn CCCD từ KYC đã xác thực |
+| `{{landlord.issuePlace}}` | Không | Nơi cấp CCCD từ KYC đã xác thực |
 | `{{landlord.phone}}` | Có | Số điện thoại liên hệ của chủ nhà |
 | `{{landlord.email}}` | Không | Email của chủ nhà |
 | `{{landlord.bankAccountHolder}}` | Có | Tên chủ tài khoản nhận thanh toán của Bên A |
@@ -169,8 +184,13 @@ Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải l�
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
 |---|:---:|---|
 | `{{tenant.fullName}}` | Có | Họ và tên người thuê đại diện |
-| `{{tenant.idNumber}}` | Không | Số CCCD/Hộ chiếu người thuê |
+| `{{tenant.idNumber}}` | Không | Số CCCD từ KYC đã xác thực của người thuê |
 | `{{tenant.permanentAddress}}` | Không | Nơi thường trú người thuê |
+| `{{tenant.birthDate}}` | Không | Ngày sinh từ KYC đã xác thực |
+| `{{tenant.gender}}` | Không | Giới tính từ KYC đã xác thực |
+| `{{tenant.issueDate}}` | Không | Ngày cấp CCCD từ KYC đã xác thực |
+| `{{tenant.expirationDate}}` | Không | Ngày hết hạn CCCD từ KYC đã xác thực |
+| `{{tenant.issuePlace}}` | Không | Nơi cấp CCCD từ KYC đã xác thực |
 | `{{tenant.phone}}` | Có | Số điện thoại liên hệ |
 | `{{tenant.email}}` | Không | Email người thuê |
 | `{{tenant.occupantCount}}` | Có | Số lượng người cư trú đăng ký chính thức |
@@ -205,7 +225,7 @@ Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải l�
 ### 6. Nhóm Giá thuê & Thanh toán (Rent)
 | Mã trường | Bắt buộc | Mô tả & Ý nghĩa |
 |---|:---:|---|
-| `{{rent.amountNumber}}` | Có | Giá thuê hàng tháng bằng số định dạng vi-VN (ví dụ: `8.500.000 VNĐ`) |
+| `{{rent.amountNumber}}` | Có | Giá thuê hàng tháng đã định dạng và kèm đơn vị (ví dụ: `8.500.000 VNĐ/tháng`) |
 | `{{rent.amountWords}}` | Có | Giá thuê hàng tháng bằng chữ |
 | `{{rent.paymentCycle}}` | Có | Chu kỳ thanh toán (Hàng tháng / 3 tháng / ...) |
 | `{{rent.paymentDueDay}}` | Có | Hạn thanh toán theo từng kỳ thuê; backend hiện trả mô tả “chậm nhất 23:59 ngày thứ 5 tính từ ngày chốt kỳ (ngày chốt là ngày thứ 1); hạn cụ thể ghi trên hóa đơn” |
@@ -251,7 +271,7 @@ Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải l�
 
 ## III. HƯỚNG DẪN KIỂM TRA FILE WORD SAU KHI TẠO
 1. Kiểm tra XML của DOCX (`word/document.xml`) để đảm bảo từng placeholder nằm trọn trong một Word run, không bị tách ký tự/định dạng. `Alt + F9` chỉ hiển thị Word Field Codes, không chứng minh marker văn bản của poi-tl nằm trong một run.
-2. Không để sót placeholder rác không có trong danh mục 64 trường trên.
+2. Không để sót placeholder rác không có trong danh mục 74 trường trên.
 3. Các bảng động `{{#chargesTable}}`, `{{#equipmentTable}}`, `{{#propertyFeaturesTable}}`, `{{#amenitiesTable}}`, `{{#initialPaymentTable}}`, `{{#policiesTable}}` phải giữ nguyên ký tự `#` ở đầu tên bảng. Mỗi bảng đặt thành đoạn marker riêng, backend tạo bảng; không bọc marker trong bảng dựng sẵn hoặc bảng lồng.
 4. Đảm bảo file được lưu đúng định dạng Word 2007+ (.docx).
 5. Mở/xuất xem toàn bộ trang để kiểm tra khoảng cách giữa Header với Quốc hiệu, khoảng cách tiêu đề, lề, bảng và lỗi tiêu đề/đoạn bị tách không đẹp.
@@ -261,7 +281,7 @@ Thông tin ngân hàng trên màn hình xem, màn hình sửa và Word phải l�
 9. Kiểm tra cả ba loại hình với dữ liệu ít/nhiều dòng và ghi chú dài; giữ nguyên thứ tự các dòng backend cung cấp. Render/xuất PDF xem toàn bộ trang, bảo đảm bảng tự mở rộng, không tràn lề hoặc đè Header/Footer. Bản kiểm thử đã điền không được thay cho DOCX mẫu chứa placeholder.
 10. Bàn giao đúng ba DOCX mới theo tên mục I.1 và tóm tắt kiểm tra ngay trong câu trả lời. Không tạo thêm file prompt, không sửa PDF/hợp đồng đã ký. Nếu công cụ không render hoặc không tạo được DOCX, nêu rõ giới hạn, không tuyên bố đã kiểm chứng bố cục.
 
-10. Kiểm tra từng mẫu với hai bộ dữ liệu. Bộ cọc 0 phải thể hiện không đặt cọc, không ghi đã nộp cọc hoặc tạo nghĩa vụ hoàn hay khấu trừ. Bộ cọc dương phải giữ đúng số tiền cọc, ghi nhận thanh toán ban đầu và điều kiện hoàn phần còn phải hoàn. Các số liệu minh họa chỉ dùng trên bản kiểm thử.
+11. Kiểm tra từng mẫu với hai bộ dữ liệu. Bộ cọc 0 phải thể hiện không đặt cọc, không ghi đã nộp cọc hoặc tạo nghĩa vụ hoàn hay khấu trừ. Bộ cọc dương phải giữ đúng số tiền cọc, ghi nhận thanh toán ban đầu và điều kiện hoàn phần còn phải hoàn. Các số liệu minh họa chỉ dùng trên bản kiểm thử.
 
 ### Cổng kiểm tra trước khi bàn giao — không được chỉ tự nhận xét “đã đủ”
 Sau khi lưu file, mở lại chính **DOCX cuối cùng** như ZIP và đọc `word/document.xml` cùng các `word/header*.xml`, `word/footer*.xml`. Đọc nội dung từng paragraph, kể cả paragraph trong ô bảng; giữ ranh giới đoạn, không nối hai đoạn khác nhau để tạo marker giả. Trích xuất các mã giữa `{{` và `}}`, giữ dấu `#`, đếm cả số lần xuất hiện và tập mã duy nhất.
@@ -269,17 +289,18 @@ Sau khi lưu file, mở lại chính **DOCX cuối cùng** như ZIP và đọc `
 Với từng file, dùng phép so sánh tập hợp:
 1. `missingRequired = requiredForCategory - detected`: phải rỗng, dùng checklist 27/28 mã ở mục I.10.
 2. `missingBusiness = requiredBusinessMarkers - detected`: phải rỗng, dùng 8 marker nghiệp vụ ở mục I.10.
-3. `unknown = detected - supportedCatalog`: phải rỗng, dùng đúng danh mục 64 mã ở mục II.
-4. Đếm mỗi marker bảng động và `contract.specialTerms`: phải bằng 1; kiểm tra marker nằm trọn trong một run, không bị tách theo định dạng.
-5. Xác nhận `property.propertyType` nằm trong nội dung Điều 1; không dùng tên loại hình viết cứng thay cho placeholder. `property.unitNumber` có trong Điều 1 của APARTMENT/ROOM.
+3. `unknown = detected - supportedCatalog`: phải rỗng, dùng đúng danh mục 74 mã ở mục II.
+4. Đếm mỗi marker bảng động, `contract.specialTerms` và `deposit.description`: phải bằng 1; kiểm tra marker nằm trọn trong một run, không bị tách theo định dạng.
+5. `missingTemplate = markersInCategoryOutline - detected`: phải rỗng. Tập đối chiếu là các marker trong phần “III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT” của dàn ý tương ứng ở mục IV. Riêng KYC, xác nhận phần Bên A và Bên B mỗi bên có đủ `fullName`, `idNumber`, `birthDate`, `gender`, `permanentAddress`, `issueDate`, `expirationDate`, `issuePlace`; không chỉ có mã trong header/footer hoặc báo cáo.
+6. Xác nhận `property.propertyType` nằm trong nội dung Điều 1; không dùng tên loại hình viết cứng thay cho placeholder. `property.unitNumber` có trong Điều 1 của APARTMENT/ROOM.
 
-Nếu thiếu, lặp hoặc sai mã: sửa **file Word**, lưu lại rồi chạy kiểm tra lại; không sửa checklist để hợp thức hóa file thiếu. Không đánh giá đạt chỉ bằng tổng số trường 55/56/62/64 hoặc tên hợp đồng. Kiểm tra cấu trúc không thay cho render kiểm tra bố cục.
+Nếu thiếu, lặp hoặc sai mã: sửa **file Word**, lưu lại rồi chạy kiểm tra lại; không sửa checklist để hợp thức hóa file thiếu. Không đánh giá đạt chỉ bằng tổng số trường 55/56/62/74 hoặc tên hợp đồng. Kiểm tra cấu trúc không thay cho render kiểm tra bố cục.
 
-Trong câu trả lời bàn giao, báo cáo riêng từng file: loại hình, số mã duy nhất thực tế, mã bắt buộc còn thiếu, marker nghiệp vụ còn thiếu, mã không hỗ trợ, bảng/khối bị lặp, kiểm tra một-run và tình trạng render. Liệt kê cụ thể mã lỗi nếu có. Không đưa bảng kiểm tra hay mã XML vào văn bản hợp đồng và không tạo file báo cáo/prompt phụ. Nếu chưa chạy kiểm tra cấu trúc hoặc render thì ghi rõ “chưa kiểm chứng”, không báo đạt.
+Trong câu trả lời bàn giao, báo cáo riêng từng file: loại hình, số mã duy nhất thực tế, mã bắt buộc còn thiếu, marker nghiệp vụ/dàn ý/KYC còn thiếu, mã không hỗ trợ, bảng/khối bị lặp, kiểm tra một-run và tình trạng render. Liệt kê cụ thể mã lỗi nếu có. Không đưa bảng kiểm tra hay mã XML vào văn bản hợp đồng và không tạo file báo cáo/prompt phụ. Nếu chưa chạy kiểm tra cấu trúc hoặc render thì ghi rõ “chưa kiểm chứng”, không báo đạt.
 
 ---
 
-## IV. BA PROMPT HOÀN CHỈNH CHO CHATGPT (COPY & PASTE)
+## IV. BA DÀN Ý THỰC HIỆN — ĐỌC CÙNG QUY TẮC I–III
 
 ---
 
@@ -322,10 +343,10 @@ I. CĂN CỨ PHÁP LÝ
 - Luật Kinh doanh bất động sản số 29/2023/QH15 (trong phạm vi áp dụng).
 
 II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
-1. Chỉ sử dụng các placeholder trong danh mục 64 trường được hỗ trợ:
+1. Chỉ sử dụng các placeholder dưới đây cho mẫu này (tập con của catalog 74 mã ở mục II):
    - Hợp đồng: {{contract.number}}, {{contract.signingDate}}, {{contract.signingCity}}, {{contract.schemaVersion}}, {{contract.revisionNumber}}, {{contract.specialTerms}}
-   - Bên A: {{landlord.fullName}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
-   - Bên B: {{tenant.fullName}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
+   - Bên A: {{landlord.fullName}}, {{landlord.birthDate}}, {{landlord.gender}}, {{landlord.issueDate}}, {{landlord.expirationDate}}, {{landlord.issuePlace}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
+   - Bên B: {{tenant.fullName}}, {{tenant.birthDate}}, {{tenant.gender}}, {{tenant.issueDate}}, {{tenant.expirationDate}}, {{tenant.issuePlace}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
    - Bất động sản: {{property.fullAddress}}, {{property.areaText}}, {{property.propertyType}}, {{property.floor}}, {{property.listingCode}}, {{property.rentalScope}}, {{property.maxOccupants}}, {{property.maxVehicles}}
    - Thời hạn thuê: {{lease.startDateText}}, {{lease.endDateText}}, {{lease.durationMonths}}, {{lease.durationText}}, {{lease.handoverDateText}}
    - Giá thuê & Cọc: {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{rent.paymentMethod}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{deposit.description}}
@@ -351,9 +372,9 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    Số: {{contract.number}} - Ngày ký: {{contract.signingDate}} tại {{contract.signingCity}}.
 2. CĂN CỨ PHÁP LÝ (Như mục I).
 3. THÔNG TIN CÁC BÊN:
-   - BÊN CHO THUÊ (BÊN A): {{landlord.fullName}}, CCCD: {{landlord.idNumber}}, Thường trú: {{landlord.permanentAddress}}, Điện thoại: {{landlord.phone}}, Email: {{landlord.email}}.
+   - BÊN CHO THUÊ (BÊN A): {{landlord.fullName}}, Ngày sinh: {{landlord.birthDate}}, Giới tính: {{landlord.gender}}, CCCD: {{landlord.idNumber}}, Thường trú: {{landlord.permanentAddress}}, Ngày cấp CCCD: {{landlord.issueDate}}, Ngày hết hạn: {{landlord.expirationDate}}, Nơi cấp: {{landlord.issuePlace}}, Điện thoại: {{landlord.phone}}, Email: {{landlord.email}}.
      Tài khoản nhận thanh toán: Chủ tài khoản: {{landlord.bankAccountHolder}} - Số tài khoản: {{landlord.bankAccountNumber}} - Ngân hàng: {{landlord.bankName}}.
-   - BÊN THUÊ (BÊN B): {{tenant.fullName}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người ở: {{tenant.occupantCount}}, Xe máy: {{tenant.motorbikeCount}}, Ô tô: {{tenant.carCount}}.
+   - BÊN THUÊ (BÊN B): {{tenant.fullName}}, Ngày sinh: {{tenant.birthDate}}, Giới tính: {{tenant.gender}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Ngày cấp CCCD: {{tenant.issueDate}}, Ngày hết hạn: {{tenant.expirationDate}}, Nơi cấp: {{tenant.issuePlace}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người ở: {{tenant.occupantCount}}, Xe máy: {{tenant.motorbikeCount}}, Ô tô: {{tenant.carCount}}.
      Tài khoản nhận hoàn trả: Chủ tài khoản: {{tenant.bankAccountHolder}} - Số tài khoản: {{tenant.bankAccountNumber}} - Ngân hàng: {{tenant.bankName}}.
 4. ĐIỀU 1: ĐỐI TƯỢNG VÀ PHẠM VI CHO THUÊ
    - Loại hình bất động sản: {{property.propertyType}}.
@@ -407,7 +428,8 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
     - Không đặt điều khoản phí chậm trả/chấm dứt ở Điều này; nội dung đó nằm ở Điều 9.
 12. ĐIỀU 9: CHẤM DỨT HỢP ĐỒNG VÀ GIẢI QUYẾT TRANH CHẤP
     - Thực hiện thông báo trước theo Bảng chính sách, bàn giao lại nhà và quyết toán công nợ. Nếu còn phần cọc thực nhận phải hoàn, áp dụng thời hạn theo Bảng chính sách và điều kiện cọc tại Điều 3.
-    - Toàn văn điều khoản quá hạn, phí chậm trả và phương án chấm dứt đã được backend chốt: {{contract.specialTerms}}
+    - Đặt nguyên marker sau ở đoạn riêng để hệ thống điền toàn văn điều khoản đã chốt; không in lời hướng dẫn này:
+      {{contract.specialTerms}}
     - Trường hợp bất khả kháng; giải quyết tranh chấp thông qua thương lượng hoặc Tòa án có thẩm quyền.
 13. ĐIỀU 10: GIAO KẾT ĐIỆN TỬ VÀ HIỆU LỰC
     - Hợp đồng được giao kết điện tử/xác nhận thông qua nền tảng HomeSpace phù hợp Luật Giao dịch điện tử.
@@ -456,10 +478,10 @@ I. CĂN CỨ PHÁP LÝ
 - Luật Kinh doanh bất động sản số 29/2023/QH15 (trong phạm vi áp dụng).
 
 II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
-1. Chỉ sử dụng các placeholder trong danh mục 64 trường được hỗ trợ:
+1. Chỉ sử dụng các placeholder dưới đây cho mẫu này (tập con của catalog 74 mã ở mục II):
    - Hợp đồng: {{contract.number}}, {{contract.signingDate}}, {{contract.signingCity}}, {{contract.schemaVersion}}, {{contract.revisionNumber}}, {{contract.specialTerms}}
-   - Bên A: {{landlord.fullName}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
-   - Bên B: {{tenant.fullName}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
+   - Bên A: {{landlord.fullName}}, {{landlord.birthDate}}, {{landlord.gender}}, {{landlord.issueDate}}, {{landlord.expirationDate}}, {{landlord.issuePlace}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
+   - Bên B: {{tenant.fullName}}, {{tenant.birthDate}}, {{tenant.gender}}, {{tenant.issueDate}}, {{tenant.expirationDate}}, {{tenant.issuePlace}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
    - Bất động sản: {{property.fullAddress}}, {{property.areaText}}, {{property.propertyType}}, {{property.unitNumber}}, {{property.floor}}, {{property.listingCode}}, {{property.rentalScope}}, {{property.maxOccupants}}, {{property.maxVehicles}}
    - Thời hạn thuê: {{lease.startDateText}}, {{lease.endDateText}}, {{lease.durationMonths}}, {{lease.durationText}}, {{lease.handoverDateText}}
    - Giá thuê & Cọc: {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{rent.paymentMethod}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{deposit.description}}
@@ -485,9 +507,9 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    Số: {{contract.number}} - Ngày ký: {{contract.signingDate}} tại {{contract.signingCity}}.
 2. CĂN CỨ PHÁP LÝ (Như mục I).
 3. THÔNG TIN CÁC BÊN:
-   - BÊN CHO THUÊ (BÊN A): {{landlord.fullName}}, CCCD: {{landlord.idNumber}}, Thường trú: {{landlord.permanentAddress}}, Điện thoại: {{landlord.phone}}, Email: {{landlord.email}}.
+   - BÊN CHO THUÊ (BÊN A): {{landlord.fullName}}, Ngày sinh: {{landlord.birthDate}}, Giới tính: {{landlord.gender}}, CCCD: {{landlord.idNumber}}, Thường trú: {{landlord.permanentAddress}}, Ngày cấp CCCD: {{landlord.issueDate}}, Ngày hết hạn: {{landlord.expirationDate}}, Nơi cấp: {{landlord.issuePlace}}, Điện thoại: {{landlord.phone}}, Email: {{landlord.email}}.
      Tài khoản nhận thanh toán: Chủ tài khoản: {{landlord.bankAccountHolder}} - Số tài khoản: {{landlord.bankAccountNumber}} - Ngân hàng: {{landlord.bankName}}.
-   - BÊN THUÊ (BÊN B): {{tenant.fullName}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người cư trú: {{tenant.occupantCount}}, Xe máy đăng ký: {{tenant.motorbikeCount}}, Ô tô đăng ký: {{tenant.carCount}}.
+   - BÊN THUÊ (BÊN B): {{tenant.fullName}}, Ngày sinh: {{tenant.birthDate}}, Giới tính: {{tenant.gender}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Ngày cấp CCCD: {{tenant.issueDate}}, Ngày hết hạn: {{tenant.expirationDate}}, Nơi cấp: {{tenant.issuePlace}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người cư trú: {{tenant.occupantCount}}, Xe máy đăng ký: {{tenant.motorbikeCount}}, Ô tô đăng ký: {{tenant.carCount}}.
      Tài khoản nhận hoàn trả: Chủ tài khoản: {{tenant.bankAccountHolder}} - Số tài khoản: {{tenant.bankAccountNumber}} - Ngân hàng: {{tenant.bankName}}.
 4. ĐIỀU 1: ĐỐI TƯỢNG VÀ ĐẶC ĐIỂM CĂN HỘ CHO THUÊ
    - Loại hình bất động sản: {{property.propertyType}}.
@@ -541,7 +563,8 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
     - Không đặt điều khoản phí chậm trả/chấm dứt ở Điều này; nội dung đó nằm ở Điều 9.
 12. ĐIỀU 9: CHẤM DỨT HỢP ĐỒNG VÀ XỬ LÝ VI PHẠM
     - Thông báo trước theo Bảng chính sách, bàn giao lại thẻ cư dân, chìa khóa và hiện trạng căn hộ, rồi quyết toán công nợ. Nếu còn phần cọc thực nhận phải hoàn, áp dụng thời hạn theo Bảng chính sách và điều kiện cọc tại Điều 3.
-    - Toàn văn điều khoản quá hạn, phí chậm trả và phương án chấm dứt đã được backend chốt: {{contract.specialTerms}}
+    - Đặt nguyên marker sau ở đoạn riêng để hệ thống điền toàn văn điều khoản đã chốt; không in lời hướng dẫn này:
+      {{contract.specialTerms}}
 13. ĐIỀU 10: GIAO KẾT ĐIỆN TỬ VÀ HIỆU LỰC
     - Hợp đồng được giao kết điện tử qua nền tảng HomeSpace theo Luật Giao dịch điện tử.
     - Phiên bản schema: {{contract.schemaVersion}}, Số hiệu bản sửa đổi: {{contract.revisionNumber}}.
@@ -589,10 +612,10 @@ I. CĂN CỨ PHÁP LÝ
 - Luật Kinh doanh bất động sản số 29/2023/QH15 (trong phạm vi áp dụng).
 
 II. QUY TẮC BẮT BUỘC VỀ DỮ LIỆU
-1. Chỉ sử dụng các placeholder trong danh mục 64 trường được hỗ trợ:
+1. Chỉ sử dụng các placeholder dưới đây cho mẫu này (tập con của catalog 74 mã ở mục II):
    - Hợp đồng: {{contract.number}}, {{contract.signingDate}}, {{contract.signingCity}}, {{contract.schemaVersion}}, {{contract.revisionNumber}}, {{contract.specialTerms}}
-   - Bên A: {{landlord.fullName}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
-   - Bên B: {{tenant.fullName}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
+   - Bên A: {{landlord.fullName}}, {{landlord.birthDate}}, {{landlord.gender}}, {{landlord.issueDate}}, {{landlord.expirationDate}}, {{landlord.issuePlace}}, {{landlord.idNumber}}, {{landlord.permanentAddress}}, {{landlord.phone}}, {{landlord.email}}, {{landlord.bankAccountHolder}}, {{landlord.bankAccountNumber}}, {{landlord.bankName}}
+   - Bên B: {{tenant.fullName}}, {{tenant.birthDate}}, {{tenant.gender}}, {{tenant.issueDate}}, {{tenant.expirationDate}}, {{tenant.issuePlace}}, {{tenant.idNumber}}, {{tenant.permanentAddress}}, {{tenant.phone}}, {{tenant.email}}, {{tenant.occupantCount}}, {{tenant.motorbikeCount}}, {{tenant.carCount}}, {{tenant.bankAccountHolder}}, {{tenant.bankAccountNumber}}, {{tenant.bankName}}
    - Bất động sản: {{property.fullAddress}}, {{property.areaText}}, {{property.propertyType}}, {{property.unitNumber}}, {{property.floor}}, {{property.listingCode}}, {{property.rentalScope}}, {{property.maxOccupants}}, {{property.maxVehicles}}
    - Thời hạn thuê: {{lease.startDateText}}, {{lease.endDateText}}, {{lease.durationMonths}}, {{lease.durationText}}, {{lease.handoverDateText}}
    - Giá thuê & Cọc: {{rent.amountNumber}}, {{rent.amountWords}}, {{rent.paymentCycle}}, {{rent.paymentDueDay}}, {{rent.paymentMethod}}, {{deposit.amountNumber}}, {{deposit.amountWords}}, {{deposit.description}}
@@ -618,9 +641,9 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
    Số: {{contract.number}} - Ngày ký: {{contract.signingDate}} tại {{contract.signingCity}}.
 2. CĂN CỨ PHÁP LÝ (Như mục I).
 3. THÔNG TIN CÁC BÊN:
-   - BÊN CHO THUÊ (BÊN A): {{landlord.fullName}}, CCCD: {{landlord.idNumber}}, Thường trú: {{landlord.permanentAddress}}, Điện thoại: {{landlord.phone}}, Email: {{landlord.email}}.
+   - BÊN CHO THUÊ (BÊN A): {{landlord.fullName}}, Ngày sinh: {{landlord.birthDate}}, Giới tính: {{landlord.gender}}, CCCD: {{landlord.idNumber}}, Thường trú: {{landlord.permanentAddress}}, Ngày cấp CCCD: {{landlord.issueDate}}, Ngày hết hạn: {{landlord.expirationDate}}, Nơi cấp: {{landlord.issuePlace}}, Điện thoại: {{landlord.phone}}, Email: {{landlord.email}}.
      Tài khoản nhận thanh toán: Chủ tài khoản: {{landlord.bankAccountHolder}} - Số tài khoản: {{landlord.bankAccountNumber}} - Ngân hàng: {{landlord.bankName}}.
-   - BÊN THUÊ (BÊN B): {{tenant.fullName}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người cư trú: {{tenant.occupantCount}}, Xe máy đăng ký: {{tenant.motorbikeCount}}, Ô tô: {{tenant.carCount}}.
+   - BÊN THUÊ (BÊN B): {{tenant.fullName}}, Ngày sinh: {{tenant.birthDate}}, Giới tính: {{tenant.gender}}, CCCD: {{tenant.idNumber}}, Thường trú: {{tenant.permanentAddress}}, Ngày cấp CCCD: {{tenant.issueDate}}, Ngày hết hạn: {{tenant.expirationDate}}, Nơi cấp: {{tenant.issuePlace}}, Điện thoại: {{tenant.phone}}, Email: {{tenant.email}}, Số người cư trú: {{tenant.occupantCount}}, Xe máy đăng ký: {{tenant.motorbikeCount}}, Ô tô: {{tenant.carCount}}.
      Tài khoản nhận hoàn trả: Chủ tài khoản: {{tenant.bankAccountHolder}} - Số tài khoản: {{tenant.bankAccountNumber}} - Ngân hàng: {{tenant.bankName}}.
 4. ĐIỀU 1: ĐỐI TƯỢNG VÀ ĐẶC ĐIỂM PHÒNG TRỌ
    - Loại hình bất động sản: {{property.propertyType}}.
@@ -676,7 +699,8 @@ III. CẤU TRÚC ĐIỀU KHOẢN CHI TIẾT
 12. ĐIỀU 9: CHẤM DỨT HỢP ĐỒNG VÀ HOÀN TRẢ PHÒNG
     - Bên B muốn trả phòng trước hạn phải thông báo trong thời hạn theo Bảng chính sách, dọn dẹp sạch sẽ và bàn giao lại chìa khóa, hiện trạng phòng.
     - Quyết toán công nợ sau bàn giao. Nếu còn phần cọc thực nhận phải hoàn, áp dụng thời hạn theo Bảng chính sách và điều kiện cọc tại Điều 3.
-    - Toàn văn điều khoản quá hạn, phí chậm trả và phương án chấm dứt đã được backend chốt: {{contract.specialTerms}}
+    - Đặt nguyên marker sau ở đoạn riêng để hệ thống điền toàn văn điều khoản đã chốt; không in lời hướng dẫn này:
+      {{contract.specialTerms}}
 13. ĐIỀU 10: GIAO KẾT ĐIỆN TỬ VÀ HIỆU LỰC
     - Hợp đồng được giao kết điện tử qua nền tảng HomeSpace theo Luật Giao dịch điện tử.
     - Phiên bản schema: {{contract.schemaVersion}}, Số hiệu bản sửa đổi: {{contract.revisionNumber}}.

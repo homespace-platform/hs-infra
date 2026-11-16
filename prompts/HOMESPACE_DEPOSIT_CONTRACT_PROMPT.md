@@ -1,15 +1,20 @@
 # HOMESPACE — PROMPT TẠO 03 MẪU WORD HỢP ĐỒNG ĐẶT CỌC / GIỮ CHỖ THUÊ
 
-> Cập nhật 04/11/2026: đơn phương chấm dứt với cửa sổ khiếu nại 24 giờ và trần phạt 5 ngày là luồng hóa đơn của hợp đồng thuê đã có hiệu lực, theo HOMESPACE_CONTRACT_PROMPT.md. Không áp dụng vào hồ sơ cọc trước ký; không thay cửa sổ ký/thông báo cuối hoặc tự suy mất cọc từ quy tắc này.
+## NHIỆM VỤ THỰC HIỆN NGAY — KHÔNG CẦN NGỮ CẢNH BÊN NGOÀI
 
+Bạn nhận đúng file này, không có lịch sử trò chuyện, mã nguồn hoặc dữ liệu khách hàng. Hãy tạo mới **đúng 03 mẫu Word (.docx) chưa điền dữ liệu**, tên file ở I.3, đủ nội dung VII và khác biệt VIII. Thực hiện ngay bằng công cụ tạo file nếu có; trả ba liên kết tải thực tế cùng báo cáo kiểm tra IX. Không yêu cầu repository, API, prompt hợp đồng thuê, Word cũ, ảnh CCCD hay thông tin giao dịch để bắt đầu.
 
-**Phiên bản D2 — đối chiếu source ngày 24/10/2026.** Thay thế nội dung D1, đặc biệt giả định sai “ký hợp đồng thuê trước rồi mới đặt cọc”.
+- HomeSpace là nền tảng cho thuê bất động sản. Bên A là bên cho thuê/nhận cọc, Bên B là người thuê/đặt cọc. `HOUSE`, `APARTMENT`, `ROOM` lần lượt là nhà nguyên căn, căn hộ chung cư, phòng trọ. HomeSpace không nhận hoặc giữ tiền thay các bên.
+- “Snapshot” là bản dữ liệu được hệ thống chốt và lưu tại thời điểm giao dịch; “backend/Core API” là phần mềm điền mẫu sau này. “KYC” là danh tính được VNPT eKYC xác minh. Những từ này chỉ giải thích nguồn, không yêu cầu AI truy cập hoặc lập trình hệ thống.
+- D2 là tên bộ marker của **hợp đồng đặt cọc**, độc lập bộ marker hợp đồng thuê. Catalog IV trong file này là danh sách đầy đủ được phép dùng; không cần biết bộ thuê V3 và không thêm marker chỉ vì thấy hợp đồng khác sử dụng.
+- Placeholder là văn bản giữ nguyên cho thư viện poi-tl thay sau, không phải Word merge field hoặc câu hỏi cần AI điền. Giữ chính xác `{{` / `}}`, dấu chấm, chữ hoa/thường và `#`. Không dùng Jinja, vòng lặp, if/else, `${...}`, marker tự đặt hoặc dấu chấm làm chỗ trống. Ví dụ trong lời hướng dẫn không phải dữ liệu điền vào hợp đồng.
+- Giữ đủ tám marker KYC trong phần thông tin **mỗi bên**, kể cả ngày/nơi cấp hoặc hết hạn có thể chưa có giá trị. Liên hệ và ngân hàng là nguồn riêng; không thay danh tính KYC bằng hồ sơ tự nhập. Số CCCD/tài khoản là chuỗi giữ số 0 đầu; ngày hết hạn có thể là “Không thời hạn”. Không in điểm khuôn mặt hoặc kết quả kiểm tra kỹ thuật KYC vào hợp đồng.
+- Áp dụng quy tắc II–V cho nội dung VI–VIII. Catalog IV quyết định tên marker; IV.4 quyết định tập marker phải có trong mỗi mẫu; VII–VIII quyết định vị trí và câu chữ. Các điều kiện dữ liệu trước phát hành do phần mềm kiểm tra, **không phải yêu cầu có dữ liệu thật trước khi AI tạo mẫu**.
+- Ngày, tiền, bằng chữ, thời hạn và điều kiện động được phần mềm cung cấp. Không lấy ngày hiện tại, không điền giá trị minh họa, không tự tính hạn/phạt hoặc suy thông tin còn thiếu. Giữ marker nguyên dạng trong mẫu, kể cả trường có thể trống sau kết xuất.
+- Chỉ đưa chính văn hợp đồng tiếng Việt và marker vào DOCX. Không chép hướng dẫn kỹ thuật, tên bảng dữ liệu, checklist, URL, báo cáo hoặc giả định kiểm thử vào chính văn. Không viết code backend hoặc tạo thêm tài liệu/phiên bản hợp đồng đã điền.
+- Nếu không thể tạo file hoặc xem bố cục, nêu đúng giới hạn; không tạo liên kết tải giả hoặc báo đã render/kiểm thử HomeSpace khi chưa làm. Chưa truy cập backend không cản trở việc tạo mẫu bằng marker.
 
-**Cách dùng:** Gửi **toàn bộ file này** cho ChatGPT có khả năng tạo file Word. Đầu ra là 03 file DOCX mẫu chứa placeholder cho poi-tl, chưa điền dữ liệu giao dịch. Tài liệu tự chứa đủ ngữ cảnh để soạn mẫu; ChatGPT tạo Word không cần truy cập repository hay CONTRACT_PROMPT.md.
-
-**Cập nhật triển khai 24/10/2026:** catalog D2 và luồng cọc ký riêng đã được bổ sung trong source. Mọi hồ sơ có cọc dương đều ký hai văn bản: cọc trước, thuê sau; mỗi văn bản có chữ ký chủ nhà và khách thuê. Miễn cọc 0 đồng không phát sinh văn bản nhận cọc. Xem `../documents/DEPOSIT_AGREEMENT_ADMIN_GUIDE.md` để chạy và nghiệm thu. Phần review “đã có/phần thiếu” dưới đây ghi lại mốc trước triển khai, không phải báo cáo kiểm thử live. Không yêu cầu AI tạo Word viết code hoặc tự điền dữ liệu thiếu.
-
-## I. NGHIỆP VỤ ĐÃ ĐỐI CHIẾU VỚI HOMESPACE
+## I. BỐI CẢNH NGHIỆP VỤ CẦN PHẢN ÁNH TRONG MẪU
 
 ### 1. Luồng thực tế: cọc xuất hiện TRƯỚC hợp đồng thuê
 
@@ -31,7 +36,7 @@ Nhận nhà ngay trong ngày: HomeSpace tạo **INITIAL gộp tiền tháng đ�
 
 Ba DOCX D2 chỉ dùng cho hồ sơ có số tiền cọc theo yêu cầu thuê đã chốt lớn hơn 0 và phần cọc thực nhận đã được hai bên xác nhận, khớp với hồ sơ. Không cần đặt cọc và cọc 0 đồng cùng đi theo luồng hợp đồng thuê. Hệ thống bỏ qua lập và ký hợp đồng cọc, không phát sinh hoàn hay khấu trừ cọc. Khoản INITIAL chỉ có tiền thuê, kể cả khi đã CONFIRMED, không phải nguồn phát hành hợp đồng cọc. Không tạo mẫu D2 riêng cho cọc 0. Đây là quy tắc chọn mẫu của hệ thống, không in vào chính văn D2.
 
-**Thời điểm kích hoạt mong muốn:** sau khi chủ nhà xác nhận khoản có cọc dương, giao dịch được commit. Chỉ gửi yêu cầu thuê, tạo QR, upload ảnh hoặc người thuê báo chuyển chưa đủ để phát hành bản xác nhận đã nhận cọc.
+**Thời điểm phần mềm phát hành văn bản đã điền:** sau khi chủ nhà xác nhận khoản có cọc dương, giao dịch được commit. Chỉ gửi yêu cầu thuê, tạo QR, upload ảnh hoặc người thuê báo chuyển chưa đủ để phát hành bản xác nhận đã nhận cọc.
 
 ### 2. Văn bản đang cần tạo là gì?
 
@@ -66,124 +71,93 @@ Phụ đề: *Ghi nhận tiền cọc giữ chỗ theo yêu cầu thuê được
 - File đã xuất nhưng chưa có hai chữ ký đúng nội dung chỉ được gắn “đã lập/chờ ký”, không ghi “đã ký đủ”. Workflow cọc phải có metadata/hash của chính PDF cọc, không dùng chữ ký hợp đồng thuê để thay thế và không thay đổi lịch sử nhận tiền.
 - Ngày lập văn bản, ngày chấp nhận yêu cầu, thời điểm báo chuyển, xác nhận tiền và thời điểm ký là các sự kiện riêng. DOCX dùng **ngày lập**, không dùng ngày ký tương lai.
 
-## II. ĐỐI CHIẾU LỊCH SỬ TRƯỚC KHI TRIỂN KHAI D2
+## II. NGUỒN DỮ LIỆU VÀ CÁC KHÁI NIỆM DÙNG TRONG ĐẶC TẢ
 
-Bảng dưới ghi nhận thời điểm trước khi triển khai D2. Khi tạo Word, dùng catalog D2 ở Mục IV và lệnh thực thi ở Mục VI. **Không đưa ghi chú tích hợp vào thân Word.**
+AI không cần truy vấn các nguồn này. Phần mềm HomeSpace sẽ cung cấp giá trị cho marker từ các bản dữ liệu đã chốt:
 
-| Nội dung | Source hiện có | Kết luận |
-| --- | --- | --- |
-| Hồ sơ thuê, hai user ID, ngày vào, số tháng, người/xe | RentalRequest | Đã có; liên kết chính khi chưa có hợp đồng thuê |
-| Chấp nhận và điều kiện giữ chỗ | acceptedAt; reservationPolicyVersion; reservationPolicyAcceptedAt | Đã có version/thời điểm; chưa thấy snapshot toàn văn/hash điều kiện đồng ý |
-| Tài sản đã chốt | RentalRequest.listingSnapshot, chụp ở acceptRentalRequest | Có loại hình, fullAddress, area, unitNumber, floor, chi tiết, phí/chính sách; không lấy Listing live để ghi lại lịch sử |
-| Giá/cọc đã tính cho hồ sơ | effectiveMonthlyRent hoặc monthlyRentPrice; depositAmount; costBreakdownSnapshot | Có; ưu tiên số đã chốt ở hồ sơ/giao dịch, không lấy giá hiện tại của Listing |
-| Tách tiền thuê/cọc | PaymentRequest.type; PaymentLineItem.type RENT/DEPOSIT và amount | Đã có; không cần giả định backend chỉ lưu tổng gộp |
-| Sổ cọc | DepositRecord.initialPaymentRequestId, originalAmount, heldAmount, receivedConfirmedAt, status | Có; tên initialPaymentRequestId còn trỏ RESERVATION_DEPOSIT ở luồng tách; phải follow ID, không suy PaymentType từ tên cột |
-| Chuyển khoản và xác nhận | PaymentRequest.transferReference, payerReportedAt, payeeConfirmedAt, confirmedAt, status | Có; là khai báo/xác nhận hệ thống, không phải chứng nhận ngân hàng |
-| Tài khoản nhận và nhận hoàn | payeeBankAccountSnapshot / payerBankAccountSnapshot | Có snapshot đủ bankName/accountNumber/accountHolderName; giữ số 0 đầu |
-| CCCD và thông tin chủ nhà | User.cccd, firstName/lastName, phone/email | Có nguồn nhưng có thể thiếu; chưa được đóng băng riêng cho hồ sơ cọc |
-| Tên/điện thoại/email người thuê | RentalRequest.renterName/renterPhone/renterEmail | Đã lưu; không tự thay bằng profile mới khác người đại diện |
-| Địa chỉ cá nhân | user_addresses.display | Có địa chỉ profile; chưa chứng minh đây là địa chỉ thường trú pháp lý |
-| Mã giao dịch ngân hàng | PaymentRequest/PaymentEvidence.bankTransactionReference | Có cột nhưng reportTransfer hiện ghi evidence reference null; không bắt buộc in nếu thực tế chưa thu thập |
-| Mã tài liệu cọc/ngày lập/snapshot bất biến | Chưa thấy entity và mapping riêng | Cần bổ sung, không lấy mã hợp đồng thuê để giả làm mã cọc |
-| Lịch mở tiền tháng đầu, hạn ký | PaymentRequest.opensAt/dueAt/contractDueAt; onboarding; config | Có quy tắc và một số mốc phát sinh sau; cần chụp thành nextStepsText đúng thời điểm, không tạo deadline tương lai giả |
-| Xuất/lưu file cọc trước Contract | ContractDocument hiện bắt buộc contractId + revisionId + templateVersionId | Chưa dùng trực tiếp được khi Contract chưa có; cần thiết kế document/snapshot gắn rentalRequest/payment độc lập |
-| Catalog/render/template cọc | ContractFieldCatalog/ContractRenderService hiện là thuê V3 | Chưa hỗ trợ namespace D2; phải thêm bộ riêng/chọn document kind, không áp toàn bộ required fields thuê V3 cho cọc |
-| Ký riêng tài liệu cọc | Luồng SMARTCA đang gắn hợp đồng/revision thuê | Chưa xác nhận có luồng ký cọc độc lập; không coi đã tích hợp |
+| Nhóm thông tin | Nguồn và ý nghĩa |
+| --- | --- |
+| Hai bên | Danh tính KYC đã xác thực của chủ nhà/người thuê; điện thoại/email là thông tin liên hệ |
+| Tài sản | Tin đăng được lưu khi chủ nhà chấp nhận yêu cầu: loại hình, địa chỉ, diện tích, số căn/phòng, phạm vi thuê |
+| Điều kiện thuê | Yêu cầu thuê được chấp nhận: ngày bắt đầu/kết thúc dự kiến, số tháng, số người/xe và giá/cọc đã chốt |
+| Giao dịch | Khoản chuyển đã được người thuê báo và chủ nhà xác nhận nhận đủ; gồm riêng phần thuê và phần cọc |
+| Ngân hàng | Bản lưu tài khoản chủ nhà nhận tiền và tài khoản người thuê đăng ký nhận hoàn; không lấy tài khoản thay đổi về sau |
+| Điều kiện giữ chỗ | Toàn văn thỏa thuận đã được chấp thuận, phiên bản và thời điểm chấp thuận; không thay bằng chính sách mới |
+| Văn bản cọc | Số văn bản/ngày lập riêng; không dùng số/ngày ký hợp đồng thuê tương lai |
 
-### Nguồn source đã đối chiếu
+Tên trạng thái trong mô tả: `PENDING` = đang chờ, `ACCEPTED` = yêu cầu được chủ nhà chấp nhận, `CONFIRMED` = hai bên đã xác nhận khoản chuyển, `HELD` = hệ thống ghi nhận cọc do chủ nhà giữ. `RESERVATION_DEPOSIT` là khoản chỉ thu cọc; `INITIAL` là khoản ban đầu có thể gộp tiền thuê kỳ đầu và cọc. `RENT` / `DEPOSIT` lần lượt là phần tiền thuê / phần cọc trong giao dịch. Đây là khái niệm giải thích nguồn, không phải câu chữ kỹ thuật để in vào hợp đồng.
 
-Các đường dẫn dưới đều tương đối từ D:/Workspace/homespace/hs-core-api/:
+### Nguồn danh tính bắt buộc: KYC đã xác thực
 
-- hs-listing-service/src/main/java/com/hs/listing/service/RentalRequestService.java
-- hs-listing-service/src/main/java/com/hs/listing/dto/request/CreateRentalRequest.java
-- hs-listing-service/src/main/java/com/hs/listing/model/RentalRequest.java
-- hs-listing-service/src/main/java/com/hs/listing/dto/snapshot/ListingSnapshotDto.java
-- hs-payment-service/src/main/java/com/hs/payment/adapter/RentalPaymentLifecycleAdapter.java
-- hs-payment-service/src/main/java/com/hs/payment/service/PaymentRequestService.java
-- hs-payment-service/src/main/java/com/hs/payment/model/PaymentRequest.java, PaymentLineItem.java, DepositRecord.java, PaymentEvidence.java
-- hs-contract-service/src/main/java/com/hs/contract/service/RentalOnboardingService.java
-- hs-contract-service/src/main/java/com/hs/contract/service/AutomaticContractDrafts.java
-- hs-contract-service/src/main/java/com/hs/contract/service/impl/ContractServiceImpl.java
-- hs-contract-service/src/main/java/com/hs/contract/service/engine/ContractFieldCatalog.java, ContractDataBuilder.java, ContractRenderService.java
-- hs-contract-service/src/main/java/com/hs/contract/model/ContractDocument.java
+- Họ tên pháp lý, CCCD, ngày sinh, giới tính, thường trú, ngày cấp, ngày hết hạn và nơi cấp của cả hai bên lấy từ `user_kyc_details` gắn đúng user ID đã xác minh. Không lấy các trường này từ tên hiển thị, ngày sinh/địa chỉ tự nhập trong profile hoặc `renterName` của yêu cầu thuê.
+- Chụp dữ liệu KYC vào snapshot khi lập văn bản. Không tự thay dữ liệu của hợp đồng đã ký khi profile/KYC về sau thay đổi; không để người dùng sửa thủ công danh tính qua bản nháp/phụ lục.
+- Các trường ngày/nơi cấp hoặc hết hạn chưa được nhà cung cấp trả về phải để trống, không suy đoán. Giá trị ngày hết hạn như “Không thời hạn” phải giữ đúng kết quả KYC.
+- Điện thoại/email là thông tin liên hệ; ngân hàng giữ đúng snapshot giao dịch. Điểm so khớp khuôn mặt và kết quả kiểm tra kỹ thuật lưu tại hồ sơ KYC, không in vào phần định danh trên hợp đồng.
 
 ## III. QUY TẮC SNAPSHOT, TIỀN VÀ HẠN
 
-### 1. Snapshot ở thời điểm xác nhận cọc
+### 1. Bản dữ liệu bất biến
 
-- Tài sản dùng Listing snapshot tại lúc chủ nhà chấp nhận; điều kiện thuê lấy RentalRequest và lịch đổi ngày được hai bên duyệt tới thời điểm snapshot.
-- Tiền/tài khoản dùng PaymentRequest + line items liên kết DepositRecord; không dùng profile ngân hàng mới.
-- Danh tính người thuê dùng thông tin đại diện trong RentalRequest; chủ nhà/CCCD/liên hệ bổ sung đọc từ nguồn xác minh và **chụp ngay lúc lập snapshot cọc**, lưu capturedAt. Không gọi đây là dữ liệu đã được chụp lúc gửi yêu cầu nếu thực tế chưa chụp.
-- Hàm ContractDataBuilder có fallback tên “Chủ nhà (Bên A)”, “Người thuê (Bên B)”, unitNumber “Toàn bộ căn” và địa chỉ profile gán vào permanentAddress. Không coi các giá trị fallback là đã đủ dữ liệu hợp đồng cọc. APARTMENT/ROOM cần mã căn/phòng thật; tên và tư cách các bên phải đủ kiểm tra.
-- Không suy ngày cấp/nơi cấp CCCD, giấy chứng nhận sở hữu, giấy ủy quyền, địa chỉ thường trú từ địa chỉ profile. Nếu cần về pháp lý, thu thập/xác minh trước phát hành.
-- Văn bản lịch sử bất biến: không sửa khi heldAmount giảm vì hoàn/giữ cọc, Listing/profile đổi hoặc bắt đầu thuê được đổi sau đó. Lưu bổ sung/đính chính có version và xác nhận phù hợp.
+Tài sản, điều kiện thuê, danh tính KYC, tài khoản và sự kiện tiền được phần mềm chụp lại cho văn bản cọc. Mẫu chỉ chứa marker, không tự lấy hồ sơ/tin đăng hiện tại để sửa lịch sử. Không suy tư cách sở hữu, giấy ủy quyền, ngày/nơi cấp hoặc thường trú từ địa chỉ tài sản/địa chỉ liên hệ. Thiếu dữ liệu thực tế phải được xử lý trước khi hệ thống phát hành, không điền giả vào mẫu.
 
-### 2. Tách khoản cọc khỏi tổng thanh toán
+### 2. Phân biệt phần cọc với tổng giao dịch
 
-Chọn payment nguồn bằng DepositRecord.initialPaymentRequestId và kiểm tra rentalRequestId, payer/payee, hướng TENANT_TO_LANDLORD, currency VND và trạng thái.
+- Với khoản chỉ thu cọc, phần thuê có thể là 0; với khoản gộp, tổng giao dịch gồm phần thuê và phần cọc. Chỉ `depositPayment.confirmedAmountNumber` là cọc đã được xác nhận; không dùng tổng giao dịch làm tiền cọc.
+- Ví dụ để hiểu quy tắc, **không điền vào mẫu**: tổng 12 triệu = thuê 8 triệu + cọc 4 triệu; văn bản ghi cọc 4 triệu và vẫn thể hiện tổng 12 triệu/phần thuê 8 triệu bằng các marker riêng.
+- Nghĩa vụ cọc theo hồ sơ (`deposit.amountNumber`) và cọc thực nhận (`depositPayment.confirmedAmountNumber`) có ý nghĩa khác nhau. Phần mềm đối chiếu chúng trước phát hành; AI không tự sửa hoặc tính giá trị.
+- Không mô tả góp cọc nhiều đợt/xác nhận một phần như tính năng sẵn có. Văn bản ghi nhận khoản đã xác nhận, không yêu cầu chuyển lại cọc. Hồ sơ miễn cọc/cọc 0 không dùng ba mẫu D2 này.
 
-- RESERVATION_DEPOSIT: chỉ DEPOSIT, RENT = 0; totalAmount phải khớp cọc.
-- INITIAL gộp khi vào ngay: tổng dòng DEPOSIT là phần cọc, tổng RENT là tháng đầu; tổng hai phần khớp totalAmount trong flow hiện tại.
-- INITIAL chỉ thu tháng đầu sau cọc riêng: **không phải** nguồn xác nhận cọc mới.
-- Giá trị tiền cọc đã nhận lấy allocation DEPOSIT của **payment CONFIRMED**, đối chiếu DepositRecord.originalAmount và nghĩa vụ RentalRequest.depositAmount tại snapshot. Không lấy toàn bộ totalAmount hoặc heldAmount hiện tại làm số cọc lịch sử.
-- Ví dụ nghiệp vụ kiểm thử: total 12 triệu = RENT 8 triệu + DEPOSIT 4 triệu; hợp đồng cọc ghi cọc **4 triệu**, đồng thời nêu tổng chuyển 12 triệu và phần thuê 8 triệu để tránh nhầm.
-- Backend hiện xác nhận “đã nhận đủ” toàn PaymentRequest, chưa thấy API xác nhận một số tiền thực nhận tùy ý hoặc ledger nhiều đợt cọc một phần. Không tự mô tả khả năng góp cọc/partial payment đã có. Chuyển thiếu/thừa/nhiều lần cần đối soát hoặc thiết kế allocation riêng.
-- Zero không đồng nghĩa null; chỉ xuất mẫu nhận cọc nếu nghĩa vụ và phần cọc được xác nhận đều dương, khớp bằng giá trị số, không so chuỗi đã format.
+### 3. Ngày lập, thời điểm xác nhận và các hạn
 
-### 3. Hạn theo config và sự kiện, không viết cứng trên Word
-
-Source hiện có các mặc định cấu hình: giữ chỗ 60 phút, cửa sổ xác nhận chuyển 24 giờ, tiền tháng đầu khi vào sau mở đầu ngày vào ở và có cửa sổ 24 giờ, cửa sổ ký 48 giờ, thông báo cuối tối thiểu 24 giờ. Đây là **mặc định source**, không phải hằng số viết trực tiếp vào DOCX.
-
-- Hạn chuyển dùng dueAt của chính payment. holdExpiresAt/dueAt trước xác nhận không có nghĩa cọc đã xác nhận tự hết hiệu lực sau 60 phút.
-- Với vào sau: nếu chưa tới ngày thuê thì INITIAL/contractDueAt có thể chưa tồn tại. nextStepsText mô tả quy tắc đã chốt và mốc mở từ moveInDate theo Asia/Ho_Chi_Minh; không giả giờ xác nhận hoặc hạn ký thực tế.
-- Hạn tiền thuê có thể được mở lại khi đối soát; hạn ký phía người thuê có thể được cập nhật sau chủ nhà ký/thông báo cuối. Snapshot chỉ ghi sự kiện có thật hoặc quy tắc có nguồn; không khẳng định mọi hạn đều tính từ lúc nhận cọc.
-- Ngày cuối dự kiến = moveInDate.plusMonths(leaseMonths).minusDays(1); tránh lặp “12 tháng (12 tháng)”.
-- Ngày/giờ sự kiện: dd/MM/yyyy HH:mm:ss theo Asia/Ho_Chi_Minh. Ngày thuê: dd/MM/yyyy. Không lấy thời gian tạo file Word mẫu hoặc đồng hồ ChatGPT.
-- Ngày lập văn bản là generatedAt được đóng băng, không phải ký. Chữ ký thật nằm trong audit/metadata của luồng ký cọc; không sửa PDF sau ký để điền ngày ký.
+- Ngày lập văn bản không phải ngày ký. Ngày chấp nhận yêu cầu, chấp thuận điều kiện, báo chuyển và xác nhận tiền là các sự kiện riêng.
+- Ngày thuê được phần mềm cấp theo `dd/MM/yyyy`; sự kiện có ngày/giờ dùng `dd/MM/yyyy HH:mm:ss` theo giờ Việt Nam (`Asia/Ho_Chi_Minh`). Không dùng đồng hồ AI hoặc tự tính từ ngày nhận cọc.
+- Hạn thanh toán/ký có thể chưa phát sinh khi lập cọc. Giữ `depositAgreement.nextStepsText` đúng một lần để phần mềm đưa vào đoạn hoàn chỉnh theo nhánh vào ngay/vào sau. Không viết cứng số phút/ngày, tự tạo deadline hoặc coi thời hạn chuyển khoản trước xác nhận là ngày cọc đã nhận tự hết hiệu lực.
 
 ### 4. Điều kiện giữ chỗ và xử lý trước ký
 
-Source ghi consent RESERVATION_DEFAULT_V1 trước yêu cầu thuê; UI đang giải thích khả năng chủ nhà giữ 100% cọc thực nhận khi người thuê vi phạm nghĩa vụ tháng đầu hoặc ký, sau thông báo cuối ít nhất 24 giờ. Backend có nhánh FIRST_RENT/TENANT_SIGNING, phản đối và xử lý riêng tiền thuê đã nhận.
-
-**Đây là hành vi sản phẩm cần phản ánh đúng nguồn, không phải kết luận rằng mọi điều kiện đều mặc nhiên hợp pháp.** Điều 328 BLDS phân biệt bảo đảm giao kết/thực hiện; điều kiện phạt cọc, lỗi của mỗi bên và tranh chấp cần được rà soát trước dùng thực tế.
-
-Bắt buộc nội dung reservationTerms được backend cấp từ **toàn văn điều kiện thật đã được người thuê chấp nhận và chủ nhà áp dụng**, có version/hash/sự kiện chấp thuận:
-
-- Không tự mất cọc ngay khi countdown hết hoặc tự áp quy tắc quá hạn hóa đơn 5 ngày của hợp đồng thuê đang thực hiện.
-- FIRST_RENT: có cọc dương thực nhận, nghĩa vụ tiền thuê tháng đầu đã mở và quá hạn, đúng consent, không còn khoản/chữ ký đang đối soát.
-- TENANT_SIGNING: có bản hợp đồng chủ nhà đã ký và cung cấp cho khách, đủ điều kiện ký, hết hạn ký thật; không phạt khách vì hệ thống thiếu mẫu, render lỗi hoặc chưa có văn bản để xem/ký.
-- Thông báo cuối phải có thời gian phản hồi theo policy (backend ít nhất 24 giờ), khách có quyền phản đối/đối soát và cơ hội hoàn thành nghĩa vụ theo nhánh thực tế. Khi đã có phản đối/receipt/chữ ký chưa rõ thì không coi đủ điều kiện giữ cọc.
-- Hoàn tất vi phạm trước thuê là thao tác có điều kiện của chủ nhà sau xác nhận đã thông báo và tài sản không bị chiếm giữ; không là quyền tự cưỡng chế thu hồi.
-- Tiền thuê đã xác nhận phải tách khỏi cọc và có nghĩa vụ hoàn riêng khi áp dụng nhánh giữ cọc. Không ghi “giữ toàn bộ tiền đã chuyển”.
-- Hủy do hai bên đồng ý đi qua quyết định/đối soát và nghĩa vụ hoàn; tạo yêu cầu hoàn không chứng minh tiền đã về tài khoản khách.
-- Trường hợp lỗi phía chủ nhà, từ chối giao tài sản hoặc không thể ký/bàn giao: phải giải quyết hoàn/trách nhiệm theo thỏa thuận hợp lệ và pháp luật; không tự coi người thuê vi phạm. Không bịa số bồi thường hay khẳng định backend đã tự tính phạt gấp đôi.
-
-Chỉ version + timestamp hiện có chưa thay toàn văn/hash và liên kết chấp thuận. Nếu chưa truy được nội dung được chấp thuận, báo thiếu dữ liệu thỏa thuận; không lấy một policy mới ở thời điểm render áp hồi tố. Word chỉ giữ marker reservationTerms một lần, không chép cứng toàn bộ policy vào từng mẫu.
+- Đặt `depositAgreement.reservationTerms` đúng một lần, ở đoạn riêng. Phần mềm cấp toàn văn điều kiện đã được chấp thuận, gồm nghĩa vụ tháng đầu/ký, thông báo, phản hồi/đối soát, xử lý cọc và nghĩa vụ hoàn tiền thuê nếu có.
+- Không viết lại hoặc bổ sung chế tài bên cạnh marker; không áp quy tắc hóa đơn quá hạn 5 ngày của hợp đồng thuê đang thực hiện vào cọc trước ký.
+- Không tự coi hết đếm ngược là mất cọc; không giữ toàn bộ giao dịch gộp thay vì chỉ phần cọc; không coi lỗi hệ thống/thiếu mẫu là lỗi người thuê. Các bên xử lý theo thỏa thuận hợp lệ, chứng cứ và pháp luật, không có quyền tự cưỡng chế tài sản chỉ vì phần mềm ghi nhận trạng thái.
+- Hủy/hoàn/khấu trừ sau này không xóa chứng cứ tiền đã nhận. Yêu cầu hoàn không đồng nghĩa người thuê đã nhận tiền. Không tự khẳng định số bồi thường hoặc backend tự tính phạt gấp đôi.
 
 ## IV. CATALOG PLACEHOLDER D2 — HỢP ĐỒNG DỮ LIỆU CHO WORD
 
 ### 1. Quy ước
 
-Chỉ marker trong hai bảng dưới được phép nằm trong DOCX. Catalog thuê V3 có 64 mã, nhưng mẫu cọc **chỉ dùng tập con dưới đây cộng marker mới D2**. Không chạy bộ required của hợp đồng thuê lên mẫu cọc, không thêm marker chỉ để đủ 64.
+Chỉ marker trong hai bảng dưới được phép nằm trong DOCX. Catalog D2 dưới đây gồm **56 mã**: 38 mã dùng chung về hai bên/tài sản/điều kiện thuê và 18 mã riêng về hồ sơ cọc. Đây là toàn bộ danh mục cần biết cho nhiệm vụ này; không dùng marker hoặc checklist hợp đồng thuê.
 
 Tiền đã có VNĐ; rent.amountNumber đã có /tháng. Không nối thêm đơn vị. Bằng chữ do backend sinh từ cùng giá trị số; tài khoản là chuỗi. Tất cả marker một-run, không gõ nhãn “null”, “N/A” hoặc dấu chấm thủ công.
 
-### 2. Tập mã tái sử dụng có trong catalog thuê V3
+### 2. Danh tính, tài sản và điều kiện thuê — 38 mã
 
 Tên tương thích V3 không có nghĩa đã có data model cọc. Các giá trị dưới phải được builder D2 map từ nguồn ở mục II–III.
 
 | Marker | Nguồn/ý nghĩa trong mẫu cọc |
 | --- | --- |
 | {{landlord.fullName}} | Họ tên thật bên cho thuê, chụp tại lập hồ sơ cọc |
+| {{landlord.idNumber}} | Số CCCD từ KYC đã xác thực — bắt buộc |
+| {{landlord.permanentAddress}} | Nơi thường trú từ KYC đã xác thực — bắt buộc |
+| {{landlord.birthDate}} | Ngày sinh từ KYC đã xác thực — bắt buộc |
+| {{landlord.gender}} | Giới tính từ KYC đã xác thực — bắt buộc |
+| {{landlord.issueDate}} | Ngày cấp CCCD từ KYC đã xác thực — để trống nếu KYC không trả về |
+| {{landlord.expirationDate}} | Ngày hết hạn CCCD từ KYC đã xác thực — để trống nếu KYC không trả về |
+| {{landlord.issuePlace}} | Nơi cấp CCCD từ KYC đã xác thực — để trống nếu KYC không trả về |
 | {{landlord.phone}} | Liên hệ Bên A |
-| {{landlord.bankAccountHolder}} | payeeBankAccountSnapshot.accountHolderName |
-| {{landlord.bankAccountNumber}} | payeeBankAccountSnapshot.accountNumber |
-| {{landlord.bankName}} | payeeBankAccountSnapshot.bankName |
-| {{tenant.fullName}} | Đại diện đặt cọc từ renterName đã lưu |
-| {{tenant.phone}} | renterPhone |
-| {{tenant.bankAccountHolder}} | payerBankAccountSnapshot.accountHolderName — tài khoản nhận hoàn đăng ký |
-| {{tenant.bankAccountNumber}} | payerBankAccountSnapshot.accountNumber |
-| {{tenant.bankName}} | payerBankAccountSnapshot.bankName |
+| {{landlord.bankAccountHolder}} | Tên chủ tài khoản Bên A nhận tiền, từ bản lưu giao dịch |
+| {{landlord.bankAccountNumber}} | Số tài khoản Bên A nhận tiền, giữ số 0 đầu |
+| {{landlord.bankName}} | Ngân hàng Bên A nhận tiền |
+| {{tenant.fullName}} | Họ tên pháp lý từ KYC đã xác thực của người thuê |
+| {{tenant.idNumber}} | Số CCCD từ KYC đã xác thực — bắt buộc |
+| {{tenant.permanentAddress}} | Nơi thường trú từ KYC đã xác thực — bắt buộc |
+| {{tenant.birthDate}} | Ngày sinh từ KYC đã xác thực — bắt buộc |
+| {{tenant.gender}} | Giới tính từ KYC đã xác thực — bắt buộc |
+| {{tenant.issueDate}} | Ngày cấp CCCD từ KYC đã xác thực — để trống nếu KYC không trả về |
+| {{tenant.expirationDate}} | Ngày hết hạn CCCD từ KYC đã xác thực — để trống nếu KYC không trả về |
+| {{tenant.issuePlace}} | Nơi cấp CCCD từ KYC đã xác thực — để trống nếu KYC không trả về |
+| {{tenant.phone}} | Điện thoại liên hệ người thuê đã lưu |
+| {{tenant.bankAccountHolder}} | Tên chủ tài khoản Bên B đăng ký nhận hoàn, từ bản lưu giao dịch |
+| {{tenant.bankAccountNumber}} | Số tài khoản Bên B đăng ký nhận hoàn, giữ số 0 đầu |
+| {{tenant.bankName}} | Ngân hàng Bên B đăng ký nhận hoàn |
 | {{tenant.occupantCount}} | Số người dự kiến đã đăng ký |
 | {{tenant.motorbikeCount}} | Xe máy đăng ký, 0 hợp lệ |
 | {{tenant.carCount}} | Ô tô đăng ký, 0 hợp lệ |
@@ -199,39 +173,37 @@ Tên tương thích V3 không có nghĩa đã có data model cọc. Các giá tr
 | {{deposit.amountNumber}} | Nghĩa vụ cọc của hồ sơ; đã kèm VNĐ |
 | {{deposit.amountWords}} | Bằng chữ nghĩa vụ cọc |
 
-### 3. Marker riêng của D2 đã được backend hỗ trợ
+### 3. Hồ sơ và giao dịch cọc — 18 mã
 
 | Marker | Nguồn dữ liệu |
 | --- | --- |
-| {{depositAgreement.number}} | Số riêng ổn định của tài liệu cọc; cấp/lưu mới, không dùng contract.number |
-| {{depositAgreement.issuedAtText}} | Ngày giờ lập bản cọc từ snapshot.generatedAt, không phải ngày ký |
+| {{depositAgreement.number}} | Số riêng ổn định của văn bản cọc; phần mềm cấp, không dùng số hợp đồng thuê |
+| {{depositAgreement.issuedAtText}} | Ngày giờ lập văn bản cọc đã được phần mềm chốt, không phải ngày ký |
 | {{depositAgreement.reservationTerms}} | Toàn văn điều kiện giữ chỗ đã chấp thuận, khóa version/hash, in đúng một lần |
 | {{depositAgreement.nextStepsText}} | Đoạn hoàn chỉnh theo nhánh vào ngay/vào sau và mốc thật/quy tắc tại snapshot; đủ thông tin mở tháng đầu và bước ký, không giả deadline chưa phát sinh |
-| {{rentalRequest.reference}} | Mã tham chiếu yêu cầu thuê; hiện có thể biểu diễn nguyên RentalRequest.id, không tự tạo mã rút gọn có thể trùng |
-| {{rentalRequest.acceptedAtText}} | RentalRequest.acceptedAt theo giờ Việt Nam |
-| {{rentalRequest.policyVersion}} | reservationPolicyVersion |
-| {{rentalRequest.policyAcceptedAtText}} | reservationPolicyAcceptedAt; là chấp thuận điều kiện giữ chỗ, không phải đã ký file cọc |
+| {{rentalRequest.reference}} | Mã tham chiếu yêu cầu thuê được phần mềm cấp; không tự tạo hoặc rút gọn |
+| {{rentalRequest.acceptedAtText}} | Thời điểm chủ nhà chấp nhận yêu cầu thuê, theo giờ Việt Nam |
+| {{rentalRequest.policyVersion}} | Phiên bản điều kiện giữ chỗ đã được chấp thuận |
+| {{rentalRequest.policyAcceptedAtText}} | Thời điểm người thuê chấp thuận điều kiện giữ chỗ, không phải thời điểm ký văn bản cọc |
 | {{depositPayment.typeText}} | Nhãn theo payment nguồn: “Cọc giữ chỗ” hoặc “Khoản ban đầu gồm tiền thuê và cọc” |
 | {{depositPayment.totalAmountNumber}} | totalAmount của payment nguồn CONFIRMED, đã format VNĐ |
 | {{depositPayment.rentComponentAmountNumber}} | Tổng RENT của payment nguồn, 0 VNĐ khi chỉ cọc |
 | {{depositPayment.confirmedAmountNumber}} | Tổng DEPOSIT của payment nguồn đã xác nhận; không phải toàn khoản gộp |
 | {{depositPayment.confirmedAmountWords}} | Bằng chữ phần cọc đã xác nhận |
-| {{depositPayment.payerReportedAt}} | PaymentRequest.payerReportedAt: lúc báo chuyển trên hệ thống, không là thời gian ngân hàng thực hiện |
-| {{depositPayment.payeeConfirmedAt}} | PaymentRequest.payeeConfirmedAt |
-| {{depositPayment.confirmedAt}} | PaymentRequest.confirmedAt: thời điểm hoàn tất ghi nhận |
+| {{depositPayment.payerReportedAt}} | Thời điểm người thuê báo chuyển trên hệ thống, không phải thời gian ngân hàng thực hiện |
+| {{depositPayment.payeeConfirmedAt}} | Thời điểm chủ nhà xác nhận đã nhận đủ giao dịch |
+| {{depositPayment.confirmedAt}} | Thời điểm hệ thống ghi nhận hoàn tất xác nhận hai bên |
 | {{depositPayment.transferReference}} | Nội dung VietQR của payment nguồn; với INITIAL là mã giao dịch gộp chứa cọc, không tự gọi là một lần chuyển cọc riêng |
 | {{#depositOptionalInfoTable}} | Bảng 2 cột “Thông tin bổ sung | Giá trị ghi nhận”, dữ liệu có thì thêm hàng, không có thì backend bỏ cả marker/đoạn |
 
-**Một marker mới không đồng nghĩa một cột mới:** nhiều marker chỉ format từ dữ liệu đang có; số tài liệu/snapshot/hash/registry điều kiện và storage workflow mới cần bổ sung.
-
 Bảng tùy chọn chỉ được chứa dòng có nguồn:
-- CCCD của từng bên, email liên hệ; không tự thêm ngày/nơi cấp.
+- Email liên hệ nếu có. Các trường CCCD/ngày/nơi cấp đã có marker danh tính KYC riêng, không lặp lại ở bảng tùy chọn.
 - Địa chỉ profile của từng bên phải ghi **“Địa chỉ liên hệ theo hồ sơ”**; chỉ ghi thường trú nếu được xác minh đúng ý nghĩa.
 - Tầng/phạm vi thuê/mã tin đăng từ snapshot tài sản khi có.
 - Mã tham chiếu ngân hàng khi đã có nguồn khai báo thật, ghi rõ “do bên giao dịch cung cấp”.
 - Không chèn QR có URL hết hạn, ảnh chứng từ, UUID storage, branch ID, số chỗ xe toàn chi nhánh, kinh độ/vĩ độ hoặc tiện ích xung quanh vào hợp đồng.
 
-Marker bảng đặt thành đoạn riêng; backend tạo TableRenderData tương ứng. Không dùng section/loop/if tag hoặc bảng hàng trống mà renderer hiện chưa đăng ký. Renderer D2 phải bỏ toàn đoạn nếu không có dòng; ChatGPT chỉ tạo marker, không tự viết mã xử lý.
+Marker bảng đặt thành đoạn riêng; backend tạo TableRenderData tương ứng. Không dùng section/loop/if tag hoặc bảng hàng trống mà renderer hiện chưa đăng ký. Phần mềm bỏ đoạn bảng nếu không có dòng; AI chỉ đặt marker nguyên dạng, không viết mã xử lý và không tự dựng hàng dữ liệu.
 
 ### 4. Tập bắt buộc của từng mẫu
 
@@ -240,7 +212,7 @@ Marker bảng đặt thành đoạn riêng; backend tạo TableRenderData tươn
 - Không in marker thuộc contract.*, payment.initial.*, meters.*, deposit.description, các bảng thuê V3 hoặc namespace không có trong hai bảng D2. Điều kiện cọc trước ký phải lấy reservationTerms thay vì đoạn mặc định hậu bàn giao của V3.
 - Không thêm placeholder chữ ký/ngày ký cọc: ngày lập đã có, sự kiện ký thực tế xử lý ngoài nội dung được ký.
 
-Đây là bộ bắt buộc của **mẫu**. Field tùy chọn bên trong bảng có thể vắng. Gate dữ liệu giao dịch phải kiểm tra thêm danh tính, địa chỉ/tư cách pháp lý cần thiết; việc một field optional trong catalog kỹ thuật không kết luận nó optional về pháp lý.
+Mẫu HOUSE phải có **55 mã duy nhất** (mọi mã catalog trừ `property.unitNumber`); APARTMENT/ROOM mỗi mẫu phải có **56 mã duy nhất**. Cả sáu marker ngày/nơi cấp/hết hạn của hai bên vẫn phải có trong mẫu dù giá trị có thể trống khi điền. Đây là bộ bắt buộc của **mẫu**. Field tùy chọn bên trong bảng có thể vắng. Gate dữ liệu giao dịch phải kiểm tra thêm danh tính, địa chỉ/tư cách pháp lý cần thiết; việc một field optional trong catalog kỹ thuật không kết luận nó optional về pháp lý.
 
 ## V. QUY TẮC TẠO FILE WORD VÀ CHỮ KÝ
 
@@ -270,7 +242,7 @@ Phân biệt nghĩa vụ cọc và phần cọc đã xác nhận, tổng giao d�
 
 Nội dung điều kiện/next steps dùng đúng marker, không tự thêm số ngày, mức phạt cọc, thời hạn bàn giao hoặc phụ phí. HomeSpace không giữ tiền. Không khẳng định pháp luật tự động cho phép giữ cọc/cưỡng chế.
 
-Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, báo cáo marker/missing/unknown/run/render **trong câu trả lời**, và nhắc marker D2 cần backend mapping. Không yêu cầu chủ dự án đưa thêm mẫu hợp đồng để bắt đầu thiết kế.
+Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, báo cáo marker/missing/unknown/run/render **trong câu trả lời**, và phân biệt kiểm tra mẫu với kiểm thử tích hợp HomeSpace. Không yêu cầu chủ dự án đưa thêm mẫu hợp đồng để bắt đầu thiết kế.
 
 ## VII. DÀN Ý CHÍNH VĂN CHUNG — ÁP DỤNG ĐẦY ĐỦ CHO TỪNG DOCX
 
@@ -279,8 +251,8 @@ Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, bá
 - Quốc hiệu, tiêu ngữ; tên đúng loại hình ở I.3; phụ đề ghi cọc giữ chỗ theo yêu cầu đã chấp nhận.
 - Số văn bản {{depositAgreement.number}}; **Ngày lập văn bản: {{depositAgreement.issuedAtText}}**.
 - Căn cứ thỏa thuận giữ chỗ và nhu cầu thuê, Bộ luật Dân sự 2015; Luật Nhà ở 2023 trong phạm vi áp dụng và Luật Giao dịch điện tử 2023 cùng các sửa đổi còn hiệu lực. Không chép dài luật hoặc dẫn “hợp đồng thuê đã ký”.
-- Bên A: {{landlord.fullName}}, điện thoại {{landlord.phone}}. Tài khoản nhận tiền: chủ tài khoản {{landlord.bankAccountHolder}}, số {{landlord.bankAccountNumber}}, ngân hàng {{landlord.bankName}}.
-- Bên B: {{tenant.fullName}}, điện thoại {{tenant.phone}}. Tài khoản đăng ký nhận hoàn: {{tenant.bankAccountHolder}}, số {{tenant.bankAccountNumber}}, ngân hàng {{tenant.bankName}}.
+- Bên A: {{landlord.fullName}}, CCCD {{landlord.idNumber}}, ngày sinh {{landlord.birthDate}}, giới tính {{landlord.gender}}, thường trú {{landlord.permanentAddress}}, ngày cấp {{landlord.issueDate}}, hết hạn {{landlord.expirationDate}}, nơi cấp {{landlord.issuePlace}}, điện thoại {{landlord.phone}}. Tài khoản nhận tiền: chủ tài khoản {{landlord.bankAccountHolder}}, số {{landlord.bankAccountNumber}}, ngân hàng {{landlord.bankName}}.
+- Bên B: {{tenant.fullName}}, CCCD {{tenant.idNumber}}, ngày sinh {{tenant.birthDate}}, giới tính {{tenant.gender}}, thường trú {{tenant.permanentAddress}}, ngày cấp {{tenant.issueDate}}, hết hạn {{tenant.expirationDate}}, nơi cấp {{tenant.issuePlace}}, điện thoại {{tenant.phone}}. Tài khoản đăng ký nhận hoàn: {{tenant.bankAccountHolder}}, số {{tenant.bankAccountNumber}}, ngân hàng {{tenant.bankName}}.
 - Đặt {{#depositOptionalInfoTable}} một lần tại đoạn riêng sau thông tin các bên; backend mở rộng thành thông tin đã có.
 
 ### Điều 1. Hồ sơ giữ chỗ, tài sản và điều kiện thuê dự kiến
@@ -371,45 +343,18 @@ Thực hiện kỹ thuật và kiểm thử mục V, IX. Trả 03 link file, bá
 - Không có câu khẳng định “hợp đồng thuê đã ký trước khi cọc”, tiền thuộc HomeSpace, tự xác minh ngân hàng, tự mất cọc do hết 60 phút, hóa đơn quá hạn 5 ngày, thanh toán một lần cọc nữa hoặc ngày ký giả.
 - Render thử với dữ liệu tổng hợp **chỉ trong bản test tách biệt**, có địa chỉ/tên dài, tài khoản số 0 đầu, phần thuê 0 và phần thuê dương. Không thay mẫu đầu ra bằng hợp đồng điền data test.
 - Quan sát mọi trang PDF/preview: lề, bảng, tiêu đề, marker dài, không trang trắng/tràn, không trang ký trùng. Nếu chưa render thật, nêu chưa kiểm tra.
-- Trong câu trả lời: link 3 DOCX + marker phát hiện/thiếu/lạ/run lỗi/render thực tế + lưu ý cần mapping D2. Không đính báo cáo vào hợp đồng.
+- Trong câu trả lời: link 3 DOCX + marker phát hiện/thiếu/lạ/run lỗi/render thực tế. Không đính báo cáo vào hợp đồng.
 
-### 2. Ca nghiệm thu tích hợp backend
+### 2. Cách báo cáo kết quả — chỉ trong câu trả lời bàn giao
 
-| Ca | Kết quả cần có |
-| --- | --- |
-| Vào sau, RESERVATION_DEPOSIT 4 triệu CONFIRMED, chưa có Contract | Xuất cọc 4 triệu; không cần contractId/revision thuê |
-| Vào ngay, INITIAL 12 triệu: RENT 8 + DEPOSIT 4 | Chỉ xác nhận cọc 4, tổng 12, thuê 8; không xuất hai văn bản cọc |
-| Đã có cọc riêng, INITIAL tháng đầu được xác nhận sau | Không sinh thêm cọc hoặc tăng số cọc đã nhận |
-| Mới PENDING/ACCEPTED/QR/TRANSFER_REPORTED hoặc receipt DISPUTED/REJECTED | Không phát hành bản “đã nhận đủ”; trạng thái tiền không bị đổi để ép render |
-| Bài đăng không cọc hoặc hồ sơ thuê có cọc 0, INITIAL chỉ có tiền thuê đã CONFIRMED | Chỉ sinh hợp đồng thuê. Không chọn mẫu D2, không tạo bước ký hoặc khoản hoàn cọc. |
-| Chuyển thiếu/thừa/nhiều đợt chưa có allocation được xác nhận | Chờ đối soát, không giả số thực nhận hoặc hỗ trợ góp cọc |
-| Phần DEPOSIT không khớp request/originalAmount/tổng giao dịch | Chặn phát hành và báo field/reconciliation issue |
-| Thiếu CCCD/liên hệ pháp lý hoặc tư cách theo gate sản phẩm/pháp lý | Chỉ rõ phần cần bổ sung; không bịa hoặc coi catalog optional là miễn yêu cầu pháp lý |
-| APARTMENT/ROOM thiếu mã căn/phòng, builder fallback “Toàn bộ căn” | Báo thiếu định danh tài sản thật |
-| Mã ngân hàng không có, có địa chỉ profile nhưng chưa chứng minh thường trú | Bỏ dòng ngân hàng; địa chỉ mang nhãn liên hệ đúng nguồn |
-| Thiếu full policy/hash/version mapping | Không áp văn bản mới hồi tố hoặc coi consent checkbox là ký PDF |
-| Chưa mở tháng đầu/chưa có hạn ký | nextStepsText dùng quy tắc có nguồn, không in null/ngày ký giả |
-| Render/storage lỗi sau xác nhận tiền | Tiền vẫn CONFIRMED; tạo retry độc lập có idempotency |
-| Hai callback hoặc người dùng tải lại cùng lúc | Một snapshot/tài liệu cho cùng payment có cọc và version; không thu thêm |
-| Profile/Listing/config thay đổi; heldAmount sau này về 0 | Tải lại đúng snapshot gốc, không đổi số tiền/địa chỉ/chính sách lịch sử |
-| Đề nghị bắt đầu sớm được duyệt sau khi đã lập cọc | Văn bản bổ sung có lịch sử, không sửa bản cũ hoặc thu cọc lại |
-| Cọc đã lập nhưng chưa ký riêng hoặc ký provider lỗi | Không gắn “đã ký”; không đảo tiền về chưa trả |
-| Hủy/giữ cọc/hoàn tiền về sau | Theo nghĩa vụ/quyết định thực tế, không xóa bản nhận tiền gốc |
+Báo riêng từng file: loại hình, tên/link file thật, số marker duy nhất, danh sách thiếu, mã ngoài catalog, marker bị lặp, lỗi một-run, kết quả xem bố cục hoặc “chưa kiểm chứng”. Không chỉ tự nhận “đã đủ”.
 
-## X. GHI CHÚ TÍCH HỢP CHO ĐỘI BACKEND — KHÔNG IN VÀO WORD
-
-Phần này ghi lại các yêu cầu tích hợp D2 để đội kỹ thuật nghiệm thu với ba mẫu Word. ChatGPT chỉ tạo ba DOCX theo Mục VI.
-
-1. Thêm document kind/catalog D2, template/version riêng cho 3 loại hình. Giữ bộ thuê V3 và required thuê tách khỏi cọc; đăng ký 18 marker mới ở IV.3, map lại 24 marker tái sử dụng. Số lượng chỉ hỗ trợ review, tập key là chuẩn.
-2. Tạo snapshot cọc gắn rentalRequestId, sourcePaymentRequestId, depositRecordId, capturedAt/generatedAt, schemaVersion, templateVersionId, identity/property/rental/payment/bank snapshots và nội dung consent+hash/version. Contract/rentalRevision link để nullable tới khi hợp đồng thuê được tạo.
-3. Có số tài liệu cọc và idempotency dựa payment nguồn chứa cọc + document kind + snapshot/version; không sinh số mới mỗi lượt tải. Không lấy ContractDocument đang bắt buộc Contract làm cớ tạo hợp đồng thuê giả trước thời điểm.
-4. Trigger sau commit receipt CONFIRMED có cọc dương; job/retry không được rollback xác nhận tiền. Hook hiện AutomaticContractDrafts chỉ chuẩn bị **hợp đồng thuê** khi đủ điều kiện, không là chứng cứ đã có xuất tài liệu cọc.
-5. UI chỉ hai bên/quyền hỗ trợ hợp lệ tải file private; link tạm thời không là nội dung hợp đồng. Lưu trạng thái generating/ready/failed và lịch sử, không gọi tài liệu ready là signed.
-6. Luồng ký cọc đã chốt bắt buộc với cọc dương: scope document riêng, audit/evidence, một trang ký SMARTCA, chữ ký gắn đúng hash và các bên; không dùng signature request của hợp đồng thuê. Hai bên ký cọc trước rồi ký thuê; tiền nhận vẫn được ghi nhận độc lập.
-7. Các số tiền/xác nhận ngân hàng chỉ đọc; xác thực completeness, quyền và currency/line allocation trước render. Snapshot thiếu không tự lấy fallback “0 VNĐ” hoặc “Chủ nhà (Bên A)” làm dữ liệu thật.
-8. Chốt/thẩm định nội dung điều kiện giữ chỗ trước áp production; chứng minh nội dung khách đã được xem và chấp thuận. Không thêm chế tài mới ở file xuất sau khi tiền đã chuyển.
-9. Sau thuê, liên kết khoản cọc cũ sang Contract; chuyển/hoàn/khấu trừ qua ledger đúng nghiệp vụ, không tạo cọc mới vì ký/xuất.
-10. Chạy tests và báo phần source-only/mock/live riêng. Hoàn thành 3 file mẫu, render backend và ký số là ba mức nghiệm thu khác nhau.
+- `expected = catalog IV.2 + IV.3`, riêng HOUSE loại `property.unitNumber`.
+- `missing = expected - detected`, `unknown = detected - catalog`: đều phải rỗng. HOUSE 55 mã; APARTMENT/ROOM 56 mã. Không dùng tổng số thay cho kiểm tra tập mã.
+- `depositAgreement.reservationTerms`, `depositAgreement.nextStepsText`, `#depositOptionalInfoTable` mỗi marker đúng một lần, ở đoạn riêng. KYC phải đủ tám marker mỗi bên trong phần thông tin các bên.
+- Đọc chính file DOCX cuối như ZIP: kiểm tra `word/document.xml`, `word/header*.xml`, `word/footer*.xml`, gồm paragraph trong ô bảng. Trích marker theo từng đoạn, không nối hai đoạn để tạo marker giả; kiểm tra nguyên marker trong một `w:r`. Marker giao dịch chỉ đặt trong thân tài liệu, không giấu ở header/footer hoặc checklist.
+- Nếu công cụ hỗ trợ, dùng dữ liệu tổng hợp trên bản test tách biệt để thử tên/địa chỉ dài, ngân hàng có số 0 đầu, ngày hết hạn “Không thời hạn”, ngày/nơi cấp trống, phần thuê 0 và phần thuê dương. Giữ nguyên marker trong ba mẫu cuối bàn giao.
+- Kiểm tra ZIP/XML và xem bố cục không chứng minh đã chạy poi-tl, phát hành, thanh toán hoặc ký số thật. Chỉ báo những kiểm tra đã thực hiện; không yêu cầu viết backend, khởi chạy HomeSpace hoặc sửa cấu hình để hoàn thành nhiệm vụ tạo mẫu.
 
 ### Nguồn pháp luật để người rà soát kiểm tra (không in URL/checklist vào DOCX)
 
