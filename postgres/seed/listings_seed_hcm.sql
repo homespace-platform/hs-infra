@@ -12,6 +12,17 @@
 
 BEGIN;
 
+-- Slug tin đăng: <tiêu đề bỏ dấu, tối đa 80 ký tự>-<8 ký tự md5 của id>. Xác định theo id nên chạy lại seed không đổi slug.
+-- Cùng định dạng với ListingSlugGenerator của Core (backfill chỉ gán cho tin còn slug NULL).
+CREATE OR REPLACE FUNCTION pg_temp.hs_seed_slug(title text, listing_id text) RETURNS text LANGUAGE sql IMMUTABLE AS $f$
+SELECT coalesce(nullif(regexp_replace(left(b.base, 80), '-+$', ''), ''), 'tin-dang') || '-' || left(md5(listing_id), 8)
+FROM (SELECT trim(both '-' FROM regexp_replace(lower(translate(
+        regexp_replace(title, E'[̀-ͯ]', '', 'g'),
+        'àÀáÁạẠảẢãÃâÂầẦấẤậẬẩẨẫẪăĂằẰắẮặẶẳẲẵẴèÈéÉẹẸẻẺẽẼêÊềỀếẾệỆểỂễỄìÌíÍịỊỉỈĩĨòÒóÓọỌỏỎõÕôÔồỒốỐộỘổỔỗỖơƠờỜớỚợỢởỞỡỠùÙúÚụỤủỦũŨưƯừỪứỨựỰửỬữỮỳỲýÝỵỴỷỶỹỸđĐ',
+        'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeeeeeeeeeeeeeeeeeeeeeeiiiiiiiiiioooooooooooooooooooooooooooooooooouuuuuuuuuuuuuuuuuuuuuuyyyyyyyyyydd'
+    )), '[^a-z0-9]+', '-', 'g')) AS base) b
+$f$;
+
 CREATE TEMP TABLE hs_seed_config ON COMMIT DROP AS
 SELECT u.id AS owner_id
 FROM users u
@@ -534,7 +545,7 @@ INSERT INTO listings (
     version, available_from, area_m2, price_amount, currency, price_unit, negotiable,
     deposit_type, deposit_amount, deposit_months, payment_cycle, minimum_lease_months,
     management_fee_included, max_motorbike_count, max_car_count,
-    view_count, active, created_at, updated_at, created_by, updated_by
+    view_count, active, created_at, updated_at, created_by, updated_by, slug
 )
 SELECT listing_id::text, owner_id, NULL, title, description, category, 'PUBLISHED', 'DEMO 300 điểm tọa độ gần đúng từ JSON người dùng',
        seeded_published_at, owner_id, seeded_published_at - interval '30 minutes',
@@ -544,7 +555,8 @@ SELECT listing_id::text, owner_id, NULL, title, description, category, 'PUBLISHE
        CASE WHEN category = 'ROOM' THEN room_max_vehicles ELSE 1 + (n % 4) END,
        CASE WHEN category = 'HOUSE' AND house_has_garage THEN 1 + (n % 2)
             WHEN category = 'APARTMENT' AND n % 5 = 0 THEN 1 ELSE 0 END,
-       seeded_views, true, seeded_published_at - interval '1 hour', now(), owner_id, owner_id
+       seeded_views, true, seeded_published_at - interval '1 hour', now(), owner_id, owner_id,
+       pg_temp.hs_seed_slug(title, listing_id::text)
 FROM hs_seed_rows
 ON CONFLICT (id) DO UPDATE SET
     owner_id=excluded.owner_id, title=excluded.title, description=excluded.description,
@@ -557,7 +569,8 @@ ON CONFLICT (id) DO UPDATE SET
     management_fee_included=excluded.management_fee_included,
     max_motorbike_count=excluded.max_motorbike_count, max_car_count=excluded.max_car_count,
     view_count=greatest(listings.view_count,excluded.view_count),
-    active=true, updated_at=now(), updated_by=excluded.updated_by;
+    active=true, updated_at=now(), updated_by=excluded.updated_by,
+    slug=coalesce(listings.slug, excluded.slug);
 
 -- Address fields come from the same JSON row, including NULL values. No synthetic provider refs.
 INSERT INTO listing_addresses (

@@ -19,6 +19,13 @@ Lỗi phiên bản seed trước: lưu `ward_id=NULL` nên filter theo mã luôn
 3. Mở `listings_seed_hcm.sql` và chạy **toàn bộ file** trên cùng database. JSON đã được nhúng sẵn; không cần mount JSON vào PostgreSQL.
 4. Khi SQL COMMIT thành công, khởi động Core lại. Các job Nearby của 300 tin đã có trạng thái hoàn tất nên không cần gọi TomTom bù.
 
+**Cột `listings.slug`:** SQL seed tự điền `slug` cho 300 tin (hàm tạm `pg_temp.hs_seed_slug`: tiêu đề bỏ dấu + 8 ký tự `md5(id)`), nên chạy xong file là có đủ, không cần chờ gì thêm. Xác định theo `id` và `ON CONFLICT` dùng `coalesce(listings.slug, excluded.slug)`, nên chạy lại seed không đổi slug đã có. Core vẫn có job backfill lúc startup, nhưng chỉ gán cho tin còn `slug IS NULL` (tin tạo ngoài seed). Cột `slug` do Core tạo, nên phải khởi động Core bản mới ít nhất một lần trước khi chạy seed (bước 1). Kiểm tra sau khi seed:
+
+```sql
+SELECT count(*) FROM listings WHERE slug IS NULL;  -- kỳ vọng 0
+SELECT slug FROM listings LIMIT 5;
+```
+
 Seed chạy trong transaction, kiểm tra dữ liệu trước COMMIT, upsert theo ID cố định. Không thêm cột/sửa schema, không gọi API. Không xóa listing thật hoặc 2.580 tin seed cũ: nếu DB còn dữ liệu cũ thì tổng tin có thể lớn hơn 300.
 
 ## Nearby offline — không gọi TomTom khi seed
