@@ -137,6 +137,7 @@ services:
 
     keycloak:
         image: ${KEYCLOAK_IMAGE:?Set KEYCLOAK_IMAGE}
+        pull_policy: always
         restart: unless-stopped
         command: ['start', '--optimized', '--import-realm']
         depends_on:
