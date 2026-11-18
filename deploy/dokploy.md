@@ -1,8 +1,10 @@
 # Triển khai HomeSpace trên Vercel, AWS EC2 và Dokploy
 
-Hai frontend chạy trên Vercel. Backend, Keycloak và hạ tầng dữ liệu chạy trên một EC2 do Dokploy quản lý. GitHub Actions build image và đẩy lên Docker Hub. Dokploy đọc phiên bản image từ `hs-infra` và pull image đã build.
+Hai frontend chạy trên Vercel. Backend, Keycloak và hạ tầng dữ liệu chạy trên một EC2 do Dokploy quản lý. GitHub Actions build image và đẩy lên Docker Hub. Mỗi backend là một Dokploy Application riêng, pull image từ Docker Hub và có webhook/CI/CD riêng.
 
-Triển khai hạ tầng và công cụ giám sát bằng [`compose.production.yml`](../compose.production.yml). Chạy local bằng [`docker-compose.yml`](../docker-compose.yml) với `.env`, chạy production dùng `.env.dokploy`. Cả hai file có đủ 11 service. Hai tệp [`Dockerfile.keycloak`](../Dockerfile.keycloak) và [workflow Keycloak](../.github/workflows/publish-keycloak.yml) đóng gói realm, theme và provider để publish qua Docker Hub. Sau khi hạ tầng đạt kiểm tra, bổ sung image backend vào cùng Compose service rồi deploy hai frontend.
+Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production.yml). Chạy local bằng [`docker-compose.yml`](../docker-compose.yml) với `.env`, production dùng `.env.dokploy`. Cả hai có 11 service infra và 7 volume; backend không nằm trong Compose infra. Keycloak vẫn có Dockerfile và pipeline riêng trong repo này.
+
+**Deploy Core riêng:** làm theo [hướng dẫn Application Core API](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md). Chọn **Create Service → Application → Docker**, dùng Environment và webhook của riêng Core. Infra chỉ cần được nối thêm mạng overlay attachable `homespace-backend` một lần để các Application truy cập được dữ liệu.
 
 **Trình tự:** [Tạo EC2 và DNS](#1-chọn-ec2-và-chuẩn-bị-dns) → [Cài Dokploy](#2-cài-dokploy) → [Build và publish image](#3-publish-image-lên-docker-hub) → [Deploy backend](#4-cấu-hình-backend-trong-docker-compose) → [Deploy Vercel](#5-deploy-frontend-trên-vercel) → [Kiểm thử và đưa vào sử dụng](#6-kiểm-tra-trước-khi-mở-truy-cập).
 
@@ -146,7 +148,7 @@ ssh -i "$env:USERPROFILE\Downloads\homespace-ec2.pem" -N `
 | RedisInsight | `http://127.0.0.1:15540` | Thêm Redis database với host `redis`, port `6379`, user `default` và `REDIS_PASSWORD`. |
 | Kafka UI | `http://127.0.0.1:19022` | Chọn cluster `HomeSpace` và kiểm tra các topic. |
 
-Dùng chính Compose service `homespace-infra` cho các lần thêm backend để giữ mạng và volumes hiện có.
+Giữ Compose `homespace-infra` cho hạ tầng. Mỗi backend dùng một Application riêng, tham gia mạng overlay `homespace-backend`; cập nhật backend không deploy lại infra.
 
 [Hạ tầng TeleCare tham chiếu](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/tree/master/telecare-infrastructure) · [Compose trên Dokploy](https://docs.dokploy.com/docs/core/docker-compose)
 
@@ -308,127 +310,24 @@ Compose dùng cùng image để chạy migration một lần trước khi AI kh�
 
 TeleCare dùng Maven Jib để publish backend và workflow riêng để build Keycloak. Có thể lấy cách tách workflow đó cho HomeSpace. Dùng bộ lọc path cho workflow Keycloak để commit đổi tag release trong `hs-infra` chỉ kích hoạt deploy. [Workflow backend TeleCare](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/blob/master/.github/workflows/deploy.yml) · [Workflow Keycloak TeleCare](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/blob/master/.github/workflows/build-keycloak-image.yml) · [Docker và GitHub Actions](https://docs.docker.com/build/ci/github-actions/)
 
-## 4. Cấu hình backend trong Docker Compose
+## 4. Deploy mỗi backend thành Application riêng
 
-### Bổ sung backend vào Compose production
+Mỗi repo backend có Dockerfile, workflow publish image, Environment và webhook riêng. Trên Dokploy tạo một Application cho mỗi backend, chọn Docker provider và image tương ứng; không thêm backend vào Compose `homespace-infra`.
 
-Mở [`compose.production.yml`](../compose.production.yml) đang dùng cho infra. Giữ các service hạ tầng, công cụ giám sát và named volume. Kafka quảng bá `kafka:19092` trong mạng riêng. PostgreSQL dùng [`postgres/init/01-create-databases.sql`](../postgres/init/01-create-databases.sql) để tạo `homespace_core` trên volume mới. Keycloak dùng image đã publish trong `KEYCLOAK_IMAGE` và chờ database cùng Kafka topic.
+### Core trước, Discovery và Gateway sau
 
-Thêm các service ứng dụng bên dưới vào cùng `services:`. Thay `DOCKERHUB_NAMESPACE` và từng `SHA_*` bằng namespace và tag thực tế. Chèn map `environment` theo bước kế tiếp. Giữ `hs-network` trong phần `networks:` cuối file. Dùng `${VAR:?missing VAR}` cho biến cần giá trị và `${VAR?missing VAR}` cho biến có thể để trống có chủ đích.
+1. Tạo mạng `homespace-backend` bằng Docker → Networks, driver `overlay`, bật `Attachable`.
+2. Push và deploy Compose infra đã cập nhật. File chỉ thêm mạng này cho các service dữ liệu/Keycloak/Gotenberg, giữ nguyên volumes.
+3. Làm theo [hướng dẫn Core Application](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md): publish image, tạo Application, dán env Core, gắn mạng và deploy.
+4. Core tạm tắt Eureka khi Discovery chưa chạy. Khi deploy Discovery riêng, dùng hostname thật của Discovery cho URL Eureka và bật discovery của Core.
+5. Gateway dùng chung mạng, đăng ký Eureka, giữ `GATEWAY_INTERNAL_SECRET` khớp Core. Domain API route tới Application Gateway cổng 8080.
+6. Chat, News, Notification và AI tiếp tục triển khai theo cùng nguyên tắc Application và CI/CD độc lập, cùng mạng backend. Các bước build/runtime riêng của chúng phải được chuẩn bị trong repo tương ứng.
 
-<details>
-<summary>Các service ứng dụng cần thêm vào Compose</summary>
-
-Dán phần này vào cuối `services:` của file production, ngay trước `volumes:` cấp gốc. Các service con thụt bốn dấu cách, cùng cấp với `postgres`. Các tên này cũng là hostname dùng trong bảng env.
-
-```yaml
-    discovery:
-      image: docker.io/DOCKERHUB_NAMESPACE/hs-discovery-server:SHA_DISCOVERY
-      restart: unless-stopped
-      networks: [hs-network]
-
-    gateway:
-      image: docker.io/DOCKERHUB_NAMESPACE/hs-gateway-server:SHA_GATEWAY
-      restart: unless-stopped
-      depends_on:
-        discovery: { condition: service_started }
-        redis: { condition: service_healthy }
-      networks: [hs-network]
-
-    core:
-      image: docker.io/DOCKERHUB_NAMESPACE/hs-core-api:SHA_CORE
-      restart: unless-stopped
-      depends_on:
-        discovery: { condition: service_started }
-        postgres: { condition: service_healthy }
-        mongodb: { condition: service_healthy }
-        redis: { condition: service_healthy }
-        keycloak: { condition: service_healthy }
-        kafka-topics: { condition: service_completed_successfully }
-      networks: [hs-network]
-
-    chat:
-      image: docker.io/DOCKERHUB_NAMESPACE/hs-chat-service:SHA_CHAT
-      restart: unless-stopped
-      depends_on:
-        mongodb: { condition: service_healthy }
-        kafka-topics: { condition: service_completed_successfully }
-      networks: [hs-network]
-
-    news:
-      image: docker.io/DOCKERHUB_NAMESPACE/hs-news-service:SHA_NEWS
-      restart: unless-stopped
-      depends_on:
-        mongodb: { condition: service_healthy }
-        kafka-topics: { condition: service_completed_successfully }
-      networks: [hs-network]
-
-    notification:
-      image: docker.io/DOCKERHUB_NAMESPACE/hs-notification-service:SHA_NOTIFICATION
-      restart: unless-stopped
-      depends_on:
-        mongodb: { condition: service_healthy }
-        kafka-topics: { condition: service_completed_successfully }
-      networks: [hs-network]
-
-    ai-migrate:
-      image: &ai-image docker.io/DOCKERHUB_NAMESPACE/hs-ai-service:SHA_AI
-      restart: 'no'
-      command: ['uv', 'run', '--no-sync', 'alembic', 'upgrade', 'head']
-      environment: &ai-env
-        AI_DATABASE_URL: '${HS_AI_AI_DATABASE_URL:?missing HS_AI_AI_DATABASE_URL}'
-        # Thêm map env cho AI rồi giữ anchor &ai-env để service ai dùng chung.
-      depends_on:
-        postgres-ai: { condition: service_healthy }
-      networks: [hs-network]
-
-    ai:
-      image: *ai-image
-      restart: unless-stopped
-      environment: *ai-env
-      depends_on:
-        ai-migrate: { condition: service_completed_successfully }
-        mongodb: { condition: service_healthy }
-      networks: [hs-network]
-```
-
-</details>
-
-### Tạo danh sách biến và truyền vào đúng container
-
-Dùng một mục **Environment** của Dokploy cho Compose. Đặt prefix cho biến ứng dụng để các repo có cùng tên biến vẫn dùng được giá trị riêng. Ví dụ `HS_CHAT_MONGODB_URI` và `HS_NEWS_MONGODB_URI` đi vào hai container với cùng tên `MONGODB_URI`. Các biến hạ tầng như `POSTGRES_PASSWORD` giữ nguyên nếu Compose production đang tham chiếu trực tiếp.
-
-1. Mở `.env.example` ở gốc từng repo. Với Gateway, Core, Chat, News, Notification và AI, lần lượt dùng prefix `HS_GATEWAY`, `HS_CORE`, `HS_CHAT`, `HS_NEWS`, `HS_NOTIFICATION`, `HS_AI`. Eureka trong workspace hiện dùng cấu hình từ `application.properties` và có thể bắt đầu với service `discovery` ở trên.
-2. Dưới từng service trong YAML, thêm map `environment:`. Ví dụ minh họa với hai giá trị dưới `chat`.
-
-   ```yaml
-           environment:
-               PORT: '${HS_CHAT_PORT:?missing HS_CHAT_PORT}'
-               MONGODB_URI: '${HS_CHAT_MONGODB_URI:?missing HS_CHAT_MONGODB_URI}'
-   ```
-
-3. Để lấy danh sách mapping nhanh, chạy đoạn dưới bằng **PowerShell từ `D:\Workspace\homespace`**. Các lệnh chỉ đọc tên biến từ `.env.example`. Đổi `$repo` và `$prefix` cho service tiếp theo. Copy dòng kết quả vào dưới `environment:` của đúng service. Với AI đặt các dòng dưới `environment: &ai-env` của `ai-migrate`, giữ một dòng cho mỗi key. Sau đó dùng `:?` cho biến cần giá trị và luôn điền các biến cần thiết theo validator của ứng dụng.
-
-   ```powershell
-   $repo = 'hs-chat-service'
-   $prefix = 'HS_CHAT'
-   Get-Content "$repo/.env.example" | ForEach-Object {
-       if ($_ -match '^([A-Z][A-Z0-9_]*)=') {
-           $key = $Matches[1]
-           $composeKey = "${prefix}_${key}"
-           '            ' + $key + ': "${' + $composeKey + '?missing ' + $composeKey + '}"'
-       }
-   }
-   ```
-
-4. Trong Dokploy, lưu các giá trị tương ứng bằng định dạng `KEY=value`. Ví dụ `HS_CHAT_PORT=8082` và `HS_CHAT_EUREKA_INSTANCE_HOSTNAME=chat`. Với Core, khai báo `HS_CORE_HOMESPACE_TIME_SIMULATED_AT=` để dùng giờ thực. Nếu chưa dùng webhook tùy chọn của SmartCA, vẫn khai báo `HS_CORE_SMARTCA_WEBHOOK_PUBLIC_URL=`. Compose map hai biến này qua cú pháp `?` để nhận giá trị rỗng có chủ đích.
-5. Kiểm tra các credential và URL theo bảng bên dưới. Đối chiếu tên biến trong source khi khác giữa các repo. Sử dụng cùng giá trị khi Gateway và service yêu cầu chung một internal secret. Giữ các giá trị bí mật trong Dokploy và mật khẩu sản xuất trong trình quản lý mật khẩu. Các file Git chỉ chứa biểu thức tham chiếu biến.
-
-[Docker Compose trong Dokploy](https://docs.dokploy.com/docs/core/docker-compose) · [Nội suy biến Compose](https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/) · [Mạng và tên service Docker](https://docs.docker.com/compose/how-tos/networking/) · [Thứ tự khởi động Compose](https://docs.docker.com/compose/how-tos/startup-order/)
+Application dùng Docker Swarm nên không gắn trực tiếp vào bridge `hs-network` của Compose. Không mở public port PostgreSQL/MongoDB/Redis/Kafka để nối các Application. Mạng overlay được dùng chung; vòng đời deploy và Environment của từng service vẫn tách riêng.
 
 ### Cấu hình kết nối chính
 
-Các hostname nội bộ dưới đây giả định đặt tên service trong Compose tương ứng. Cấu hình những biến này trong từng service sử dụng chúng.
+Các hostname nội bộ dưới đây giả định service/container có alias tương ứng trên cùng mạng overlay `homespace-backend`. Cấu hình những biến này trong từng service sử dụng chúng.
 
 | Biến hoặc kết nối | Giá trị production |
 | --- | --- |
@@ -444,7 +343,7 @@ Các hostname nội bộ dưới đây giả định đặt tên service trong C
 | `CONTRACT_GOTENBERG_URL` | `http://gotenberg:3000` |
 | `GATEWAY_BASE_URL` của AI | `http://gateway:8080` |
 | `GATEWAY_INTERNAL_SECRET` | Cùng giá trị ở Gateway và các service dùng secret nội bộ này |
-| `KEYCLOAK_SERVER_URL` của Core | `https://homespace-auth.nvminh162.id.vn` |
+| `KEYCLOAK_SERVER_URL` của Core | `http://keycloak:8080` trên mạng backend |
 | `JWT_ISSUER_URI` của Gateway, `KEYCLOAK_ISSUER_URL` của Notification | `https://homespace-auth.nvminh162.id.vn/realms/homespace-platform` |
 | `JWT_JWK_SET_URI` của Gateway | `http://keycloak:8080/realms/homespace-platform/protocol/openid-connect/certs` |
 | `CORS_ALLOWED_ORIGINS` và `NOTIFICATION_REALTIME_ORIGINS` | `https://homespace.nvminh162.id.vn,https://homespace-admin.nvminh162.id.vn` |
@@ -471,58 +370,14 @@ Các hostname nội bộ dưới đây giả định đặt tên service trong C
 
 [Keycloak hostname](https://www.keycloak.org/server/hostname) · [Keycloak sau reverse proxy](https://www.keycloak.org/server/reverseproxy)
 
-### Domain cho các service
+### Domains và cập nhật độc lập
 
-1. Push `compose.production.yml` lên `master` của `hs-infra` sau khi điền đủ tag. Dùng Docker Compose service `homespace-infra` đã tạo trong project `HomeSpace`.
-2. Trong **General**, kiểm tra source **Git → hs-infra → master** và **Compose Path** `./compose.production.yml`. Bật **Autodeploy** khi phần cấu hình webhook đã hoàn tất.
-3. Mở **Environment**, dán các biến hạ tầng và biến có prefix từ bước trước rồi **Save**. Đối chiếu tag image và cấu hình bằng **Preview Compose** khi UI hiển thị tính năng này. Với dòng tên miền, nếu UI cần nạp service trước, deploy Compose một lần để lấy danh sách rồi thêm domain và deploy lại. Nếu Core chưa bootstrap được vì domain Auth chưa có HTTPS, xử lý domain Auth trước và redeploy Core sau khi OIDC discovery đã hoạt động.
-4. Vào **Domains → Add Domain** ba lần. Nhập **Host** theo bảng, chọn service, port và path. Bật **HTTPS**, chọn chứng chỉ **Let's Encrypt**, rồi lưu từng domain.
-
-| Host | Service | Container Port | Path | Internal Path | Strip Path |
-| --- | --- | --- | --- | --- | --- |
-| `homespace-api.nvminh162.id.vn` | `gateway` | `8080` | `/` | `/` | Tắt |
-| `homespace-auth.nvminh162.id.vn` | `keycloak` | `8080` | `/` | `/` | Tắt |
-| `homespace-notify.nvminh162.id.vn` | `notification` | `8085` | `/socket.io` | `/` | Tắt |
-
-5. Mở **Preview Compose**. Kiểm tra cả ba service ingress có routing phù hợp và vẫn dùng chung mạng nội bộ với các service chúng gọi. Nếu bản Dokploy có tùy chọn **Isolated Deployments**, có thể dùng tùy chọn đó để Dokploy tạo mạng proxy riêng cho Compose. Kiểm tra tên service vẫn phân giải qua `hs-network` trong preview. Service nhận ingress cần nằm trên mạng Traefik, còn các database và Kafka tiếp tục dùng mạng nội bộ của Compose.
-
-Web app dùng `NEXT_PUBLIC_NOTIFICATION_SOCKET_URL` và path `/socket.io`. Admin dùng `/api/v1/notifications/socket.io` qua Gateway. Chat cũng đi qua Gateway. Domain Notification riêng phục vụ kết nối Socket.IO của web, còn các API thông báo đi qua Gateway. [Domain Docker Compose](https://docs.dokploy.com/docs/core/docker-compose/domains)
-
-### Deploy lần đầu và xác minh backend
-
-1. Nếu có bản env kiểm thử riêng trên máy của bạn, kiểm tra cú pháp và nội suy trước khi chạy. Đặt file env ngoài repo. `--quiet` chỉ trả lỗi, giúp tránh in cấu hình đã nội suy ra terminal.
-
-   ```bash
-   docker compose --env-file .env.dokploy -f compose.production.yml config --quiet
-   ```
-
-2. Trong Dokploy, vào **General → Deploy** rồi mở bản deploy mới nhất ở **Deployments**. Kiểm tra log đã checkout đúng commit `hs-infra` và pull đúng tag. Sang **Logs** hoặc **Docker → Containers** để xem trạng thái runtime. Tiến trình chạy một lần như `kafka-topics` và `ai-migrate` hoàn thành với exit code `0`, còn database và backend tiếp tục `running`.
-3. Kiểm tra theo thứ tự trong bảng. Khi service lỗi, xem log đúng service trước khi chạy lại.
-
-| Chặng | Dấu hiệu thành công |
-| --- | --- |
-| PostgreSQL, pgvector, MongoDB, Redis | `healthy`. PostgreSQL có database `keycloak` và `homespace_core`. |
-| Kafka và `kafka-topics` | Kafka `healthy`, job tạo topic `Exited (0)`. |
-| Keycloak | `healthy`. Endpoint OIDC discovery bên dưới trả JSON có `issuer` đúng domain. |
-| Eureka, Chat, News, Notification | Chạy ổn định, service không lặp lỗi đăng ký Eureka hoặc kết nối Kafka. |
-| `ai-migrate`, AI | `ai-migrate` `Exited (0)`, AI tiếp tục chạy. |
-| Core và Gateway | Health Gateway trả `UP`, API danh sách tin qua Gateway trả HTTP `200`. |
-
-4. Từ **Windows PowerShell**, gọi các endpoint sau. `curl.exe` giúp dùng đúng chương trình curl khi có alias `curl` trong PowerShell.
-
-   ```powershell
-   curl.exe -fsS 'https://homespace-auth.nvminh162.id.vn/realms/homespace-platform/.well-known/openid-configuration'
-   curl.exe -fsS 'https://homespace-api.nvminh162.id.vn/api/v1/actuator/health/readiness'
-   curl.exe -fsS 'https://homespace-api.nvminh162.id.vn/api/v1/public/listings?page=1&size=1'
-   ```
-
-5. Vào Keycloak **Administration Console**, chọn realm `homespace-platform` → **Clients**. Mở từng client ở bảng Keycloak, khai báo đúng các URL production và **Save**. Trong **Settings → Access settings**, kiểm tra **Root URL**, **Home URL** và **Valid post logout redirect URIs** đang trỏ đúng frontend tương ứng nếu những mục này có giá trị. Nếu dùng Google, trong Google Cloud Console đăng ký đúng redirect URI do **Identity providers → Google** của Keycloak production hiển thị. Kiểm tra cả provider đăng nhập điện thoại nếu được bật.
-
-**Kết quả cần thấy:** OIDC discovery trả issuer đúng domain, Gateway và Core đều truy cập được qua HTTPS. Lúc này mới dùng các endpoint production trong Vercel.
-
-### Cập nhật sau lần deploy đầu
-
-Keycloak dùng pipeline ở mục **Tự động deploy sau khi publish image**. Giữ Autodeploy của Compose bật để endpoint nhận webhook từ job `deploy`. Khi cập nhật tag backend trong `compose.production.yml`, lưu cùng một commit release cho các service cần đi cùng nhau, sau đó kích hoạt triển khai và đối chiếu log trong Dokploy. Nếu cần rollback, chọn tag trước đó và kiểm tra khả năng tương thích schema trước khi deploy lại.
+- Keycloak và các công cụ quản trị giữ trong Domains của `homespace-infra`.
+- Domain `homespace-api.nvminh162.id.vn` nằm ở Application Gateway, container port 8080, path `/`, HTTPS.
+- Domain `homespace-notify.nvminh162.id.vn` nằm ở Application Notification khi service đó được deploy, container port 8085, path `/socket.io` theo route ứng dụng.
+- Core hiện chưa có domain public. Kiểm tra health trong container và kiểm thử REST qua Gateway sau khi Gateway được deploy.
+- Mỗi Docker Hub repository gắn webhook của đúng Application trong tab Webhooks. GitHub Actions của backend chỉ build/test/push. Webhook Application có dạng `/api/deploy/TOKEN`; webhook infra Compose có `/api/deploy/compose/TOKEN`. Không dùng webhook infra để cập nhật Core.
+- Sau publish, theo dõi deployment và health của Application tương ứng; không deploy lại cả infra khi chỉ thay backend.
 
 ## 5. Deploy frontend trên Vercel
 
