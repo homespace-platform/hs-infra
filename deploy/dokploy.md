@@ -461,6 +461,7 @@ Các hostname nội bộ dưới đây giả định đặt tên service trong C
 
 - Đặt `KC_HOSTNAME=https://homespace-auth.nvminh162.id.vn`, `KC_HOSTNAME_STRICT=true`, `KC_HTTP_ENABLED=true` và `KC_PROXY_HEADERS=xforwarded`. Traefik nhận HTTPS và chuyển tiếp đến Keycloak cổng `8080`. Management health của Keycloak dùng nội bộ.
 - Khi khởi tạo mới, dùng `start --import-realm` với realm và provider đã đóng gói. Với realm đã tồn tại, chỉnh client qua Keycloak Admin Console.
+- File realm trong thư mục import dùng tên `homespace-platform-realm.json`, khớp trường `realm` trong JSON. Keycloak chỉ đọc các file kết thúc bằng `-realm.json` khi import thư mục lúc khởi động. Kiểm tra endpoint `/realms/homespace-platform/.well-known/openid-configuration` trả HTTP `200` sau khi image mới khởi động.
 - Trong realm `homespace-platform`, cấu hình **Valid redirect URIs** và **Web Origins** cho hai client. Giới hạn URL redirect theo domain và kiểm tra lại URL chuyển hướng sau logout.
 
 | Client | Valid redirect URI | Web Origin |

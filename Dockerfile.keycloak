@@ -8,4 +8,4 @@ RUN touch -m --date=@1743465600 /opt/keycloak/providers/*.jar \
 FROM quay.io/keycloak/keycloak:26.5.2
 ENV KC_DB=postgres KC_HEALTH_ENABLED=true
 COPY --from=build --chown=1000:0 /opt/keycloak/ /opt/keycloak/
-COPY --chown=1000:0 --chmod=0644 realm-export.json /opt/keycloak/data/import/realm.json
+COPY --chown=1000:0 --chmod=0644 realm-export.json /opt/keycloak/data/import/homespace-platform-realm.json

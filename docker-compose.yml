@@ -163,7 +163,7 @@ services:
             kafka-topics:
                 condition: service_completed_successfully
         volumes:
-            - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm.json:ro
+            - ./keycloak/realm-export.json:/opt/keycloak/data/import/homespace-platform-realm.json:ro
             - ./keycloak/provider:/opt/keycloak/providers
             - ./keycloak/keycloak-themes:/opt/keycloak/themes:ro
         deploy:
