@@ -3,6 +3,10 @@
 
 ### ENV ###
 .env
+.env.dokploy
 
 ### Maven ###
 target/
+
+
+password.md

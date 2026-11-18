@@ -6,16 +6,22 @@ Thư mục hạ tầng: `D:\Workspace\homespace\hs-infra`. Các service khác n�
 
 ```powershell
 cd D:\Workspace\homespace\hs-infra
-docker compose -f docker-infra.yml up -d --wait
-docker compose -f docker-obs.yml up -d
+docker compose up -d --wait
 ```
 
-Lệnh thứ hai chạy các công cụ pgAdmin, RedisInsight và Kafka UI sau khi hạ tầng đã sẵn sàng. Các đường dẫn volume tương đối được tính từ thư mục `hs-infra`. Volume dữ liệu và network đã có tên cố định trong Compose.
+`docker-compose.yml` chạy local với đủ hạ tầng, pgAdmin, RedisInsight và Kafka UI. Điền `.env` theo `.env.example` trước khi chạy. Các cổng local lắng nghe trên `127.0.0.1`, volume dùng tên cố định để tiếp tục sử dụng dữ liệu đã có. Chỉ cần một phần thì nêu tên service, ví dụ `docker compose up -d postgres mongodb`.
+
+`compose.production.yml` chạy production với cùng 11 service. Trên Dokploy, chọn `./compose.production.yml` và dán nội dung `.env.dokploy` vào tab **Environment**. Xem [hướng dẫn Dokploy](deploy/dokploy.md#deploy-hạ-tầng-trước).
+
+```powershell
+docker compose --env-file .env.dokploy -f compose.production.yml config --quiet
+docker compose --env-file .env.dokploy -f compose.production.yml up -d --wait
+```
 
 Khi cập nhật cấu hình topic trên Kafka đã có dữ liệu, chạy lại bước khởi tạo sau khi broker sẵn sàng:
 
 ```powershell
-docker compose -f docker-infra.yml run --rm --no-deps kafka-topics
+docker compose run --rm --no-deps kafka-topics
 ```
 
 Lệnh này tạo các topic còn thiếu bằng `--if-not-exists`, gồm `KAFKA_NEWS_TOPIC` (mặc định `homespace.news.events.v1`) và `KAFKA_NEWS_DLT_TOPIC` (mặc định `homespace.news.events.dlt.v1`), mỗi topic có 1 partition, 1 replica, không cần reset volume. Triển khai Core consumer của topic news trước khi đổi News sang `KAFKA_NEWS_TOPIC`; Core mở rộng người nhận và gửi sang topic notification hiện có. DLT riêng lưu lỗi sự kiện nguồn do Core xử lý.
@@ -29,7 +35,7 @@ Lệnh này tạo các topic còn thiếu bằng `--if-not-exists`, gồm `KAFKA
 Từ `hs-ai-service`, lệnh tương ứng để chạy PostgreSQL AI và MongoDB:
 
 ```powershell
-docker compose -f ..\hs-infra\docker-infra.yml up -d postgres-ai mongodb
+docker compose -f ..\hs-infra\docker-compose.yml up -d postgres-ai mongodb
 ```
 
 ## Kiểm tra seed và tài liệu test

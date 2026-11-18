@@ -3,4 +3,4 @@
 -- The modular monolith uses one shared core database.
 
 CREATE DATABASE homespace_core;
-GRANT ALL PRIVILEGES ON DATABASE homespace_core TO homespace;
+GRANT ALL PRIVILEGES ON DATABASE homespace_core TO CURRENT_USER;
