@@ -705,10 +705,12 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
+        "http://admin.homespace.id.vn/*",
         "http://localhost:5000/*"
       ],
       "webOrigins": [
-        "http://localhost:5000"
+        "http://localhost:5000",
+        "http://admin.homespace.id.vn"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -722,12 +724,15 @@
       "protocol": "openid-connect",
       "attributes": {
         "realm_client": "false",
+        "logout.confirmation.enabled": "false",
         "oidc.ciba.grant.enabled": "false",
         "backchannel.logout.session.required": "true",
         "standard.token.exchange.enabled": "false",
         "login_theme": "homespace-admin",
-        "post.logout.redirect.uris": "http://localhost:5000/*",
+        "frontchannel.logout.session.required": "true",
+        "post.logout.redirect.uris": "http://localhost:5000/*##http://admin.homespace.id.vn/*",
         "oauth2.device.authorization.grant.enabled": "false",
+        "display.on.consent.screen": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "dpop.bound.access.tokens": "false"
       },
@@ -754,10 +759,10 @@
     {
       "id": "650b3048-3c88-453c-b7ce-15817a11b90f",
       "clientId": "homespace-id",
-      "name": "HomeSpace ID",
-      "description": "HomeSpace Description",
+      "name": "HomeSpace For Client",
+      "description": "HomeSpace For Client",
       "rootUrl": "http://localhost:3000",
-      "adminUrl": "http://localhost:3000",
+      "adminUrl": "http://admin.homespace.id.vn",
       "baseUrl": "http://localhost:3000",
       "surrogateAuthRequired": false,
       "enabled": true,
@@ -765,9 +770,11 @@
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
         "homespace://*",
-        "http://localhost:3000/*"
+        "http://localhost:3000/*",
+        "http://homespace.id.vn/*"
       ],
       "webOrigins": [
+        "http://homespace.id.vn",
         "http://localhost:3000"
       ],
       "notBefore": 0,
@@ -786,7 +793,7 @@
         "oauth2.jwt.authorization.grant.enabled": "false",
         "standard.token.exchange.enabled": "false",
         "frontchannel.logout.session.required": "true",
-        "post.logout.redirect.uris": "http://localhost:3000/*##homespace://*",
+        "post.logout.redirect.uris": "http://localhost:3000/*##homespace://*##http://homespace.id.vn/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "use.jwks.url": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
@@ -1388,9 +1395,10 @@
           "config": {
             "id.token.claim": "false",
             "lightweight.claim": "false",
-            "access.token.claim": "true",
             "introspection.token.claim": "true",
-            "included.custom.audience": "hs-notification-service"
+            "access.token.claim": "true",
+            "included.custom.audience": "hs-notification-service",
+            "userinfo.token.claim": "false"
           }
         }
       ]
@@ -1679,18 +1687,18 @@
     "starttls": "true",
     "auth": "true",
     "writeTimeout": "10000",
-    "envelopeFrom": "zolaracskh@gmail.com",
+    "envelopeFrom": "homespace.id.vn@gmail.com",
     "ssl": "false",
     "timeout": "10000",
     "password": "**********",
     "port": "587",
     "host": "smtp.gmail.com",
-    "replyTo": "zolaracskh@gmail.com",
-    "from": "zolaracskh@gmail.com",
+    "replyTo": "homespace.id.vn@gmail.com",
+    "from": "homespace.id.vn@gmail.com",
     "fromDisplayName": "HomeSpace Platform",
     "authType": "basic",
     "connectionTimeout": "10000",
-    "user": "zolaracskh@gmail.com"
+    "user": "homespace.id.vn@gmail.com"
   },
   "loginTheme": "homespace",
   "eventsEnabled": false,
@@ -1850,14 +1858,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-address-mapper",
-            "oidc-usermodel-property-mapper",
-            "oidc-usermodel-attribute-mapper",
             "saml-role-list-mapper",
-            "saml-user-attribute-mapper",
             "oidc-sha256-pairwise-sub-mapper",
             "saml-user-property-mapper",
-            "oidc-full-name-mapper"
+            "oidc-address-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "oidc-usermodel-property-mapper",
+            "oidc-full-name-mapper",
+            "saml-user-attribute-mapper"
           ]
         }
       },
@@ -1886,13 +1894,13 @@
         "config": {
           "allowed-protocol-mapper-types": [
             "oidc-usermodel-property-mapper",
-            "saml-user-property-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "saml-user-attribute-mapper",
+            "saml-role-list-mapper",
             "oidc-address-mapper",
             "oidc-full-name-mapper",
-            "saml-role-list-mapper",
-            "oidc-usermodel-attribute-mapper"
+            "saml-user-property-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-user-attribute-mapper",
+            "oidc-sha256-pairwise-sub-mapper"
           ]
         }
       },

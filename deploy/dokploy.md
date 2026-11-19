@@ -36,29 +36,31 @@ Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production
 
 [Tạo EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-launch-parameters.html) · [Thông số M7i](https://aws.amazon.com/ec2/instance-types/m7i/) · [Đổi loại instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/change-instance-type-of-ebs-backed-instance.html) · [Elastic IP](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 
-### Tạo DNS cho backend
+### Tạo DNS trên iNET cho `homespace.id.vn`
 
-| Subdomain | DNS | Đích |
-| --- | --- | --- |
-| `homespace.nvminh162.id.vn` | Bản ghi Vercel cung cấp | `hs-web-app` |
-| `homespace-admin.nvminh162.id.vn` | Bản ghi Vercel cung cấp | `hs-admin-portal` |
-| `homespace-api.nvminh162.id.vn` | `A` → Elastic IP | Gateway, cổng container `8080`, path `/` |
-| `homespace-auth.nvminh162.id.vn` | `A` → Elastic IP | Keycloak, cổng container `8080`, path `/` |
-| `homespace-notify.nvminh162.id.vn` | `A` → Elastic IP | Notification, cổng container `8085`, path `/socket.io` |
-| `homespace-dokploy.nvminh162.id.vn` | `A` → Elastic IP | Trang quản trị Dokploy và điểm nhận webhook GitHub qua HTTPS |
+| URL | Host nhập trên iNET | DNS | Đích |
+| --- | --- | --- | --- |
+| `homespace.id.vn` | `@` | Bản ghi Vercel cung cấp | `hs-web-app` |
+| `admin.homespace.id.vn` | `admin` | Bản ghi Vercel cung cấp | `hs-admin-portal` |
+| `api.homespace.id.vn` | `api` | `A` → Elastic IP | Gateway, cổng container `8080`, path `/` |
+| `auth.homespace.id.vn` | `auth` | `A` → Elastic IP | Keycloak, cổng container `8080`, path `/` |
+| `notification.homespace.id.vn` | `notification` | `A` → Elastic IP | Notification, cổng container `8085`, path `/socket.io` |
+| `dokploy.homespace.id.vn` | `dokploy` | `A` → Elastic IP | Trang quản trị Dokploy và điểm nhận webhook GitHub/Docker Hub qua HTTPS |
 
-1. Đăng nhập trang quản lý DNS của `nvminh162.id.vn` và mở zone của domain này. Dùng **Add record** bốn lần cho `homespace-api`, `homespace-auth`, `homespace-notify`, `homespace-dokploy`.
-2. Mỗi bản ghi đặt **Type `A`**, **Name** là tên tương đối bên trên, **Value** là Elastic IP, **TTL** khoảng 300 giây nếu nhà cung cấp cho chọn. Nếu DNS đang dùng Cloudflare, chọn **DNS only** trong lần thiết lập HTTPS đầu tiên. Hai bản ghi Vercel làm ở bước 5 sau khi có target chính xác.
+1. Đăng nhập iNET OnePortal → **Tên miền → Danh sách → homespace.id.vn → Bản ghi**. Dùng **Thêm bản ghi / Add record** bốn lần cho host `api`, `auth`, `notification`, `dokploy`.
+2. Mỗi bản ghi đặt **Type `A`**, **Host/Name** như bảng, **Value** là Elastic IP hiện đang gắn với EC2, **TTL** khoảng 300 giây nếu nhà cung cấp cho chọn. Value chỉ chứa IP, không có `https://`, port hoặc path. Nếu DNS đang dùng Cloudflare, chọn **DNS only** trong lần thiết lập HTTPS đầu tiên. Hai bản ghi Vercel làm ở bước 5 sau khi thêm domain vào đúng project và lấy target chính xác; không trỏ `@`/`admin` về EC2.
 3. Trên Windows PowerShell, kiểm tra bốn host đều trả về đúng IP. Nếu vừa sửa một bản ghi cũ, đợi cache hết hạn và kiểm tra lại.
 
    ```powershell
-   'api','auth','notify','dokploy' | ForEach-Object {
-       Resolve-DnsName "homespace-$_.nvminh162.id.vn" -Type A |
+   'api','auth','notification','dokploy' | ForEach-Object {
+       Resolve-DnsName "$_.homespace.id.vn" -Type A |
            Select-Object Name, IPAddress
    }
    ```
 
 **Kết quả cần thấy:** EC2 `Running`, trạng thái kiểm tra đạt, bốn bản ghi backend trỏ cùng Elastic IP. [Thiết lập domain trên Vercel](https://vercel.com/docs/domains/set-up-custom-domain)
+
+Nếu chuyển hệ thống đang dùng domain cũ, cập nhật cả Domains của Dokploy/Vercel, env URL/issuer/CORS, redirect URI của Keycloak, Firebase authorized domains, S3 CORS và callback nhà cung cấp theo các bảng bên dưới. Các file `.env.dokploy` đã tồn tại cần được đối chiếu lại; việc sửa hướng dẫn này không tự thay đổi env hay DNS đang chạy. Giữ nguyên database, realm/client IDs và secret. Sau khi đổi env frontend, deploy lại để bản build nhận URL mới; webhook Docker Hub/GitHub cũng phải dùng domain Dokploy mới.
 
 ## 2. Cài Dokploy
 
@@ -90,16 +92,16 @@ Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production
    ```
 
 4. Mở `http://127.0.0.1:3300`, tạo tài khoản quản trị và bật 2FA hoặc passkey.
-5. Khi DNS `homespace-dokploy.nvminh162.id.vn` đã trỏ đúng, vào **Settings → Web Server → Server Domain**. Điền `homespace-dokploy.nvminh162.id.vn`, bật **HTTPS**, chọn **Let's Encrypt** và lưu. Mở domain HTTPS trong trình duyệt và thử đăng nhập lại trước khi đóng tunnel. GitHub cần gọi được webhook từ Internet. Giữ cổng `3000` riêng tư trong Security Group.
+5. Khi DNS `dokploy.homespace.id.vn` đã trỏ đúng, vào **Settings → Web Server → Server Domain**. Điền `dokploy.homespace.id.vn`, bật **HTTPS**, chọn **Let's Encrypt** và lưu. Mở domain HTTPS trong trình duyệt và thử đăng nhập lại trước khi đóng tunnel. GitHub cần gọi được webhook từ Internet. Giữ cổng `3000` riêng tư trong Security Group.
 6. Tại **Settings → Git → GitHub**, thêm kết nối GitHub App, làm theo nút tạo app rồi **Install** trên tài khoản hoặc organization sở hữu `hs-infra`. Chọn **Only select repositories** và cấp quyền cho `hs-infra`. Quay lại Dokploy, xác nhận thấy repo trong danh sách. Luồng publish image bên GitHub Actions dùng quyền của từng repo, nên GitHub App của Dokploy chỉ cần repo chứa Compose.
 
-**Kết quả cần thấy:** mở được `https://homespace-dokploy.nvminh162.id.vn`, đăng nhập được và Dokploy thấy repo `hs-infra`.
+**Kết quả cần thấy:** mở được `https://dokploy.homespace.id.vn`, đăng nhập được và Dokploy thấy repo `hs-infra`.
 
 ## Deploy hạ tầng trước
 
 1. Trong Docker Hub, tạo private repo **`homespace-keycloak`**. Trong GitHub repo `hs-infra` → **Settings → Secrets and variables → Actions**, thêm `DOCKERHUB_USERNAME=nvminh162` và `DOCKERHUB_TOKEN` có quyền push vào repository đó. Thêm registry Docker Hub trong Dokploy bằng token pull riêng.
 2. Hoàn thành cấu hình Dokploy và secrets ở phần **Tự động deploy sau khi publish image** trước khi push workflow mới lên `master`. Workflow có hai job liên tiếp `publish` và `deploy`. Image được đẩy cả tag Git SHA và `latest` trước khi Dokploy nhận yêu cầu triển khai.
-3. Mở `.env.dokploy` trên máy cá nhân. Kiểm tra `KEYCLOAK_IMAGE=nvminh162/homespace-keycloak:latest` và `PGADMIN_DEFAULT_EMAIL=zolaracskh@gmail.com`. Luồng tự động cập nhật Keycloak dùng tag `latest`. Nếu phải tạo file trên một checkout mới, dùng `.env.example` làm mẫu, đặt mật khẩu production riêng, `KEYCLOAK_HOSTNAME=https://homespace-auth.nvminh162.id.vn`, `KEYCLOAK_HOSTNAME_STRICT=true` và tạo `KAFKA_CLUSTER_ID` bằng lệnh sau. Giữ nguyên ID và credential theo volume đang dùng khi redeploy.
+3. Mở `.env.dokploy` trên máy cá nhân. Kiểm tra `KEYCLOAK_IMAGE=nvminh162/homespace-keycloak:latest` và `PGADMIN_DEFAULT_EMAIL=homespace.id.vn@gmail.com`. Luồng tự động cập nhật Keycloak dùng tag `latest`. Nếu phải tạo file trên một checkout mới, dùng `.env.example` làm mẫu, đặt mật khẩu production riêng, `KEYCLOAK_HOSTNAME=https://auth.homespace.id.vn`, `KEYCLOAK_HOSTNAME_STRICT=true` và tạo `KAFKA_CLUSTER_ID` bằng lệnh sau. Giữ nguyên ID và credential theo volume đang dùng khi redeploy.
 
    ```bash
    sudo docker run --rm --entrypoint /opt/kafka/bin/kafka-storage.sh apache/kafka:4.3.1 random-uuid
@@ -108,18 +110,18 @@ Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production
 4. Trong Dokploy, vào **Projects → Create Project**, đặt tên `HomeSpace`. Trong project chọn **Create Service → Docker Compose**, đặt tên `homespace-infra`. Chọn **Git → Repository URL `https://github.com/homespace-platform/hs-infra.git` → Branch `master`**, Compose Path `./compose.production.yml`, loại **Docker Compose**. Hoàn tất Environment và Domains trước khi bật Autodeploy ở phần webhook bên dưới.
 5. Mở tab **Environment** của Compose, dán nội dung `.env.dokploy` rồi lưu. File này chứa credential và được Git bỏ qua. Kiểm tra biến và cú pháp từ gốc repo bằng `docker compose --env-file .env.dokploy -f compose.production.yml config --quiet`.
 
-6. Trước lần chạy đầu, tạo DNS `A` cho `homespace-auth.nvminh162.id.vn` trỏ tới IPv4 công khai của EC2. Trong **General → Preview Compose**, kiểm tra file production có đủ 11 service. Trong **Domains**, thêm `homespace-auth.nvminh162.id.vn` → service `keycloak` → **Container Port `8080`**, Path `/`, bật HTTPS và chọn Let's Encrypt. Lưu toàn bộ thiết lập, sau đó hoàn thành phần auto deploy bên dưới để pipeline khởi chạy lần đầu. `postgres`, `postgres-ai`, `mongodb`, `redis`, `gotenberg`, `kafka` và `keycloak` cần chạy `healthy`. `kafka-topics` hoàn thành với `Exited (0)`, còn `pgadmin`, `redis-insight` và `kafka-ui` ở trạng thái `running`.
+6. Trước lần chạy đầu, tạo DNS `A` cho `auth.homespace.id.vn` trỏ tới IPv4 công khai của EC2. Trong **General → Preview Compose**, kiểm tra file production có đủ 11 service. Trong **Domains**, thêm `auth.homespace.id.vn` → service `keycloak` → **Container Port `8080`**, Path `/`, bật HTTPS và chọn Let's Encrypt. Lưu toàn bộ thiết lập, sau đó hoàn thành phần auto deploy bên dưới để pipeline khởi chạy lần đầu. `postgres`, `postgres-ai`, `mongodb`, `redis`, `gotenberg`, `kafka` và `keycloak` cần chạy `healthy`. `kafka-topics` hoàn thành với `Exited (0)`, còn `pgadmin`, `redis-insight` và `kafka-ui` ở trạng thái `running`.
 7. Gọi OIDC discovery bên dưới và kiểm tra issuer kết thúc bằng `/realms/homespace-platform`. Mở Keycloak Admin Console và cấu hình redirect URI và Web Origins production theo mục **Keycloak và HTTPS**. Nếu bật Google login, điền client secret thật trong Keycloak production vì realm export mang giá trị đã che. Tài khoản quản trị Keycloak ở bước này phục vụ quản lý realm. Tài khoản admin ứng dụng sẽ được Core bootstrap khi deploy Core.
 
    ```powershell
-   curl.exe -fsS 'https://homespace-auth.nvminh162.id.vn/realms/homespace-platform/.well-known/openid-configuration'
+   curl.exe -fsS 'https://auth.homespace.id.vn/realms/homespace-platform/.well-known/openid-configuration'
    ```
 
 ### Tự động deploy sau khi publish image
 
 Workflow [publish-keycloak.yml](../.github/workflows/publish-keycloak.yml) gọi webhook Compose của Dokploy sau khi job push image thành công. GitHub Actions sẽ khởi chạy lượt deploy đầu tiên sau khi bạn hoàn thành thiết lập và push workflow lên `master`.
 
-1. Trong Dokploy → Compose `homespace-infra` → **Deployments**, copy toàn bộ **Webhook URL**. URL có dạng `https://homespace-dokploy.nvminh162.id.vn/api/deploy/compose/TOKEN`.
+1. Trong Dokploy → Compose `homespace-infra` → **Deployments**, copy toàn bộ **Webhook URL**. URL có dạng `https://dokploy.homespace.id.vn/api/deploy/compose/TOKEN`.
 2. Trong [Repository Actions secrets của hs-infra](https://github.com/homespace-platform/hs-infra/settings/secrets/actions), tạo secret **`DOKPLOY_DEPLOY_WEBHOOK`** và dán URL vừa copy vào giá trị. Token nằm trong URL, nên giữ URL này trong GitHub secret.
 3. Trong **General**, giữ provider **Git**, branch `master`, **Watch Paths trống**, sau đó bật **Autodeploy**. Lưu Environment và Domains trước khi thực hiện bước này. Pipeline gửi webhook với header `X-GitHub-Event: push` và payload `ref=refs/heads/master` sau khi image sẵn sàng. Các thay đổi Git ở repo được triển khai thông qua lượt workflow này.
 4. Sau khi cấu hình env, DNS, domain và GitHub secrets đã lưu, push workflow lên `master`. Mở **Actions → Publish Keycloak image**, theo dõi `publish` rồi `deploy`. Job `deploy` thành công nghĩa là Dokploy đã nhận yêu cầu. Mở **Compose → Deployments → lượt mới nhất** và **Containers** để xác nhận kết quả runtime.
@@ -344,37 +346,37 @@ Các hostname nội bộ dưới đây giả định service/container có alias
 | `GATEWAY_BASE_URL` của AI | `http://gateway:8080` |
 | `GATEWAY_INTERNAL_SECRET` | Cùng giá trị ở Gateway và các service dùng secret nội bộ này |
 | `KEYCLOAK_SERVER_URL` của Core | `http://keycloak:8080` trên mạng backend |
-| `JWT_ISSUER_URI` của Gateway, `KEYCLOAK_ISSUER_URL` của Notification | `https://homespace-auth.nvminh162.id.vn/realms/homespace-platform` |
+| `JWT_ISSUER_URI` của Gateway, `KEYCLOAK_ISSUER_URL` của Notification | `https://auth.homespace.id.vn/realms/homespace-platform` |
 | `JWT_JWK_SET_URI` của Gateway | `http://keycloak:8080/realms/homespace-platform/protocol/openid-connect/certs` |
-| `CORS_ALLOWED_ORIGINS` và `NOTIFICATION_REALTIME_ORIGINS` | `https://homespace.nvminh162.id.vn,https://homespace-admin.nvminh162.id.vn` |
-| `PAYMENT_PROOF_UPLOAD_PUBLIC_BASE_URL` của Core | `https://homespace-api.nvminh162.id.vn` |
-| `SEPAY_RETURN_URL` của Core | `https://homespace.nvminh162.id.vn/dashboard/membership/return` nếu dùng SePay |
+| `CORS_ALLOWED_ORIGINS` và `NOTIFICATION_REALTIME_ORIGINS` | `https://homespace.id.vn,https://admin.homespace.id.vn` |
+| `PAYMENT_PROOF_UPLOAD_PUBLIC_BASE_URL` của Core | `https://api.homespace.id.vn` |
+| `SEPAY_RETURN_URL` của Core | `https://homespace.id.vn/dashboard/membership/return` nếu dùng SePay |
 
 - **Core và Gateway:** đặt `SPRING_PROFILES_ACTIVE=prod` ở hai service. Với database Core mới, xác định cách tạo schema trước khi chọn `JPA_DDL_AUTO`. Nếu dùng Hibernate tạo schema theo cách hiện tại của dự án, sử dụng `update` có kiểm soát ở lần khởi tạo và kiểm tra schema trước khi chuyển `validate`. Với database đã có dữ liệu, sao lưu trước khi đổi schema.
 - **Keycloak và tài khoản ứng dụng:** credential quản trị Keycloak dùng cho client đồng bộ của Core phải truy cập được realm. Khai báo các nhóm `BOOTSTRAP_ADMIN_*` của Core với tài khoản production khi cần bootstrap. Sau lần chạy đầu, đăng nhập tài khoản đó vào admin portal và kiểm tra user có trong Keycloak, ứng dụng và đúng quyền. Core thực hiện đồng bộ tài khoản qua Keycloak khi seed.
 - **S3:** tạo bucket và cấp quyền cho đúng dịch vụ. Nếu trình duyệt upload bằng URL ký sẵn, cấu hình bucket CORS cho hai origin frontend và đúng phương thức upload. Kiểm tra đường dẫn mẫu DOCX và dịch vụ Gotenberg trước khi thử ký.
 - **Firebase:** nhập credential server vào Notification, biến công khai và khóa VAPID vào Vercel theo `.env.example`. Giữ `KEYCLOAK_AUDIENCE` của Notification khớp audience trong access token phát hành từ realm.
-- **VNPT eKYC, SmartCA, SePay và blockchain:** nhập cấu hình từng nhà cung cấp vào Core. Đăng ký lại origin hoặc callback HTTPS ở nhà cung cấp theo tính năng đang bật. Ví dụ SePay IPN đi qua `https://homespace-api.nvminh162.id.vn/api/v1/membership/sepay/ipn`. Với blockchain, xác nhận cặp RPC, chain ID và địa chỉ contract cùng thuộc mạng định dùng.
+- **VNPT eKYC, SmartCA, SePay và blockchain:** nhập cấu hình từng nhà cung cấp vào Core. Đăng ký lại origin hoặc callback HTTPS ở nhà cung cấp theo tính năng đang bật. Ví dụ SePay IPN đi qua `https://api.homespace.id.vn/api/v1/membership/sepay/ipn`. Với blockchain, xác nhận cặp RPC, chain ID và địa chỉ contract cùng thuộc mạng định dùng.
 
 ### Keycloak và HTTPS
 
-- Đặt `KC_HOSTNAME=https://homespace-auth.nvminh162.id.vn`, `KC_HOSTNAME_STRICT=true`, `KC_HTTP_ENABLED=true` và `KC_PROXY_HEADERS=xforwarded`. Traefik nhận HTTPS và chuyển tiếp đến Keycloak cổng `8080`. Management health của Keycloak dùng nội bộ.
+- Đặt `KC_HOSTNAME=https://auth.homespace.id.vn`, `KC_HOSTNAME_STRICT=true`, `KC_HTTP_ENABLED=true` và `KC_PROXY_HEADERS=xforwarded`. Traefik nhận HTTPS và chuyển tiếp đến Keycloak cổng `8080`. Management health của Keycloak dùng nội bộ.
 - Khi khởi tạo mới, dùng `start --import-realm` với realm và provider đã đóng gói. Với realm đã tồn tại, chỉnh client qua Keycloak Admin Console.
 - File realm trong thư mục import dùng tên `homespace-platform-realm.json`, khớp trường `realm` trong JSON. Keycloak chỉ đọc các file kết thúc bằng `-realm.json` khi import thư mục lúc khởi động. Kiểm tra endpoint `/realms/homespace-platform/.well-known/openid-configuration` trả HTTP `200` sau khi image mới khởi động.
 - Trong realm `homespace-platform`, cấu hình **Valid redirect URIs** và **Web Origins** cho hai client. Giới hạn URL redirect theo domain và kiểm tra lại URL chuyển hướng sau logout.
 
 | Client | Valid redirect URI | Web Origin |
 | --- | --- | --- |
-| `homespace-id` | `https://homespace.nvminh162.id.vn/*` | `https://homespace.nvminh162.id.vn` |
-| `homespace-admin-id` | `https://homespace-admin.nvminh162.id.vn/*` | `https://homespace-admin.nvminh162.id.vn` |
+| `homespace-id` | `https://homespace.id.vn/*` | `https://homespace.id.vn` |
+| `homespace-admin-id` | `https://admin.homespace.id.vn/*` | `https://admin.homespace.id.vn` |
 
 [Keycloak hostname](https://www.keycloak.org/server/hostname) · [Keycloak sau reverse proxy](https://www.keycloak.org/server/reverseproxy)
 
 ### Domains và cập nhật độc lập
 
 - Keycloak và các công cụ quản trị giữ trong Domains của `homespace-infra`.
-- Domain `homespace-api.nvminh162.id.vn` nằm ở Application Gateway, container port 8080, path `/`, HTTPS.
-- Domain `homespace-notify.nvminh162.id.vn` nằm ở Application Notification khi service đó được deploy, container port 8085, path `/socket.io` theo route ứng dụng.
+- Domain `api.homespace.id.vn` nằm ở Application Gateway, container port 8080, path `/`, HTTPS.
+- Domain `notification.homespace.id.vn` nằm ở Application Notification khi service đó được deploy, container port 8085, path `/socket.io` theo route ứng dụng.
 - Core hiện chưa có domain public. Kiểm tra health trong container và kiểm thử REST qua Gateway sau khi Gateway được deploy.
 - Mỗi Docker Hub repository gắn webhook của đúng Application trong tab Webhooks. GitHub Actions của backend chỉ build/test/push. Webhook Application có dạng `/api/deploy/TOKEN`; webhook infra Compose có `/api/deploy/compose/TOKEN`. Không dùng webhook infra để cập nhật Core.
 - Sau publish, theo dõi deployment và health của Application tương ứng; không deploy lại cả infra khi chỉ thay backend.
@@ -400,24 +402,24 @@ Admin dùng `BrowserRouter`. Nếu repo chưa có SPA rewrite, thêm `vercel.jso
 
 | Project | Biến | Giá trị |
 | --- | --- | --- |
-| Web | `NEXT_PUBLIC_GATEWAY_BASE_URL` | `https://homespace-api.nvminh162.id.vn` |
-| Web | `NEXT_PUBLIC_KEYCLOAK_BASE_URL` | `https://homespace-auth.nvminh162.id.vn` |
+| Web | `NEXT_PUBLIC_GATEWAY_BASE_URL` | `https://api.homespace.id.vn` |
+| Web | `NEXT_PUBLIC_KEYCLOAK_BASE_URL` | `https://auth.homespace.id.vn` |
 | Web | `NEXT_PUBLIC_KEYCLOAK_REALM` | `homespace-platform` |
 | Web | `NEXT_PUBLIC_KEYCLOAK_CLIENT_ID` | `homespace-id` |
-| Web | `NEXT_PUBLIC_SITE_URL` | `https://homespace.nvminh162.id.vn` |
-| Web | `NEXT_PUBLIC_NOTIFICATION_SOCKET_URL` | `https://homespace-notify.nvminh162.id.vn` |
-| Admin | `VITE_GATEWAY_BASE_URL` | `https://homespace-api.nvminh162.id.vn` |
-| Admin | `VITE_KEYCLOAK_BASE_URL` | `https://homespace-auth.nvminh162.id.vn` |
+| Web | `NEXT_PUBLIC_SITE_URL` | `https://homespace.id.vn` |
+| Web | `NEXT_PUBLIC_NOTIFICATION_SOCKET_URL` | `https://notification.homespace.id.vn` |
+| Admin | `VITE_GATEWAY_BASE_URL` | `https://api.homespace.id.vn` |
+| Admin | `VITE_KEYCLOAK_BASE_URL` | `https://auth.homespace.id.vn` |
 | Admin | `VITE_KEYCLOAK_REALM` | `homespace-platform` |
 | Admin | `VITE_KEYCLOAK_CLIENT_ID` | `homespace-admin-id` |
-| Admin | `VITE_WEB_APP_URL` | `https://homespace.nvminh162.id.vn` |
+| Admin | `VITE_WEB_APP_URL` | `https://homespace.id.vn` |
 
 ### Gắn domain production
 
-1. Mở project `homespace-web` → **Settings → Domains → Add Domain**. Nhập `homespace.nvminh162.id.vn`, gán domain cho **Production** và mở phần DNS instructions. Tạo bản ghi được Vercel yêu cầu trong DNS zone `nvminh162.id.vn`.
-2. Làm tương tự cho project `homespace-admin` với `homespace-admin.nvminh162.id.vn`. Nếu Vercel yêu cầu TXT để xác minh quyền sở hữu, thêm đúng record host và value mà màn hình hiển thị.
+1. Mở project `homespace-web` → **Settings → Domains → Add Domain**. Nhập `homespace.id.vn`, gán domain cho **Production** và mở phần DNS instructions. Tạo bản ghi được Vercel yêu cầu trong DNS zone `homespace.id.vn`.
+2. Làm tương tự cho project `homespace-admin` với `admin.homespace.id.vn`. Nếu Vercel yêu cầu TXT để xác minh quyền sở hữu, thêm đúng record host và value mà màn hình hiển thị.
 3. Chờ cả hai domain báo **Valid Configuration** và HTTPS hoạt động. Dùng hai domain chính thức để kiểm tra login vì Keycloak và Gateway đã được cấu hình theo chúng.
-4. Mở `https://homespace.nvminh162.id.vn` và `https://homespace-admin.nvminh162.id.vn/settings/account-security`. Kiểm tra cả trang tĩnh `/silent-check-sso.html` và `/firebase-messaging-sw.js` trên mỗi domain. Hai URL này cần trả đúng file tĩnh, gồm HTML SSO và JavaScript service worker.
+4. Mở `https://homespace.id.vn` và `https://admin.homespace.id.vn/settings/account-security`. Kiểm tra cả trang tĩnh `/silent-check-sso.html` và `/firebase-messaging-sw.js` trên mỗi domain. Hai URL này cần trả đúng file tĩnh, gồm HTML SSO và JavaScript service worker.
 
 **Kết quả cần thấy:** hai project có Production deployment thành công, domain riêng có HTTPS, trang con admin mở được khi dán URL trực tiếp.
 
@@ -429,7 +431,7 @@ Admin dùng `BrowserRouter`. Nếu repo chưa có SPA rewrite, thêm `vercel.jso
 
 - [ ] **Backend:** chạy lại ba lệnh ở mục **Deploy lần đầu và xác minh backend**. Gateway readiness trả `UP`, danh sách tin trả HTTP `200` qua Core, OIDC discovery trả issuer đúng domain Auth. Thử từ một mạng khác để kiểm tra đường đi công cộng.
 - [ ] **Người dùng và admin:** mở hai profile trình duyệt riêng. Đăng nhập, đăng xuất, tải lại trang và hoàn thành onboarding bằng tài khoản thử. Kiểm tra người dùng thường bị từ chối ở trang hoặc API quản trị. Xác nhận tài khoản admin bootstrap có quyền phù hợp.
-- [ ] **Socket.IO:** mở **DevTools → Network → WS**. Trên web, xác nhận notification socket đến `homespace-notify.nvminh162.id.vn/socket.io/`. Trên admin, xác nhận notification socket đến `homespace-api.nvminh162.id.vn/api/v1/notifications/socket.io/`. Với WebSocket upgrade, trạng thái thường là `101`. Gửi chat giữa hai tài khoản, rồi thử một nghiệp vụ có thông báo để kiểm tra realtime và Kafka. Chat vẫn dùng trạng thái chưa đọc riêng của hội thoại.
+- [ ] **Socket.IO:** mở **DevTools → Network → WS**. Trên web, xác nhận notification socket đến `notification.homespace.id.vn/socket.io/`. Trên admin, xác nhận notification socket đến `api.homespace.id.vn/api/v1/notifications/socket.io/`. Với WebSocket upgrade, trạng thái thường là `101`. Gửi chat giữa hai tài khoản, rồi thử một nghiệp vụ có thông báo để kiểm tra realtime và Kafka. Chat vẫn dùng trạng thái chưa đọc riêng của hội thoại.
 - [ ] **Hợp đồng và thanh toán:** dùng dữ liệu thử để upload tệp, tạo PDF qua Gotenberg và thử các luồng VNPT, SmartCA, SePay đang bật. Với webhook, đối chiếu kết quả trong dashboard nhà cung cấp và log backend, đồng thời xác nhận trạng thái nghiệp vụ đã cập nhật trong UI.
 - [ ] **Core mất kết nối:** trên môi trường thử, kiểm tra Gateway và hai frontend khi Core dừng, rồi xác nhận phục hồi khi Core lên lại. Hai frontend hiện đọc `/api/v1/actuator/health` của Gateway. Nếu Gateway vẫn `UP` khi Core đã dừng, cần nối tình trạng Core vào endpoint frontend đang đọc để đáp ứng yêu cầu chặn truy cập khi Core down.
 - [ ] **CI/CD và dữ liệu:** publish một phiên bản thử, cập nhật tag ở `hs-infra`, xác nhận Dokploy tự chạy đúng commit và dữ liệu vẫn còn. Sửa một thay đổi phù hợp trên frontend để xác nhận Vercel deploy từ `master`.
