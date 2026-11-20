@@ -10,7 +10,7 @@ Triển khai Compose **`hs-infra`** bằng [`compose.production.yml`](../compose
 
 **Trình tự:** [Tạo EC2 và DNS](#1-chọn-ec2-và-chuẩn-bị-dns) → [Cài Dokploy](#2-cài-dokploy) → [Chuẩn bị image](#3-publish-image-lên-docker-hub) → [Deploy hạ tầng từ Git](#deploy-hạ-tầng-trước) → [Deploy backend](#4-deploy-mỗi-backend-thành-application-riêng) → [Deploy Vercel](#5-deploy-frontend-trên-vercel) → [Kiểm tra](#6-kiểm-tra-trước-khi-mở-truy-cập).
 
-**Phương án hiện tại:** **build/push image `hs-keycloak` thành công → deploy Compose `hs-infra`**. Compose dùng provider **Git** để lấy YAML từ repo `hs-infra`, branch `master`; backend ngoài cặp thử nghiệm Discovery/Gateway vẫn dùng Application Docker riêng. GitHub Actions chỉ build/push image. Bấm **Deploy** trên Compose `hs-infra` để Dokploy lấy YAML mới và pull image. Chưa có bước tự động nối hai việc này; xem [cách cập nhật](#cập-nhật-từ-git-và-thời-điểm-deploy).
+**Phương án hiện tại:** **build/push image `hs-keycloak` thành công → deploy Compose `hs-infra`**. Compose dùng provider **Git** để lấy YAML từ repo `hs-infra`, branch `master`; backend ngoài cặp thử nghiệm Discovery/Gateway vẫn dùng Application Docker riêng. GitHub Actions chỉ build/push image. Bấm **Deploy** trên Compose `hs-infra` để Dokploy lấy YAML mới và pull image. Infra chủ động deploy thủ công: tắt Autodeploy, không gắn webhook GitHub/Docker Hub và không thêm job deploy vào workflow. Pipeline Keycloak chỉ build/publish image, độc lập với triển khai infra; xem [cách cập nhật](#cập-nhật-từ-git-và-thời-điểm-deploy).
 
 ## 1. Chọn EC2 và chuẩn bị DNS
 
@@ -110,6 +110,15 @@ Nếu chuyển hệ thống đang dùng domain cũ, cập nhật cả Domains c�
 
 ## Deploy hạ tầng trước
 
+### Chuyển infra từ Raw về Git, không tự động deploy
+
+1. Mở **chính Compose infra đang dùng** → General, tắt **Autodeploy**. Không tạo Compose mới, không đổi App Name/project name hoặc xóa volumes.
+2. Provider → **Git**: Repository URL `https://github.com/homespace-platform/hs-infra.git`, Branch `master`, Compose Path `./compose.production.yml` → Save. Không dùng Application hoặc Build Path.
+3. Giữ Environment, Domains và hai File Mount của Compose này. YAML hiện tại tham chiếu `../files/01-create-databases.sql` và `../files/servers.json`; đổi về Git không tự tạo chúng. Nếu chưa có, hoàn tất mục File Mount bên dưới trước khi Deploy.
+4. Xóa/vô hiệu hóa webhook tới **Compose infra** trong Docker Hub repo `hs-keycloak` và GitHub repo `hs-infra`, nếu trước đây đã tạo. Giữ webhook backend riêng theo phương án của backend; không xóa nhầm webhook Discovery/Gateway.
+5. Khi cần cập nhật, đưa YAML lên `master`, chờ image Keycloak sẵn sàng nếu có thay đổi image, rồi bấm **Deploy** trên infra. Push Git hoặc image mới sẽ không tự triển khai infra. Không cần sửa workflow publish image để thực hiện việc này.
+6. Kiểm tra deployment, container health, dữ liệu Keycloak và các domain sau khi deploy. Nếu App Name đã đổi từ lần tạo lại trước đó, đối chiếu named volumes với stack cũ trước; thay provider không tự khôi phục dữ liệu ở project khác.
+
 Compose **`hs-infra`** triển khai cả **11 service hạ tầng**, gồm Keycloak và các dependency PostgreSQL/Kafka. `hs-keycloak` là tên image trên Docker Hub; `keycloak` là tên service trong Compose. Thẻ Compose `hs-keycloak` trong ảnh trước đó được đặt nhầm tên. Nếu thẻ này chưa deploy và chưa có dữ liệu, đổi tên hiển thị thành `hs-infra` trước khi triển khai. Với stack đã chạy, giữ nguyên định danh Compose, app name và named volumes để tránh tạo database mới. Trên EC2 mới, nếu không phục hồi backup, database sẽ có dữ liệu mới.
 
 1. Trong Docker Hub, chuẩn bị repo **`nvminh162/hs-keycloak`**. Trong GitHub repo `hs-infra` → **Settings → Secrets and variables → Actions**, thêm `DOCKERHUB_USERNAME=nvminh162` và `DOCKERHUB_TOKEN` có quyền push. Nếu image private, thêm registry Docker Hub trong Dokploy bằng token pull riêng.
@@ -183,11 +192,7 @@ Luồng hiện tại: **push thay đổi repo `hs-infra` lên Git → chờ Acti
 | SQL init hoặc cấu hình pgAdmin | Cập nhật File Mount tương ứng; SQL init không chạy lại với database đã tồn tại. |
 | Một backend riêng | Build/publish và deploy đúng Application backend; không deploy lại infra. |
 
-**Tự động khi push Git (tùy chọn):** copy Compose Webhook URL từ Dokploy, thêm vào GitHub repo → **Settings → Webhooks → Add webhook**, Content type `application/json`, sự kiện **Just the push event**, giữ SSL verification bật. Hoàn tất thiết lập rồi bật **Autodeploy**. Handler kiểm tra branch `master` và Watch Paths. Webhook Git chạy ngay khi push, **không chờ Actions**; với thay đổi cần image mới, có thể deploy image `latest` cũ và không có lần deploy thứ hai sau khi build xong. Vì vậy luồng hiện tại giữ deploy thủ công sau CI.
-
-**Tự động sau khi image publish (chưa triển khai):** phương án gọn là thêm bước gọi Dokploy sau job publish thành công, rồi tránh webhook push Git gây deploy sớm. Cách này thay đổi yêu cầu hiện tại “Actions chỉ publish image”; không được coi là đã có trong workflow. Khi có nhiều commit liên tiếp, cũng cần bảo đảm YAML và image thuộc đúng bản phát hành.
-
-**Docker Hub webhook:** không gắn trực tiếp webhook image của `hs-keycloak` vào Compose dùng provider Git trên Dokploy **v0.31.4**: payload không có branch Git và bị từ chối `Branch Not Match`. Luồng Docker Hub → Raw trước đây là phương án khác, không tự đồng bộ YAML. Các backend dùng **Application Docker** vẫn có thể dùng webhook Docker Hub riêng của chúng. Giữ kín token trong mọi webhook URL.
+**Infra không dùng CI/CD deploy:** giữ Autodeploy tắt, không gắn webhook GitHub/Docker Hub vào Compose này. Workflow `publish-keycloak.yml` vẫn chỉ build/push image; image mới không tự làm infra restart. Khi muốn cập nhật, bấm Deploy sau khi chọn đúng YAML và image cần dùng. Các backend có cấu hình deploy riêng, không bị thay đổi bởi quyết định này.
 
 Giữ nguyên Compose hiện có và named volumes khi cập nhật; đổi tên project/tạo stack mới có thể tạo volume khác. Muốn quay về image cũ, đặt `KEYCLOAK_IMAGE` thành tag SHA đã publish rồi Deploy; kiểm tra tương thích schema và backup trước khi hạ phiên bản Keycloak.
 
