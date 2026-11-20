@@ -19,7 +19,6 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network]
 
     postgres-ai:
         image: pgvector/pgvector:pg16
@@ -35,7 +34,6 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network]
 
     mongodb:
         image: mongo:7
@@ -56,7 +54,6 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network]
 
     redis:
         image: redis:7-alpine
@@ -71,7 +68,6 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network]
 
     gotenberg:
         image: gotenberg/gotenberg:8
@@ -81,7 +77,6 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network]
 
     kafka:
         image: apache/kafka:4.3.1
@@ -111,7 +106,6 @@ services:
             timeout: 15s
             retries: 12
             start_period: 30s
-        networks: [hs-network]
 
     kafka-topics:
         image: apache/kafka:4.3.1
@@ -133,7 +127,6 @@ services:
             KAFKA_DLT_TOPIC: ${KAFKA_DLT_TOPIC:?Set KAFKA_DLT_TOPIC}
             KAFKA_NEWS_TOPIC: ${KAFKA_NEWS_TOPIC:?Set KAFKA_NEWS_TOPIC}
             KAFKA_NEWS_DLT_TOPIC: ${KAFKA_NEWS_DLT_TOPIC:?Set KAFKA_NEWS_DLT_TOPIC}
-        networks: [hs-network]
 
     keycloak:
         image: ${KEYCLOAK_IMAGE:?Set KEYCLOAK_IMAGE}
@@ -172,7 +165,6 @@ services:
             timeout: 5s
             retries: 12
             start_period: 90s
-        networks: [hs-network]
 
     pgadmin:
         image: dpage/pgadmin4:8
@@ -195,7 +187,6 @@ services:
               read_only: true
               bind:
                   create_host_path: false
-        networks: [hs-network]
 
     redis-insight:
         image: redis/redisinsight:3.8.0
@@ -207,7 +198,6 @@ services:
             - '127.0.0.1:5540:5540'
         volumes:
             - hs-redis-insight-data:/data
-        networks: [hs-network]
 
     kafka-ui:
         image: provectuslabs/kafka-ui:v0.7.2
@@ -221,7 +211,6 @@ services:
             SERVER_PORT: 9022
             KAFKA_CLUSTERS_0_NAME: HomeSpace
             KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: ${KAFKA_BOOTSTRAP_SERVER:?Set KAFKA_BOOTSTRAP_SERVER}
-        networks: [hs-network]
 
 
 volumes:
@@ -234,6 +223,7 @@ volumes:
     hs-redis-insight-data:
 
 networks:
-    hs-network:
-        external: true
+    default:
         name: hs-network
+        driver: overlay
+        attachable: true

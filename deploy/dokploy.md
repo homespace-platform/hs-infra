@@ -2,11 +2,13 @@
 
 Hai frontend chạy trên Vercel. Backend, Keycloak và hạ tầng dữ liệu chạy trên một EC2 do Dokploy quản lý. GitHub Actions build image và đẩy lên Docker Hub. Mỗi backend là một Dokploy Application riêng, pull image từ Docker Hub và có webhook/CI/CD riêng.
 
-Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production.yml). Chạy local bằng [`docker-compose.yml`](../docker-compose.yml) với `.env`, production dùng `.env.dokploy`. Cả hai có 11 service infra và 7 volume; backend không nằm trong Compose infra. Keycloak vẫn có Dockerfile và pipeline riêng trong repo này.
+Triển khai Compose **`hs-infra`** bằng [`compose.production.yml`](../compose.production.yml). Chạy local bằng [`docker-compose.yml`](../docker-compose.yml) với `.env`, production dùng `.env.dokploy`. Cả hai có 11 service infra và 7 volume; backend không nằm trong Compose infra. Repo `hs-infra` có pipeline build image **`nvminh162/hs-keycloak`**; Keycloak chạy dưới service `keycloak` bên trong Compose `hs-infra`, không tạo một Application/Compose Keycloak riêng.
 
-**Deploy Core riêng:** làm theo [hướng dẫn Application Core API](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md). Chọn **Create Service → Application → Docker**, dùng Environment và webhook của riêng Core. Infra và các Application dùng chung mạng overlay attachable `hs-network`, tạo một lần trước khi deploy.
+**Deploy Core riêng:** làm theo [hướng dẫn Application Core API](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md). Chọn **Create Service → Application → Docker**, dùng Environment và webhook của riêng Core. Infra và các Application dùng chung mạng overlay attachable `hs-network`; Compose `hs-infra` tự tạo mạng khi deploy lần đầu trên EC2 mới. Các Application triển khai sau chỉ gắn vào mạng đã có.
 
-**Trình tự:** [Tạo EC2 và DNS](#1-chọn-ec2-và-chuẩn-bị-dns) → [Cài Dokploy](#2-cài-dokploy) → [Build và publish image](#3-publish-image-lên-docker-hub) → [Deploy backend](#4-cấu-hình-backend-trong-docker-compose) → [Deploy Vercel](#5-deploy-frontend-trên-vercel) → [Kiểm thử và đưa vào sử dụng](#6-kiểm-tra-trước-khi-mở-truy-cập).
+**Trình tự:** [Tạo EC2 và DNS](#1-chọn-ec2-và-chuẩn-bị-dns) → [Cài Dokploy](#2-cài-dokploy) → [Chuẩn bị image](#3-publish-image-lên-docker-hub) → [Deploy hạ tầng từ Git](#deploy-hạ-tầng-trước) → [Deploy backend](#4-deploy-mỗi-backend-thành-application-riêng) → [Deploy Vercel](#5-deploy-frontend-trên-vercel) → [Kiểm tra](#6-kiểm-tra-trước-khi-mở-truy-cập).
+
+**Phương án hiện tại:** **build/push image `hs-keycloak` thành công → deploy Compose `hs-infra`**. Compose dùng provider **Git** để lấy YAML từ repo `hs-infra`, branch `master`; các backend dùng Application Docker riêng. GitHub Actions chỉ build/push image. Bấm **Deploy** trên Compose `hs-infra` để Dokploy lấy YAML mới và pull image. Chưa có bước tự động nối hai việc này; xem [cách cập nhật](#cập-nhật-từ-git-và-thời-điểm-deploy).
 
 ## 1. Chọn EC2 và chuẩn bị DNS
 
@@ -49,7 +51,7 @@ Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production
 
 1. Đăng nhập iNET OnePortal → **Tên miền → Danh sách → homespace.id.vn → Bản ghi**. Dùng **Thêm bản ghi / Add record** bốn lần cho host `api`, `auth`, `notification`, `dokploy`.
 2. Mỗi bản ghi đặt **Type `A`**, **Host/Name** như bảng, **Value** là Elastic IP hiện đang gắn với EC2, **TTL** khoảng 300 giây nếu nhà cung cấp cho chọn. Value chỉ chứa IP, không có `https://`, port hoặc path. Nếu DNS đang dùng Cloudflare, chọn **DNS only** trong lần thiết lập HTTPS đầu tiên. Hai bản ghi Vercel làm ở bước 5 sau khi thêm domain vào đúng project và lấy target chính xác; không trỏ `@`/`admin` về EC2.
-3. Trên Windows PowerShell, kiểm tra bốn host đều trả về đúng IP. Nếu vừa sửa một bản ghi cũ, đợi cache hết hạn và kiểm tra lại.
+3. Trên Windows PowerShell, kiểm tra bốn host phân giải được. Với DNS không qua proxy, địa chỉ trả về phải là Elastic IP. Nếu vừa sửa bản ghi cũ, đợi cache hết hạn và kiểm tra lại.
 
    ```powershell
    'api','auth','notification','dokploy' | ForEach-Object {
@@ -58,7 +60,9 @@ Triển khai hạ tầng bằng [`compose.production.yml`](../compose.production
    }
    ```
 
-**Kết quả cần thấy:** EC2 `Running`, trạng thái kiểm tra đạt, bốn bản ghi backend trỏ cùng Elastic IP. [Thiết lập domain trên Vercel](https://vercel.com/docs/domains/set-up-custom-domain)
+Nếu bật proxy/bảo vệ OneShield, DNS công khai có thể trả IP của proxy; đối chiếu IP máy chủ gốc trong iNET với Elastic IP. Dùng **Full (Strict)** khi EC2 đã có chứng chỉ hợp lệ đúng domain. Flexible dùng HTTP từ proxy tới EC2, có thể gây vòng lặp khi Traefik chuyển HTTP sang HTTPS.
+
+**Kết quả cần thấy:** EC2 `Running`, trạng thái kiểm tra đạt, bốn bản ghi backend có đích gốc cùng Elastic IP. [Thiết lập domain trên Vercel](https://vercel.com/docs/domains/set-up-custom-domain)
 
 Nếu chuyển hệ thống đang dùng domain cũ, cập nhật cả Domains của Dokploy/Vercel, env URL/issuer/CORS, redirect URI của Keycloak, Firebase authorized domains, S3 CORS và callback nhà cung cấp theo các bảng bên dưới. Các file `.env.dokploy` đã tồn tại cần được đối chiếu lại; việc sửa hướng dẫn này không tự thay đổi env hay DNS đang chạy. Giữ nguyên database, realm/client IDs và secret. Sau khi đổi env frontend, deploy lại để bản build nhận URL mới; webhook Docker Hub/GitHub cũng phải dùng domain Dokploy mới.
 
@@ -92,45 +96,87 @@ Nếu chuyển hệ thống đang dùng domain cũ, cập nhật cả Domains c�
    ```
 
 4. Mở `http://127.0.0.1:3300`, tạo tài khoản quản trị và bật 2FA hoặc passkey.
-5. Khi DNS `dokploy.homespace.id.vn` đã trỏ đúng, vào **Settings → Web Server → Server Domain**. Điền `dokploy.homespace.id.vn`, bật **HTTPS**, chọn **Let's Encrypt** và lưu. Mở domain HTTPS trong trình duyệt và thử đăng nhập lại trước khi đóng tunnel. Docker Hub cần gọi được webhook qua HTTPS từ Internet. Giữ cổng `3000` riêng tư trong Security Group.
-6. Luồng Raw Compose/Docker image nhận webhook từ Docker Hub không cần kết nối GitHub App trong Dokploy. GitHub Actions build từ repository và đăng nhập Docker Hub bằng secrets riêng; cấu hình hai secrets này ở phần publish image bên dưới.
+5. Khi DNS `dokploy.homespace.id.vn` đã trỏ đúng, vào **Settings → Web Server → Server Domain**. Điền `dokploy.homespace.id.vn`, bật **HTTPS**, chọn **Let's Encrypt** và lưu. Mở domain HTTPS trong trình duyệt và thử đăng nhập lại trước khi đóng tunnel. Các webhook sử dụng domain HTTPS này. Giữ cổng `3000` riêng tư trong Security Group.
+6. Provider **Git** dùng URL repository; repo public qua HTTPS không cần SSH key, repo private cần cấp quyền đọc. Không cần kết nối GitHub App chỉ để dùng Git provider. GitHub Actions đăng nhập Docker Hub bằng secrets riêng ở phần publish image.
 
-**Kết quả cần thấy:** mở được `https://dokploy.homespace.id.vn` và đăng nhập được; Docker Hub có thể truy cập endpoint webhook HTTPS.
+**Kết quả cần thấy:** mở được `https://dokploy.homespace.id.vn` và đăng nhập được qua HTTPS.
 
 ## Deploy hạ tầng trước
 
-1. Trong Docker Hub, tạo private repo **`hs-keycloak`**. Trong GitHub repo `hs-infra` → **Settings → Secrets and variables → Actions**, thêm `DOCKERHUB_USERNAME=nvminh162` và `DOCKERHUB_TOKEN` có quyền push vào repository đó. Thêm registry Docker Hub trong Dokploy bằng token pull riêng.
-2. Hoàn thành cấu hình Dokploy và Docker Hub webhook ở phần **Tự động deploy từ Docker Hub** trước khi push workflow lên `master`. GitHub Actions chỉ có job `publish`, build/push tag Git SHA và `latest`; Docker Hub gửi sự kiện image push tới Dokploy.
-3. Mở `.env.dokploy` trên máy cá nhân. Kiểm tra `KEYCLOAK_IMAGE=nvminh162/hs-keycloak:latest` và `PGADMIN_DEFAULT_EMAIL=homespace.id.vn@gmail.com`. Luồng tự động cập nhật Keycloak dùng tag `latest`. Nếu đổi từ image cũ, cập nhật `KEYCLOAK_IMAGE` trong Dokploy Environment và Save trước khi chạy pipeline; repo `hs-keycloak` phải được tạo và token CI có quyền push vào đó. Nếu phải tạo file trên một checkout mới, dùng `.env.example` làm mẫu, đặt mật khẩu production riêng, `KEYCLOAK_HOSTNAME=https://auth.homespace.id.vn`, `KEYCLOAK_HOSTNAME_STRICT=true` và tạo `KAFKA_CLUSTER_ID` bằng lệnh sau. Giữ nguyên ID và credential theo volume đang dùng khi redeploy.
+Compose **`hs-infra`** triển khai cả **11 service hạ tầng**, gồm Keycloak và các dependency PostgreSQL/Kafka. `hs-keycloak` là tên image trên Docker Hub; `keycloak` là tên service trong Compose. Thẻ Compose `hs-keycloak` trong ảnh trước đó được đặt nhầm tên. Nếu thẻ này chưa deploy và chưa có dữ liệu, đổi tên hiển thị thành `hs-infra` trước khi triển khai. Với stack đã chạy, giữ nguyên định danh Compose, app name và named volumes để tránh tạo database mới. Trên EC2 mới, nếu không phục hồi backup, database sẽ có dữ liệu mới.
+
+1. Trong Docker Hub, chuẩn bị repo **`nvminh162/hs-keycloak`**. Trong GitHub repo `hs-infra` → **Settings → Secrets and variables → Actions**, thêm `DOCKERHUB_USERNAME=nvminh162` và `DOCKERHUB_TOKEN` có quyền push. Nếu image private, thêm registry Docker Hub trong Dokploy bằng token pull riêng.
+2. Chạy **GitHub → Actions → Publish Keycloak image → Run workflow → master**, chờ thành công và xác nhận tag `latest` có trên Docker Hub. Workflow [publish-keycloak.yml](../.github/workflows/publish-keycloak.yml) chỉ có job `publish`, build/push tag Git SHA và `latest`. Nó không tự chạy khi chỉ sửa Compose hoặc tài liệu.
+3. Mở `.env.dokploy` trên máy cá nhân. Kiểm tra `KEYCLOAK_IMAGE=nvminh162/hs-keycloak:latest`, `KEYCLOAK_ADMIN_USERNAME=homespace`, `KEYCLOAK_HOSTNAME=https://auth.homespace.id.vn`, `KEYCLOAK_HOSTNAME_STRICT=true` và `PGADMIN_DEFAULT_EMAIL=homespace.id.vn@gmail.com`. Username bootstrap chỉ tạo tài khoản khi khởi tạo; đổi biến không đổi tên tài khoản trong database đã có. Nếu phải tạo file trên checkout mới, dùng `.env.example` làm mẫu và đặt mật khẩu production riêng. Chỉ tạo `KAFKA_CLUSTER_ID` mới khi khởi tạo cluster với volume mới; giữ nguyên ID và credential theo volume đang dùng khi redeploy.
 
    ```bash
    sudo docker run --rm --entrypoint /opt/kafka/bin/kafka-storage.sh apache/kafka:4.3.1 random-uuid
    ```
 
-4. Trong Dokploy, vào **Projects → Create Project**, đặt tên `HomeSpace`. Trong project chọn **Create Service → Docker Compose**, đặt tên `homespace-infra`. Chọn provider **Raw**, dán nội dung `compose.production.yml`, loại **Docker Compose**, rồi Save. Tạo external overlay attachable `hs-network` trước theo mục network. Raw không clone repository: hai file bind mount `postgres/init/01-create-databases.sql` và `pgadmin/servers.json` phải được tạo bằng **Advanced → Mounts → File Mount** từ nội dung file trong repo, chọn service `postgres`/`pgadmin` và target tương ứng `/docker-entrypoint-initdb.d/01-create-databases.sql`/`/pgadmin4/servers.json`; bỏ hai block bind mount tương ứng khỏi YAML đã dán để tránh trùng target, giữ các named volume dữ liệu. Hoàn tất Environment, mounts và Domains trước khi bật Autodeploy.
-5. Mở tab **Environment** của Compose, dán nội dung `.env.dokploy` rồi lưu. File này chứa credential và được Git bỏ qua. Kiểm tra biến và cú pháp từ gốc repo bằng `docker compose --env-file .env.dokploy -f compose.production.yml config --quiet`.
+4. Trên EC2 mới đã cài Dokploy, không cần tự chạy `docker network create`: Compose `hs-infra` tạo `hs-network` dạng `overlay`, `attachable` trong lần Deploy đầu. Dokploy đã khởi tạo Swarm; phải deploy trên manager của Swarm đó. Nếu đã tạo mạng thủ công hoặc còn mạng từ stack khác, đọc [trường hợp mạng đã tồn tại](#mạng-hs-network-đã-tồn-tại-từ-trước) trước khi chuyển sang cấu hình Compose quản lý mạng.
+5. Trong **Projects → homespace → production**, mở Compose hạ tầng và đặt tên hiển thị **`hs-infra`**. Nếu chưa có, chọn **Create Service → Docker Compose**, đặt tên `hs-infra`; không tạo thêm stack nếu đã có thẻ đặt nhầm tên `hs-keycloak`. Trong **General → Provider → Git**, điền:
 
-6. Trước lần chạy đầu, tạo DNS `A` cho `auth.homespace.id.vn` trỏ tới IPv4 công khai của EC2. Trong **General → Preview Compose**, kiểm tra file production có đủ 11 service. Trong **Domains**, thêm `auth.homespace.id.vn` → service `keycloak` → **Container Port `8080`**, Path `/`, bật HTTPS và chọn Let's Encrypt. Lưu toàn bộ thiết lập, sau đó hoàn thành phần auto deploy bên dưới để pipeline khởi chạy lần đầu. `postgres`, `postgres-ai`, `mongodb`, `redis`, `gotenberg`, `kafka` và `keycloak` cần chạy `healthy`. `kafka-topics` hoàn thành với `Exited (0)`, còn `pgadmin`, `redis-insight` và `kafka-ui` ở trạng thái `running`.
-7. Gọi OIDC discovery bên dưới và kiểm tra issuer kết thúc bằng `/realms/homespace-platform`. Mở Keycloak Admin Console và cấu hình redirect URI và Web Origins production theo mục **Keycloak và HTTPS**. Nếu bật Google login, điền client secret thật trong Keycloak production vì realm export mang giá trị đã che. Tài khoản quản trị Keycloak ở bước này phục vụ quản lý realm. Tài khoản admin ứng dụng sẽ được Core bootstrap khi deploy Core.
+   | Trường | Giá trị |
+   | --- | --- |
+   | Repository URL | `https://github.com/homespace-platform/hs-infra.git` |
+   | Branch | `master` |
+   | Compose Path | `./compose.production.yml` |
+   | Watch Paths | Để trống khi thiết lập lần đầu |
+   | Enable Submodules | Tắt |
+   | Loại triển khai | Docker Compose, không chọn Stack |
+   | Autodeploy | Tắt cho luồng deploy thủ công sau khi image publish |
+
+   Repo public qua HTTPS không cần SSH key. Repo private: dùng **Add SSH Key** và cấp quyền đọc repository cho public key tương ứng. Bấm **Save**. Không dùng `./docker-compose.yml`: đó là cấu hình local. Mỗi lần Deploy sẽ lấy YAML từ Git; bản sửa local chưa push lên `master` sẽ chưa được dùng.
+6. Hoàn tất hai [File Mount bên dưới](#file-mount-cho-postgresql-và-pgadmin), bao gồm thay đổi đường dẫn trong YAML trên Git, trước khi deploy lần đầu.
+7. Mở tab **Environment**, dán nội dung `.env.dokploy` rồi **Save**. File này chứa credential và được Git bỏ qua; không đưa vào repo hoặc chat. Sửa env local không tự sửa Environment trên Dokploy. Có thể kiểm tra cú pháp từ gốc repo bằng `docker compose --env-file .env.dokploy -f compose.production.yml config --quiet`; lệnh này không xác nhận file mount hay network đã tồn tại trên EC2.
+8. Trong **General → Preview Compose**, kiểm tra đủ 11 service; network `default` phải có `name: hs-network`, `driver: overlay`, `attachable: true`, không dùng `external: true` cho lần khởi tạo mới. Đây là mạng mặc định của mọi service infra không khai báo network riêng. Làm lần lượt theo [hướng dẫn thêm domain Keycloak](#keycloak-và-https): tạo DNS `auth`, kiểm tra Environment, thêm domain trong **Compose hs-infra → Domains**, lưu rồi Deploy. Không thêm domain Keycloak ở Settings → Web Server.
+9. Sau khi image **`nvminh162/hs-keycloak:latest`** đã publish thành công và lưu đủ cấu hình, vào Compose **`hs-infra` → General → Deploy**. Compose pull image đó cho service `keycloak` và triển khai cùng các service hạ tầng khác; không deploy Keycloak riêng. Theo dõi **Deployments**, **Logs** và **Containers**: `postgres`, `postgres-ai`, `mongodb`, `redis`, `gotenberg`, `kafka` và `keycloak` cần `healthy`; `kafka-topics` hoàn thành với `Exited (0)`; `pgadmin`, `redis-insight`, `kafka-ui` ở trạng thái `running`.
+10. Mở `https://auth.homespace.id.vn/admin/`, đăng nhập bằng `KEYCLOAK_ADMIN_USERNAME` và `KEYCLOAK_ADMIN_PASSWORD` trong Environment. Gọi OIDC discovery bên dưới, kiểm tra issuer là `https://auth.homespace.id.vn/realms/homespace-platform`. Realm mới được import từ image; realm đã tồn tại cần sửa client qua Admin Console. Nếu bật Google login, điền client secret thật vì realm export mang giá trị đã che. Tài khoản admin ứng dụng sẽ được Core bootstrap khi deploy Core.
 
    ```powershell
    curl.exe -fsS 'https://auth.homespace.id.vn/realms/homespace-platform/.well-known/openid-configuration'
    ```
 
-### Tự động deploy từ Docker Hub
+### File Mount cho PostgreSQL và pgAdmin
 
-Luồng: **GitHub Actions build/push image → Docker Hub webhook → Dokploy deploy Raw Compose**. Workflow [publish-keycloak.yml](../.github/workflows/publish-keycloak.yml) chỉ publish image; không gọi Dokploy API và không cần `DOKPLOY_DEPLOY_WEBHOOK` trong GitHub.
+Git tự lấy YAML mới, nhưng hai bind mount từ thư mục checkout có thể lỗi khi Dokploy clone lại repo. Theo [hướng dẫn Dokploy](https://docs.dokploy.com/docs/core/troubleshooting/volumes-mounts), dùng File Mount được lưu ngoài checkout:
 
-1. Trong Dokploy → Compose `homespace-infra` → **General**, giữ provider **Raw**, Save; Environment phải có `KEYCLOAK_IMAGE=nvminh162/hs-keycloak:latest`, Compose giữ `pull_policy: always`, sau đó bật **Autodeploy**.
-2. Mở **Deployments**, copy **Webhook URL** dạng `https://dokploy.homespace.id.vn/api/deploy/compose/TOKEN`. Giữ kín token trong URL.
-3. Docker Hub → **Repositories → nvminh162/hs-keycloak → Webhooks → New webhook**. Name `dokploy-keycloak`, URL dán webhook Compose vừa copy → Save.
-4. GitHub chỉ cần `DOCKERHUB_USERNAME` và `DOCKERHUB_TOKEN`; secret deploy cũ không còn được workflow sử dụng. Review/push workflow lên `master`, hoặc dùng **Actions → Publish Keycloak image → Run workflow → master**.
-5. Khi image được push, xem lịch sử delivery trong Docker Hub, rồi kiểm tra **Dokploy → Deployments → Containers**. GitHub Actions thành công chỉ xác nhận image đã publish, không chứng minh deployment đã healthy.
-6. Khi sửa YAML Compose hoặc file mount trong repo, cập nhật bản Raw/mount trên Dokploy và Save trước khi Deploy. Image push chỉ cập nhật image theo Compose đang lưu, không tự đồng bộ YAML từ Git.
+1. Vào **Advanced → Volumes/Mounts → Add Volume → File Mount**, tạo và Save từng file:
 
-Trong handler Compose của Dokploy **v0.31.4**, provider **Raw** không kiểm tra branch Git và không có bộ lọc tag Docker Hub. Workflow đang push hai tag SHA và `latest`, nên có thể tạo hai delivery/lượt deploy; không áp dụng quy tắc lọc tag của Application Docker vào Raw Compose. Provider **Git/GitHub** kiểm tra branch, nên payload Docker Hub có thể báo `Branch Not Match` nếu chuyển nhầm provider. Kiểm tra phiên bản nếu nâng Dokploy.
+   | File Path | Nội dung lấy từ repo |
+   | --- | --- |
+   | `01-create-databases.sql` | [`postgres/init/01-create-databases.sql`](../postgres/init/01-create-databases.sql) |
+   | `servers.json` | [`pgadmin/servers.json`](../pgadmin/servers.json) |
 
-Các named volumes tiếp tục được sử dụng khi webhook kích hoạt deploy. Khi cần quay về image cũ, điền tag SHA trước đó vào `KEYCLOAK_IMAGE` trong Dokploy Environment rồi deploy và kiểm tra khả năng tương thích schema Keycloak.
+2. Trong `compose.production.yml` **trên Git**, giữ nguyên target, quyền read-only và named volumes, đổi hai source như sau rồi đưa thay đổi lên `master` trước khi deploy:
+
+   | Service | Source hiện tại | Source cho File Mount |
+   | --- | --- | --- |
+   | `postgres` | `./postgres/init/01-create-databases.sql` | `../files/01-create-databases.sql` |
+   | `pgadmin` | `./pgadmin/servers.json` | `../files/servers.json` |
+
+   Đây là bước cấu hình cần thực hiện; việc cập nhật tài liệu này không sửa YAML hoặc push thay bạn. Không sửa bản Preview Compose vì lần deploy tiếp theo sẽ lấy lại YAML trên Git.
+3. Khi thay nội dung hai file trong repo, cập nhật cả nội dung File Mount trên Dokploy. Script PostgreSQL init chỉ chạy khi volume dữ liệu còn trống; sửa file không tự tạo hay migrate database đã tồn tại. Không xóa volume để ép chạy lại script.
+
+### Cập nhật từ Git và thời điểm deploy
+
+Luồng hiện tại: **push thay đổi repo `hs-infra` lên Git → chờ Actions build/push image `hs-keycloak` nếu có thay đổi Keycloak → bấm Deploy Compose `hs-infra` trên Dokploy → kiểm tra health**. Workflow chỉ publish image, không gọi Dokploy API và không dùng `DOKPLOY_DEPLOY_WEBHOOK`.
+
+| Thay đổi | Cách cập nhật |
+| --- | --- |
+| Compose YAML | Push lên `master`; lần Deploy tiếp theo Dokploy lấy YAML mới. Nếu cùng thay đổi Keycloak, chờ image mới trước. |
+| Provider, theme hoặc realm đóng gói trong image | Chờ workflow `Publish Keycloak image` thành công rồi Deploy. Realm đã tồn tại không được import đè tự động. |
+| Environment | Sửa trực tiếp trong Dokploy → Save → Deploy. Git không chứa `.env.dokploy`. |
+| SQL init hoặc cấu hình pgAdmin | Cập nhật File Mount tương ứng; SQL init không chạy lại với database đã tồn tại. |
+| Một backend riêng | Build/publish và deploy đúng Application backend; không deploy lại infra. |
+
+**Tự động khi push Git (tùy chọn):** copy Compose Webhook URL từ Dokploy, thêm vào GitHub repo → **Settings → Webhooks → Add webhook**, Content type `application/json`, sự kiện **Just the push event**, giữ SSL verification bật. Hoàn tất thiết lập rồi bật **Autodeploy**. Handler kiểm tra branch `master` và Watch Paths. Webhook Git chạy ngay khi push, **không chờ Actions**; với thay đổi cần image mới, có thể deploy image `latest` cũ và không có lần deploy thứ hai sau khi build xong. Vì vậy luồng hiện tại giữ deploy thủ công sau CI.
+
+**Tự động sau khi image publish (chưa triển khai):** phương án gọn là thêm bước gọi Dokploy sau job publish thành công, rồi tránh webhook push Git gây deploy sớm. Cách này thay đổi yêu cầu hiện tại “Actions chỉ publish image”; không được coi là đã có trong workflow. Khi có nhiều commit liên tiếp, cũng cần bảo đảm YAML và image thuộc đúng bản phát hành.
+
+**Docker Hub webhook:** không gắn trực tiếp webhook image của `hs-keycloak` vào Compose dùng provider Git trên Dokploy **v0.31.4**: payload không có branch Git và bị từ chối `Branch Not Match`. Luồng Docker Hub → Raw trước đây là phương án khác, không tự đồng bộ YAML. Các backend dùng **Application Docker** vẫn có thể dùng webhook Docker Hub riêng của chúng. Giữ kín token trong mọi webhook URL.
+
+Giữ nguyên Compose hiện có và named volumes khi cập nhật; đổi tên project/tạo stack mới có thể tạo volume khác. Muốn quay về image cũ, đặt `KEYCLOAK_IMAGE` thành tag SHA đã publish rồi Deploy; kiểm tra tương thích schema và backup trước khi hạ phiên bản Keycloak.
 
 [Dokploy Auto Deploy](https://docs.dokploy.com/docs/core/auto-deploy) · [Handler Compose webhook v0.31.4](https://github.com/Dokploy/dokploy/blob/v0.31.4/apps/dokploy/pages/api/deploy/compose/%5BrefreshToken%5D.ts)
 
@@ -151,7 +197,7 @@ ssh -i "$env:USERPROFILE\Downloads\homespace-ec2.pem" -N `
 | RedisInsight | `http://127.0.0.1:15540` | Thêm Redis database với host `redis`, port `6379`, user `default` và `REDIS_PASSWORD`. |
 | Kafka UI | `http://127.0.0.1:19022` | Chọn cluster `HomeSpace` và kiểm tra các topic. |
 
-Giữ Compose `homespace-infra` cho hạ tầng. Mỗi backend dùng một Application riêng, tham gia mạng overlay `hs-network`; cập nhật backend không deploy lại infra.
+Giữ Compose `hs-infra` cho hạ tầng, bao gồm service `keycloak`. Mỗi backend dùng một Application riêng, tham gia mạng overlay `hs-network`; cập nhật backend không deploy lại infra.
 
 [Hạ tầng TeleCare tham chiếu](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/tree/master/telecare-infrastructure) · [Compose trên Dokploy](https://docs.dokploy.com/docs/core/docker-compose)
 
@@ -311,22 +357,98 @@ Compose dùng cùng image để chạy migration một lần trước khi AI kh�
 
 **Kết quả cần thấy:** Docker Hub có tám image với tag SHA dùng cho bản deploy đầu tiên.
 
-TeleCare dùng Maven Jib để publish backend và workflow riêng để build Keycloak. Có thể lấy cách tách workflow đó cho HomeSpace. Workflow Keycloak HomeSpace chỉ build/push image; Docker Hub webhook kích hoạt deploy theo cấu hình Raw đang lưu trên Dokploy. [Workflow backend TeleCare](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/blob/master/.github/workflows/deploy.yml) · [Workflow Keycloak TeleCare](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/blob/master/.github/workflows/build-keycloak-image.yml) · [Docker và GitHub Actions](https://docs.docker.com/build/ci/github-actions/)
+TeleCare dùng Maven Jib để publish backend và workflow riêng để build Keycloak. HomeSpace cũng tách build image theo repository. Workflow Keycloak hiện chỉ build/push; Compose infra dùng Git và được deploy sau khi image sẵn sàng, theo [luồng cập nhật](#cập-nhật-từ-git-và-thời-điểm-deploy). [Workflow backend TeleCare](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/blob/master/.github/workflows/deploy.yml) · [Workflow Keycloak TeleCare](https://github.com/nvminh162-iuh/iuh-corporate-internship-project/blob/master/.github/workflows/build-keycloak-image.yml) · [Docker và GitHub Actions](https://docs.docker.com/build/ci/github-actions/)
 
 ## 4. Deploy mỗi backend thành Application riêng
 
-Mỗi repo backend có Dockerfile, workflow publish image, Environment và webhook riêng. Trên Dokploy tạo một Application cho mỗi backend, chọn Docker provider và image tương ứng; không thêm backend vào Compose `homespace-infra`.
+Mỗi repo backend có Dockerfile, workflow publish image, Environment và webhook riêng. Trên Dokploy tạo một Application cho mỗi backend, chọn Docker provider và image tương ứng; không thêm backend vào Compose `hs-infra`.
 
-### Core trước, Discovery và Gateway sau
+### Mạng dùng chung và thứ tự deploy
 
-1. Trên EC2 mới đã cài Dokploy, tạo mạng `hs-network` bằng Docker → Networks, driver `overlay`, bật `Attachable`. Hoặc chạy `sudo docker network create --driver overlay --attachable hs-network`. Nếu mạng đã tồn tại, dùng `sudo docker network inspect hs-network --format 'driver={{.Driver}} attachable={{.Attachable}}'` và xác nhận `overlay`, `true`; không tạo trùng hay xóa mạng đang dùng.
-2. Push và deploy Compose infra đã cập nhật. `compose.production.yml` nối cả 11 service vào external network `hs-network`, giữ nguyên volumes. Local `docker-compose.yml` vẫn dùng bridge trên máy local; không deploy file local lên Dokploy.
-3. Làm theo [hướng dẫn Core Application](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md): publish image, tạo Application, dán env Core, gắn mạng và deploy.
-4. Core tạm tắt Eureka khi Discovery chưa chạy. Khi deploy Discovery riêng, dùng hostname thật của Discovery cho URL Eureka và bật discovery của Core.
-5. Gateway dùng chung mạng, đăng ký Eureka, giữ `GATEWAY_INTERNAL_SECRET` khớp Core. Domain API route tới Application Gateway cổng 8080.
+1. Push cấu hình `compose.production.yml` mới lên Git trước khi bấm Deploy. Trên EC2 mới, Compose `hs-infra` tự tạo `hs-network`; không cần tạo mạng thủ công trước đó. Nếu Preview Compose còn `external: true` cho mạng này, Dokploy chưa dùng bản cấu hình mới.
+2. Deploy Compose `hs-infra` trước và chờ infra healthy. Cả 11 service dùng mạng mặc định `default` có tên thực tế `hs-network`, driver `overlay`, `attachable: true`. Service mới thêm vào Compose này cũng tự dùng mạng đó nếu không khai báo mạng khác. Không đổi volumes. Local `docker-compose.yml` vẫn dùng bridge trên máy local; không deploy file local lên Dokploy.
+3. Deploy Application Discovery trước, gắn `hs-network` với alias `discovery`, chờ healthy. Làm theo [hướng dẫn Discovery](https://github.com/homespace-platform/hs-discovery-server/blob/master/deploy/dokploy.md).
+4. Làm theo [hướng dẫn Core Application](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md): publish image, tạo Application, dán env Core, gắn mạng và deploy. Giữ `EUREKA_CLIENT_SERVICE_URL=http://discovery:8761/eureka/`, bật Eureka/Discovery theo env production; xác nhận Core xuất hiện trên Eureka.
+5. Deploy Gateway cùng mạng, alias `gateway`, đăng ký Eureka, giữ `GATEWAY_INTERNAL_SECRET` khớp Core và các service sử dụng. Domain API route tới Application Gateway cổng 8080. Kiểm tra `/api/v1/actuator/health` qua Gateway.
 6. Chat, News, Notification và AI tiếp tục triển khai theo cùng nguyên tắc Application và CI/CD độc lập, cùng mạng backend. Các bước build/runtime riêng của chúng phải được chuẩn bị trong repo tương ứng.
 
-Application dùng Docker Swarm; Compose container gắn được vào cùng overlay `hs-network` nhờ `Attachable=true`. Tên mạng ở production là tên external cố định, không có tiền tố project Compose. Giữ thêm `dokploy-network` do Dokploy quản lý cho các dịch vụ cần Traefik; không mở public port PostgreSQL/MongoDB/Redis/Kafka để nối các Application. Vòng đời deploy và Environment của từng service vẫn tách riêng.
+Application dùng Docker Swarm; Compose container gắn được vào cùng overlay `hs-network` nhờ `Attachable=true`. Tên mạng cố định là `hs-network`, không có tiền tố project Compose. Compose `hs-infra` sở hữu mạng; các Application chỉ tham gia, không tạo mạng khác cùng tên. Giữ thêm `dokploy-network` do Dokploy quản lý cho các dịch vụ cần Traefik; không mở public port PostgreSQL/MongoDB/Redis/Kafka để nối các Application. Vòng đời deploy và Environment của từng service vẫn tách riêng.
+
+Cấu hình tự tạo mạng trong Compose chủ `hs-infra`:
+
+```yaml
+networks:
+  default:
+    name: hs-network
+    driver: overlay
+    attachable: true
+```
+
+Sau lần Deploy đầu, kiểm tra trên EC2:
+
+```bash
+sudo docker network inspect hs-network --format 'driver={{.Driver}} attachable={{.Attachable}}'
+```
+
+Kết quả cần là `driver=overlay attachable=true`. Deploy lại cùng Compose tiếp tục dùng mạng hiện có. Không dùng thao tác xóa stack/`docker compose down` để cập nhật image: Compose có thể cố xóa mạng mà các Application khác đang dùng. Lệnh Deploy thông thường mới là luồng cập nhật.
+
+#### Mạng `hs-network` đã tồn tại từ trước
+
+Nếu đã chạy lệnh tạo mạng thủ công theo hướng dẫn cũ, mạng đó không có nhãn sở hữu của Compose. Cấu hình tự tạo mới không tự nhận quyền quản lý mạng của stack khác hoặc mạng thủ công; Compose có thể báo nhãn `com.docker.compose.network` không đúng.
+
+Kiểm tra, không xóa mạng:
+
+```bash
+sudo docker network inspect hs-network --format 'driver={{.Driver}} attachable={{.Attachable}} labels={{json .Labels}}'
+```
+
+Với môi trường đã có mạng dùng chung, giữ cách tham chiếu external trong **bản YAML triển khai của môi trường đó** thay cho block tự tạo ở trên; không khai báo thêm `driver`/`attachable` cùng `external: true`:
+
+```yaml
+networks:
+  default:
+    external: true
+    name: hs-network
+```
+
+Mạng phải là overlay/attachable và thuộc đúng Swarm. Không tự xóa hoặc tạo lại mạng đang dùng để đổi quyền sở hữu. Cấu hình external chỉ dành cho trường hợp mạng đã có; trên máy mới không có mạng, dùng cấu hình tự tạo của `compose.production.yml`.
+
+**Tạo Application mới: cấu hình một lần, giữ khi redeploy**
+
+Docker không tự chọn `hs-network` cho một Dokploy Application mới. `EXPOSE` trong Dockerfile, biến env hoặc việc cùng project Dokploy không tự gắn network. Trước lần Deploy đầu:
+
+1. Chọn đúng server/Swarm chứa `hs-network` và infra.
+2. Vào **Advanced → Networks**, thêm `hs-network`, giữ `dokploy-network`. Nếu dùng **Swarm Settings → Network**, thêm Target `hs-network` và Aliases theo bảng rồi **Save Networks**. Nếu danh sách chưa hiện mạng, refresh/sync trên đúng server.
+3. Cấu hình alias cố định, không dùng tên container hoặc tên service Dokploy sinh ngẫu nhiên trong env:
+
+   | Application | Alias trên `hs-network` |
+   | --- | --- |
+   | Discovery | `discovery` |
+   | Core | `core-api` |
+   | Gateway | `gateway` |
+   | Chat | `chat` |
+   | News | `news` |
+   | Notification | `notification` |
+   | AI | `ai` |
+
+4. Dán Environment của đúng service, lưu, Deploy rồi kiểm tra health. Ví dụ backend truy cập `postgres:5432`, `mongodb:27017`, `redis:6379`, `kafka:19092`, `discovery:8761` theo dependency thực tế; không dùng `localhost` để trỏ đến container khác.
+
+Sau khi gắn cùng mạng, Docker DNS phân giải service name/alias và cập nhật địa chỉ khi container thay đổi. Dokploy giữ cấu hình mạng đã Save cho các lần redeploy; image mới không cần gắn lại. Service hạ tầng trong Compose đã có tên DNS theo service key (`postgres`, `postgres-ai`, `mongodb`, `redis`, `kafka`, `keycloak`, `gotenberg`). Eureka đăng ký ứng dụng là bước riêng: cùng network không tự bật Eureka, tạo database, cấp quyền hoặc đồng bộ secret. Hai frontend Vercel truy cập domain HTTPS, không tham gia `hs-network`.
+
+Với một Compose khác cần dùng hạ tầng chung, chỉ tham chiếu external như dưới đây sau khi `hs-infra` đã tạo mạng. Không để Compose thứ hai quản lý cùng mạng:
+
+```yaml
+networks:
+  default:
+    external: true
+    name: hs-network
+```
+
+Không tạo thêm stack có cùng alias database trên mạng chung. Giữ kiểm tra token/identity và credential ở các service; cùng mạng không thay thế xác thực. Không gắn thủ công container bằng `docker network connect` làm cấu hình lâu dài vì container có thể bị thay khi deploy.
+
+Kiểm tra từ **Open Terminal** của backend bằng công cụ sẵn có trong image: `getent hosts postgres kafka discovery` kiểm tra DNS; `curl -fsS --max-time 5 http://discovery:8761/eureka/apps` kiểm tra đường tới Eureka. Chỉ kiểm tra các dependency đang chạy. DNS phân giải thành công chưa chứng minh ứng dụng đã healthy hoặc credential đúng.
+
+[Docker: mạng mặc định Compose](https://docs.docker.com/reference/compose-file/networks/) · [Docker: overlay attachable](https://docs.docker.com/engine/network/drivers/overlay/)
 
 ### Cấu hình kết nối chính
 
@@ -336,8 +458,8 @@ Các hostname nội bộ dưới đây giả định service/container có alias
 | --- | --- |
 | `DATASOURCE_URL` của Core | `jdbc:postgresql://postgres:5432/homespace_core` |
 | `AI_DATABASE_URL` | PostgreSQL/pgvector qua `postgres-ai:5432`, với driver `postgresql+asyncpg` và credential của AI |
-| `EUREKA_CLIENT_SERVICE_URL` | `http://discovery:8761/eureka` |
-| `EUREKA_INSTANCE_HOSTNAME` của Chat, News, Notification và AI | Tương ứng `chat`, `news`, `notification`, `ai` |
+| `EUREKA_CLIENT_SERVICE_URL` | `http://discovery:8761/eureka/` |
+| `EUREKA_INSTANCE_HOSTNAME` | Dùng giá trị theo hướng dẫn từng service; Chat/Notification hiện dùng `localhost` làm tín hiệu để code tự chọn IP container. DNS alias ở Dokploy là cấu hình riêng, không tự đổi biến này. |
 | `PORT` của Chat, News, AI và Notification | Tương ứng `8082`, `8083`, `8084`, `8085` |
 | `KAFKA_BOOTSTRAP_SERVERS` của Core, `KAFKA_BROKERS` của các consumer | `kafka:19092` |
 | `KEYCLOAK_KAFKA_TOPIC`, `KAFKA_EVENTS_TOPIC`, `KAFKA_DLT_TOPIC`, `KAFKA_NEWS_TOPIC`, `KAFKA_NEWS_DLT_TOPIC` | `keycloak-user-events`, `homespace.notification.events.v1`, `homespace.notification.events.dlt.v1`, `homespace.news.events.v1`, `homespace.news.events.dlt.v1`. Điền nhất quán cho producer, consumer và `kafka-topics`. |
@@ -361,21 +483,110 @@ Các hostname nội bộ dưới đây giả định service/container có alias
 
 ### Keycloak và HTTPS
 
-- Đặt `KC_HOSTNAME=https://auth.homespace.id.vn`, `KC_HOSTNAME_STRICT=true`, `KC_HTTP_ENABLED=true` và `KC_PROXY_HEADERS=xforwarded`. Traefik nhận HTTPS và chuyển tiếp đến Keycloak cổng `8080`. Management health của Keycloak dùng nội bộ.
-- Khi khởi tạo mới, dùng `start --import-realm` với realm và provider đã đóng gói. Với realm đã tồn tại, chỉnh client qua Keycloak Admin Console.
-- File realm trong thư mục import dùng tên `homespace-platform-realm.json`, khớp trường `realm` trong JSON. Keycloak chỉ đọc các file kết thúc bằng `-realm.json` khi import thư mục lúc khởi động. Kiểm tra endpoint `/realms/homespace-platform/.well-known/openid-configuration` trả HTTP `200` sau khi image mới khởi động.
-- Trong realm `homespace-platform`, cấu hình **Valid redirect URIs** và **Web Origins** cho hai client. Giới hạn URL redirect theo domain và kiểm tra lại URL chuyển hướng sau logout.
+Mục tiêu: mở **`https://auth.homespace.id.vn/admin/`** để quản trị Keycloak. Domain này dẫn tới service **`keycloak` bên trong Compose `hs-infra`**, không cần tạo Application mới.
+
+Luồng truy cập: **trình duyệt → OneShield nếu bật → EC2/Traefik cổng 443 → Keycloak cổng nội bộ 8080**. `dokploy.homespace.id.vn` là trang quản trị Dokploy; `auth.homespace.id.vn` là Keycloak.
+
+#### Bước 1 — Thêm bản ghi DNS `auth` trên iNET
+
+1. Mở **iNET OnePortal → Tên miền → Danh sách → homespace.id.vn → Bản ghi**.
+2. Nếu đã có bản ghi `auth`, chọn **Chỉnh sửa**; nếu chưa có, chọn **Thêm bản ghi**.
+3. Điền **Tên/Host `auth`**, **Loại `A`**, **Nội dung/Value là Elastic IP của EC2 đang chạy Dokploy**, TTL khoảng **5 phút**. Không nhập URL, port hoặc path vào Value. Không tạo hai bản ghi `auth` trỏ tới hai máy khác nhau.
+4. Lưu bản ghi. EC2 cần cho phép truy cập HTTP `80` và HTTPS `443` theo phần Security Group. Không cần mở public cổng `8080` hoặc `9000` của Keycloak.
+5. Kiểm tra trên PowerShell:
+
+   ```powershell
+   Resolve-DnsName auth.homespace.id.vn -Type A
+   ```
+
+   Nếu tắt proxy/bảo vệ, kết quả phải là Elastic IP. Nếu bật OneShield, kết quả có thể là IP proxy; kiểm tra **địa chỉ máy chủ gốc** trong iNET phải là Elastic IP của EC2.
+
+Khi OneShield bật, dùng **Full (Strict)** sau khi Traefik đã có chứng chỉ hợp lệ cho `auth.homespace.id.vn`. Không dùng Flexible với cấu hình chuyển HTTP sang HTTPS này. Nếu proxy cản xác thực Let's Encrypt trong lần thiết lập đầu, có thể tạm chuyển bản ghi sang DNS trực tiếp, cấp chứng chỉ và kiểm tra HTTPS gốc thành công rồi bật lại bảo vệ ở Full (Strict).
+
+#### Bước 2 — Kiểm tra Environment của Compose `hs-infra`
+
+1. Mở **Dokploy → Projects → homespace → production → hs-infra → Environment**.
+2. Kiểm tra các dòng công khai sau; giữ nguyên mật khẩu và các biến khác:
+
+   ```dotenv
+   KEYCLOAK_IMAGE=nvminh162/hs-keycloak:latest
+   KEYCLOAK_ADMIN_USERNAME=homespace
+   KEYCLOAK_HOSTNAME=https://auth.homespace.id.vn
+   KEYCLOAK_HOSTNAME_STRICT=true
+   ```
+
+3. Chọn **Save**. Sửa `.env.dokploy` trên máy cá nhân không tự cập nhật Environment trên Dokploy.
+
+Compose đã ánh xạ `KEYCLOAK_HOSTNAME` sang `KC_HOSTNAME`, `KEYCLOAK_HOSTNAME_STRICT` sang `KC_HOSTNAME_STRICT`; đã đặt `KC_HTTP_ENABLED=true` và `KC_PROXY_HEADERS=xforwarded`. Không cần thêm các biến `KC_*` trùng vào Environment. HTTPS công khai kết thúc tại Traefik, sau đó Traefik gọi HTTP nội bộ tới Keycloak; đây không phải chế độ Flexible giữa OneShield và EC2. [Keycloak hostname](https://www.keycloak.org/server/hostname) · [Keycloak sau reverse proxy](https://www.keycloak.org/server/reverseproxy)
+
+#### Bước 3 — Thêm domain trong tab Domains
+
+1. Vẫn trong Compose **`hs-infra`**, chọn tab **Domains**. Nếu thanh tab bị khuất, kéo ngang để tìm Domains.
+2. Chọn **Add Domain / Create Domain**. Nếu `auth.homespace.id.vn` đã có ở đây, sửa bản ghi hiện có thay vì tạo trùng.
+3. Điền form:
+
+   | Trường | Giá trị |
+   | --- | --- |
+   | Host | `auth.homespace.id.vn` — không thêm `https://`, port hoặc `/admin` |
+   | Service Name / Service | `keycloak` — service key trong YAML, không phải tên image `hs-keycloak` |
+   | Container Port | `8080` |
+   | Path | `/` |
+   | Internal Path, nếu có | Để trống, không thêm tiền tố |
+   | Strip Path, nếu có | Tắt |
+   | HTTPS | Bật |
+   | Certificate / Certificate Provider | Let's Encrypt |
+   | Custom Entrypoint, nếu có | Giữ mặc định, không bật cấu hình riêng |
+
+4. Chọn **Save / Create**. Nếu danh sách Service không có `keycloak`, quay lại **General**, kiểm tra Git URL, branch `master`, Compose Path `./compose.production.yml`, Save rồi **Preview Compose → Refresh**. Bản YAML trên Git phải có service key `keycloak`.
+5. Không nhập domain này vào **Settings → Web Server → Server Domain**: mục đó dành cho `dokploy.homespace.id.vn`. Container Port `8080` trong form domain chỉ là cổng đích của Traefik, không phải yêu cầu mở cổng `8080` trên EC2.
+
+#### Bước 4 — Deploy Compose để áp dụng domain
+
+1. Chờ image `nvminh162/hs-keycloak:latest` build/push thành công. Xác nhận network, Environment và File Mount đã hoàn tất.
+2. Vào **hs-infra → General → Deploy**. Với Docker Compose, chỉ Save domain chưa đủ: phải redeploy để áp dụng nhãn Traefik. [Dokploy Domains](https://docs.dokploy.com/docs/core/domains)
+3. Theo dõi **Deployments** để biết pull image/triển khai có lỗi không. Sau đó vào **Containers**, kiểm tra PostgreSQL, Kafka, Keycloak và xem **Logs** của container `keycloak` nếu chưa healthy.
+4. Keycloak cần giữ mạng `hs-network` để gọi PostgreSQL/Kafka và kết nối `dokploy-network` do Dokploy quản lý để Traefik route domain. Không bật detach mạng Traefik. Nếu chứng chỉ chưa cấp được, kiểm tra DNS gốc, cổng `80`/`443`, OneShield và log Traefik; không tắt kiểm tra chứng chỉ để che lỗi.
+5. Khi thêm/sửa domain lần sau, Save rồi Deploy lại **cùng Compose `hs-infra`**; không tạo lại stack hoặc xóa volume.
+
+#### Bước 5 — Kiểm tra HTTPS và đăng nhập Keycloak
+
+1. Mở **`https://auth.homespace.id.vn/admin/`**. Trình duyệt phải dùng đúng domain, chứng chỉ hợp lệ và hiện trang đăng nhập. Đăng nhập bằng `homespace` cùng `KEYCLOAK_ADMIN_PASSWORD` trong Dokploy Environment nếu database vừa được khởi tạo bằng cấu hình trên. Với database cũ, dùng tài khoản đã tồn tại; biến bootstrap không đổi tên user cũ.
+2. Kiểm tra realm trên PowerShell:
+
+   ```powershell
+   $oidc = Invoke-RestMethod -Uri 'https://auth.homespace.id.vn/realms/homespace-platform/.well-known/openid-configuration'
+   $oidc.issuer
+   $oidc.authorization_endpoint
+   ```
+
+   Issuer cần là **`https://auth.homespace.id.vn/realms/homespace-platform`**. Endpoint đăng nhập cũng phải bắt đầu bằng domain HTTPS mới, không chứa `localhost`, domain cũ hoặc `:8080`.
+3. Trong Admin Console, chọn realm **`homespace-platform`**. Vào **Clients → homespace-id → Settings** và **Clients → homespace-admin-id → Settings**, kiểm tra các URL ở bảng dưới rồi Save. Các client ứng dụng nằm trong `homespace-platform`; tài khoản quản trị Keycloak bootstrap thuộc realm `master`.
+
+Realm mới được import từ image với `start --import-realm`. File import là `/opt/keycloak/data/import/homespace-platform-realm.json`, khớp realm `homespace-platform`. Realm đã tồn tại không được import đè; cập nhật client qua Admin Console. Không xóa database để chạy lại import.
 
 | Client | Valid redirect URI | Web Origin |
 | --- | --- | --- |
 | `homespace-id` | `https://homespace.id.vn/*` | `https://homespace.id.vn` |
 | `homespace-admin-id` | `https://admin.homespace.id.vn/*` | `https://admin.homespace.id.vn` |
 
-[Keycloak hostname](https://www.keycloak.org/server/hostname) · [Keycloak sau reverse proxy](https://www.keycloak.org/server/reverseproxy)
+Kiểm tra cả **Valid post logout redirect URIs** theo đúng frontend. Nếu client còn có URL local dành cho phát triển, giữ theo nhu cầu nhưng không dùng chúng làm đích đăng nhập production. Backend dùng issuer công khai ở trên; endpoint nội bộ như `http://keycloak:8080` chỉ dùng cho kết nối server khi cấu hình cho phép, không thay issuer bằng URL nội bộ.
+
+#### Lỗi thường gặp khi mở domain Keycloak
+
+| Hiện tượng | Kiểm tra trước |
+| --- | --- |
+| Không phân giải được domain | Bản ghi `auth`, nameserver đang có hiệu lực và cache DNS. |
+| Traefik trả `404` ngay ở `/admin/` | Đúng Host, Service `keycloak`, Path `/`; đã Save domain và Deploy lại Compose chưa. |
+| `502` / `504` | Keycloak healthy chưa, Container Port có phải `8080`, Traefik và Keycloak có chung `dokploy-network` không. |
+| `ERR_TOO_MANY_REDIRECTS` | OneShield có đang dùng Flexible không; hostname Keycloak có đúng URL HTTPS; Path/Internal Path có bị thêm `/auth` hoặc `/admin` không. |
+| Lỗi chứng chỉ hoặc OneShield báo máy chủ gốc lỗi | Chứng chỉ gốc đúng `auth.homespace.id.vn`, chưa hết hạn; DNS gốc đúng EC2; Traefik truy cập được từ proxy. Xem log cấp chứng chỉ. |
+| Admin mở được nhưng OIDC realm trả `404` | Realm `homespace-platform` đã import chưa, image có đúng bản mới, log import có lỗi không. |
+| Đăng nhập frontend báo `invalid_redirect_uri` | Đúng realm/client và redirect URI của frontend theo bảng; sửa client hiện có rồi Save. |
+| User `homespace` không đăng nhập được | Database đã từng bootstrap bằng username khác hay chưa; kiểm tra tài khoản đang tồn tại, không reset database. |
 
 ### Domains và cập nhật độc lập
 
-- Keycloak và các công cụ quản trị giữ trong Domains của `homespace-infra`.
+- Keycloak và các công cụ quản trị giữ trong Domains của Compose `hs-infra`.
 - Domain `api.homespace.id.vn` nằm ở Application Gateway, container port 8080, path `/`, HTTPS.
 - Domain `notification.homespace.id.vn` nằm ở Application Notification khi service đó được deploy, container port 8085, path `/socket.io` theo route ứng dụng.
 - Core hiện chưa có domain public. Kiểm tra health trong container và kiểm thử REST qua Gateway sau khi Gateway được deploy.
@@ -435,7 +646,7 @@ Admin dùng `BrowserRouter`. Nếu repo chưa có SPA rewrite, thêm `vercel.jso
 - [ ] **Socket.IO:** mở **DevTools → Network → WS**. Trên web, xác nhận notification socket đến `notification.homespace.id.vn/socket.io/`. Trên admin, xác nhận notification socket đến `api.homespace.id.vn/api/v1/notifications/socket.io/`. Với WebSocket upgrade, trạng thái thường là `101`. Gửi chat giữa hai tài khoản, rồi thử một nghiệp vụ có thông báo để kiểm tra realtime và Kafka. Chat vẫn dùng trạng thái chưa đọc riêng của hội thoại.
 - [ ] **Hợp đồng và thanh toán:** dùng dữ liệu thử để upload tệp, tạo PDF qua Gotenberg và thử các luồng VNPT, SmartCA, SePay đang bật. Với webhook, đối chiếu kết quả trong dashboard nhà cung cấp và log backend, đồng thời xác nhận trạng thái nghiệp vụ đã cập nhật trong UI.
 - [ ] **Core mất kết nối:** trên môi trường thử, kiểm tra Gateway và hai frontend khi Core dừng, rồi xác nhận phục hồi khi Core lên lại. Hai frontend hiện đọc `/api/v1/actuator/health` của Gateway. Nếu Gateway vẫn `UP` khi Core đã dừng, cần nối tình trạng Core vào endpoint frontend đang đọc để đáp ứng yêu cầu chặn truy cập khi Core down.
-- [ ] **CI/CD và dữ liệu:** publish image thử, xác nhận Docker Hub webhook được nhận và Dokploy pull image mới; Raw Compose dùng YAML đang lưu trên Dokploy, dữ liệu vẫn còn. Sửa một thay đổi phù hợp trên frontend để xác nhận Vercel deploy từ `master`.
+- [ ] **CI/CD và dữ liệu:** với infra Git, chờ publish image thành công rồi Deploy; xác nhận Dokploy lấy đúng YAML từ `master`, pull image mới và dữ liệu vẫn còn. Kiểm tra webhook Docker Hub riêng cho từng Application Docker; không dùng nó cho Compose Git. Sửa một thay đổi phù hợp trên frontend để xác nhận Vercel deploy từ `master`.
 
 ### Theo dõi EC2 và chẩn đoán lỗi thường gặp
 
