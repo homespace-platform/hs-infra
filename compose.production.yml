@@ -19,7 +19,7 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     postgres-ai:
         image: pgvector/pgvector:pg16
@@ -35,7 +35,7 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     mongodb:
         image: mongo:7
@@ -56,7 +56,7 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     redis:
         image: redis:7-alpine
@@ -71,7 +71,7 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     gotenberg:
         image: gotenberg/gotenberg:8
@@ -81,7 +81,7 @@ services:
             interval: 10s
             timeout: 5s
             retries: 12
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     kafka:
         image: apache/kafka:4.3.1
@@ -111,7 +111,7 @@ services:
             timeout: 15s
             retries: 12
             start_period: 30s
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     kafka-topics:
         image: apache/kafka:4.3.1
@@ -172,7 +172,7 @@ services:
             timeout: 5s
             retries: 12
             start_period: 90s
-        networks: [hs-network, hs-backend]
+        networks: [hs-network]
 
     pgadmin:
         image: dpage/pgadmin4:8
@@ -235,7 +235,5 @@ volumes:
 
 networks:
     hs-network:
-        driver: bridge
-    hs-backend:
         external: true
-        name: homespace-backend
+        name: hs-network

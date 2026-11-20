@@ -45,52 +45,5 @@ jobs:
                   platforms: linux/amd64
                   push: true
                   tags: |
-                      nvminh162/homespace-keycloak:${{ github.sha }}
-                      nvminh162/homespace-keycloak:latest
-
-    deploy:
-        needs: publish
-        runs-on: ubuntu-latest
-        timeout-minutes: 5
-        steps:
-            - name: Deploy infrastructure on Dokploy
-              shell: python
-              env:
-                  DOKPLOY_DEPLOY_WEBHOOK: ${{ secrets.DOKPLOY_DEPLOY_WEBHOOK }}
-              run: |
-                  import json
-                  import os
-                  import urllib.error
-                  import urllib.request
-
-                  webhook = os.environ.get("DOKPLOY_DEPLOY_WEBHOOK", "")
-                  expected_prefix = "https://homespace-dokploy.nvminh162.id.vn/api/deploy/compose/"
-                  if not webhook.startswith(expected_prefix) or webhook == expected_prefix:
-                      raise SystemExit("Set DOKPLOY_DEPLOY_WEBHOOK to the HTTPS Compose webhook URL")
-
-                  payload = {
-                      "ref": os.environ["GITHUB_REF"],
-                      "head_commit": {
-                          "id": os.environ["GITHUB_SHA"],
-                          "message": "Publish Keycloak image",
-                      },
-                      "commits": [],
-                  }
-                  request = urllib.request.Request(
-                      webhook,
-                      data=json.dumps(payload).encode("utf-8"),
-                      headers={
-                          "Content-Type": "application/json",
-                          "X-GitHub-Event": "push",
-                      },
-                      method="POST",
-                  )
-                  try:
-                      with urllib.request.urlopen(request, timeout=30) as response:
-                          response.read()
-                  except urllib.error.HTTPError as error:
-                      raise SystemExit("Dokploy rejected deployment with HTTP " + str(error.code))
-                  except urllib.error.URLError:
-                      raise SystemExit("Unable to connect to the Dokploy API")
-
-                  print("Deployment queued. Check the Dokploy Deployments tab for runtime status.")
+                      nvminh162/hs-keycloak:${{ github.sha }}
+                      nvminh162/hs-keycloak:latest
