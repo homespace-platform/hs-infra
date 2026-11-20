@@ -697,9 +697,9 @@
       "clientId": "homespace-admin-id",
       "name": "homespace Admin ID",
       "description": "homespace Admin Description",
-      "rootUrl": "http://localhost:5000",
-      "adminUrl": "http://localhost:5000",
-      "baseUrl": "http://localhost:5000",
+      "rootUrl": "https://admin.homespace.id.vn",
+      "adminUrl": "https://admin.homespace.id.vn",
+      "baseUrl": "https://admin.homespace.id.vn",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
@@ -761,21 +761,23 @@
       "clientId": "homespace-id",
       "name": "HomeSpace For Client",
       "description": "HomeSpace For Client",
-      "rootUrl": "http://localhost:3000",
+      "rootUrl": "https://www.homespace.id.vn",
       "adminUrl": "https://admin.homespace.id.vn",
-      "baseUrl": "http://localhost:3000",
+      "baseUrl": "https://www.homespace.id.vn",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
+        "https://www.homespace.id.vn/*",
         "homespace://*",
         "http://localhost:3000/*",
         "https://homespace.id.vn/*"
       ],
       "webOrigins": [
         "https://homespace.id.vn",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "https://www.homespace.id.vn"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -793,7 +795,7 @@
         "oauth2.jwt.authorization.grant.enabled": "false",
         "standard.token.exchange.enabled": "false",
         "frontchannel.logout.session.required": "true",
-        "post.logout.redirect.uris": "http://localhost:3000/*##homespace://*##https://homespace.id.vn/*",
+        "post.logout.redirect.uris": "http://localhost:3000/*##homespace://*##https://homespace.id.vn/*##https://www.homespace.id.vn/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "use.jwks.url": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
@@ -1860,12 +1862,12 @@
           "allowed-protocol-mapper-types": [
             "saml-role-list-mapper",
             "oidc-sha256-pairwise-sub-mapper",
-            "saml-user-property-mapper",
-            "oidc-address-mapper",
             "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper",
             "oidc-full-name-mapper",
-            "saml-user-attribute-mapper"
+            "saml-user-attribute-mapper",
+            "oidc-address-mapper",
+            "saml-user-property-mapper",
+            "oidc-usermodel-property-mapper"
           ]
         }
       },
@@ -1895,11 +1897,11 @@
           "allowed-protocol-mapper-types": [
             "oidc-usermodel-property-mapper",
             "saml-role-list-mapper",
-            "oidc-address-mapper",
+            "oidc-usermodel-attribute-mapper",
             "oidc-full-name-mapper",
             "saml-user-property-mapper",
-            "oidc-usermodel-attribute-mapper",
             "saml-user-attribute-mapper",
+            "oidc-address-mapper",
             "oidc-sha256-pairwise-sub-mapper"
           ]
         }
