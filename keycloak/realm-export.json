@@ -705,12 +705,12 @@
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://admin.homespace.id.vn/*",
+        "https://admin.homespace.id.vn/*",
         "http://localhost:5000/*"
       ],
       "webOrigins": [
         "http://localhost:5000",
-        "http://admin.homespace.id.vn"
+        "https://admin.homespace.id.vn"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -730,7 +730,7 @@
         "standard.token.exchange.enabled": "false",
         "login_theme": "homespace-admin",
         "frontchannel.logout.session.required": "true",
-        "post.logout.redirect.uris": "http://localhost:5000/*##http://admin.homespace.id.vn/*",
+        "post.logout.redirect.uris": "http://localhost:5000/*##https://admin.homespace.id.vn/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "display.on.consent.screen": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
@@ -762,7 +762,7 @@
       "name": "HomeSpace For Client",
       "description": "HomeSpace For Client",
       "rootUrl": "http://localhost:3000",
-      "adminUrl": "http://admin.homespace.id.vn",
+      "adminUrl": "https://admin.homespace.id.vn",
       "baseUrl": "http://localhost:3000",
       "surrogateAuthRequired": false,
       "enabled": true,
@@ -771,10 +771,10 @@
       "redirectUris": [
         "homespace://*",
         "http://localhost:3000/*",
-        "http://homespace.id.vn/*"
+        "https://homespace.id.vn/*"
       ],
       "webOrigins": [
-        "http://homespace.id.vn",
+        "https://homespace.id.vn",
         "http://localhost:3000"
       ],
       "notBefore": 0,
@@ -793,7 +793,7 @@
         "oauth2.jwt.authorization.grant.enabled": "false",
         "standard.token.exchange.enabled": "false",
         "frontchannel.logout.session.required": "true",
-        "post.logout.redirect.uris": "http://localhost:3000/*##homespace://*##http://homespace.id.vn/*",
+        "post.logout.redirect.uris": "http://localhost:3000/*##homespace://*##https://homespace.id.vn/*",
         "oauth2.device.authorization.grant.enabled": "false",
         "use.jwks.url": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
