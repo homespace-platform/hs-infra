@@ -129,7 +129,7 @@ services:
             KAFKA_NEWS_DLT_TOPIC: ${KAFKA_NEWS_DLT_TOPIC:?Set KAFKA_NEWS_DLT_TOPIC}
 
     keycloak:
-        image: ${KEYCLOAK_IMAGE:?Set KEYCLOAK_IMAGE}
+        image: ${KEYCLOAK_IMAGE:?}
         pull_policy: always
         restart: unless-stopped
         command: ['start', '--optimized', '--import-realm']
