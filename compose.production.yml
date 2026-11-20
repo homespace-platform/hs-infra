@@ -9,7 +9,7 @@ services:
         volumes:
             - hs-postgres-data:/var/lib/postgresql/data
             - type: bind
-              source: ./postgres/init/01-create-databases.sql
+              source: ../files/01-create-databases.sql
               target: /docker-entrypoint-initdb.d/01-create-databases.sql
               read_only: true
               bind:
@@ -182,7 +182,7 @@ services:
         volumes:
             - hs-pgadmin-data:/var/lib/pgadmin
             - type: bind
-              source: ./pgadmin/servers.json
+              source: ../files/servers.json
               target: /pgadmin4/servers.json
               read_only: true
               bind:
