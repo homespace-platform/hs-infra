@@ -1,20 +1,36 @@
 ---
 name: infrastructure-review
 description: Review HomeSpace infrastructure configuration, Docker Compose, service dependencies, persistence and deployment risks. Use when explicit infrastructure review is requested.
+disable-model-invocation: true
 ---
 
-# infrastructure-review (Claude Code adapter for hs-infra)
+# Infrastructure Review
 
-This is an adapter. It does not contain the workflow itself. The source workflow is the Codex skill at:
+## Mode
 
-```text
-../../../.agents/skills/infrastructure-review/SKILL.md
-```
+Review-only.
 
-(relative to this directory; it resolves to `.agents/skills/infrastructure-review/SKILL.md` in the `hs-infra` repository root).
+## Checklist
 
-Claude Code does not import that file automatically. When this skill is triggered:
+- Configuration correctness
+- Service dependencies
+- Network exposure
+- Environment variable usage
+- Credential safety
+- Persistent volumes
+- Database data safety
+- Resource configuration
+- Deployment compatibility
 
-1. Read the source file above with the Read tool.
-2. Follow its workflow exactly, together with the `AGENTS.md` rules of this repository.
-3. The source skill has no `references/` or `scripts/` directories. If they are added later, read them from the source skill directory when the workflow requires them.
+## Execution
+
+- Prefer static configuration inspection.
+- Use non-destructive validation when meaningful.
+- Do not launch or stop infrastructure automatically.
+- Do not delete resources.
+- Do not deploy.
+- Do not expose secret values.
+
+## Output
+
+Report actionable findings, severity, affected configuration and operational risk.
