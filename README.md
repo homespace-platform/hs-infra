@@ -11,11 +11,11 @@ docker compose up -d --wait
 
 `docker-compose.yml` chạy local với đủ hạ tầng, pgAdmin, RedisInsight và Kafka UI. Điền `.env` theo `.env.example` trước khi chạy. Các cổng local lắng nghe trên `127.0.0.1`, volume dùng tên cố định để tiếp tục sử dụng dữ liệu đã có. Chỉ cần một phần thì nêu tên service, ví dụ `docker compose up -d postgres mongodb`.
 
-`compose.production.yml` chạy production với cùng 11 service. Trên Dokploy, chọn `./compose.production.yml` và dán nội dung `.env.dokploy` vào tab **Environment**. Xem [hướng dẫn Dokploy](deploy/dokploy.md#deploy-hạ-tầng-trước).
+`compose.production.yml` chạy production với cùng 11 service. Trên Dokploy, chọn `./compose.production.yml` và dán nội dung `.env.prod` vào tab **Environment**. Xem [hướng dẫn Dokploy](deploy/dokploy.md#deploy-hạ-tầng-trước).
 
 ```powershell
-docker compose --env-file .env.dokploy -f compose.production.yml config --quiet
-docker compose --env-file .env.dokploy -f compose.production.yml up -d --wait
+docker compose --env-file .env.prod -f compose.production.yml config --quiet
+docker compose --env-file .env.prod -f compose.production.yml up -d --wait
 ```
 
 Khi cập nhật cấu hình topic trên Kafka đã có dữ liệu, chạy lại bước khởi tạo sau khi broker sẵn sàng:

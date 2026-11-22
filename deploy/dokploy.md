@@ -4,7 +4,7 @@ Hai frontend chạy trên Vercel. Backend, Keycloak và hạ tầng dữ liệu 
 
 **Thử nghiệm Discovery + Gateway, giữ nguyên infra:** làm theo [Discovery Compose](https://github.com/homespace-platform/hs-discovery-server/blob/master/deploy/dokploy.md), sau đó [Gateway Compose](https://github.com/homespace-platform/hs-gateway-server/blob/master/deploy/dokploy.md). Mỗi repo có `compose.production.yml`, tham gia external `hs-network` do infra hiện tại tạo; Docker DNS dùng service name `hs-discovery-server`/`hs-gateway-server`, không cần khai báo alias trùng tên hoặc chỉnh Advanced → Networks. Không xóa/tạo lại Compose infra hoặc volumes; chỉ Stop Application Discovery/Gateway cũ trước khi Deploy bản Compose mới. Gỡ domain/webhook trùng để không chạy hai bản. Tài liệu yêu cầu file YAML được đưa lên Git trước khi dùng Git provider; thay đổi local chưa tự deploy lên Dokploy.
 
-Triển khai Compose **`hs-infra`** bằng [`compose.production.yml`](../compose.production.yml). Chạy local bằng [`docker-compose.yml`](../docker-compose.yml) với `.env`, production dùng `.env.dokploy`. Cả hai có 11 service infra và 7 volume; backend không nằm trong Compose infra. Repo `hs-infra` có pipeline build image **`nvminh162/hs-keycloak`**; Keycloak chạy dưới service `keycloak` bên trong Compose `hs-infra`, không tạo một Application/Compose Keycloak riêng.
+Triển khai Compose **`hs-infra`** bằng [`compose.production.yml`](../compose.production.yml). Chạy local bằng [`docker-compose.yml`](../docker-compose.yml) với `.env`, production dùng `.env.prod`. Cả hai có 11 service infra và 7 volume; backend không nằm trong Compose infra. Repo `hs-infra` có pipeline build image **`nvminh162/hs-keycloak`**; Keycloak chạy dưới service `keycloak` bên trong Compose `hs-infra`, không tạo một Application/Compose Keycloak riêng.
 
 **Deploy Core tiếp theo:** làm theo [hướng dẫn Core Compose](https://github.com/homespace-platform/hs-core-api/blob/master/deploy/dokploy.md). Chọn **Create Service → Docker Compose → Raw**, dùng `compose.production.yml`, Environment và webhook Compose riêng của Core. Service name `hs-core-api` tự tham gia external `hs-network`; không cần Advanced → Networks. Không thêm Core vào infra hoặc tạo domain public cho Core.
 
@@ -71,7 +71,7 @@ Nếu bật proxy/bảo vệ OneShield, DNS công khai có thể trả IP của 
 
 **Kết quả cần thấy:** EC2 `Running`, trạng thái kiểm tra đạt, bốn bản ghi backend có đích gốc cùng Elastic IP. [Thiết lập domain trên Vercel](https://vercel.com/docs/domains/set-up-custom-domain)
 
-Nếu chuyển hệ thống đang dùng domain cũ, cập nhật cả Domains của Dokploy/Vercel, env URL/issuer/CORS, redirect URI của Keycloak, Firebase authorized domains, S3 CORS và callback nhà cung cấp theo các bảng bên dưới. Các file `.env.dokploy` đã tồn tại cần được đối chiếu lại; việc sửa hướng dẫn này không tự thay đổi env hay DNS đang chạy. Giữ nguyên database, realm/client IDs và secret. Sau khi đổi env frontend, deploy lại để bản build nhận URL mới; webhook Docker Hub/GitHub cũng phải dùng domain Dokploy mới.
+Nếu chuyển hệ thống đang dùng domain cũ, cập nhật cả Domains của Dokploy/Vercel, env URL/issuer/CORS, redirect URI của Keycloak, Firebase authorized domains, S3 CORS và callback nhà cung cấp theo các bảng bên dưới. Các file `.env.prod` đã tồn tại cần được đối chiếu lại; việc sửa hướng dẫn này không tự thay đổi env hay DNS đang chạy. Giữ nguyên database, realm/client IDs và secret. Sau khi đổi env frontend, deploy lại để bản build nhận URL mới; webhook Docker Hub/GitHub cũng phải dùng domain Dokploy mới.
 
 ## 2. Cài Dokploy
 
@@ -123,7 +123,7 @@ Compose **`hs-infra`** triển khai cả **11 service hạ tầng**, gồm Keycl
 
 1. Trong Docker Hub, chuẩn bị repo **`nvminh162/hs-keycloak`**. Trong GitHub repo `hs-infra` → **Settings → Secrets and variables → Actions**, thêm `DOCKERHUB_USERNAME=nvminh162` và `DOCKERHUB_TOKEN` có quyền push. Nếu image private, thêm registry Docker Hub trong Dokploy bằng token pull riêng.
 2. Chạy **GitHub → Actions → Publish Keycloak image → Run workflow → master**, chờ thành công và xác nhận tag `latest` có trên Docker Hub. Workflow [publish-keycloak.yml](../.github/workflows/publish-keycloak.yml) chỉ có job `publish`, build/push tag Git SHA và `latest`. Nó không tự chạy khi chỉ sửa Compose hoặc tài liệu.
-3. Mở `.env.dokploy` trên máy cá nhân. Đặt `KEYCLOAK_IMAGE=nvminh162/hs-keycloak:latest` ở dòng đầu; Compose đọc `${KEYCLOAK_IMAGE:?}`. Kiểm tra `KEYCLOAK_ADMIN_USERNAME=homespace`, `KEYCLOAK_HOSTNAME=https://auth.homespace.id.vn`, `KEYCLOAK_HOSTNAME_STRICT=true` và `PGADMIN_DEFAULT_EMAIL=homespace.id.vn@gmail.com`. Username bootstrap chỉ tạo tài khoản khi khởi tạo; đổi biến không đổi tên tài khoản trong database đã có. Nếu phải tạo file trên checkout mới, dùng `.env.example` để đối chiếu các biến runtime, đặt mật khẩu production riêng và dùng image production ở trên. Giữ nguyên `.env` và `.env.example` của local. Chỉ tạo `KAFKA_CLUSTER_ID` mới khi khởi tạo cluster với volume mới; giữ nguyên ID và credential theo volume đang dùng khi redeploy.
+3. Mở `.env.prod` trên máy cá nhân. Đặt `KEYCLOAK_IMAGE=nvminh162/hs-keycloak:latest` ở dòng đầu; Compose đọc `${KEYCLOAK_IMAGE:?}`. Kiểm tra `KEYCLOAK_ADMIN_USERNAME=homespace`, `KEYCLOAK_HOSTNAME=https://auth.homespace.id.vn`, `KEYCLOAK_HOSTNAME_STRICT=true` và `PGADMIN_DEFAULT_EMAIL=homespace.id.vn@gmail.com`. Username bootstrap chỉ tạo tài khoản khi khởi tạo; đổi biến không đổi tên tài khoản trong database đã có. Nếu phải tạo file trên checkout mới, dùng `.env.example` để đối chiếu các biến runtime, đặt mật khẩu production riêng và dùng image production ở trên. Giữ nguyên `.env` và `.env.example` của local. Chỉ tạo `KAFKA_CLUSTER_ID` mới khi khởi tạo cluster với volume mới; giữ nguyên ID và credential theo volume đang dùng khi redeploy.
 
    ```bash
    sudo docker run --rm --entrypoint /opt/kafka/bin/kafka-storage.sh apache/kafka:4.3.1 random-uuid
@@ -144,7 +144,7 @@ Compose **`hs-infra`** triển khai cả **11 service hạ tầng**, gồm Keycl
 
    Repo public qua HTTPS không cần SSH key. Repo private: dùng **Add SSH Key** và cấp quyền đọc repository cho public key tương ứng. Bấm **Save**. Không dùng `./docker-compose.yml`: đó là cấu hình local. Mỗi lần Deploy sẽ lấy YAML từ Git; bản sửa local chưa push lên `master` sẽ chưa được dùng.
 6. Hoàn tất hai [File Mount bên dưới](#file-mount-cho-postgresql-và-pgadmin), bao gồm thay đổi đường dẫn trong YAML trên Git, trước khi deploy lần đầu.
-7. Mở tab **Environment**, dán nội dung `.env.dokploy` rồi **Save**. File này chứa credential và được Git bỏ qua; không đưa vào repo hoặc chat. Sửa env local không tự sửa Environment trên Dokploy. Có thể kiểm tra cú pháp từ gốc repo bằng `docker compose --env-file .env.dokploy -f compose.production.yml config --quiet`; lệnh này không xác nhận file mount hay network đã tồn tại trên EC2.
+7. Mở tab **Environment**, dán nội dung `.env.prod` rồi **Save**. File này chứa credential và được Git bỏ qua; không đưa vào repo hoặc chat. Sửa env local không tự sửa Environment trên Dokploy. Có thể kiểm tra cú pháp từ gốc repo bằng `docker compose --env-file .env.prod -f compose.production.yml config --quiet`; lệnh này không xác nhận file mount hay network đã tồn tại trên EC2.
 8. Trong **General → Preview Compose**, kiểm tra đủ 11 service; network `default` phải có `name: hs-network`, `driver: overlay`, `attachable: true`, không dùng `external: true` cho lần khởi tạo mới. Đây là mạng mặc định của mọi service infra không khai báo network riêng. Làm lần lượt theo [hướng dẫn thêm domain Keycloak](#keycloak-và-https): tạo DNS `auth`, kiểm tra Environment, thêm domain trong **Compose hs-infra → Domains**, lưu rồi Deploy. Không thêm domain Keycloak ở Settings → Web Server.
 9. Sau khi image **`nvminh162/hs-keycloak:latest`** đã publish thành công và lưu đủ cấu hình, vào Compose **`hs-infra` → General → Deploy**. Compose pull image đó cho service `keycloak` và triển khai cùng các service hạ tầng khác; không deploy Keycloak riêng. Theo dõi **Deployments**, **Logs** và **Containers**: `postgres`, `postgres-ai`, `mongodb`, `redis`, `gotenberg`, `kafka` và `keycloak` cần `healthy`; `kafka-topics` hoàn thành với `Exited (0)`; `pgadmin`, `redis-insight`, `kafka-ui` ở trạng thái `running`.
 10. Mở `https://auth.homespace.id.vn/admin/`, đăng nhập bằng `KEYCLOAK_ADMIN_USERNAME` và `KEYCLOAK_ADMIN_PASSWORD` trong Environment. Gọi OIDC discovery bên dưới, kiểm tra issuer là `https://auth.homespace.id.vn/realms/homespace-platform`. Realm mới được import từ image; realm đã tồn tại cần sửa client qua Admin Console. Nếu bật Google login, điền client secret thật vì realm export mang giá trị đã che. Tài khoản admin ứng dụng sẽ được Core bootstrap khi deploy Core.
@@ -188,7 +188,7 @@ Luồng hiện tại: **push thay đổi repo `hs-infra` lên Git → chờ Acti
 | --- | --- |
 | Compose YAML | Push lên `master`; lần Deploy tiếp theo Dokploy lấy YAML mới. Nếu cùng thay đổi Keycloak, chờ image mới trước. |
 | Provider, theme hoặc realm đóng gói trong image | Chờ workflow `Publish Keycloak image` thành công rồi Deploy. Realm đã tồn tại không được import đè tự động. |
-| Environment | Sửa trực tiếp trong Dokploy → Save → Deploy. Git không chứa `.env.dokploy`. |
+| Environment | Sửa trực tiếp trong Dokploy → Save → Deploy. Git không chứa `.env.prod`. |
 | SQL init hoặc cấu hình pgAdmin | Cập nhật File Mount tương ứng; SQL init không chạy lại với database đã tồn tại. |
 | Một backend riêng | Build/publish và deploy đúng Application backend; không deploy lại infra. |
 
@@ -578,7 +578,7 @@ Khi OneShield bật, dùng **Full (Strict)** sau khi Traefik đã có chứng ch
    KEYCLOAK_HOSTNAME_STRICT=true
    ```
 
-3. Chọn **Save**. Sửa `.env.dokploy` trên máy cá nhân không tự cập nhật Environment trên Dokploy.
+3. Chọn **Save**. Sửa `.env.prod` trên máy cá nhân không tự cập nhật Environment trên Dokploy.
 
 Compose đã ánh xạ `KEYCLOAK_HOSTNAME` sang `KC_HOSTNAME`, `KEYCLOAK_HOSTNAME_STRICT` sang `KC_HOSTNAME_STRICT`; đã đặt `KC_HTTP_ENABLED=true` và `KC_PROXY_HEADERS=xforwarded`. Không cần thêm các biến `KC_*` trùng vào Environment. HTTPS công khai kết thúc tại Traefik, sau đó Traefik gọi HTTP nội bộ tới Keycloak; đây không phải chế độ Flexible giữa OneShield và EC2. [Keycloak hostname](https://www.keycloak.org/server/hostname) · [Keycloak sau reverse proxy](https://www.keycloak.org/server/reverseproxy)
 
