@@ -1818,7 +1818,6 @@
       "hideOnLogin": false,
       "config": {
         "acceptsPromptNoneForwardFromClient": "false",
-        "prompt": "select_account",
         "clientId": "866361947626-uslhe8eunph9bmrjnc5eqovrjcrtc78n.apps.googleusercontent.com",
         "disableUserInfo": "false",
         "showInAccountConsole": "ALWAYS",
