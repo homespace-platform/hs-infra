@@ -26,6 +26,8 @@ docker compose run --rm --no-deps kafka-topics
 
 Lệnh này tạo các topic còn thiếu bằng `--if-not-exists`, gồm `KAFKA_NEWS_TOPIC` (mặc định `homespace.news.events.v1`) và `KAFKA_NEWS_DLT_TOPIC` (mặc định `homespace.news.events.dlt.v1`), mỗi topic có 1 partition, 1 replica, không cần reset volume. Triển khai Core consumer của topic news trước khi đổi News sang `KAFKA_NEWS_TOPIC`; Core mở rộng người nhận và gửi sang topic notification hiện có. DLT riêng lưu lỗi sự kiện nguồn do Core xử lý.
 
+**Cảnh báo khi cập nhật production.** Thêm `KAFKA_CHAT_PROFILE_TOPIC=homespace.user.chat-profile.v1` trong tab Environment của cả `hs-infra`, `hs-core-api` và `hs-chat-service`. Dùng cùng một giá trị ở cả ba. Chạy lại job `kafka-topics` để tạo topic trên volume hiện có, đợi job thoát với mã `0`, rồi triển khai Core và Chat.
+
 **Backlog từ deployment News cũ:** News có thể đã gửi `NEWS_PUBLISHED` với `recipients: []` vào topic notification và đánh dấu `publicationSentAt`; đổi cấu hình không tự gửi lại các bản ghi này.
 
 1. Xác định đúng các source record cũ còn được Kafka giữ lại (hoặc bản sao lưu nguyên gốc), theo khoảng triển khai và tọa độ topic/partition/offset. Chỉ chọn `NEWS_PUBLISHED` có `recipients: []`; DLT chỉ chứa tọa độ/hash, không chứa payload để replay.

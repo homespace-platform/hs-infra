@@ -117,7 +117,7 @@ services:
         command:
             - |
                 /opt/kafka/bin/kafka-topics.sh --bootstrap-server "$$KAFKA_BOOTSTRAP_SERVER" --create --if-not-exists --topic "$$KEYCLOAK_KAFKA_TOPIC" --partitions 3 --replication-factor 1
-                for topic in "$$KAFKA_EVENTS_TOPIC" "$$KAFKA_DLT_TOPIC" "$$KAFKA_NEWS_TOPIC" "$$KAFKA_NEWS_DLT_TOPIC"; do
+                for topic in "$$KAFKA_EVENTS_TOPIC" "$$KAFKA_DLT_TOPIC" "$$KAFKA_NEWS_TOPIC" "$$KAFKA_NEWS_DLT_TOPIC" "$$KAFKA_CHAT_PROFILE_TOPIC"; do
                     /opt/kafka/bin/kafka-topics.sh --bootstrap-server "$$KAFKA_BOOTSTRAP_SERVER" --create --if-not-exists --topic "$$topic" --partitions 1 --replication-factor 1
                 done
         environment:
@@ -127,6 +127,7 @@ services:
             KAFKA_DLT_TOPIC: ${KAFKA_DLT_TOPIC:?Set KAFKA_DLT_TOPIC}
             KAFKA_NEWS_TOPIC: ${KAFKA_NEWS_TOPIC:?Set KAFKA_NEWS_TOPIC}
             KAFKA_NEWS_DLT_TOPIC: ${KAFKA_NEWS_DLT_TOPIC:?Set KAFKA_NEWS_DLT_TOPIC}
+            KAFKA_CHAT_PROFILE_TOPIC: ${KAFKA_CHAT_PROFILE_TOPIC:?Set KAFKA_CHAT_PROFILE_TOPIC}
 
     keycloak:
         image: ${KEYCLOAK_IMAGE:?}

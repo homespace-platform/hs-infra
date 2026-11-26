@@ -526,6 +526,7 @@ Các hostname nội bộ dưới đây giả định service/container có alias
 | `PORT` của Chat, News, AI và Notification | Tương ứng `8082`, `8083`, `8084`, `8085` |
 | `KAFKA_BOOTSTRAP_SERVERS` của Core, `KAFKA_BROKERS` của các consumer | `kafka:19092` |
 | `KEYCLOAK_KAFKA_TOPIC`, `KAFKA_EVENTS_TOPIC`, `KAFKA_DLT_TOPIC`, `KAFKA_NEWS_TOPIC`, `KAFKA_NEWS_DLT_TOPIC` | `keycloak-user-events`, `homespace.notification.events.v1`, `homespace.notification.events.dlt.v1`, `homespace.news.events.v1`, `homespace.news.events.dlt.v1`. Điền nhất quán cho producer, consumer và `kafka-topics`. |
+| `KAFKA_CHAT_PROFILE_TOPIC` | `homespace.user.chat-profile.v1` trong Environment của Infra, Core và Chat. |
 | `REDIS_HOST` | `redis` |
 | `MONGODB_URI`, `AI_MONGODB_URI` | `mongodb://USER:PASSWORD@mongodb:27017/DATABASE?authSource=AUTH_DATABASE`. Giữ database của từng service theo `.env.example`. Mã hóa ký tự đặc biệt trong thành phần username/password của URI. |
 | `CONTRACT_GOTENBERG_URL` | `http://gotenberg:3000` |
@@ -537,6 +538,8 @@ Các hostname nội bộ dưới đây giả định service/container có alias
 | `CORS_ALLOWED_ORIGINS` và `NOTIFICATION_REALTIME_ORIGINS` | `https://homespace.id.vn,https://admin.homespace.id.vn` |
 | `PAYMENT_PROOF_UPLOAD_PUBLIC_BASE_URL` của Core | `https://api.homespace.id.vn` |
 | `SEPAY_RETURN_URL` của Core | `https://homespace.id.vn/dashboard/membership/return` nếu dùng SePay |
+
+> **Cảnh báo khi cập nhật production.** Lưu cùng một giá trị `KAFKA_CHAT_PROFILE_TOPIC` trong tab Environment của cả ba Compose. Chạy lại `kafka-topics` trên volume hiện có và đợi `Exited (0)` trước khi triển khai Core và Chat.
 
 - **Core và Gateway:** đặt `SPRING_PROFILES_ACTIVE=prod` ở hai service. Với database Core mới, xác định cách tạo schema trước khi chọn `JPA_DDL_AUTO`. Nếu dùng Hibernate tạo schema theo cách hiện tại của dự án, sử dụng `update` có kiểm soát ở lần khởi tạo và kiểm tra schema trước khi chuyển `validate`. Với database đã có dữ liệu, sao lưu trước khi đổi schema.
 - **Keycloak và tài khoản ứng dụng:** credential quản trị Keycloak dùng cho client đồng bộ của Core phải truy cập được realm. Khai báo các nhóm `BOOTSTRAP_ADMIN_*` của Core với tài khoản production khi cần bootstrap. Sau lần chạy đầu, đăng nhập tài khoản đó vào admin portal và kiểm tra user có trong Keycloak, ứng dụng và đúng quyền. Core thực hiện đồng bộ tài khoản qua Keycloak khi seed.
