@@ -537,7 +537,7 @@ Các hostname nội bộ dưới đây giả định service/container có alias
 | `JWT_JWK_SET_URI` của Gateway | `http://keycloak:8080/realms/homespace-platform/protocol/openid-connect/certs` |
 | `CORS_ALLOWED_ORIGINS` và `NOTIFICATION_REALTIME_ORIGINS` | `https://homespace.id.vn,https://admin.homespace.id.vn` |
 | `PAYMENT_PROOF_UPLOAD_PUBLIC_BASE_URL` của Core | `https://api.homespace.id.vn` |
-| `SEPAY_RETURN_URL` của Core | `https://homespace.id.vn/dashboard/membership/return` nếu dùng SePay |
+| `PAYMENT_SEPAY_RETURN_URL` của Core | `https://homespace.id.vn/dashboard/membership/return` nếu dùng SePay |
 
 > **Cảnh báo khi cập nhật production.** Lưu cùng một giá trị `KAFKA_CHAT_PROFILE_TOPIC` trong tab Environment của cả ba Compose. Chạy lại `kafka-topics` trên volume hiện có và đợi `Exited (0)` trước khi triển khai Core và Chat.
 
