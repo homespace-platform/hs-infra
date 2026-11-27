@@ -19,7 +19,7 @@ amenity_categories, listing_amenities; không thay geocoding Vietmap; không kh�
 3. Trong hs-core-api/.env, nhóm TomTom chỉ khai báo key bí mật:
 
 ~~~dotenv
-TOMTOM_API_KEY=
+MAP_TOMTOM_API_KEY=
 ~~~
 
 Toàn bộ cấu hình nghiệp vụ/vận hành nằm tại
@@ -31,15 +31,15 @@ nearby.query-enabled=true
 nearby.tomtom.license-approved=true
 nearby.tomtom.license-policy-id=homespace-tomtom-poi-v1
 nearby.tomtom.base-url=https://api.tomtom.com
-nearby.tomtom.api-key=${TOMTOM_API_KEY}
+nearby.tomtom.api-key=${MAP_TOMTOM_API_KEY}
 nearby.tomtom.category-set=7372,7377,7321,7326,7332005,9361009,7315,7328,9942002,9362
 nearby.tomtom.result-limit=100
 ~~~
 
 Không có fallback trong @Value, scheduler hoặc placeholder của file properties.
-Xóa một thuộc tính Nearby bắt buộc hoặc thiếu biến TOMTOM_API_KEY sẽ làm startup lỗi;
+Xóa một thuộc tính Nearby bắt buộc hoặc thiếu biến MAP_TOMTOM_API_KEY sẽ làm startup lỗi;
 giá trị không hợp lệ cũng lỗi khi tạo bean. Đồng bộ và truy vấn đã bật sẵn;
-chỉ cần điền TOMTOM_API_KEY hợp lệ trong .env backend rồi build/restart.
+chỉ cần điền MAP_TOMTOM_API_KEY hợp lệ trong .env backend rồi build/restart.
 
 Các giá trị vận hành sau cũng được khai báo ngay trong cùng file properties:
 

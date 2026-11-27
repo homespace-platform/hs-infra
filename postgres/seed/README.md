@@ -84,7 +84,7 @@ Build cũng cập nhật vùng Nearby và đọc properties/`NearbyCatalog.VERSI
 
 `collect-nearby-seed.mjs` tách biệt hoàn toàn khỏi build/SQL/Core. Lần chuẩn bị này đã dùng **31 request thật**: 1 danh mục + 30 truy vấn (3 tâm × 10 loại), không phân trang, không retry ngầm. Mỗi request limit 100, radius 2 km, cách nhau tối thiểu 2,1 giây. Response không chứa API key được lưu cố định; ID/tên/tọa độ/địa chỉ/cây category đều kiểm chứng lại trước build.
 
-`node scripts/collect-nearby-seed.mjs` chỉ dựng lại từ các response đã lưu, **0 request**; thiếu file thì dừng. Chỉ lệnh có `--fetch` mới được phép đọc `TOMTOM_API_KEY` backend và lấy các capture còn thiếu (tối đa 31 request, file đã có không gọi lại). Không cần chạy lệnh này cho việc seed thông thường. Quy cách provider: [Nearby Search](https://docs.tomtom.com/search-api/documentation/search-service/nearby-search), [POI Categories](https://docs.tomtom.com/search-api/documentation/poi-categories-service/poi-categories).
+`node scripts/collect-nearby-seed.mjs` chỉ dựng lại từ các response đã lưu, **0 request**; thiếu file thì dừng. Chỉ lệnh có `--fetch` mới được phép đọc `MAP_TOMTOM_API_KEY` backend và lấy các capture còn thiếu (tối đa 31 request, file đã có không gọi lại). Không cần chạy lệnh này cho việc seed thông thường. Quy cách provider: [Nearby Search](https://docs.tomtom.com/search-api/documentation/search-service/nearby-search), [POI Categories](https://docs.tomtom.com/search-api/documentation/poi-categories-service/poi-categories).
 
 ## Kiểm thử database dùng một lần
 

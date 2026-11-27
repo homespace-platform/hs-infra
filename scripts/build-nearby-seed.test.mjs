@@ -77,7 +77,7 @@ test('collection uses actual centers, category graph branches and bounded explic
   const source=await readFile(new URL('./collect-nearby-seed.mjs',import.meta.url),'utf8');
   assert.match(source,/calls >= 31/);assert.match(source,/2100-/);assert.match(source,/collect\(process.argv.includes\('--fetch'\)\)/);
   const build=await readFile(new URL('./build-listings-seed.mjs',import.meta.url),'utf8');
-  assert.doesNotMatch(build,/collect-nearby-seed|fetch\(|TOMTOM_API_KEY/);
+  assert.doesNotMatch(build,/collect-nearby-seed|fetch\(|MAP_TOMTOM_API_KEY/);
 });
 
 test('fingerprint matches lexical Java scope and changes when configuration changes', () => {

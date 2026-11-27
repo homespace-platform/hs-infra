@@ -26,7 +26,7 @@ Endpoint đang thử:
 
 ```http
 GET https://api.tomtom.com/search/2/nearbySearch/.json
-  ?key={{TOMTOM_API_KEY}}
+  ?key={{MAP_TOMTOM_API_KEY}}
   &lat={{lat}}
   &lon={{lon}}
   &radius={{radius}}

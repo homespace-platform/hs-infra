@@ -107,8 +107,8 @@ export async function collect(fetchEnabled = false) {
   let key, calls = 0, lastStarted = 0;
   if (fetchEnabled) {
     const env = await readFile(path.resolve(ROOT,'../hs-core-api/.env'),'utf8');
-    key = process.env.TOMTOM_API_KEY || env.match(/^TOMTOM_API_KEY\s*=\s*(.+)$/m)?.[1]?.trim().replace(/^(['"])(.*)\1$/,'$2');
-    if (!key) throw new Error('Configure the backend TOMTOM_API_KEY first');
+    key = process.env.MAP_TOMTOM_API_KEY || env.match(/^MAP_TOMTOM_API_KEY\s*=\s*(.+)$/m)?.[1]?.trim().replace(/^(['"])(.*)\1$/,'$2');
+    if (!key) throw new Error('Configure the backend MAP_TOMTOM_API_KEY first');
   }
   await mkdir(SOURCE_DIR,{recursive:true});
   async function capture(file, pathname, parameters) {

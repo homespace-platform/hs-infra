@@ -2,7 +2,7 @@
   "info": {
     "name": "HomeSpace - Address API (Vietmap v4 via Gateway)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "4 API địa chỉ dùng lại trong HomeSpace. base_url đã gồm /api/v1. Điền access_token của user active; VIETMAP_API_KEY chỉ cấu hình backend, KHÔNG nhập key Vietmap ở đây. Chỉ Send thủ công theo nhu cầu, không chạy Runner lặp vì mỗi request có thể tốn quota. Tất cả GET chỉ tra cứu, không tự ghi CSDL. Luôn dùng địa chỉ mới sau sáp nhập. Không tự chọn kết quả đầu tiên: tự chọn và dán refId vào ref_id trước khi gọi Place."
+    "description": "4 API địa chỉ dùng lại trong HomeSpace. base_url đã gồm /api/v1. Điền access_token của user active; MAP_VIETMAP_API_KEY chỉ cấu hình backend, KHÔNG nhập key Vietmap ở đây. Chỉ Send thủ công theo nhu cầu, không chạy Runner lặp vì mỗi request có thể tốn quota. Tất cả GET chỉ tra cứu, không tự ghi CSDL. Luôn dùng địa chỉ mới sau sáp nhập. Không tự chọn kết quả đầu tiên: tự chọn và dán refId vào ref_id trước khi gọi Place."
   },
   "auth": {
     "type": "bearer",

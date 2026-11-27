@@ -539,7 +539,7 @@ Pagination từng nhóm:
 
 Config đề xuất (giá trị vận hành thử, không phải giới hạn TomTom đã xác minh):
 - nearby.sync-enabled=false và nearby.query-enabled=false trong properties trước khi schema/license sẵn sàng.
-- TOMTOM_API_KEY trống trong template/backend example; key thật chỉ nằm secret backend khi được duyệt.
+- MAP_TOMTOM_API_KEY trống trong template/backend example; key thật chỉ nằm secret backend khi được duyệt.
 - NEARBY_DEFAULT_RADIUS_M=3000; khách hỏi 5000 phải được xử lý đúng coverage, không clamp về 3000.
 - NEARBY_SCAN_RADIUS_M=3000 giữ mặc định hiện muốn; có thể duyệt prefetch 5000 để chat 5 km đọc sẵn.
 - Với query vượt vùng đã quét: trả known coverage + PARTIAL/NOT_READY; request đọc không gọi provider.

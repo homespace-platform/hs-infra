@@ -16,7 +16,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=0",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -29,7 +29,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -75,7 +75,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=100",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&ofs=100",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -88,7 +88,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -134,7 +134,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&categorySet=7315",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&categorySet=7315",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -147,7 +147,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -193,7 +193,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&openingHours=nextSevenDays",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&openingHours=nextSevenDays",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -206,7 +206,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -252,7 +252,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius=500&limit={{limit}}",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius=500&limit={{limit}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -265,7 +265,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -307,7 +307,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius=5000&limit={{limit}}",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius=5000&limit={{limit}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -320,7 +320,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -362,7 +362,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN&categorySet=7372,7377,7321,7332005,9361009,7326,9663",
+              "raw": "{{baseUrl}}/search/2/nearbySearch/.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN&categorySet=7372,7377,7321,7332005,9361009,7326,9663",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -375,7 +375,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -431,7 +431,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/poiSearch/school.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/poiSearch/school.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -444,7 +444,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -490,7 +490,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/poiSearch/hospital.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/poiSearch/hospital.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -503,7 +503,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -549,7 +549,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/poiSearch/supermarket.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/poiSearch/supermarket.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -562,7 +562,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -608,7 +608,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/poiSearch/coffee.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/poiSearch/coffee.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -621,7 +621,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -667,7 +667,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/poiSearch/pharmacy.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/poiSearch/pharmacy.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -680,7 +680,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -726,7 +726,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/categorySearch/pizza.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}",
+              "raw": "{{baseUrl}}/search/2/categorySearch/pizza.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -739,7 +739,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -781,7 +781,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/categorySearch/supermarket.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}",
+              "raw": "{{baseUrl}}/search/2/categorySearch/supermarket.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -794,7 +794,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -836,7 +836,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/search/{{searchText}}.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/search/{{searchText}}.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -849,7 +849,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -895,7 +895,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/search/{{searchText}}.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&typeahead=true",
+              "raw": "{{baseUrl}}/search/2/search/{{searchText}}.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit={{limit}}&typeahead=true",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -908,7 +908,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -954,7 +954,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/autocomplete/{{autocompleteText}}.json?key={{TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit=10&resultSet=category,brand",
+              "raw": "{{baseUrl}}/search/2/autocomplete/{{autocompleteText}}.json?key={{MAP_TOMTOM_API_KEY}}&lat={{lat}}&lon={{lon}}&radius={{radius}}&limit=10&resultSet=category,brand",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -967,7 +967,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "lat",
@@ -1012,7 +1012,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/poiCategories.json?key={{TOMTOM_API_KEY}}",
+              "raw": "{{baseUrl}}/search/2/poiCategories.json?key={{MAP_TOMTOM_API_KEY}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1024,7 +1024,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 }
               ]
             },
@@ -1060,7 +1060,7 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/search/2/geometrySearch/supermarket.json?key={{TOMTOM_API_KEY}}&limit={{limit}}",
+              "raw": "{{baseUrl}}/search/2/geometrySearch/supermarket.json?key={{MAP_TOMTOM_API_KEY}}&limit={{limit}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1073,7 +1073,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "limit",
@@ -1117,7 +1117,7 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/search/2/geometryFilter.json?key={{TOMTOM_API_KEY}}",
+              "raw": "{{baseUrl}}/search/2/geometryFilter.json?key={{MAP_TOMTOM_API_KEY}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1129,7 +1129,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 }
               ]
             },
@@ -1168,7 +1168,7 @@
               }
             ],
             "url": {
-              "raw": "{{baseUrl}}/search/2/searchAlongRoute/coffee.json?key={{TOMTOM_API_KEY}}&maxDetourTime=900&limit=20",
+              "raw": "{{baseUrl}}/search/2/searchAlongRoute/coffee.json?key={{MAP_TOMTOM_API_KEY}}&maxDetourTime=900&limit=20",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1181,7 +1181,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "maxDetourTime",
@@ -1223,7 +1223,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/place.json?key={{TOMTOM_API_KEY}}&entityId={{legacyPlaceId}}",
+              "raw": "{{baseUrl}}/search/2/place.json?key={{MAP_TOMTOM_API_KEY}}&entityId={{legacyPlaceId}}",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1235,7 +1235,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "entityId",
@@ -1264,7 +1264,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/additionalData.json?key={{TOMTOM_API_KEY}}&geometries={{geometryId}}&geometriesZoom=10",
+              "raw": "{{baseUrl}}/search/2/additionalData.json?key={{MAP_TOMTOM_API_KEY}}&geometries={{geometryId}}&geometriesZoom=10",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1276,7 +1276,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "geometries",
@@ -1316,7 +1316,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1390,7 +1390,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1464,7 +1464,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1538,7 +1538,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1612,7 +1612,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1686,7 +1686,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1750,7 +1750,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -1820,7 +1820,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/geocode/{{addressText}}.json?key={{TOMTOM_API_KEY}}&limit=10&countrySet=VN",
+              "raw": "{{baseUrl}}/search/2/geocode/{{addressText}}.json?key={{MAP_TOMTOM_API_KEY}}&limit=10&countrySet=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1833,7 +1833,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "limit",
@@ -1866,7 +1866,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/structuredGeocode.json?key={{TOMTOM_API_KEY}}&streetName={{streetName}}&municipality={{cityName}}&countryCode=VN",
+              "raw": "{{baseUrl}}/search/2/structuredGeocode.json?key={{MAP_TOMTOM_API_KEY}}&streetName={{streetName}}&municipality={{cityName}}&countryCode=VN",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1878,7 +1878,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "streetName",
@@ -1915,7 +1915,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/search/2/reverseGeocode/{{lat}},{{lon}}.json?key={{TOMTOM_API_KEY}}&radius=100",
+              "raw": "{{baseUrl}}/search/2/reverseGeocode/{{lat}},{{lon}}.json?key={{MAP_TOMTOM_API_KEY}}&radius=100",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1928,7 +1928,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "radius",
@@ -1963,7 +1963,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&travelMode=car&traffic=true",
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{MAP_TOMTOM_API_KEY}}&travelMode=car&traffic=true",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -1977,7 +1977,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "travelMode",
@@ -2010,7 +2010,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&travelMode=pedestrian",
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{MAP_TOMTOM_API_KEY}}&travelMode=pedestrian",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2024,7 +2024,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "travelMode",
@@ -2053,7 +2053,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&travelMode=bicycle",
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{MAP_TOMTOM_API_KEY}}&travelMode=bicycle",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2067,7 +2067,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "travelMode",
@@ -2096,7 +2096,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{TOMTOM_API_KEY}}&routeType=shortest&travelMode=car",
+              "raw": "{{baseUrl}}/routing/1/calculateRoute/{{lat}},{{lon}}:{{destLat}},{{destLon}}/json?key={{MAP_TOMTOM_API_KEY}}&routeType=shortest&travelMode=car",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2110,7 +2110,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "routeType",
@@ -2144,7 +2144,7 @@
             "header": [
               {
                 "key": "TomTom-Api-Key",
-                "value": "{{TOMTOM_API_KEY}}"
+                "value": "{{MAP_TOMTOM_API_KEY}}"
               },
               {
                 "key": "TomTom-Api-Version",
@@ -2214,7 +2214,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/traffic/services/4/flowSegmentData/absolute/10/json?key={{TOMTOM_API_KEY}}&point={{lat}},{{lon}}&unit=kmph",
+              "raw": "{{baseUrl}}/traffic/services/4/flowSegmentData/absolute/10/json?key={{MAP_TOMTOM_API_KEY}}&point={{lat}},{{lon}}&unit=kmph",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2230,7 +2230,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "point",
@@ -2263,7 +2263,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/traffic/services/5/incidentDetails?key={{TOMTOM_API_KEY}}&bbox={{minLon}},{{minLat}},{{maxLon}},{{maxLat}}&fields={incidents{type,geometry{type,coordinates},properties{iconCategory}}}&language=en-GB&timeValidityFilter=present",
+              "raw": "{{baseUrl}}/traffic/services/5/incidentDetails?key={{MAP_TOMTOM_API_KEY}}&bbox={{minLon}},{{minLat}},{{maxLon}},{{maxLat}}&fields={incidents{type,geometry{type,coordinates},properties{iconCategory}}}&language=en-GB&timeValidityFilter=present",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2276,7 +2276,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "bbox",
@@ -2323,7 +2323,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/map/1/tile/basic/main/{{zoom}}/{{tileX}}/{{tileY}}.png?key={{TOMTOM_API_KEY}}&tileSize=256",
+              "raw": "{{baseUrl}}/map/1/tile/basic/main/{{zoom}}/{{tileX}}/{{tileY}}.png?key={{MAP_TOMTOM_API_KEY}}&tileSize=256",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2340,7 +2340,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "tileSize",
@@ -2369,7 +2369,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/maps/orbis/display/raster/tile/0/0/0?key={{TOMTOM_API_KEY}}&apiVersion=2&style=street-light",
+              "raw": "{{baseUrl}}/maps/orbis/display/raster/tile/0/0/0?key={{MAP_TOMTOM_API_KEY}}&apiVersion=2&style=street-light",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -2386,7 +2386,7 @@
               "query": [
                 {
                   "key": "key",
-                  "value": "{{TOMTOM_API_KEY}}"
+                  "value": "{{MAP_TOMTOM_API_KEY}}"
                 },
                 {
                   "key": "apiVersion",
@@ -2436,7 +2436,7 @@
       "script": {
         "type": "text/javascript",
         "exec": [
-          "if (!pm.environment.get('TOMTOM_API_KEY')) console.warn('Hãy nhập TOMTOM_API_KEY trong Environment.');"
+          "if (!pm.environment.get('MAP_TOMTOM_API_KEY')) console.warn('Hãy nhập MAP_TOMTOM_API_KEY trong Environment.');"
         ]
       }
     }
