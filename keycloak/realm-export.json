@@ -1684,23 +1684,23 @@
   },
   "smtpServer": {
     "allowutf8": "true",
-    "debug": "true",
+    "debug": "false",
     "replyToDisplayName": "HomeSpace Support",
     "starttls": "true",
     "auth": "true",
     "writeTimeout": "10000",
-    "envelopeFrom": "homespace.id.vn@gmail.com",
+    "envelopeFrom": "",
     "ssl": "false",
     "timeout": "10000",
     "password": "**********",
     "port": "587",
-    "host": "smtp.gmail.com",
-    "replyTo": "homespace.id.vn@gmail.com",
-    "from": "homespace.id.vn@gmail.com",
-    "fromDisplayName": "HomeSpace Platform",
+    "host": "smtp.resend.com",
+    "replyTo": "cskh@homespace.id.vn",
+    "from": "no-reply@homespace.id.vn",
+    "fromDisplayName": "HomeSpace",
     "authType": "basic",
     "connectionTimeout": "10000",
-    "user": "homespace.id.vn@gmail.com"
+    "user": "resend"
   },
   "loginTheme": "homespace",
   "eventsEnabled": false,
@@ -1807,6 +1807,28 @@
   "adminEventsDetailsEnabled": true,
   "identityProviders": [
     {
+      "alias": "facebook",
+      "displayName": "Facebook",
+      "internalId": "37fc0526-e208-482b-8509-179bcadad7c9",
+      "providerId": "facebook",
+      "enabled": true,
+      "trustEmail": false,
+      "storeToken": false,
+      "linkOnly": false,
+      "hideOnLogin": false,
+      "config": {
+        "clientId": "1932728480823485",
+        "acceptsPromptNoneForwardFromClient": "false",
+        "disableUserInfo": "false",
+        "showInAccountConsole": "ALWAYS",
+        "filteredByClaim": "false",
+        "syncMode": "IMPORT",
+        "clientSecret": "**********",
+        "caseSensitiveOriginalUsername": "false"
+      },
+      "types": []
+    },
+    {
       "alias": "google",
       "displayName": "Google",
       "internalId": "92e686e0-b95e-40bc-87ed-a2dbe1e0f571",
@@ -1861,12 +1883,12 @@
         "config": {
           "allowed-protocol-mapper-types": [
             "oidc-address-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "saml-role-list-mapper",
+            "saml-user-attribute-mapper",
             "oidc-full-name-mapper",
             "oidc-sha256-pairwise-sub-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "saml-role-list-mapper",
             "oidc-usermodel-property-mapper",
-            "saml-user-attribute-mapper",
             "saml-user-property-mapper"
           ]
         }
@@ -1895,14 +1917,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-attribute-mapper",
-            "saml-user-property-mapper",
-            "oidc-address-mapper",
+            "saml-user-attribute-mapper",
             "oidc-sha256-pairwise-sub-mapper",
+            "oidc-address-mapper",
+            "oidc-usermodel-attribute-mapper",
             "oidc-usermodel-property-mapper",
             "saml-role-list-mapper",
             "oidc-full-name-mapper",
-            "saml-user-attribute-mapper"
+            "saml-user-property-mapper"
           ]
         }
       },
